@@ -6,7 +6,10 @@
 //Testando GitHub.
 package sysvendas;
 
+import Classes.ConnectionFactory;
 import Interface.Menu;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,5 +23,11 @@ public class Main {
     public static void main(String[] args) {
         Menu m = new Menu();
         m.setVisible(true);
+        
+        try (Connection con = new ConnectionFactory().getConnection()) {
+            System.out.println("Conexão aberta!");
+        } catch(SQLException e) {
+            System.out.println(e);
+        }
     }
 }

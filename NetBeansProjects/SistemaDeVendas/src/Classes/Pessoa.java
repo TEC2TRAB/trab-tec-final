@@ -3,7 +3,7 @@ package Classes;
  *
  * @author cesar.nascimento
  */
-public class Pessoa {
+public abstract class Pessoa {
     private String nome;
     private String dtnasc;
     private char sexo;
