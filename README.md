@@ -19,9 +19,19 @@ Módulos do Sistema:
                 Cadastro e consulta de funcionários e Clientes
                 Atributos:{}
 Banco de Dados:
+        
         Pessoa -> [Funcionário, cliente].
+                Pessoa: CPF(PK), RG, Endereço(...)
+                        Funcionario: Id(PK), CPF(FK), DataDeAdmissão, Login(Unico), Senha.
+                        Cliente: Id(PK), CPF(FK). 
+        
         Produto.
+                Id(PK), Descricao, quantidade, preço.
+        
         Vendas.
+                id(PK), id_vendedor(FK), id_cliente(FK), valor_total.
+                
+                Historico: id_venda(FK), id_produto(FK), qtd.
 
 
 Listinha bolada do que fazer:
