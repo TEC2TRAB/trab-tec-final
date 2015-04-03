@@ -26,6 +26,8 @@ Banco de Dados:
 
 Listinha bolada do que fazer:
 
+0 - Modelo de layout.(Primeiro Checkpoint do trabalho)
+
 1 - Definir os módulos
 
 2 - Construir a estrutura de cada cada módulo 
