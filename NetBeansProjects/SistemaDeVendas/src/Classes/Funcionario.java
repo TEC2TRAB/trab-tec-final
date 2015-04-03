@@ -5,28 +5,22 @@ package Classes;
  * @author cesar.nascimento
  */
 public class Funcionario extends Pessoa{
-    private String dtcad;
-    private String login;
-    private String senha;
+    private int id;
+    private String admissao;
     
-    public void setDtCad(String dtcad){
-        this.dtcad = dtcad;
-    }
-    public String getDtCad(){
-        return dtcad;
+    public void setId(int id){
+        this.id = id;
     }
     
-    public void setLogin(String login){
-        this.login = login;
-    }
-    public String getLogin(){
-        return login;
+    public int getId(){
+        return this.id;
     }
     
-    public void setSenha(String senha){
-        this.senha = senha;
+    public void setAdmissao(String admissao){
+        this.admissao = admissao;
     }
-    public String getSenha(){
-        return senha;
+    public String getAdmissao(){
+        return admissao;
     }
+    
 }
