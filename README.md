@@ -13,7 +13,7 @@ Módulos do Sistema:
                 Cadastra e consulta uma venda como base no produto e no funcionário.
                 Atributos:{}
         Produtos.
-                Cadastra um produto.
+                Cadastra e consulta um produto.
                 Atributos:{}
         Pessoas. 
                 Cadastro e consulta de funcionários e Clientes
