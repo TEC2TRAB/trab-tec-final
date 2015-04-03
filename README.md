@@ -22,3 +22,17 @@ Banco de Dados:
         Pessoa -> [Funcionário, cliente].
         Produto.
         Vendas.
+
+
+Listinha bolada do que fazer:
+
+1 - Definir os módulos
+
+2 - Construir a estrutura de cada cada módulo 
+(O que vai ter, ex: cadastro de produto, alteração de valor e etc)
+
+3 - Partir para as regras de restrições de cada módulo
+
+4 - Implementar o layout
+
+5 - Programar o layout
