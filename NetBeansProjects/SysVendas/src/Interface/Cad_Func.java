@@ -6,6 +6,8 @@
 package Interface;
 
 import Classes.Funcionario;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +21,7 @@ public class Cad_Func extends javax.swing.JFrame {
     public Cad_Func() {
         initComponents();
     }
-
+    int fechar = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +39,6 @@ public class Cad_Func extends javax.swing.JFrame {
         jLabelDtNasc = new javax.swing.JLabel();
         jFormattedDtNasc = new javax.swing.JFormattedTextField();
         jLabelCPF = new javax.swing.JLabel();
-        jFormattedCPF = new javax.swing.JFormattedTextField();
         jLabelRG = new javax.swing.JLabel();
         jTextRG = new javax.swing.JTextField();
         jLabelDadosPessoais = new javax.swing.JLabel();
@@ -64,8 +65,14 @@ public class Cad_Func extends javax.swing.JFrame {
         jButtonCadastrar = new javax.swing.JButton();
         jButtonLimparCampos = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        jTextCPF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNome.setText("Nome:");
@@ -99,14 +106,14 @@ public class Cad_Func extends javax.swing.JFrame {
         jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCPF.setText("CPF");
 
-        try {
-            jFormattedCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         jLabelRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelRG.setText("RG");
+
+        jTextRG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextRGFocusLost(evt);
+            }
+        });
 
         jLabelDadosPessoais.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelDadosPessoais.setText("Dados Pessoais");
@@ -120,6 +127,12 @@ public class Cad_Func extends javax.swing.JFrame {
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNumero.setText("Nº");
 
+        jTextNumero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextNumeroFocusLost(evt);
+            }
+        });
+
         jLabelCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCEP.setText("CEP");
 
@@ -132,7 +145,7 @@ public class Cad_Func extends javax.swing.JFrame {
         jLabelEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelEstado.setText("Estado");
 
-        jComboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
 
         jLabelCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCidade.setText("Cidade");
@@ -160,6 +173,11 @@ public class Cad_Func extends javax.swing.JFrame {
         });
 
         jButtonLimparCampos.setText("Limpar Campos");
+        jButtonLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonLimparCamposMousePressed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,8 +230,8 @@ public class Cad_Func extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabelCPF)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabelRG))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -270,9 +288,9 @@ public class Cad_Func extends javax.swing.JFrame {
                     .addComponent(jLabelDtNasc)
                     .addComponent(jFormattedDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCPF)
-                    .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelRG)
-                    .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jLabelEndereco)
                 .addGap(18, 18, 18)
@@ -326,18 +344,170 @@ public class Cad_Func extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioSexoFMousePressed
 
     private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
+        fechar=1;
         this.dispose();
         Menu m = new Menu();
         m.setVisible(true);
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
     private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
-        
+        Funcionario f = new Funcionario();
+        int erro=0;
+        if(jTextNome.getText().isEmpty()){
+            jLabelNome.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelNome.setForeground(Color.black);
+            f.setNome(jTextNome.getText());
+        }
+        if(jRadioSexoF.isSelected()){
+            jLabelSexo.setForeground(Color.black);
+            f.setSexo(jRadioSexoF.getText().charAt(0));
+        }else if(jRadioSexoM.isSelected()){
+            jLabelSexo.setForeground(Color.black);
+            f.setSexo(jRadioSexoM.getText().charAt(0));
+        }else{
+            jLabelSexo.setForeground(Color.red);
+            erro=1;
+        }
+        if(jTextCPF.getText().isEmpty()){
+            jLabelCPF.setForeground(Color.red);
+            erro=1;
+        }else{
+            /*if(Classes.ValidarCPFCNPJ.isValidCPF(jTextCPF.getText())==true){
+                f.setCPF(jTextCPF.getText());
+                System.out.println(f.getcp);
+            }else{
+                jLabelCPF.setBackground(Color.red);
+                erro=1;
+            }*/
+        }
+        if(jFormattedDtNasc.getText().contains(" /")){
+            jLabelDtNasc.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelDtNasc.setForeground(Color.black);
+            f.setDtNasc(jFormattedDtNasc.getText());
+        }
+        if(jTextRG.getText().isEmpty()){
+            jLabelRG.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelRG.setForeground(Color.black);
+            f.setRG(Integer.parseInt(jTextRG.getText()));
+        }
+        if(jTextNumero.getText().isEmpty()){
+            jLabelNumero.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelNumero.setForeground(Color.black);
+            f.setNumero(Integer.parseInt(jTextNumero.getText()));
+        }
+        if(jTextRua.getText().isEmpty()){
+            jLabelRua.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelRua.setForeground(Color.black);
+            f.setRua(jTextRua.getText());
+        }
+        if(jFormattedCEP.getText().contains(" - ")){
+            jLabelCEP.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelCEP.setForeground(Color.black);
+            f.setCep(jFormattedCEP.getText());
+        }
+        if(jComboEstado.getSelectedItem().toString().equals("SELECIONE")){
+            jLabelEstado.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelEstado.setForeground(Color.black);
+            f.setEstado(jComboEstado.getSelectedItem().toString());
+        }
+        if(jTextCidade.getText().isEmpty()){
+            jLabelCidade.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelCidade.setForeground(Color.black);
+            f.setCidade(jTextCidade.getText());
+        }
+        if(jTextBairro.getText().isEmpty()){
+            jLabelBairro.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelBairro.setForeground(Color.black);
+            f.setBairro(jTextBairro.getText());
+        }
+        if(jTextComple.getText().isEmpty()){
+            jLabelComple.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelComple.setForeground(Color.black);
+            f.setComple(jTextComple.getText());
+        }
+        if(jTextLogin.getText().isEmpty()){
+            jLabelLogin.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelLogin.setForeground(Color.black);
+            f.setLogin(jTextLogin.getText());
+        }
+        //validação e criptografia senha
+        //f.setSenha(jPasswordSenha.getText());
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonLimparCamposMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparCamposMousePressed
+        jTextNome.setText("");
+        jRadioSexoF.setSelected(false);
+        jRadioSexoM.setSelected(false);
+        jFormattedDtNasc.setText("");
+        jTextCPF.setText("");
+        jTextRG.setText("");
+        jTextRua.setText("");
+        jTextNumero.setText("");
+        jFormattedCEP.setText("");
+        jComboEstado.setSelectedItem("SELECIONE");
+        jTextCidade.setText("");
+        jTextBairro.setText("");
+        jTextComple.setText("");
+        jTextLogin.setText("");
+        jPasswordSenha.setText("");
+    }//GEN-LAST:event_jButtonLimparCamposMousePressed
+
+    private void jTextRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRGFocusLost
+        try{
+            if(!jTextRG.getText().equals("")){
+                Integer.parseInt(jTextRG.getText());
+                jLabelRG.setForeground(Color.black);
+            }
+        }catch(NumberFormatException e){
+            jLabelRG.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            jTextRG.setText("");
+            jTextRG.requestFocus();
+        }
+    }//GEN-LAST:event_jTextRGFocusLost
+
+    private void jTextNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNumeroFocusLost
+        try{
+            if(!jTextNumero.getText().equals("")){
+                Integer.parseInt(jTextNumero.getText());
+                jLabelNumero.setForeground(Color.black);
+            }
+        }catch(NumberFormatException e){
+            jLabelNumero.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            jTextNumero.setText("");
+            jTextNumero.requestFocus();
+        }
+    }//GEN-LAST:event_jTextNumeroFocusLost
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        if(fechar!=1){
+            Menu m = new Menu();
+            m.setVisible(true);
+        }
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
@@ -345,7 +515,6 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimparCampos;
     private javax.swing.JComboBox jComboEstado;
     private javax.swing.JFormattedTextField jFormattedCEP;
-    private javax.swing.JFormattedTextField jFormattedCPF;
     private javax.swing.JFormattedTextField jFormattedDtNasc;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
@@ -368,6 +537,7 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioSexoF;
     private javax.swing.JRadioButton jRadioSexoM;
     private javax.swing.JTextField jTextBairro;
+    private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextCidade;
     private javax.swing.JTextField jTextComple;
     private javax.swing.JTextField jTextLogin;

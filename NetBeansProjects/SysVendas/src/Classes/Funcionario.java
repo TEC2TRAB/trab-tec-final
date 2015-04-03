@@ -9,21 +9,21 @@ public class Funcionario extends Pessoa{
     private String login;
     private String senha;
     
-    void setDtCad(String dtcad){
+    public void setDtCad(String dtcad){
         this.dtcad = dtcad;
     }
     public String getDtCad(){
         return dtcad;
     }
     
-    void setLogin(String login){
+    public void setLogin(String login){
         this.login = login;
     }
     public String getLogin(){
         return login;
     }
     
-    void setSenha(String senha){
+    public void setSenha(String senha){
         this.senha = senha;
     }
     public String getSenha(){
