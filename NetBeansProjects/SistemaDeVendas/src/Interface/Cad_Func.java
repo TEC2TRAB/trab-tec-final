@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import Classes.Funcionario;
+import ModuloDePessoas.Funcionario;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
