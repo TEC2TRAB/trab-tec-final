@@ -7,13 +7,14 @@ package ModuloDePessoas;
 public class Funcionario extends Pessoa{
     private int id;
     private String admissao;
+    private String login;
+    private String senha;
     
     public void setId(int id){
         this.id = id;
     }
-    
     public int getId(){
-        return this.id;
+        return id;
     }
     
     public void setAdmissao(String admissao){
@@ -21,6 +22,20 @@ public class Funcionario extends Pessoa{
     }
     public String getAdmissao(){
         return admissao;
+    }
+    
+    public void setLogin(String login){
+        this.login = login;
+    }
+    public String getLogin(){
+        return login;
+    }
+    
+    public void setSenha(String senha){
+        this.senha = senha;
+    }
+    public String getSenha(){
+        return senha;
     }
     
 }
