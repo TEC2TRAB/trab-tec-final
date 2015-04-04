@@ -6,7 +6,7 @@
 package Interface;
 
 import ModuloDePessoas.Funcionario;
-import Classes.ValidadorCPF;
+import Classes.*;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -353,6 +353,7 @@ public class Cad_Func extends javax.swing.JFrame {
 
     private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
         Funcionario f = new Funcionario();
+        MD5 m = new MD5();
         int erro=0;
         if(jTextNome.getText().isEmpty()){
             jLabelNome.setForeground(Color.red);
@@ -457,7 +458,8 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelSenha.setForeground(Color.red);
             erro=1;
         }else{
-            
+            jLabelSenha.setForeground(Color.black);
+            f.setSenha(m.geraMD5(jPasswordSenha.getText()));
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
