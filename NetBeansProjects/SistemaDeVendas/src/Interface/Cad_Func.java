@@ -6,6 +6,7 @@
 package Interface;
 
 import ModuloDePessoas.Funcionario;
+import Classes.ValidadorCPF;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -452,8 +453,12 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelLogin.setForeground(Color.black);
             f.setLogin(jTextLogin.getText());
         }
-        //validação e criptografia senha
-        //f.setSenha(jPasswordSenha.getText());
+        if(jPasswordSenha.getText().isEmpty()){
+            jLabelSenha.setForeground(Color.red);
+            erro=1;
+        }else{
+            
+        }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
     private void jButtonLimparCamposMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparCamposMousePressed

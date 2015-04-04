@@ -79,6 +79,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu4.add(jMenuItem9);
 
         jMenuItem10.setText("Consulta");
+        jMenuItem10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem10MousePressed(evt);
+            }
+        });
         jMenu4.add(jMenuItem10);
 
         jMenuBar1.add(jMenu4);
@@ -115,10 +120,16 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3MousePressed
 
     private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
-        this.dispose();
+        dispose();
         Cad_Func cf = new Cad_Func();
         cf.setVisible(true);
     }//GEN-LAST:event_jMenuItem9MousePressed
+
+    private void jMenuItem10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem10MousePressed
+        dispose();
+        Cons_Func cf = new Cons_Func();
+        cf.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10MousePressed
 
     /**
      * @param args the command line arguments
