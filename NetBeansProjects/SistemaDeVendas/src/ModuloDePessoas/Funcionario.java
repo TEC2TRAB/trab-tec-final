@@ -7,6 +7,7 @@ package ModuloDePessoas;
 public class Funcionario extends Pessoa{
     private int id;
     private String admissao;
+    private String demissao;
     private String login;
     private String senha;
     
@@ -22,6 +23,13 @@ public class Funcionario extends Pessoa{
     }
     public String getAdmissao(){
         return admissao;
+    }
+    
+    public void setDemissao(String demissao){
+        this.demissao = demissao;
+    }
+    public String getDemissao(){
+        return demissao;
     }
     
     public void setLogin(String login){
