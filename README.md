@@ -22,7 +22,7 @@ Banco de Dados:
         
         Pessoa -> [Funcionário, cliente].
                 Pessoa: CPF(PK), RG, Endereço(...)
-                        Funcionario: Id(PK), CPF(FK), DataDeAdmissão, Login(Unico), Senha.
+                        Funcionario: Id(PK), CPF(FK), DataDeAdmissão,DataDeDemissão, Login(Unico), Senha.
                         Cliente: Id(PK), CPF(FK). 
         
         Produto.
