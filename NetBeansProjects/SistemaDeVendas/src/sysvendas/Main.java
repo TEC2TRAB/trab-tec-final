@@ -6,7 +6,7 @@
 //Testando GitHub.
 package sysvendas;
 
-import ModuloDePessoas.ConnectionFactory;
+import Classes.ConnectionFactory;
 import Interface.Menu;
 import java.sql.Connection;
 import java.sql.SQLException;
