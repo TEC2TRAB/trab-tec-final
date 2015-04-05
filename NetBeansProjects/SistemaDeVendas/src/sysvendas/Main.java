@@ -31,9 +31,10 @@ public class Main {
             System.out.println(e);
         }
         //exemplos mudança estilo Nimbus
-        UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
+        //Só funciona com java 8
+        /*UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
         UIManager.put( "nimbusBlueGrey", new Color( 190, 190, 190 ) );  
-        UIManager.put( "control", new Color( 223, 223, 223 ) ); 
+        UIManager.put( "control", new Color( 223, 223, 223 ) );*/ 
         try {  
             //Setar estilo que eu quero,ex: Trocar Nimbus por Windows,ou Metal no if
             for ( LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
