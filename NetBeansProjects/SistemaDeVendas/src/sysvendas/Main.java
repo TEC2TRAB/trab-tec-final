@@ -8,7 +8,6 @@ package sysvendas;
 
 import Classes.ConnectionFactory;
 import Interface.Menu;
-import java.awt.Color;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.UIManager;
@@ -47,14 +46,9 @@ public class Main {
         for ( UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
             System.out.println( info.getName() );  
         } 
-        } catch(UnsupportedLookAndFeelException e){
-            e.printStackTrace();
-        } catch(ClassNotFoundException e){
-            e.printStackTrace();
-        } catch(InstantiationException e){
-            e.printStackTrace();
-        } catch(IllegalAccessException e){
-            e.printStackTrace();
+        } catch(UnsupportedLookAndFeelException | ClassNotFoundException | 
+                InstantiationException | IllegalAccessException e){
+            System.out.println("Não foi possível setar o estilo,contate o administrador");
         }
         Menu m = new Menu();
         m.setVisible(true); 
