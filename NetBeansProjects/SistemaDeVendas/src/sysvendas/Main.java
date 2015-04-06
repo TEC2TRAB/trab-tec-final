@@ -8,6 +8,7 @@ package sysvendas;
 
 import Classes.ConnectionFactory;
 import Interface.Menu;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.UIManager;
@@ -31,21 +32,21 @@ public class Main {
         }
         //exemplos mudança estilo Nimbus
         //Só funciona com java 8
-        /*UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
+        try{
+        UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
         UIManager.put( "nimbusBlueGrey", new Color( 190, 190, 190 ) );  
-        UIManager.put( "control", new Color( 223, 223, 223 ) );*/ 
-        try {  
+        UIManager.put( "control", new Color( 223, 223, 223 ) );
             //Setar estilo que eu quero,ex: Trocar Nimbus por Windows,ou Metal no if
             for ( LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
-                if ( "Nimbus".equals( info.getName() ) ) {  
+                if ( "Metal".equals( info.getName() ) ) {  
                     UIManager.setLookAndFeel( info.getClassName() );  
                     break;  
                 }  
             }
-        //ver os estilos que eu tenho instalado no projeto
-        for ( UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
-            System.out.println( info.getName() );  
-        } 
+            //ver os estilos que eu tenho instalado no projeto
+            for ( UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
+                System.out.println( info.getName() );  
+            } 
         } catch(UnsupportedLookAndFeelException | ClassNotFoundException | 
                 InstantiationException | IllegalAccessException e){
             System.out.println("Não foi possível setar o estilo,contate o administrador");
