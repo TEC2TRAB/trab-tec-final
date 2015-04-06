@@ -6,11 +6,8 @@
 //Testando GitHub.
 package sysvendas;
 
-import Classes.ConnectionFactory;
 import Interface.Menu;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.SQLException;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -25,11 +22,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
         /*try (Connection con = new ConnectionFactory().getConnection()) {
             System.out.println("Conexão aberta!");
         } catch(SQLException e) {
             System.out.println(e);
         }*/
+=======
+                
+>>>>>>> origin/master
         //exemplos mudança estilo Nimbus
         //Só funciona com java 8
         try{

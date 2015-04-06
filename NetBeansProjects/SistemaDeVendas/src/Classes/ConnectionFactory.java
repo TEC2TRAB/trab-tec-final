@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     public Connection getConnection() {
-        String url = "jdbc:postgresql://localhost:5432/BDVendas";
+        String url = "jdbc:postgresql://localhost:5432/BDVendas?currentSchema=trabalho";
         String usuario = "postgres";
         String senha = "admin";
         
