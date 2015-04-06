@@ -6,8 +6,10 @@
 //Testando GitHub.
 package sysvendas;
 
+import Classes.ConnectionFactory;
 import Interface.Menu;
-import java.awt.Color;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -22,21 +24,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
-        /*try (Connection con = new ConnectionFactory().getConnection()) {
+        try (Connection con = new ConnectionFactory().getConnection()) {
             System.out.println("Conexão aberta!");
         } catch(SQLException e) {
             System.out.println(e);
-        }*/
-=======
-                
->>>>>>> origin/master
-        //exemplos mudança estilo Nimbus
-        //Só funciona com java 8
+        }
         try{
-        UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
-        UIManager.put( "nimbusBlueGrey", new Color( 190, 190, 190 ) );  
-        UIManager.put( "control", new Color( 223, 223, 223 ) );
             //Setar estilo que eu quero,ex: Trocar Nimbus por Windows,ou Metal no if
             for ( LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
                 if ( "Windows".equals( info.getName() ) ) {  
