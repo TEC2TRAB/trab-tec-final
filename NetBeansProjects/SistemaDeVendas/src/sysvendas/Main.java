@@ -25,11 +25,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try (Connection con = new ConnectionFactory().getConnection()) {
+        /*try (Connection con = new ConnectionFactory().getConnection()) {
             System.out.println("Conexão aberta!");
         } catch(SQLException e) {
             System.out.println(e);
-        }
+        }*/
         //exemplos mudança estilo Nimbus
         //Só funciona com java 8
         try{
@@ -38,7 +38,7 @@ public class Main {
         UIManager.put( "control", new Color( 223, 223, 223 ) );
             //Setar estilo que eu quero,ex: Trocar Nimbus por Windows,ou Metal no if
             for ( LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
-                if ( "Metal".equals( info.getName() ) ) {  
+                if ( "Windows".equals( info.getName() ) ) {  
                     UIManager.setLookAndFeel( info.getClassName() );  
                     break;  
                 }  

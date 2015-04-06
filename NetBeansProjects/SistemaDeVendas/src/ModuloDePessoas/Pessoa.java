@@ -9,7 +9,7 @@ public abstract class Pessoa {
     private String dtnasc;
     private char sexo;
     private String cpf;
-    private int rg;
+    private String rg;
     private String cep;
     private String telefone;
     private String rua;
@@ -47,10 +47,10 @@ public abstract class Pessoa {
         return cpf;
     }
     
-    public void setRG(int rg){
+    public void setRG(String rg){
         this.rg = rg;
     }
-    public int getRG(){
+    public String getRG(){
         return rg;
     }
     

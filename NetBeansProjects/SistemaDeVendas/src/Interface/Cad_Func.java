@@ -407,35 +407,26 @@ public class Cad_Func extends javax.swing.JFrame {
     private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
         Funcionario f = new Funcionario();
         MD5 m = new MD5();
-        int erro=0;
+        int erro=0,cpf=0;
         if(jTextNome.getText().isEmpty()){
             jLabelNome.setForeground(Color.red);
             erro=1;
         }else{
             jLabelNome.setForeground(Color.black);
             f.setNome(jTextNome.getText());
+            erro=0;
         }
         if(jRadioSexoF.isSelected()){
             jLabelSexo.setForeground(Color.black);
             f.setSexo(jRadioSexoF.getText().charAt(0));
+            erro=0;
         }else if(jRadioSexoM.isSelected()){
             jLabelSexo.setForeground(Color.black);
             f.setSexo(jRadioSexoM.getText().charAt(0));
+            erro=0;
         }else{
             jLabelSexo.setForeground(Color.red);
             erro=1;
-        }
-        if(jFormattedCPF.getText().isEmpty()){
-            jLabelCPF.setForeground(Color.red);
-            erro=1;
-        }else{
-            /*if(Classes.ValidarCPFCNPJ.isValidCPF(jTextCPF.getText())==true){
-                f.setCPF(jTextCPF.getText());
-                System.out.println(f.getcp);
-            }else{
-                jLabelCPF.setBackground(Color.red);
-                erro=1;
-            }*/
         }
         if(jFormattedDtNasc.getText().contains(" /")){
             jLabelNascimento.setForeground(Color.red);
@@ -443,13 +434,28 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelNascimento.setForeground(Color.black);
             f.setDtNasc(jFormattedDtNasc.getText());
+            erro=0;
+        }
+        if(jFormattedCPF.getText().isEmpty()){
+            jLabelCPF.setForeground(Color.red);
+            erro=1;
+        }else{
+            if(Classes.ValidadorCPF.TestaCPF(jFormattedCPF.getText())==true){
+                f.setCPF(jFormattedCPF.getText());
+                erro=0;
+            }else{
+                jFormattedCPF.setText("");
+                jFormattedCPF.requestFocus();
+                cpf=1;
+            }
         }
         if(jTextRG.getText().isEmpty()){
             jLabelRG.setForeground(Color.red);
             erro=1;
         }else{
             jLabelRG.setForeground(Color.black);
-            f.setRG(Integer.parseInt(jTextRG.getText()));
+            f.setRG(jTextRG.getText());
+            erro=0;
         }
         if(jTextNumero.getText().isEmpty()){
             jLabelNumero.setForeground(Color.red);
@@ -457,6 +463,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelNumero.setForeground(Color.black);
             f.setNumero(Integer.parseInt(jTextNumero.getText()));
+            erro=0;
         }
         if(jTextRua.getText().isEmpty()){
             jLabelRua.setForeground(Color.red);
@@ -464,6 +471,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelRua.setForeground(Color.black);
             f.setRua(jTextRua.getText());
+            erro=0;
         }
         if(jFormattedCEP.getText().contains(" - ")){
             jLabelCEP.setForeground(Color.red);
@@ -471,6 +479,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelCEP.setForeground(Color.black);
             f.setCep(jFormattedCEP.getText());
+            erro=0;
         }
         if(jComboEstado.getSelectedItem().toString().equals("SELECIONE")){
             jLabelEstado.setForeground(Color.red);
@@ -478,6 +487,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelEstado.setForeground(Color.black);
             f.setEstado(jComboEstado.getSelectedItem().toString());
+            erro=0;
         }
         if(jTextCidade.getText().isEmpty()){
             jLabelCidade.setForeground(Color.red);
@@ -485,6 +495,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelCidade.setForeground(Color.black);
             f.setCidade(jTextCidade.getText());
+            erro=0;
         }
         if(jTextBairro.getText().isEmpty()){
             jLabelBairro.setForeground(Color.red);
@@ -492,13 +503,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelBairro.setForeground(Color.black);
             f.setBairro(jTextBairro.getText());
-        }
-        if(jTextComple.getText().isEmpty()){
-            jLabelComple.setForeground(Color.red);
-            erro=1;
-        }else{
-            jLabelComple.setForeground(Color.black);
-            f.setComple(jTextComple.getText());
+            erro=0;
         }
         if(jTextLogin.getText().isEmpty()){
             jLabelLogin.setForeground(Color.red);
@@ -506,6 +511,7 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelLogin.setForeground(Color.black);
             f.setLogin(jTextLogin.getText());
+            erro=0;
         }
         if(jPasswordSenha.getText().isEmpty()){
             jLabelSenha.setForeground(Color.red);
@@ -513,7 +519,32 @@ public class Cad_Func extends javax.swing.JFrame {
         }else{
             jLabelSenha.setForeground(Color.black);
             f.setSenha(m.geraMD5(jPasswordSenha.getText()));
-        }                                             
+            erro=0;
+        }
+        if(jPasswordSenha1.getText().isEmpty()){
+            jLabelSenha1.setForeground(Color.red);
+            erro=1;
+        }else{
+            jLabelSenha1.setForeground(Color.black);
+            erro=0;
+        }
+        if(erro==1){
+            JOptionPane.showMessageDialog(null,"Campo(s) obrigatório(s) não preenchido(s)" , "Campos em branco", JOptionPane.ERROR_MESSAGE);
+        }else if(erro==0){
+            if(cpf==1){
+                JOptionPane.showMessageDialog(null,"CPF inválido,por favor,verifique e digite novamente","Atenção",JOptionPane.WARNING_MESSAGE);
+            }else{
+                if(jPasswordSenha.getText().equals(jPasswordSenha1.getText())){
+                    //Aqui entra a chamada da classe de inserção no banco de dados...
+                    JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    jPasswordSenha.setText("");
+                    jPasswordSenha1.setText("");
+                    jPasswordSenha.requestFocus();
+                    JOptionPane.showMessageDialog(null,"Senhas diferentes,por favor,verifique e digite novamente", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
     private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
@@ -537,7 +568,7 @@ public class Cad_Func extends javax.swing.JFrame {
     private void jTextRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRGFocusLost
         try{
             if(!jTextRG.getText().equals("")){
-                Integer.parseInt(jTextRG.getText());
+                Long.parseLong(jTextRG.getText());
                 jLabelRG.setForeground(Color.black);
             }
         }catch(NumberFormatException e){
