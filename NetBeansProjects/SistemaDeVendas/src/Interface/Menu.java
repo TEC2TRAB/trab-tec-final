@@ -121,7 +121,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3MousePressed
 
     private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
-        dispose();
         Cad_Func cf = new Cad_Func();
         cf.setVisible(true);
     }//GEN-LAST:event_jMenuItem9MousePressed
