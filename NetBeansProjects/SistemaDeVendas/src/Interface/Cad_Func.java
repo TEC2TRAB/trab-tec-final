@@ -22,7 +22,6 @@ public class Cad_Func extends javax.swing.JFrame {
     public Cad_Func() {
         initComponents();
     }
-    int fechar = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +76,7 @@ public class Cad_Func extends javax.swing.JFrame {
         jPasswordSenha = new javax.swing.JPasswordField();
         jPasswordSenha1 = new javax.swing.JPasswordField();
         jTextRG = new javax.swing.JTextField();
-        jFormattedCPF = new javax.swing.JFormattedTextField();
+        jTextCPF = new javax.swing.JTextField();
 
         jMenu1.setText("jMenu1");
 
@@ -94,11 +93,6 @@ public class Cad_Func extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Funcionários");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         jLabelDados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelDados.setText("Dados Pessoais");
@@ -222,11 +216,11 @@ public class Cad_Func extends javax.swing.JFrame {
             }
         });
 
-        try {
-            jFormattedCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jTextCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextCPFFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -270,7 +264,7 @@ public class Cad_Func extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelCPF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedCPF)))
+                                .addComponent(jTextCPF)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
@@ -336,7 +330,7 @@ public class Cad_Func extends javax.swing.JFrame {
                     .addComponent(jLabelCPF)
                     .addComponent(jLabelRG)
                     .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -398,10 +392,7 @@ public class Cad_Func extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioSexoMMousePressed
 
     private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
-        fechar=1;
         dispose();
-        Menu m = new Menu();
-        m.setVisible(true);
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
     private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
@@ -435,19 +426,6 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelNascimento.setForeground(Color.black);
             f.setDtNasc(jFormattedDtNasc.getText());
             erro=0;
-        }
-        if(jFormattedCPF.getText().isEmpty()){
-            jLabelCPF.setForeground(Color.red);
-            erro=1;
-        }else{
-            if(Classes.ValidadorCPF.TestaCPF(jFormattedCPF.getText())==true){
-                f.setCPF(jFormattedCPF.getText());
-                erro=0;
-            }else{
-                jFormattedCPF.setText("");
-                jFormattedCPF.requestFocus();
-                cpf=1;
-            }
         }
         if(jTextRG.getText().isEmpty()){
             jLabelRG.setForeground(Color.red);
@@ -528,20 +506,34 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelSenha1.setForeground(Color.black);
             erro=0;
         }
+        if(jTextCPF.getText().isEmpty()){
+            jLabelCPF.setForeground(Color.red);
+            erro=1;
+        }else if(Classes.ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
+            f.setCPF(jTextCPF.getText());
+            jLabelCPF.setForeground(Color.black);
+            erro=0;
+        }else{
+            cpf=1;
+        }
         if(erro==1){
             JOptionPane.showMessageDialog(null,"Campo(s) obrigatório(s) não preenchido(s)" , "Campos em branco", JOptionPane.ERROR_MESSAGE);
         }else if(erro==0){
             if(cpf==1){
+                jLabelCPF.setForeground(Color.red);
+                jTextCPF.setText("");
                 JOptionPane.showMessageDialog(null,"CPF inválido,por favor,verifique e digite novamente","Atenção",JOptionPane.WARNING_MESSAGE);
+                jTextCPF.requestFocus();
             }else{
                 if(jPasswordSenha.getText().equals(jPasswordSenha1.getText())){
                     //Aqui entra a chamada da classe de inserção no banco de dados...
                     JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
                 }else{
                     jPasswordSenha.setText("");
                     jPasswordSenha1.setText("");
                     jPasswordSenha.requestFocus();
-                    JOptionPane.showMessageDialog(null,"Senhas diferentes,por favor,verifique e digite novamente", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Senhas não conferem,por favor,verifique e digite novamente", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -552,7 +544,7 @@ public class Cad_Func extends javax.swing.JFrame {
         jRadioSexoF.setSelected(false);
         jRadioSexoM.setSelected(false);
         jFormattedDtNasc.setText("");
-        jFormattedCPF.setText("");
+        jTextCPF.setText("");
         jTextRG.setText("");
         jTextRua.setText("");
         jTextNumero.setText("");
@@ -593,12 +585,19 @@ public class Cad_Func extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextNumeroFocusLost
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        if(fechar!=1){
-            Menu m = new Menu();
-            m.setVisible(true);
+    private void jTextCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCPFFocusLost
+        try{
+            if(!jTextCPF.getText().equals("")){
+                Long.parseLong(jTextCPF.getText());
+                jLabelCPF.setForeground(Color.black);
+            }
+        }catch(NumberFormatException e){
+            jTextCPF.setText("");
+            jLabelCPF.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null,"O campo CPF é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            jTextCPF.requestFocus();
         }
-    }//GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_jTextCPFFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
@@ -606,7 +605,6 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JComboBox jComboEstado;
     private javax.swing.JFormattedTextField jFormattedCEP;
-    private javax.swing.JFormattedTextField jFormattedCPF;
     private javax.swing.JFormattedTextField jFormattedDtNasc;
     private javax.swing.JLabel jLabelAcesso;
     private javax.swing.JLabel jLabelBairro;
@@ -639,6 +637,7 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextBairro;
+    private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextCidade;
     private javax.swing.JTextField jTextComple;
     private javax.swing.JTextField jTextLogin;

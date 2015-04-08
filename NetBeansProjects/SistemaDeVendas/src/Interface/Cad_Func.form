@@ -62,9 +62,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -124,7 +121,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabelCPF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jFormattedCPF" max="32767" attributes="0"/>
+                              <Component id="jTextCPF" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -206,7 +203,7 @@
                   <Component id="jLabelCPF" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelRG" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextRG" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="jFormattedCPF" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jTextCPF" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="15" max="-2" attributes="0"/>
@@ -542,12 +539,10 @@
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextRGFocusLost"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFormattedCPF">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="###########" subtype="-1" type="5"/>
-        </Property>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="jTextCPF">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextCPFFocusLost"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
