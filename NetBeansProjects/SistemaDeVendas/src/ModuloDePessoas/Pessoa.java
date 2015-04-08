@@ -1,4 +1,7 @@
 package ModuloDePessoas;
+
+import java.util.Calendar;
+
 /**
  *
  * @author cesar.nascimento
@@ -6,7 +9,7 @@ package ModuloDePessoas;
 public abstract class Pessoa {
     
     private String nome;
-    private String dtnasc;
+    private Calendar dtnasc;
     private char sexo;
     private String cpf;
     private String rg;
@@ -26,10 +29,10 @@ public abstract class Pessoa {
         return nome;
     }
     
-    public void setDtNasc(String dtnasc){
+    public void setDtNasc(Calendar dtnasc){
         this.dtnasc = dtnasc;
     }
-    public String getDtNasc(){
+    public Calendar getDtNasc(){
         return dtnasc;
     }
     

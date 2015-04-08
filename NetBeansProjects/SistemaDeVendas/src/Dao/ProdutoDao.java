@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -61,10 +63,38 @@ public class ProdutoDao {
                 produto.setDescricao(resultado.getString("descricao"));
                 produto.setNome(resultado.getString("nome"));
             }
-            statement.execute();
+            resultado.close();
             statement.close();
             
             return produto;
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Produto> consultar(String nome) {
+        String sql = "SELECT * FROM produto "+
+                     "WHERE nome LIKE ?";
+        
+        try {
+            List<Produto> produtos = new ArrayList<>();
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, nome + "%");
+            
+            ResultSet resultado = statement.executeQuery();
+            while(resultado.next()) {
+                Produto produto = new Produto();
+                produto.setId(resultado.getInt("id_produto"));
+                produto.setPreco(resultado.getDouble("preco"));
+                produto.setQuantidade(resultado.getInt("quantidade"));
+                produto.setDescricao(resultado.getString("descricao"));
+                produto.setNome(resultado.getString("nome"));
+                produtos.add(produto);
+            }
+            resultado.close();
+            statement.close();
+            
+            return produtos;
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }
