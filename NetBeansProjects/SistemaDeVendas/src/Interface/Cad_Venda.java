@@ -27,26 +27,174 @@ public class Cad_Venda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TitulojLabel = new javax.swing.JLabel();
+        jLabel1IDvendedor = new javax.swing.JLabel();
+        jLabel1Cliente = new javax.swing.JLabel();
+        jTextCliente = new javax.swing.JTextField();
+        jTextVendedor = new javax.swing.JTextField();
+        jLabelValor = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableEstoque = new javax.swing.JTable();
+        jLabelEstoque = new javax.swing.JLabel();
+        TitulojComprado = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableComprados = new javax.swing.JTable();
+        jButtonCadastrar1 = new javax.swing.JButton();
+        jButtonCancelar1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Vendas");
+
+        TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TitulojLabel.setText("Cadastrar Venda");
+
+        jLabel1IDvendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1IDvendedor.setText("ID - Vendedor:");
+
+        jLabel1Cliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1Cliente.setText("ID - Cliente:");
+
+        jTextCliente.setName(""); // NOI18N
+
+        jTextVendedor.setName(""); // NOI18N
+
+        jLabelValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelValor.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelValor.setText("VALOR: ");
+
+        jTableEstoque.setAutoCreateRowSorter(true);
+        jTableEstoque.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableEstoque);
+
+        jLabelEstoque.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelEstoque.setText("Produtos em Estoque");
+
+        TitulojComprado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TitulojComprado.setText("Produtos Comprados");
+
+        jTableComprados.setAutoCreateRowSorter(true);
+        jTableComprados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableComprados);
+
+        jButtonCadastrar1.setText("Cadastrar");
+        jButtonCadastrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrar1ActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar1.setText("Cancelar");
+        jButtonCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonCadastrar1)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButtonCancelar1))
+                    .addComponent(TitulojComprado)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEstoque)
+                    .addComponent(jLabelValor)
+                    .addComponent(TitulojLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1IDvendedor)
+                            .addComponent(jLabel1Cliente))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TitulojLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1IDvendedor)
+                    .addComponent(jTextVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1Cliente)
+                    .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelValor)
+                .addGap(33, 33, 33)
+                .addComponent(jLabelEstoque)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TitulojComprado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
+
+    private void jButtonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCancelar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TitulojComprado;
+    private javax.swing.JLabel TitulojLabel;
+    private javax.swing.JButton jButtonCadastrar1;
+    private javax.swing.JButton jButtonCancelar1;
+    private javax.swing.JLabel jLabel1Cliente;
+    private javax.swing.JLabel jLabel1IDvendedor;
+    private javax.swing.JLabel jLabelEstoque;
+    private javax.swing.JLabel jLabelValor;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableComprados;
+    private javax.swing.JTable jTableEstoque;
+    private javax.swing.JTextField jTextCliente;
+    private javax.swing.JTextField jTextVendedor;
     // End of variables declaration//GEN-END:variables
 }
