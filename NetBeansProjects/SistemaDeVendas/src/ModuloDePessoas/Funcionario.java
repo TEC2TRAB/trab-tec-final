@@ -1,12 +1,15 @@
 package ModuloDePessoas;
+
+import java.util.Calendar;
+
 /**
  *
  * @author cesar.nascimento
  */
 public class Funcionario extends Pessoa{
     private int id;
-    private String admissao;
-    private String demissao;
+    private Calendar admissao;
+    private Calendar demissao;
     private String login;
     private String senha;
     
@@ -17,17 +20,17 @@ public class Funcionario extends Pessoa{
         return id;
     }
     
-    public void setAdmissao(String admissao){
+    public void setAdmissao(Calendar admissao){
         this.admissao = admissao;
     }
-    public String getAdmissao(){
+    public Calendar getAdmissao(){
         return admissao;
     }
     
-    public void setDemissao(String demissao){
+    public void setDemissao(Calendar demissao){
         this.demissao = demissao;
     }
-    public String getDemissao(){
+    public Calendar getDemissao(){
         return demissao;
     }
     
