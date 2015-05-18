@@ -177,7 +177,6 @@ public class Cad_Venda extends javax.swing.JFrame {
     private void jButtonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCancelar1ActionPerformed
-
     /**
      * @param args the command line arguments
      */

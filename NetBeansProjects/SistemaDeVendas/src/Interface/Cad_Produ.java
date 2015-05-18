@@ -200,7 +200,6 @@ public class Cad_Produ extends javax.swing.JFrame {
     private void jButtonCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
