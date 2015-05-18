@@ -7,6 +7,8 @@ package Interface;
 import ModuloDePessoas.Funcionario;
 import Classes.*;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 /**
  *
@@ -43,11 +45,10 @@ public class Cad_Func extends javax.swing.JFrame {
         jRadioSexoF = new javax.swing.JRadioButton();
         jRadioSexoM = new javax.swing.JRadioButton();
         jLabelSexo = new javax.swing.JLabel();
-        jLabelNascimento = new javax.swing.JLabel();
+        jLabelDtNasc = new javax.swing.JLabel();
         jTextCPF = new javax.swing.JTextField();
         jFormattedDtNasc = new javax.swing.JFormattedTextField();
         jLabelCPF = new javax.swing.JLabel();
-        javax.swing.JTextField jTextRG = new javax.swing.JTextField();
         jLabelRG = new javax.swing.JLabel();
         jLabelEstado = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -59,24 +60,25 @@ public class Cad_Func extends javax.swing.JFrame {
         jFormattedCEP = new javax.swing.JFormattedTextField();
         jComboEstado = new javax.swing.JComboBox();
         Endereço = new javax.swing.JLabel();
-        jLabelComplemento = new javax.swing.JLabel();
-        jTextComplemento = new javax.swing.JTextField();
+        jLabelCidade = new javax.swing.JLabel();
+        jTextCidade = new javax.swing.JTextField();
         jLabelBairro = new javax.swing.JLabel();
         jTextBairro = new javax.swing.JTextField();
         jTextLogin = new javax.swing.JTextField();
         jLabelComple = new javax.swing.JLabel();
         jLabelAcesso = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jTextComple1 = new javax.swing.JTextField();
+        jTextComple = new javax.swing.JTextField();
         jLabelLogin = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
-        jTextSenha = new javax.swing.JTextField();
-        jTextSenha1 = new javax.swing.JTextField();
-        jLabelSenha1 = new javax.swing.JLabel();
+        jLabelConfSenha = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        jPasswordConfSenha = new javax.swing.JPasswordField();
+        jTextRG = new javax.swing.JTextField();
+        jPasswordSenha = new javax.swing.JPasswordField();
 
         jMenu1.setText("jMenu1");
 
@@ -91,7 +93,8 @@ public class Cad_Func extends javax.swing.JFrame {
 
         jTextRua4.setName(""); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Funcionários");
 
         jLabelDados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelDados.setText("Dados Pessoais");
@@ -102,24 +105,24 @@ public class Cad_Func extends javax.swing.JFrame {
         jTextNome.setName(""); // NOI18N
 
         jRadioSexoF.setText("F");
-        jRadioSexoF.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jRadioSexoFMousePressed(evt);
+        jRadioSexoF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioSexoFActionPerformed(evt);
             }
         });
 
         jRadioSexoM.setText("M");
-        jRadioSexoM.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jRadioSexoMMousePressed(evt);
+        jRadioSexoM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioSexoMActionPerformed(evt);
             }
         });
 
         jLabelSexo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSexo.setText("Sexo:");
 
-        jLabelNascimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNascimento.setText("Nascimento: ");
+        jLabelDtNasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelDtNasc.setText("Nascimento: ");
 
         jTextCPF.setName(""); // NOI18N
 
@@ -131,13 +134,6 @@ public class Cad_Func extends javax.swing.JFrame {
 
         jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCPF.setText("CPF:");
-
-        jTextRG.setName(""); // NOI18N
-        jTextRG.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextRGFocusLost(evt);
-            }
-        });
 
         jLabelRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelRG.setText("RG:");
@@ -174,10 +170,10 @@ public class Cad_Func extends javax.swing.JFrame {
         Endereço.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Endereço.setText("Endereço");
 
-        jLabelComplemento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelComplemento.setText("Cidade:");
+        jLabelCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelCidade.setText("Cidade:");
 
-        jTextComplemento.setName(""); // NOI18N
+        jTextCidade.setName(""); // NOI18N
 
         jLabelBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBairro.setText("Bairro:");
@@ -194,8 +190,8 @@ public class Cad_Func extends javax.swing.JFrame {
         jLabelSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSenha.setText("Senha:");
 
-        jLabelSenha1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelSenha1.setText("Confirme a senha:");
+        jLabelConfSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelConfSenha.setText("Confirme a senha:");
 
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,6 +208,17 @@ public class Cad_Func extends javax.swing.JFrame {
         });
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMousePressed(evt);
+            }
+        });
+
+        jTextRG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextRGFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,17 +231,17 @@ public class Cad_Func extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelSenha1)
+                        .addComponent(jLabelConfSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPasswordConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelSenha)
                             .addComponent(jLabelLogin))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(jPasswordSenha)))
                     .addComponent(jLabelAcesso)
                     .addComponent(jLabelDados)
                     .addGroup(layout.createSequentialGroup()
@@ -244,7 +251,7 @@ public class Cad_Func extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextNome))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabelNascimento)
+                                .addComponent(jLabelDtNasc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jFormattedDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -262,8 +269,8 @@ public class Cad_Func extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelRG)
-                                .addGap(3, 3, 3)
-                                .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(Endereço)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonCadastrar)
@@ -279,7 +286,7 @@ public class Cad_Func extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jLabelComple)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextComple1))
+                            .addComponent(jTextComple))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelCEP)
@@ -290,9 +297,9 @@ public class Cad_Func extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabelComplemento)
+                                .addComponent(jLabelCidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelRua)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,7 +308,7 @@ public class Cad_Func extends javax.swing.JFrame {
                                 .addComponent(jLabelNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,12 +324,12 @@ public class Cad_Func extends javax.swing.JFrame {
                     .addComponent(jLabelSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNascimento)
+                    .addComponent(jLabelDtNasc)
                     .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCPF)
-                    .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRG))
+                    .addComponent(jLabelRG)
+                    .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -339,14 +346,14 @@ public class Cad_Func extends javax.swing.JFrame {
                     .addComponent(jFormattedCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEstado)
-                    .addComponent(jTextComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelComplemento))
+                    .addComponent(jTextCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelBairro)
                     .addComponent(jTextBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelComple)
-                    .addComponent(jTextComple1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextComple, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -357,12 +364,12 @@ public class Cad_Func extends javax.swing.JFrame {
                     .addComponent(jLabelLogin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelSenha))
+                    .addComponent(jLabelSenha)
+                    .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSenha1)
-                    .addComponent(jTextSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelConfSenha)
+                    .addComponent(jPasswordConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -374,24 +381,18 @@ public class Cad_Func extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jRadioSexoFMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioSexoFMousePressed
-        jRadioSexoM.setSelected(false);
-    }//GEN-LAST:event_jRadioSexoFMousePressed
-
-    private void jRadioSexoMMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioSexoMMousePressed
-        jRadioSexoF.setSelected(false);
-    }//GEN-LAST:event_jRadioSexoMMousePressed
 
     private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
         Funcionario f = new Funcionario();
         MD5 m = new MD5();
-        int erro=0;
+        int erro=0,cpferro=0,senha=0;
         if(jTextNome.getText().isEmpty()){
             jLabelNome.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelNome.setForeground(Color.black);
             f.setNome(jTextNome.getText());
         }
@@ -399,35 +400,31 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelSexo.setForeground(Color.black);
             f.setSexo(jRadioSexoF.getText().charAt(0));
         }else if(jRadioSexoM.isSelected()){
+            erro=0;
             jLabelSexo.setForeground(Color.black);
             f.setSexo(jRadioSexoM.getText().charAt(0));
         }else{
             jLabelSexo.setForeground(Color.red);
             erro=1;
         }
-        if(jTextCPF.getText().isEmpty()){
-            jLabelCPF.setForeground(Color.red);
-            erro=1;
-        }else{
-            /*if(Classes.ValidarCPFCNPJ.isValidCPF(jTextCPF.getText())==true){
-                f.setCPF(jTextCPF.getText());
-                System.out.println(f.getcp);
-            }else{
-                jLabelCPF.setBackground(Color.red);
-                erro=1;
-            }*/
-        }
         if(jFormattedDtNasc.getText().contains(" /")){
             jLabelDtNasc.setForeground(Color.red);
             erro=1;
         }else{
-            jLabelDtNasc.setForeground(Color.black);
-            f.setDtNasc(jFormattedDtNasc.getText());
+            try {
+                SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+                String data = jFormattedDtNasc.getText();
+                Calendar c = Calendar.getInstance();
+                c.setTime(formatoData.parse(data));
+                jLabelDtNasc.setForeground(Color.black);
+                f.setDtNasc(c);
+            } catch (Exception e) {}
         }
         if(jTextRG.getText().isEmpty()){
             jLabelRG.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelRG.setForeground(Color.black);
             f.setRG(Integer.parseInt(jTextRG.getText()));
         }
@@ -435,6 +432,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelNumero.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelNumero.setForeground(Color.black);
             f.setNumero(Integer.parseInt(jTextNumero.getText()));
         }
@@ -442,6 +440,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelRua.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelRua.setForeground(Color.black);
             f.setRua(jTextRua.getText());
         }
@@ -449,6 +448,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelCEP.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelCEP.setForeground(Color.black);
             f.setCep(jFormattedCEP.getText());
         }
@@ -456,6 +456,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelEstado.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelEstado.setForeground(Color.black);
             f.setEstado(jComboEstado.getSelectedItem().toString());
         }
@@ -463,6 +464,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelCidade.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelCidade.setForeground(Color.black);
             f.setCidade(jTextCidade.getText());
         }
@@ -470,6 +472,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelBairro.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelBairro.setForeground(Color.black);
             f.setBairro(jTextBairro.getText());
         }
@@ -477,6 +480,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelComple.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelComple.setForeground(Color.black);
             f.setComple(jTextComple.getText());
         }
@@ -484,6 +488,7 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelLogin.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelLogin.setForeground(Color.black);
             f.setLogin(jTextLogin.getText());
         }
@@ -491,42 +496,92 @@ public class Cad_Func extends javax.swing.JFrame {
             jLabelSenha.setForeground(Color.red);
             erro=1;
         }else{
+            erro=0;
             jLabelSenha.setForeground(Color.black);
             f.setSenha(m.geraMD5(jPasswordSenha.getText()));
+            System.out.println(f.getSenha());
+        }
+        if(jPasswordConfSenha.getText().isEmpty()){
+            jLabelConfSenha.setForeground(Color.red);
+            erro=1;
+        }else{
+            erro=0;
+            jLabelConfSenha.setForeground(Color.black);
+            f.setSenha(m.geraMD5(jPasswordConfSenha.getText()));
+        }
+        if(jTextCPF.getText().isEmpty()){
+            jLabelCPF.setForeground(Color.red);
+            erro=1;
+        }else{
+            erro=0;
+            if(ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
+                cpferro=0;
+                f.setCPF(jTextCPF.getText());
+                jLabelCPF.setForeground(Color.black);
+            }else{
+                jLabelCPF.setBackground(Color.red);
+                cpferro=1;
+            }
+        }
+        if(!f.getSenha().equals(m.geraMD5(jPasswordConfSenha.getText()))){
+            senha=1;
+        }else{
+            senha=0;
+        }
+        if(erro==1){
+            JOptionPane.showMessageDialog(null,"Campo(s) em vermelho são de preenchimento obrigatório.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else if(erro==0 && cpferro==1){
+            jTextCPF.setText("");
+            jTextCPF.requestFocus();
+            JOptionPane.showMessageDialog(null,"CPF inválido,por favor,verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else if(senha==1){
+            jLabelSenha.setForeground(Color.red);
+            jLabelConfSenha.setForeground(Color.red);
+            jPasswordSenha.setText("");
+            jPasswordSenha.requestFocus();
+            JOptionPane.showMessageDialog(null,"As senhas não conferem,por favor verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else if(senha==0 && cpferro==0 && erro==0){
+            jLabelSenha.setForeground(Color.black);
+            jLabelConfSenha.setForeground(Color.black);
+            //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
+            JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
     private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
         jTextNome.setText("");
+        jLabelNome.setForeground(Color.black);
         jRadioSexoF.setSelected(false);
         jRadioSexoM.setSelected(false);
+        jLabelSexo.setForeground(Color.black);
         jFormattedDtNasc.setText("");
+        jLabelDtNasc.setForeground(Color.black);
         jTextCPF.setText("");
+        jLabelCPF.setForeground(Color.black);
         jTextRG.setText("");
+        jLabelRG.setForeground(Color.black);
         jTextRua.setText("");
+        jLabelRua.setForeground(Color.black);
         jTextNumero.setText("");
+        jLabelNumero.setForeground(Color.black);
         jFormattedCEP.setText("");
+        jLabelCEP.setForeground(Color.black);
         jComboEstado.setSelectedItem("SELECIONE");
+        jLabelEstado.setForeground(Color.black);
         jTextCidade.setText("");
+        jLabelCidade.setForeground(Color.black);
         jTextBairro.setText("");
+        jLabelBairro.setForeground(Color.black);
         jTextComple.setText("");
+        jLabelComple.setForeground(Color.black);
         jTextLogin.setText("");
+        jLabelLogin.setForeground(Color.black);
         jPasswordSenha.setText("");
+        jLabelSenha.setForeground(Color.black);
+        jPasswordConfSenha.setText("");
+        jLabelConfSenha.setForeground(Color.black);
     }//GEN-LAST:event_jButtonLimparMousePressed
-
-    private void jTextRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRGFocusLost
-        try{
-            if(!jTextRG.getText().equals("")){
-                Integer.parseInt(jTextRG.getText());
-                jLabelRG.setForeground(Color.black);
-            }
-        }catch(NumberFormatException e){
-            jLabelRG.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
-            jTextRG.setText("");
-            jTextRG.requestFocus();
-        }
-    }//GEN-LAST:event_jTextRGFocusLost
 
     private void jTextNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNumeroFocusLost
         try{
@@ -542,6 +597,32 @@ public class Cad_Func extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextNumeroFocusLost
 
+    private void jRadioSexoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioSexoFActionPerformed
+        jRadioSexoM.setSelected(false);
+    }//GEN-LAST:event_jRadioSexoFActionPerformed
+
+    private void jRadioSexoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioSexoMActionPerformed
+        jRadioSexoF.setSelected(false);
+    }//GEN-LAST:event_jRadioSexoMActionPerformed
+
+    private void jTextRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRGFocusLost
+        try{
+            if(!jTextRG.getText().equals("")){
+                Integer.parseInt(jTextRG.getText());
+                jLabelRG.setForeground(Color.black);
+            }
+        }catch(NumberFormatException e){
+            jLabelRG.setForeground(Color.red);
+            JOptionPane.showMessageDialog(null,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            jTextRG.setText("");
+            jTextRG.requestFocus();
+        }
+    }//GEN-LAST:event_jTextRGFocusLost
+
+    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCadastrar;
@@ -554,24 +635,26 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCPF;
+    private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComple;
-    private javax.swing.JLabel jLabelComplemento;
+    private javax.swing.JLabel jLabelConfSenha;
     private javax.swing.JLabel jLabelDados;
+    private javax.swing.JLabel jLabelDtNasc;
     private javax.swing.JLabel jLabelEstado;
     private javax.swing.JLabel jLabelLogin;
-    private javax.swing.JLabel jLabelNascimento;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRG;
     private javax.swing.JLabel jLabelRG7;
     private javax.swing.JLabel jLabelRua;
     private javax.swing.JLabel jLabelSenha;
-    private javax.swing.JLabel jLabelSenha1;
     private javax.swing.JLabel jLabelSexo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPasswordField jPasswordConfSenha;
+    private javax.swing.JPasswordField jPasswordSenha;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JRadioButton jRadioSexoF;
     private javax.swing.JRadioButton jRadioSexoM;
@@ -580,14 +663,13 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextBairro;
     private javax.swing.JTextField jTextCPF;
-    private javax.swing.JTextField jTextComple1;
-    private javax.swing.JTextField jTextComplemento;
+    private javax.swing.JTextField jTextCidade;
+    private javax.swing.JTextField jTextComple;
     private javax.swing.JTextField jTextLogin;
     private javax.swing.JTextField jTextNome;
     private javax.swing.JTextField jTextNumero;
+    private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
     private javax.swing.JTextField jTextRua4;
-    private javax.swing.JTextField jTextSenha;
-    private javax.swing.JTextField jTextSenha1;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,7 +12,7 @@ public abstract class Pessoa {
     private Calendar dtnasc;
     private char sexo;
     private String cpf;
-    private String rg;
+    private long rg;
     private String cep;
     private String telefone;
     private String rua;
@@ -50,10 +50,10 @@ public abstract class Pessoa {
         return cpf;
     }
     
-    public void setRG(String rg){
+    public void setRG(long rg){
         this.rg = rg;
     }
-    public String getRG(){
+    public long getRG(){
         return rg;
     }
     

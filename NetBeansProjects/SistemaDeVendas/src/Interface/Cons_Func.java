@@ -33,11 +33,6 @@ public class Cons_Func extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Funcionários");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         jLabel1.setText("jLabel1");
 
@@ -75,11 +70,6 @@ public class Cons_Func extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Menu m = new Menu();
-        m.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

@@ -51,7 +51,7 @@ public class FuncionarioDao {
             statement.setString(8, funcionario.getEstado());
             statement.setString(9, funcionario.getComple());
             statement.setString(10, funcionario.getCPF());
-            statement.setString(11, funcionario.getRG());
+            statement.setLong(11, funcionario.getRG());
             statement.setString(12, funcionario.getRua());
             statement.setString(13, funcionario.getTelefone());
             
@@ -114,7 +114,7 @@ public class FuncionarioDao {
                     funcionario.setCidade(resultadoPessoa.getString("cidade"));
                     funcionario.setEstado(resultadoPessoa.getString("estado"));
                     funcionario.setComple(resultadoPessoa.getString("complemento"));
-                    funcionario.setRG(resultadoPessoa.getString("rg"));
+                    funcionario.setRG(resultadoPessoa.getLong("rg"));
                     funcionario.setRua(resultadoPessoa.getString("rua"));
                     funcionario.setTelefone(resultadoPessoa.getString("telefone"));
                     
@@ -160,7 +160,7 @@ public class FuncionarioDao {
                 funcionario.setCidade(resultadoPessoa.getString("cidade"));
                 funcionario.setEstado(resultadoPessoa.getString("estado"));
                 funcionario.setComple(resultadoPessoa.getString("complemento"));
-                funcionario.setRG(resultadoPessoa.getString("rg"));
+                funcionario.setRG(resultadoPessoa.getLong("rg"));
                 funcionario.setRua(resultadoPessoa.getString("rua"));
                 funcionario.setTelefone(resultadoPessoa.getString("telefone"));
                 funcionario.setCPF(resultadoPessoa.getString("cpf"));

@@ -34,7 +34,7 @@ public class Main {
         /*UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
         UIManager.put( "nimbusBlueGrey", new Color( 190, 190, 190 ) );  
         UIManager.put( "control", new Color( 223, 223, 223 ) );*/ 
-        try {  
+        /*try {  
             //Setar estilo que eu quero,ex: Trocar Nimbus por Windows,ou Metal no if
             for ( LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
                 if ( "Nimbus".equals( info.getName() ) ) {  
@@ -49,7 +49,7 @@ public class Main {
         } catch(UnsupportedLookAndFeelException | ClassNotFoundException | 
                 InstantiationException | IllegalAccessException e){
             System.out.println("Não foi possível setar o estilo,contate o administrador");
-        }
+        }*/
         Menu m = new Menu();
         m.setVisible(true); 
     }
