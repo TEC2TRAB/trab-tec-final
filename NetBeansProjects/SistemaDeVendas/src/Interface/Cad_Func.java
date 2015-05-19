@@ -6,10 +6,12 @@
 package Interface;
 import ModuloDePessoas.Funcionario;
 import Classes.*;
+import Dao.FuncionarioDao;
 import java.awt.Color;
+import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 /**
  *
  * @author Silent
@@ -388,162 +390,85 @@ public class Cad_Func extends javax.swing.JFrame {
         Funcionario f = new Funcionario();
         MD5 m = new MD5();
         int erro=0,cpferro=0,senha=0;
-        if(jTextNome.getText().isEmpty()){
-            jLabelNome.setForeground(Color.red);
-            erro=1;
+        Component components[] = getContentPane().getComponents();  
+        //Para cada componente
+        for (Component component : components) {
+            //É campo de texto?
+            if (component instanceof JTextField) {
+                //Está preenchido?
+                if (((JTextField) component).getText().isEmpty()) {
+                    erro=1;
+                    break;
+                }
+            } 
+            //Verifica se é ComboBox
+            if (component instanceof JComboBox) {
+                //Se não está selecionado gera msg
+                if (((JComboBox) component).getSelectedItem().toString().equals("SELECIONE")) {
+                    erro=1;
+                    break;
+                }
+            }
+            if (component instanceof JRadioButton) {
+                //Está preenchido?
+                if (jRadioSexoF.isSelected()==false && jRadioSexoM.isSelected()==false) {
+                    erro=1;
+                    break;
+                } 
+            }
+        }
+        if(erro==0 && ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
+            cpferro=0;
         }else{
+            cpferro=1;
+        }
+        if(cpferro==0){
+            if(!m.geraMD5(jPasswordSenha.getText()).equals(m.geraMD5(jPasswordConfSenha.getText()))){
+                senha=1;
+            }else{
+                senha=0;
+            }
+        }
+        if(erro==1){
             erro=0;
-            jLabelNome.setForeground(Color.black);
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else if(erro==0 && cpferro==1){
+            jTextCPF.setText("");
+            jTextCPF.requestFocus();
+            JOptionPane.showMessageDialog(null,"CPF inválido, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else if(erro==0 && senha==1){
+            jLabelSenha.setForeground(Color.red);
+            jLabelConfSenha.setForeground(Color.red);
+            jPasswordSenha.setText("");
+            jPasswordConfSenha.setText("");
+            jPasswordSenha.requestFocus();
+            JOptionPane.showMessageDialog(null,"As senhas não conferem, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else if(senha==0 && cpferro==0 && erro==0){
+            jLabelSenha.setForeground(Color.black);
+            jLabelConfSenha.setForeground(Color.black);
             f.setNome(jTextNome.getText());
-        }
-        if(jRadioSexoF.isSelected()){
-            jLabelSexo.setForeground(Color.black);
-            f.setSexo(jRadioSexoF.getText().charAt(0));
-        }else if(jRadioSexoM.isSelected()){
-            erro=0;
-            jLabelSexo.setForeground(Color.black);
             f.setSexo(jRadioSexoM.getText().charAt(0));
-        }else{
-            jLabelSexo.setForeground(Color.red);
-            erro=1;
-        }
-        if(jFormattedDtNasc.getText().contains(" /")){
-            jLabelDtNasc.setForeground(Color.red);
-            erro=1;
-        }else{
             try {
                 SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
                 String data = jFormattedDtNasc.getText();
                 Calendar c = Calendar.getInstance();
                 c.setTime(formatoData.parse(data));
-                jLabelDtNasc.setForeground(Color.black);
                 f.setDtNasc(c);
             } catch (Exception e) {}
-        }
-        if(jTextRG.getText().isEmpty()){
-            jLabelRG.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelRG.setForeground(Color.black);
-            f.setRG(Integer.parseInt(jTextRG.getText()));
-        }
-        if(jTextNumero.getText().isEmpty()){
-            jLabelNumero.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelNumero.setForeground(Color.black);
+            f.setCPF(jTextCPF.getText());
+            f.setRG(Long.parseLong(jTextRG.getText()));
             f.setNumero(Integer.parseInt(jTextNumero.getText()));
-        }
-        if(jTextRua.getText().isEmpty()){
-            jLabelRua.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelRua.setForeground(Color.black);
             f.setRua(jTextRua.getText());
-        }
-        if(jFormattedCEP.getText().contains(" - ")){
-            jLabelCEP.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelCEP.setForeground(Color.black);
             f.setCep(jFormattedCEP.getText());
-        }
-        if(jComboEstado.getSelectedItem().toString().equals("SELECIONE")){
-            jLabelEstado.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelEstado.setForeground(Color.black);
             f.setEstado(jComboEstado.getSelectedItem().toString());
-        }
-        if(jTextCidade.getText().isEmpty()){
-            jLabelCidade.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelCidade.setForeground(Color.black);
             f.setCidade(jTextCidade.getText());
-        }
-        if(jTextBairro.getText().isEmpty()){
-            jLabelBairro.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelBairro.setForeground(Color.black);
             f.setBairro(jTextBairro.getText());
-        }
-        if(jTextComple.getText().isEmpty()){
-            jLabelComple.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelComple.setForeground(Color.black);
             f.setComple(jTextComple.getText());
-        }
-        if(jTextLogin.getText().isEmpty()){
-            jLabelLogin.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelLogin.setForeground(Color.black);
             f.setLogin(jTextLogin.getText());
-        }
-        if(jPasswordSenha.getText().isEmpty()){
-            jLabelSenha.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelSenha.setForeground(Color.black);
             f.setSenha(m.geraMD5(jPasswordSenha.getText()));
-            System.out.println(f.getSenha());
-        }
-        if(jPasswordConfSenha.getText().isEmpty()){
-            jLabelConfSenha.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            jLabelConfSenha.setForeground(Color.black);
-            f.setSenha(m.geraMD5(jPasswordConfSenha.getText()));
-        }
-        if(jTextCPF.getText().isEmpty()){
-            jLabelCPF.setForeground(Color.red);
-            erro=1;
-        }else{
-            erro=0;
-            if(ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
-                cpferro=0;
-                f.setCPF(jTextCPF.getText());
-                jLabelCPF.setForeground(Color.black);
-            }else{
-                jLabelCPF.setBackground(Color.red);
-                cpferro=1;
-            }
-        }
-        if(!f.getSenha().equals(m.geraMD5(jPasswordConfSenha.getText()))){
-            senha=1;
-        }else{
-            senha=0;
-        }
-        if(erro==1){
-            JOptionPane.showMessageDialog(null,"Campo(s) em vermelho são de preenchimento obrigatório.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else if(erro==0 && cpferro==1){
-            jTextCPF.setText("");
-            jTextCPF.requestFocus();
-            JOptionPane.showMessageDialog(null,"CPF inválido,por favor,verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else if(senha==1){
-            jLabelSenha.setForeground(Color.red);
-            jLabelConfSenha.setForeground(Color.red);
-            jPasswordSenha.setText("");
-            jPasswordSenha.requestFocus();
-            JOptionPane.showMessageDialog(null,"As senhas não conferem,por favor verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else if(senha==0 && cpferro==0 && erro==0){
-            jLabelSenha.setForeground(Color.black);
-            jLabelConfSenha.setForeground(Color.black);
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
+            //FuncionarioDao fd = new FuncionarioDao();
+            //fd.cadastrar(f);
             JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
@@ -608,7 +533,7 @@ public class Cad_Func extends javax.swing.JFrame {
     private void jTextRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRGFocusLost
         try{
             if(!jTextRG.getText().equals("")){
-                Integer.parseInt(jTextRG.getText());
+                Long.parseLong(jTextRG.getText());
                 jLabelRG.setForeground(Color.black);
             }
         }catch(NumberFormatException e){
