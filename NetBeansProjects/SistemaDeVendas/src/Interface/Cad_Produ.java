@@ -70,8 +70,18 @@ public class Cad_Produ extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextDescricao);
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMousePressed(evt);
+            }
+        });
 
         jButtonLimpar.setText("Limpar Campos");
+        jButtonLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonLimparMousePressed(evt);
+            }
+        });
 
         jButtonCadastrar.setText("Cadastrar");
 
@@ -138,6 +148,17 @@ public class Cad_Produ extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarMousePressed
+
+    private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
+        jTextNome.setText("");
+        jTextPreco.setText("");
+        jTextQuantidade.setText("");
+        jTextDescricao.setText("");
+    }//GEN-LAST:event_jButtonLimparMousePressed
     /**
      * @param args the command line arguments
      */
