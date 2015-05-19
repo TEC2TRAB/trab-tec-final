@@ -34,13 +34,6 @@ public class Cad_Func extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jLabelRG7 = new javax.swing.JLabel();
-        jTextRua4 = new javax.swing.JTextField();
         jLabelDados = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jTextNome = new javax.swing.JTextField();
@@ -81,19 +74,6 @@ public class Cad_Func extends javax.swing.JFrame {
         jPasswordConfSenha = new javax.swing.JPasswordField();
         jTextRG = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenu3.setText("jMenu3");
-
-        jLabelRG7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelRG7.setText("Rua:");
-
-        jTextRua4.setName(""); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Funcionários");
@@ -555,17 +535,11 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRG;
-    private javax.swing.JLabel jLabelRG7;
     private javax.swing.JLabel jLabelRua;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelSexo;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPasswordField jPasswordConfSenha;
     private javax.swing.JPasswordField jPasswordSenha;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JRadioButton jRadioSexoF;
     private javax.swing.JRadioButton jRadioSexoM;
     private javax.swing.JSeparator jSeparator1;
@@ -580,6 +554,5 @@ public class Cad_Func extends javax.swing.JFrame {
     private javax.swing.JTextField jTextNumero;
     private javax.swing.JTextField jTextRG;
     private javax.swing.JTextField jTextRua;
-    private javax.swing.JTextField jTextRua4;
     // End of variables declaration//GEN-END:variables
 }
