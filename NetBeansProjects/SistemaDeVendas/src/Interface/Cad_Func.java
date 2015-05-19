@@ -476,36 +476,21 @@ public class Cad_Func extends javax.swing.JFrame {
 
     private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
         jTextNome.setText("");
-        jLabelNome.setForeground(Color.black);
         jRadioSexoF.setSelected(false);
         jRadioSexoM.setSelected(false);
-        jLabelSexo.setForeground(Color.black);
         jFormattedDtNasc.setText("");
-        jLabelDtNasc.setForeground(Color.black);
         jTextCPF.setText("");
-        jLabelCPF.setForeground(Color.black);
         jTextRG.setText("");
-        jLabelRG.setForeground(Color.black);
         jTextRua.setText("");
-        jLabelRua.setForeground(Color.black);
         jTextNumero.setText("");
-        jLabelNumero.setForeground(Color.black);
         jFormattedCEP.setText("");
-        jLabelCEP.setForeground(Color.black);
         jComboEstado.setSelectedItem("SELECIONE");
-        jLabelEstado.setForeground(Color.black);
         jTextCidade.setText("");
-        jLabelCidade.setForeground(Color.black);
         jTextBairro.setText("");
-        jLabelBairro.setForeground(Color.black);
         jTextComple.setText("");
-        jLabelComple.setForeground(Color.black);
         jTextLogin.setText("");
-        jLabelLogin.setForeground(Color.black);
         jPasswordSenha.setText("");
-        jLabelSenha.setForeground(Color.black);
         jPasswordConfSenha.setText("");
-        jLabelConfSenha.setForeground(Color.black);
     }//GEN-LAST:event_jButtonLimparMousePressed
 
     private void jTextNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNumeroFocusLost
