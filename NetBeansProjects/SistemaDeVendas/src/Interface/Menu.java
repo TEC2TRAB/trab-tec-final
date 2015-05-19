@@ -30,73 +30,98 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemCad_Venda = new javax.swing.JMenuItem();
+        jMenuItemCons_Venda = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItemCad_Prod = new javax.swing.JMenuItem();
+        jMenuItemCons_Prod = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItemCad_Func = new javax.swing.JMenuItem();
+        jMenuItemCons_Func = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItemCad_Clien = new javax.swing.JMenuItem();
+        jMenuItemCons_Client = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
 
         jMenu1.setText("Vendas");
 
-        jMenuItem1.setText("Cadastro");
-        jMenu1.add(jMenuItem1);
+        jMenuItemCad_Venda.setText("Cadastro");
+        jMenuItemCad_Venda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItemCad_VendaMousePressed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCad_Venda);
 
-        jMenuItem2.setText("Consulta");
-        jMenu1.add(jMenuItem2);
+        jMenuItemCons_Venda.setText("Consulta");
+        jMenuItemCons_Venda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItemCons_VendaMousePressed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCons_Venda);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Produtos");
 
-        jMenuItem3.setText("Cadastro");
-        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItemCad_Prod.setText("Cadastro");
+        jMenuItemCad_Prod.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem3MousePressed(evt);
+                jMenuItemCad_ProdMousePressed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu2.add(jMenuItemCad_Prod);
 
-        jMenuItem4.setText("Consulta");
-        jMenu2.add(jMenuItem4);
+        jMenuItemCons_Prod.setText("Consulta");
+        jMenuItemCons_Prod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItemCons_ProdMousePressed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemCons_Prod);
 
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("Funcionários");
 
-        jMenuItem9.setText("Cadastro");
-        jMenuItem9.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItemCad_Func.setText("Cadastro");
+        jMenuItemCad_Func.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem9MousePressed(evt);
+                jMenuItemCad_FuncMousePressed(evt);
             }
         });
-        jMenu4.add(jMenuItem9);
+        jMenu4.add(jMenuItemCad_Func);
 
-        jMenuItem10.setText("Consulta");
-        jMenuItem10.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItemCons_Func.setText("Consulta");
+        jMenuItemCons_Func.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuItem10MousePressed(evt);
+                jMenuItemCons_FuncMousePressed(evt);
             }
         });
-        jMenu4.add(jMenuItem10);
+        jMenu4.add(jMenuItemCons_Func);
 
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Clientes");
 
-        jMenuItem11.setText("Cadastro");
-        jMenu5.add(jMenuItem11);
+        jMenuItemCad_Clien.setText("Cadastro");
+        jMenuItemCad_Clien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItemCad_ClienMousePressed(evt);
+            }
+        });
+        jMenu5.add(jMenuItemCad_Clien);
 
-        jMenuItem12.setText("Consulta");
-        jMenu5.add(jMenuItem12);
+        jMenuItemCons_Client.setText("Consulta");
+        jMenuItemCons_Client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItemCons_ClientMousePressed(evt);
+            }
+        });
+        jMenu5.add(jMenuItemCons_Client);
 
         jMenuBar1.add(jMenu5);
 
@@ -117,19 +142,45 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MousePressed
-        
-    }//GEN-LAST:event_jMenuItem3MousePressed
+    private void jMenuItemCad_ProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_ProdMousePressed
+        Cad_Produ cf = new Cad_Produ();
+        cf.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCad_ProdMousePressed
 
-    private void jMenuItem9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem9MousePressed
+    private void jMenuItemCad_FuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_FuncMousePressed
         Cad_Func cf = new Cad_Func();
         cf.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9MousePressed
+    }//GEN-LAST:event_jMenuItemCad_FuncMousePressed
 
-    private void jMenuItem10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem10MousePressed
+    private void jMenuItemCons_FuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_FuncMousePressed
         Cons_Func cf = new Cons_Func();
         cf.setVisible(true);
-    }//GEN-LAST:event_jMenuItem10MousePressed
+    }//GEN-LAST:event_jMenuItemCons_FuncMousePressed
+
+    private void jMenuItemCad_ClienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_ClienMousePressed
+        Cad_Clien cc = new Cad_Clien();
+        cc.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCad_ClienMousePressed
+
+    private void jMenuItemCad_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_VendaMousePressed
+        Cad_Venda cv = new Cad_Venda();
+        cv.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCad_VendaMousePressed
+
+    private void jMenuItemCons_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_VendaMousePressed
+        Cons_Venda cv = new Cons_Venda();
+        cv.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCons_VendaMousePressed
+
+    private void jMenuItemCons_ProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_ProdMousePressed
+        Cons_Produ cp = new Cons_Produ();
+        cp.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCons_ProdMousePressed
+
+    private void jMenuItemCons_ClientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_ClientMousePressed
+        Cons_Clien cc = new Cons_Clien();
+        cc.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCons_ClientMousePressed
 
     /**
      * @param args the command line arguments
@@ -141,13 +192,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemCad_Clien;
+    private javax.swing.JMenuItem jMenuItemCad_Func;
+    private javax.swing.JMenuItem jMenuItemCad_Prod;
+    private javax.swing.JMenuItem jMenuItemCad_Venda;
+    private javax.swing.JMenuItem jMenuItemCons_Client;
+    private javax.swing.JMenuItem jMenuItemCons_Func;
+    private javax.swing.JMenuItem jMenuItemCons_Prod;
+    private javax.swing.JMenuItem jMenuItemCons_Venda;
     // End of variables declaration//GEN-END:variables
 }
