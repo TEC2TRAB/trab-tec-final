@@ -28,17 +28,19 @@ public class FuncionarioDao {
     }
     
     public void cadastrar(Funcionario funcionario) {
-        String sqlPessoa = "INSERT INTO trabalho.pessoa " +
+        String sqlPessoa = "INSERT INTO pessoa " +
                            "(numero,data_nascimento,sexo,nome,cep,bairro,cidade," +
-                           "estado,complemento,cpf,rg,rua)" +
-                           "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                           "estado,complemento,cpf,rg,rua,telefone)" +
+                           "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
-        String sqlFuncionario = "INSERT INTO trabalho.funcionario " +
-                                "(cpf,admissao,demissao,login,senha)" +
-                                "VALUES (?,?,?,?,?)";
+        String sqlFuncionario = "INSERT INTO funcionario " +
+                                "(id_funcionario,cpf,admissao,demissao," +
+                                "login,senha)" +
+                                "VALUES (?,?,?,?,?,?)";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
+            
             statement.setInt(1, funcionario.getNumero());
             statement.setDate(2, new Date(funcionario.getDtNasc().getTimeInMillis()));
             statement.setString(3, String.valueOf(funcionario.getSexo()));
@@ -51,21 +53,19 @@ public class FuncionarioDao {
             statement.setString(10, funcionario.getCPF());
             statement.setLong(11, funcionario.getRG());
             statement.setString(12, funcionario.getRua());
+            statement.setString(13, funcionario.getTelefone());
+            
             statement.execute();
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlFuncionario);
             
-            statement.setString(1, funcionario.getCPF());
-            if(funcionario.getAdmissao()==null)
-                statement.setNull(2,java.sql.Types.DATE);
-            else
-                statement.setDate(2, new Date(funcionario.getAdmissao().getTimeInMillis()));
-            if(funcionario.getDemissao()==null)
-                statement.setNull(3,java.sql.Types.DATE);
-            else
-                statement.setDate(3, new Date(funcionario.getDemissao().getTimeInMillis()));
-            statement.setString(4, funcionario.getLogin());
-            statement.setString(5, funcionario.getSenha());
+            statement.setInt(1, funcionario.getId());
+            statement.setString(2, funcionario.getCPF());
+            statement.setDate(3, new Date(funcionario.getAdmissao().getTimeInMillis()));
+            statement.setDate(4, new Date(funcionario.getDemissao().getTimeInMillis()));
+            statement.setString(5, funcionario.getLogin());
+            statement.setString(6, funcionario.getSenha());
+            
             statement.execute();
             statement.close();
         } catch(SQLException e) {
