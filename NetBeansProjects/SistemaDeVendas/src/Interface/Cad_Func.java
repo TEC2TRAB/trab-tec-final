@@ -447,8 +447,8 @@ public class Cad_Func extends javax.swing.JFrame {
             f.setLogin(jTextLogin.getText());
             f.setSenha(m.geraMD5(jPasswordSenha.getText()));
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
-            //FuncionarioDao fd = new FuncionarioDao();
-            //fd.cadastrar(f);
+            FuncionarioDao fd = new FuncionarioDao();
+            fd.cadastrar(f);
             JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
