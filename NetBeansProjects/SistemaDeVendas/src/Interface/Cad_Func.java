@@ -376,7 +376,7 @@ public class Cad_Func extends javax.swing.JFrame {
             //É campo de texto?
             if (component instanceof JTextField) {
                 //Está preenchido?
-                if (((JTextField) component).getText().isEmpty()) {
+                if ((JTextField) component != jTextComple && ((JTextField) component).getText().isEmpty() ){
                     erro=1;
                     break;
                 }
@@ -390,7 +390,7 @@ public class Cad_Func extends javax.swing.JFrame {
                 }
             }
             if (component instanceof JRadioButton) {
-                //Está preenchido?
+                //Algum está selecionado?
                 if (jRadioSexoF.isSelected()==false && jRadioSexoM.isSelected()==false) {
                     erro=1;
                     break;
