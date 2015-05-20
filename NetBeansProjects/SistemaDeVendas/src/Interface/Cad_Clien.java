@@ -393,7 +393,7 @@ public class Cad_Clien extends javax.swing.JFrame {
             //É campo de texto?
             if (component instanceof JTextField) {
                 //Está preenchido?
-                if ((JTextField) component != jTextComple && ((JTextField) component).getText().isEmpty() ){
+                if (((JTextField) component).getText().isEmpty()) {
                     erro=1;
                     break;
                 }
