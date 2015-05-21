@@ -28,17 +28,18 @@ public class FuncionarioDao {
     }
     
     public void cadastrar(Funcionario funcionario) {
-        String sqlPessoa = "INSERT INTO trabalho.pessoa " +
+        String sqlPessoa = "INSERT INTO pessoa " +
                            "(numero,data_nascimento,sexo,nome,cep,bairro,cidade," +
                            "estado,complemento,cpf,rg,rua)" +
                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
-        String sqlFuncionario = "INSERT INTO trabalho.funcionario " +
+        String sqlFuncionario = "INSERT INTO funcionario " +
                                 "(cpf,admissao,demissao,login,senha)" +
                                 "VALUES (?,?,?,?,?)";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
+            
             statement.setInt(1, funcionario.getNumero());
             statement.setDate(2, new Date(funcionario.getDtNasc().getTimeInMillis()));
             statement.setString(3, String.valueOf(funcionario.getSexo()));
@@ -51,21 +52,17 @@ public class FuncionarioDao {
             statement.setString(10, funcionario.getCPF());
             statement.setLong(11, funcionario.getRG());
             statement.setString(12, funcionario.getRua());
+            
             statement.execute();
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlFuncionario);
             
             statement.setString(1, funcionario.getCPF());
-            if(funcionario.getAdmissao()==null)
-                statement.setNull(2,java.sql.Types.DATE);
-            else
-                statement.setDate(2, new Date(funcionario.getAdmissao().getTimeInMillis()));
-            if(funcionario.getDemissao()==null)
-                statement.setNull(3,java.sql.Types.DATE);
-            else
-                statement.setDate(3, new Date(funcionario.getDemissao().getTimeInMillis()));
+            statement.setDate(2, new Date(System.currentTimeMillis()));
+            statement.setNull(3, java.sql.Types.DATE);
             statement.setString(4, funcionario.getLogin());
             statement.setString(5, funcionario.getSenha());
+            
             statement.execute();
             statement.close();
         } catch(SQLException e) {
@@ -73,21 +70,20 @@ public class FuncionarioDao {
         }
     }
     
-    public List<Funcionario> consultar(int id) {
+    public Funcionario consultarCPF(String cpf) {
         String sqlFuncionario = "SELECT * FROM funcionario "+
-                                "WHERE id_funcionario = ?";
+                                "WHERE cpf = ?";
         
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE cpf = ?";
         
         try {
-            List<Funcionario> funcionarios = new ArrayList<>();
             PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-            statementFuncionario.setInt(1, id);
+            statementFuncionario.setString(1, cpf);
             
             ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
+            Funcionario funcionario = new Funcionario();
             while(resultadoFuncionario.next()) {
-                Funcionario funcionario = new Funcionario();
                 funcionario.setId(resultadoFuncionario.getInt("id_funcionario"));
                 funcionario.setCPF(resultadoFuncionario.getString("cpf"));
                 funcionario.setLogin(resultadoFuncionario.getString("login"));
@@ -116,14 +112,11 @@ public class FuncionarioDao {
                     funcionario.setComple(resultadoPessoa.getString("complemento"));
                     funcionario.setRG(resultadoPessoa.getLong("rg"));
                     funcionario.setRua(resultadoPessoa.getString("rua"));
-                    funcionario.setTelefone(resultadoPessoa.getString("telefone"));
                     
                     Calendar data3 = Calendar.getInstance();
                     data3.setTime(resultadoPessoa.getDate("data_nascimento"));
                     funcionario.setDtNasc(data3);
                 }
-                
-                funcionarios.add(funcionario);
                 
                 resultadoPessoa.close();
                 statementPessoa.close();
@@ -131,7 +124,7 @@ public class FuncionarioDao {
             resultadoFuncionario.close();
             statementFuncionario.close();
             
-            return funcionarios;
+            return funcionario;
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }
@@ -162,7 +155,6 @@ public class FuncionarioDao {
                 funcionario.setComple(resultadoPessoa.getString("complemento"));
                 funcionario.setRG(resultadoPessoa.getLong("rg"));
                 funcionario.setRua(resultadoPessoa.getString("rua"));
-                funcionario.setTelefone(resultadoPessoa.getString("telefone"));
                 funcionario.setCPF(resultadoPessoa.getString("cpf"));
 
                 Calendar data1 = Calendar.getInstance();
