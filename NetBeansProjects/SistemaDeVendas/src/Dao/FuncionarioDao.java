@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -66,6 +67,7 @@ public class FuncionarioDao {
             statement.execute();
             statement.close();
         } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, "Este CPF já foi cadastrado.", "Alerta", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException(e);
         }
     }
