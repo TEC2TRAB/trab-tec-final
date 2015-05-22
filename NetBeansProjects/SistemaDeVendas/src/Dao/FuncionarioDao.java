@@ -42,7 +42,7 @@ public class FuncionarioDao {
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
-            statement.setString(1, funcionario.getCPF());
+            statement.setLong(1, funcionario.getCPF());
             
             ResultSet resultadoChecar = statement.executeQuery();
             
@@ -59,7 +59,7 @@ public class FuncionarioDao {
                 statement.setString(7, funcionario.getCidade());
                 statement.setString(8, funcionario.getEstado());
                 statement.setString(9, funcionario.getComple());
-                statement.setString(10, funcionario.getCPF());
+                statement.setLong(10, funcionario.getCPF());
                 statement.setLong(11, funcionario.getRG());
                 statement.setString(12, funcionario.getRua());
 
@@ -68,7 +68,7 @@ public class FuncionarioDao {
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlFuncionario);
 
-            statement.setString(1, funcionario.getCPF());
+            statement.setLong(1, funcionario.getCPF());
             statement.setDate(2, new Date(System.currentTimeMillis()));
             statement.setNull(3, java.sql.Types.DATE);
             statement.setString(4, funcionario.getLogin());
@@ -98,7 +98,7 @@ public class FuncionarioDao {
             Funcionario funcionario = new Funcionario();
             while(resultadoFuncionario.next()) {
                 funcionario.setId(resultadoFuncionario.getInt("id_funcionario"));
-                funcionario.setCPF(resultadoFuncionario.getString("cpf"));
+                funcionario.setCPF(resultadoFuncionario.getLong("cpf"));
                 funcionario.setLogin(resultadoFuncionario.getString("login"));
                 funcionario.setSenha(resultadoFuncionario.getString("senha"));
                 
@@ -111,7 +111,7 @@ public class FuncionarioDao {
                 funcionario.setDemissao(data2);
                 
                 PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, funcionario.getCPF());
+                statementPessoa.setLong(1, funcionario.getCPF());
                 
                 ResultSet resultadoPessoa = statementPessoa.executeQuery();
                 while(resultadoPessoa.next()) {
@@ -168,14 +168,14 @@ public class FuncionarioDao {
                 funcionario.setComple(resultadoPessoa.getString("complemento"));
                 funcionario.setRG(resultadoPessoa.getLong("rg"));
                 funcionario.setRua(resultadoPessoa.getString("rua"));
-                funcionario.setCPF(resultadoPessoa.getString("cpf"));
+                funcionario.setCPF(resultadoPessoa.getLong("cpf"));
 
                 Calendar data1 = Calendar.getInstance();
                 data1.setTime(resultadoPessoa.getDate("data_nascimento"));
                 funcionario.setDtNasc(data1);
                 
                 PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-                statementFuncionario.setString(1, funcionario.getCPF());
+                statementFuncionario.setLong(1, funcionario.getCPF());
                 
                 ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
                 while(resultadoFuncionario.next()) {
