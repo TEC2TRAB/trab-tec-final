@@ -53,40 +53,29 @@ public class ClienteDao extends PessoaDao{
         String sqlCliente = "SELECT * FROM cliente "+
                             "WHERE cpf = ?";
         
-        Cliente cliente = super.consultarCPF(cpf);
+        Pessoa p = super.consultarCPF(cpf);
+        Cliente cliente = new Cliente(); 
         try {
             PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
             statementCliente.setString(1, cpf);
             
             ResultSet resultadoCliente = statementCliente.executeQuery();
-       //     Cliente cliente = new Cliente();
             while(resultadoCliente.next()) {
                 cliente.setId(resultadoCliente.getInt("id_cliente"));
                 cliente.setCPF(resultadoCliente.getString("cpf"));
                 
-                PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, cliente.getCPF());
-                
-                ResultSet resultadoPessoa = statementPessoa.executeQuery();
-                while(resultadoPessoa.next()) {
-                    cliente.setNumero(resultadoPessoa.getInt("numero"));
-                    cliente.setSexo(resultadoPessoa.getString("sexo").charAt(0));
-                    cliente.setNome(resultadoPessoa.getString("nome"));
-                    cliente.setCep(resultadoPessoa.getString("cep"));
-                    cliente.setBairro(resultadoPessoa.getString("bairro"));
-                    cliente.setCidade(resultadoPessoa.getString("cidade"));
-                    cliente.setEstado(resultadoPessoa.getString("estado"));
-                    cliente.setComple(resultadoPessoa.getString("complemento"));
-                    cliente.setRG(resultadoPessoa.getLong("rg"));
-                    cliente.setRua(resultadoPessoa.getString("rua"));
+                    cliente.setNumero(p.getNumero());
+                    cliente.setSexo(p.getSexo());
+                    cliente.setNome(p.getNome());
+                    cliente.setCep(p.getCep());
+                    cliente.setBairro(p.getBairro());
+                    cliente.setCidade(p.getCidade());
+                    cliente.setEstado(p.getEstado());
+                    cliente.setComple(p.getComple());
+                    cliente.setRG(p.getRG());
+                    cliente.setRua(p.getRua());
+                    cliente.setDtNasc(p.getDtNasc());
                     
-                    Calendar data = Calendar.getInstance();
-                    data.setTime(resultadoPessoa.getDate("data_nascimento"));
-                    cliente.setDtNasc(data);
-                }
-                
-                resultadoPessoa.close();
-                statementPessoa.close();
             }
             resultadoCliente.close();
             statementCliente.close();
@@ -97,7 +86,7 @@ public class ClienteDao extends PessoaDao{
         }
     }
     
-    public List<Pessoa> consultar(String nome) {
+    public List<Pessoa> consultarNome(String nome) {
         String sqlCliente = "SELECT * FROM cliente "+
                                 "WHERE cpf = ?";
         
