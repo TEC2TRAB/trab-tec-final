@@ -6,6 +6,7 @@
 package Interface;
 
 import Classes.ValidadorCPF;
+import Dao.ClienteDao;
 import ModuloDePessoas.Cliente;
 import java.awt.Color;
 import java.awt.Component;
@@ -446,8 +447,8 @@ public class Cad_Clien extends javax.swing.JFrame {
             c.setBairro(jTextBairro.getText());
             c.setComple(jTextComple.getText());
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
-            //FuncionarioDao fd = new FuncionarioDao();
-            //fd.cadastrar(f);
+            ClienteDao cd = new ClienteDao();
+            cd.cadastrar(c);
             JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }

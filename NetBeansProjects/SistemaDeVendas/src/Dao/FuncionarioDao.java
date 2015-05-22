@@ -67,7 +67,8 @@ public class FuncionarioDao {
             statement.execute();
             statement.close();
         } catch(SQLException e) {
-            JOptionPane.showMessageDialog(null, "Este CPF já foi cadastrado.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Este CPF já foi cadastrado no nome de outra pessoa, verifique ou contate "
+                    + "o administrador do sistema.", "Alerta", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException(e);
         }
     }
