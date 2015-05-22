@@ -24,7 +24,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+        try (Connection con = new ConnectionFactory().getConnection()) {
+            System.out.println("Conexão aberta!");
+        } catch(SQLException e) {
+            System.out.println(e);
+        }
         //exemplos mudança estilo Nimbus
         //Só funciona com java 8
         /*UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
