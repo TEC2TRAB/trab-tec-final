@@ -7,6 +7,7 @@ package Dao;
 
 import Classes.ConnectionFactory;
 import ModuloDePessoas.Cliente;
+import ModuloDePessoas.Pessoa;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,42 +22,22 @@ import javax.swing.JOptionPane;
  *
  * @author Esdras
  */
-public class ClienteDao {
+public class ClienteDao extends PessoaDao{
     private Connection connection;
     
     public ClienteDao() {
-        this.connection = new ConnectionFactory().getConnection(); 
+        super(); 
     }
     
     public void cadastrar(Cliente cliente) {
-        String sqlPessoa = "INSERT INTO pessoa " +
-                           "(numero,data_nascimento,sexo,nome,cep,bairro,cidade," +
-                           "estado,complemento,cpf,rg,rua)" +
-                           "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente " +
+                     "(cpf)" +
+                     "VALUES (?)";
         
-        String sqlCliente = "INSERT INTO cliente " +
-                                "(cpf)" +
-                                "VALUES (?)";
-        
+        super.cadastrar(cliente);
         try {
-            PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
-            
-            statement.setInt(1, cliente.getNumero());
-            statement.setDate(2, new Date(cliente.getDtNasc().getTimeInMillis()));
-            statement.setString(3, String.valueOf(cliente.getSexo()));
-            statement.setString(4, cliente.getNome());
-            statement.setString(5, cliente.getCep());
-            statement.setString(6, cliente.getBairro());
-            statement.setString(7, cliente.getCidade());
-            statement.setString(8, cliente.getEstado());
-            statement.setString(9, cliente.getComple());
-            statement.setString(10, cliente.getCPF());
-            statement.setLong(11, cliente.getRG());
-            statement.setString(12, cliente.getRua());
-            
-            statement.execute();
-            statement.clearParameters();
-            statement = this.connection.prepareStatement(sqlCliente);
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement = this.connection.prepareStatement(sql);
             
             statement.setString(1, cliente.getCPF());
             
@@ -70,17 +51,15 @@ public class ClienteDao {
     
     public Cliente consultarCPF(String cpf) {
         String sqlCliente = "SELECT * FROM cliente "+
-                                "WHERE cpf = ?";
+                            "WHERE cpf = ?";
         
-        String sqlPessoa = "SELECT * FROM pessoa "+
-                           "WHERE cpf = ?";
-        
+        Cliente cliente = super.consultarCPF(cpf);
         try {
             PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
             statementCliente.setString(1, cpf);
             
             ResultSet resultadoCliente = statementCliente.executeQuery();
-            Cliente cliente = new Cliente();
+       //     Cliente cliente = new Cliente();
             while(resultadoCliente.next()) {
                 cliente.setId(resultadoCliente.getInt("id_cliente"));
                 cliente.setCPF(resultadoCliente.getString("cpf"));
@@ -101,9 +80,9 @@ public class ClienteDao {
                     cliente.setRG(resultadoPessoa.getLong("rg"));
                     cliente.setRua(resultadoPessoa.getString("rua"));
                     
-                    Calendar data3 = Calendar.getInstance();
-                    data3.setTime(resultadoPessoa.getDate("data_nascimento"));
-                    cliente.setDtNasc(data3);
+                    Calendar data = Calendar.getInstance();
+                    data.setTime(resultadoPessoa.getDate("data_nascimento"));
+                    cliente.setDtNasc(data);
                 }
                 
                 resultadoPessoa.close();
@@ -118,7 +97,7 @@ public class ClienteDao {
         }
     }
     
-    public List<Cliente> consultar(String nome) {
+    public List<Pessoa> consultar(String nome) {
         String sqlCliente = "SELECT * FROM cliente "+
                                 "WHERE cpf = ?";
         
@@ -126,7 +105,7 @@ public class ClienteDao {
                            "WHERE nome LIKE ?";
         
         try {
-            List<Cliente> clientes = new ArrayList<>();
+            List<Pessoa> clientes = new ArrayList<>();
             PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
             statementPessoa.setString(1, nome + "%");
             
@@ -145,9 +124,9 @@ public class ClienteDao {
                 cliente.setRua(resultadoPessoa.getString("rua"));
                 cliente.setCPF(resultadoPessoa.getString("cpf"));
 
-                Calendar data1 = Calendar.getInstance();
-                data1.setTime(resultadoPessoa.getDate("data_nascimento"));
-                cliente.setDtNasc(data1);
+                Calendar data = Calendar.getInstance();
+                data.setTime(resultadoPessoa.getDate("data_nascimento"));
+                cliente.setDtNasc(data);
                 
                 PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
                 statementCliente.setString(1, cliente.getCPF());

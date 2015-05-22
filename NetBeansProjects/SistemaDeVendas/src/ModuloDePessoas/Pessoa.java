@@ -6,7 +6,7 @@ import java.util.Calendar;
  *
  * @author cesar.nascimento
  */
-public abstract class Pessoa {
+public class Pessoa {
     
     private String nome;
     private Calendar dtnasc;
