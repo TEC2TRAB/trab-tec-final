@@ -95,7 +95,7 @@ public abstract class PessoaDao {
         }
     }
     
-    public List<Pessoa> consultarNome(String nome) {
+    public List<Pessoa> consultar(String nome) {
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE nome LIKE ?";
         
