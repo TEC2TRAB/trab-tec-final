@@ -78,7 +78,7 @@ public class ClienteDao {
         }
     }
     
-    public Cliente consultarCPF(String cpf) {
+    public List<Cliente> consultarCPF(String cpf) {
         String sqlCliente = "SELECT * FROM cliente "+
                             "WHERE cpf = ?";
         
@@ -86,12 +86,14 @@ public class ClienteDao {
                            "WHERE cpf = ?";
         
         try {
+            List<Cliente> clientes = new ArrayList<>();
             PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
             statementCliente.setString(1, cpf);
             
             ResultSet resultadoCliente = statementCliente.executeQuery();
-            Cliente cliente = new Cliente();
+            
             while(resultadoCliente.next()) {
+                Cliente cliente = new Cliente();
                 cliente.setId(resultadoCliente.getInt("id_cliente"));
                 cliente.setCPF(resultadoCliente.getLong("cpf"));
                 
@@ -116,13 +118,15 @@ public class ClienteDao {
                     cliente.setDtNasc(data3);
                 }
                 
+                clientes.add(cliente);
+                
                 resultadoPessoa.close();
                 statementPessoa.close();
             }
             resultadoCliente.close();
             statementCliente.close();
             
-            return cliente;
+            return clientes;
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }

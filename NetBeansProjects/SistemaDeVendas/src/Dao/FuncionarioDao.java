@@ -83,7 +83,7 @@ public class FuncionarioDao {
         }
     }
     
-    public Funcionario consultarCPF(String cpf) {
+    public List<Funcionario> consultarCPF(String cpf) {
         String sqlFuncionario = "SELECT * FROM funcionario "+
                                 "WHERE cpf = ?";
         
@@ -91,12 +91,13 @@ public class FuncionarioDao {
                            "WHERE cpf = ?";
         
         try {
+            List<Funcionario> funcionarios = new ArrayList<>();
             PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
             statementFuncionario.setString(1, cpf);
             
             ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
-            Funcionario funcionario = new Funcionario();
             while(resultadoFuncionario.next()) {
+                Funcionario funcionario = new Funcionario();
                 funcionario.setId(resultadoFuncionario.getInt("id_funcionario"));
                 funcionario.setCPF(resultadoFuncionario.getLong("cpf"));
                 funcionario.setLogin(resultadoFuncionario.getString("login"));
@@ -131,13 +132,15 @@ public class FuncionarioDao {
                     funcionario.setDtNasc(data3);
                 }
                 
+                funcionarios.add(funcionario);
+                
                 resultadoPessoa.close();
                 statementPessoa.close();
             }
             resultadoFuncionario.close();
             statementFuncionario.close();
             
-            return funcionario;
+            return funcionarios;
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }
