@@ -449,7 +449,7 @@ public class Cad_Clien extends javax.swing.JFrame {
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             ClienteDao cd = new ClienteDao();
             cd.cadastrar(c);
-            JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed

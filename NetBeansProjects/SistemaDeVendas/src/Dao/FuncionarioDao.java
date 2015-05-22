@@ -38,32 +38,42 @@ public class FuncionarioDao {
                                 "(cpf,admissao,demissao,login,senha)" +
                                 "VALUES (?,?,?,?,?)";
         
+        String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
+        
         try {
-            PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
+            PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
+            statement.setString(1, funcionario.getCPF());
             
-            statement.setInt(1, funcionario.getNumero());
-            statement.setDate(2, new Date(funcionario.getDtNasc().getTimeInMillis()));
-            statement.setString(3, String.valueOf(funcionario.getSexo()));
-            statement.setString(4, funcionario.getNome());
-            statement.setString(5, funcionario.getCep());
-            statement.setString(6, funcionario.getBairro());
-            statement.setString(7, funcionario.getCidade());
-            statement.setString(8, funcionario.getEstado());
-            statement.setString(9, funcionario.getComple());
-            statement.setString(10, funcionario.getCPF());
-            statement.setLong(11, funcionario.getRG());
-            statement.setString(12, funcionario.getRua());
+            ResultSet resultadoChecar = statement.executeQuery();
             
-            statement.execute();
+            if(!resultadoChecar.isBeforeFirst()) {
+                statement.clearParameters();
+                statement = this.connection.prepareStatement(sqlPessoa);
+
+                statement.setInt(1, funcionario.getNumero());
+                statement.setDate(2, new Date(funcionario.getDtNasc().getTimeInMillis()));
+                statement.setString(3, String.valueOf(funcionario.getSexo()));
+                statement.setString(4, funcionario.getNome());
+                statement.setString(5, funcionario.getCep());
+                statement.setString(6, funcionario.getBairro());
+                statement.setString(7, funcionario.getCidade());
+                statement.setString(8, funcionario.getEstado());
+                statement.setString(9, funcionario.getComple());
+                statement.setString(10, funcionario.getCPF());
+                statement.setLong(11, funcionario.getRG());
+                statement.setString(12, funcionario.getRua());
+
+                statement.execute();
+            }
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlFuncionario);
-            
+
             statement.setString(1, funcionario.getCPF());
             statement.setDate(2, new Date(System.currentTimeMillis()));
             statement.setNull(3, java.sql.Types.DATE);
             statement.setString(4, funcionario.getLogin());
             statement.setString(5, funcionario.getSenha());
-            
+
             statement.execute();
             statement.close();
         } catch(SQLException e) {

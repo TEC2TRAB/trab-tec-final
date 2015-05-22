@@ -35,31 +35,41 @@ public class ClienteDao {
                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
         String sqlCliente = "INSERT INTO cliente " +
-                                "(cpf)" +
-                                "VALUES (?)";
+                            "(cpf)" +
+                            "VALUES (?)";
+        
+        String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
         
         try {
-            PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
-            
-            statement.setInt(1, cliente.getNumero());
-            statement.setDate(2, new Date(cliente.getDtNasc().getTimeInMillis()));
-            statement.setString(3, String.valueOf(cliente.getSexo()));
-            statement.setString(4, cliente.getNome());
-            statement.setString(5, cliente.getCep());
-            statement.setString(6, cliente.getBairro());
-            statement.setString(7, cliente.getCidade());
-            statement.setString(8, cliente.getEstado());
-            statement.setString(9, cliente.getComple());
-            statement.setString(10, cliente.getCPF());
-            statement.setLong(11, cliente.getRG());
-            statement.setString(12, cliente.getRua());
-            
-            statement.execute();
-            statement.clearParameters();
-            statement = this.connection.prepareStatement(sqlCliente);
-            
+            PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
             statement.setString(1, cliente.getCPF());
             
+            ResultSet resultadoChecar = statement.executeQuery();
+            
+            if(!resultadoChecar.isBeforeFirst()) {
+                statement.clearParameters();
+                statement = this.connection.prepareStatement(sqlPessoa);
+                
+                statement.setInt(1, cliente.getNumero());
+                statement.setDate(2, new Date(cliente.getDtNasc().getTimeInMillis()));
+                statement.setString(3, String.valueOf(cliente.getSexo()));
+                statement.setString(4, cliente.getNome());
+                statement.setString(5, cliente.getCep());
+                statement.setString(6, cliente.getBairro());
+                statement.setString(7, cliente.getCidade());
+                statement.setString(8, cliente.getEstado());
+                statement.setString(9, cliente.getComple());
+                statement.setString(10, cliente.getCPF());
+                statement.setLong(11, cliente.getRG());
+                statement.setString(12, cliente.getRua());
+
+                statement.execute();
+            }
+            statement.clearParameters();
+            statement = this.connection.prepareStatement(sqlCliente);
+
+            statement.setString(1, cliente.getCPF());
+
             statement.execute();
             statement.close();
         } catch(SQLException e) {
@@ -70,7 +80,7 @@ public class ClienteDao {
     
     public Cliente consultarCPF(String cpf) {
         String sqlCliente = "SELECT * FROM cliente "+
-                                "WHERE cpf = ?";
+                            "WHERE cpf = ?";
         
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE cpf = ?";
@@ -120,7 +130,7 @@ public class ClienteDao {
     
     public List<Cliente> consultar(String nome) {
         String sqlCliente = "SELECT * FROM cliente "+
-                                "WHERE cpf = ?";
+                            "WHERE cpf = ?";
         
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE nome LIKE ?";
