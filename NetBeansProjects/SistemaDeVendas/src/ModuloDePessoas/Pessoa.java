@@ -11,7 +11,7 @@ public abstract class Pessoa {
     private String nome;
     private Calendar dtnasc;
     private char sexo;
-    private Long cpf;
+    private long cpf;
     private long rg;
     private String cep;
     private String telefone;
