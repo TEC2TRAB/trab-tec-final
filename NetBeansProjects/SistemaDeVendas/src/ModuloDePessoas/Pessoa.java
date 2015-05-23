@@ -46,7 +46,7 @@ public abstract class Pessoa {
     public void setCPF(Long cpf){
         this.cpf = cpf;
     }
-    public Long getCPF(){
+    public long getCPF(){
         return cpf;
     }
     
