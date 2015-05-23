@@ -437,7 +437,7 @@ public class Cad_Clien extends javax.swing.JFrame {
                 ca.setTime(formatoData.parse(data));
                 c.setDtNasc(ca);
             } catch (Exception e) {}
-            c.setCPF(Long.parseLong(jTextCPF.getText()));
+            c.setCPF(jTextCPF.getText());
             c.setRG(Long.parseLong(jTextRG.getText()));
             c.setNumero(Integer.parseInt(jTextNumero.getText()));
             c.setRua(jTextRua.getText());

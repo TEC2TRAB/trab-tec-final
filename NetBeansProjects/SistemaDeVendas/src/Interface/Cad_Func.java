@@ -435,7 +435,7 @@ public class Cad_Func extends javax.swing.JFrame {
                 c.setTime(formatoData.parse(data));
                 f.setDtNasc(c);
             } catch (Exception e) {}
-            f.setCPF(Long.parseLong(jTextCPF.getText()));
+            f.setCPF(jTextCPF.getText());
             f.setRG(Long.parseLong(jTextRG.getText()));
             f.setNumero(Integer.parseInt(jTextNumero.getText()));
             f.setRua(jTextRua.getText());

@@ -42,7 +42,7 @@ public class ClienteDao {
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
-            statement.setLong(1, cliente.getCPF());
+            statement.setString(1, cliente.getCPF());
             
             ResultSet resultadoChecar = statement.executeQuery();
             
@@ -59,7 +59,7 @@ public class ClienteDao {
                 statement.setString(7, cliente.getCidade());
                 statement.setString(8, cliente.getEstado());
                 statement.setString(9, cliente.getComple());
-                statement.setLong(10, cliente.getCPF());
+                statement.setString(10, cliente.getCPF());
                 statement.setLong(11, cliente.getRG());
                 statement.setString(12, cliente.getRua());
 
@@ -68,7 +68,7 @@ public class ClienteDao {
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlCliente);
 
-            statement.setLong(1, cliente.getCPF());
+            statement.setString(1, cliente.getCPF());
 
             statement.execute();
             statement.close();
@@ -95,10 +95,10 @@ public class ClienteDao {
             while(resultadoCliente.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setId(resultadoCliente.getInt("id_cliente"));
-                cliente.setCPF(resultadoCliente.getLong("cpf"));
+                cliente.setCPF(resultadoCliente.getString("cpf"));
                 
                 PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setLong(1, cliente.getCPF());
+                statementPessoa.setString(1, cliente.getCPF());
                 
                 ResultSet resultadoPessoa = statementPessoa.executeQuery();
                 while(resultadoPessoa.next()) {
@@ -157,14 +157,14 @@ public class ClienteDao {
                 cliente.setComple(resultadoPessoa.getString("complemento"));
                 cliente.setRG(resultadoPessoa.getLong("rg"));
                 cliente.setRua(resultadoPessoa.getString("rua"));
-                cliente.setCPF(resultadoPessoa.getLong("cpf"));
+                cliente.setCPF(resultadoPessoa.getString("cpf"));
 
                 Calendar data1 = Calendar.getInstance();
                 data1.setTime(resultadoPessoa.getDate("data_nascimento"));
                 cliente.setDtNasc(data1);
                 
                 PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-                statementCliente.setLong(1, cliente.getCPF());
+                statementCliente.setString(1, cliente.getCPF());
                 
                 ResultSet resultadoCliente = statementCliente.executeQuery();
                 while(resultadoCliente.next()) {
