@@ -12,10 +12,14 @@ public abstract class Pessoa {
     private Calendar dtnasc;
     private char sexo;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private long cpf;
 =======
     private String cpf;
 >>>>>>> parent of 004c2a0... Mudando CPF de string para long
+=======
+    private Long cpf;
+>>>>>>> parent of 9ad7659... consetando pequeno erro2
     private long rg;
     private String cep;
     private String telefone;
