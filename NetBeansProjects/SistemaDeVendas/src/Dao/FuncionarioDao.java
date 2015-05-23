@@ -83,7 +83,7 @@ public class FuncionarioDao {
         }
     }
     
-    public List<Funcionario> consultarCPF(String cpf) {
+    public List<Funcionario> consultar(long cpf) {
         String sqlFuncionario = "SELECT * FROM funcionario "+
                                 "WHERE cpf = ?";
         
@@ -93,7 +93,7 @@ public class FuncionarioDao {
         try {
             List<Funcionario> funcionarios = new ArrayList<>();
             PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-            statementFuncionario.setString(1, cpf);
+            statementFuncionario.setLong(1, cpf);
             
             ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
             while(resultadoFuncionario.next()) {
