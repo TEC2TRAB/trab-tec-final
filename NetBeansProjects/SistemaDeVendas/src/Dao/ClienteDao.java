@@ -21,7 +21,9 @@ import javax.swing.JOptionPane;
  *
  * @author Esdras
  */
+
 public class ClienteDao {
+    private String cpf;
     private Connection connection;
     
     public ClienteDao() {
@@ -39,10 +41,10 @@ public class ClienteDao {
                             "VALUES (?)";
         
         String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
-        
+        cpf = Long.toString(cliente.getCPF());
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
-            statement.setString(1, cliente.getCPF());
+            statement.setString(1, cpf);
             
             ResultSet resultadoChecar = statement.executeQuery();
             
@@ -59,7 +61,7 @@ public class ClienteDao {
                 statement.setString(7, cliente.getCidade());
                 statement.setString(8, cliente.getEstado());
                 statement.setString(9, cliente.getComple());
-                statement.setString(10, cliente.getCPF());
+                statement.setString(10, cpf);
                 statement.setLong(11, cliente.getRG());
                 statement.setString(12, cliente.getRua());
 
@@ -68,7 +70,6 @@ public class ClienteDao {
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlCliente);
 
-            statement.setString(1, cliente.getCPF());
 
             statement.execute();
             statement.close();
@@ -78,27 +79,29 @@ public class ClienteDao {
         }
     }
     
-    public List<Cliente> consultarCPF(String cpf) {
+    public List<Cliente> consultar(long cpf) {
         String sqlCliente = "SELECT * FROM cliente "+
                             "WHERE cpf = ?";
         
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE cpf = ?";
         
+        this.cpf = Long.toString(cpf);
+        
         try {
             List<Cliente> clientes = new ArrayList<>();
             PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-            statementCliente.setString(1, cpf);
+            statementCliente.setString(1, this.cpf);
             
             ResultSet resultadoCliente = statementCliente.executeQuery();
             
             while(resultadoCliente.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setId(resultadoCliente.getInt("id_cliente"));
-                cliente.setCPF(resultadoCliente.getString("cpf"));
+                cliente.setCPF(Long.parseLong(resultadoCliente.getString("cpf")));
                 
                 PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, cliente.getCPF());
+                statementPessoa.setString(1, this.cpf);
                 
                 ResultSet resultadoPessoa = statementPessoa.executeQuery();
                 while(resultadoPessoa.next()) {
@@ -132,7 +135,7 @@ public class ClienteDao {
         }
     }
     
-    public List<Cliente> consultarNome(String nome) {
+    public List<Cliente> consultar(String nome) {
         String sqlCliente = "SELECT * FROM cliente "+
                             "WHERE cpf = ?";
         
@@ -157,14 +160,14 @@ public class ClienteDao {
                 cliente.setComple(resultadoPessoa.getString("complemento"));
                 cliente.setRG(resultadoPessoa.getLong("rg"));
                 cliente.setRua(resultadoPessoa.getString("rua"));
-                cliente.setCPF(resultadoPessoa.getString("cpf"));
+                cliente.setCPF(Long.parseLong(resultadoPessoa.getString("cpf")));
 
                 Calendar data1 = Calendar.getInstance();
                 data1.setTime(resultadoPessoa.getDate("data_nascimento"));
                 cliente.setDtNasc(data1);
                 
                 PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-                statementCliente.setString(1, cliente.getCPF());
+                statementCliente.setString(1, this.cpf);
                 
                 ResultSet resultadoCliente = statementCliente.executeQuery();
                 while(resultadoCliente.next()) {

@@ -11,7 +11,7 @@ public abstract class Pessoa {
     private String nome;
     private Calendar dtnasc;
     private char sexo;
-    private String cpf;
+    private long cpf;
     private long rg;
     private String cep;
     private String telefone;
@@ -43,10 +43,10 @@ public abstract class Pessoa {
         return sexo;
     }
     
-    public void setCPF(String cpf){
+    public void setCPF(long cpf){
         this.cpf = cpf;
     }
-    public String getCPF(){
+    public long getCPF(){
         return cpf;
     }
     
