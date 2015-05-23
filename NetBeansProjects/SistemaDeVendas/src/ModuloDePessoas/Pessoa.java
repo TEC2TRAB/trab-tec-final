@@ -11,15 +11,7 @@ public abstract class Pessoa {
     private String nome;
     private Calendar dtnasc;
     private char sexo;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private long cpf;
-=======
     private String cpf;
->>>>>>> parent of 004c2a0... Mudando CPF de string para long
-=======
-    private Long cpf;
->>>>>>> parent of 9ad7659... consetando pequeno erro2
     private long rg;
     private String cep;
     private String telefone;
@@ -54,15 +46,7 @@ public abstract class Pessoa {
     public void setCPF(String cpf){
         this.cpf = cpf;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public long getCPF(){
-=======
     public String getCPF(){
->>>>>>> parent of 004c2a0... Mudando CPF de string para long
-=======
-    public Long getCPF(){
->>>>>>> parent of f833361... consertando pequeno erro
         return cpf;
     }
     

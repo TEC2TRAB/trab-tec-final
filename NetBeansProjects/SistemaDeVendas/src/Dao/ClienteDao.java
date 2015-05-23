@@ -132,7 +132,7 @@ public class ClienteDao {
         }
     }
     
-    public List<Cliente> consultar(String nome) {
+    public List<Cliente> consultarNome(String nome) {
         String sqlCliente = "SELECT * FROM cliente "+
                             "WHERE cpf = ?";
         

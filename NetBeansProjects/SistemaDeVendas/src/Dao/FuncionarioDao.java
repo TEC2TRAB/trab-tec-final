@@ -146,7 +146,7 @@ public class FuncionarioDao {
         }
     }
     
-    public List<Funcionario> consultar(String nome) {
+    public List<Funcionario> consultarNome(String nome) {
         String sqlFuncionario = "SELECT * FROM funcionario "+
                                 "WHERE cpf = ?";
         
