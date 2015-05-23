@@ -78,7 +78,7 @@ public class ClienteDao {
         }
     }
     
-    public List<Cliente> consultar(long cpf) {
+    public List<Cliente> consultarCPF(String cpf) {
         String sqlCliente = "SELECT * FROM cliente "+
                             "WHERE cpf = ?";
         
@@ -88,7 +88,7 @@ public class ClienteDao {
         try {
             List<Cliente> clientes = new ArrayList<>();
             PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-            statementCliente.setLong(1, cpf);
+            statementCliente.setString(1, cpf);
             
             ResultSet resultadoCliente = statementCliente.executeQuery();
             
