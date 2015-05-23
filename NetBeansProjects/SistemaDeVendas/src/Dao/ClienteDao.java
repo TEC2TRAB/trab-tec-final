@@ -23,7 +23,6 @@ import javax.swing.JOptionPane;
  */
 
 public class ClienteDao {
-    private String cpf;
     private Connection connection;
     
     public ClienteDao() {
@@ -41,10 +40,9 @@ public class ClienteDao {
                             "VALUES (?)";
         
         String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
-        cpf = Long.toString(cliente.getCPF());
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
-            statement.setString(1, cpf);
+            statement.setString(1, Long.toString(cliente.getCPF()));
             
             ResultSet resultadoChecar = statement.executeQuery();
             
@@ -61,7 +59,7 @@ public class ClienteDao {
                 statement.setString(7, cliente.getCidade());
                 statement.setString(8, cliente.getEstado());
                 statement.setString(9, cliente.getComple());
-                statement.setString(10, cpf);
+                statement.setString(10, Long.toString(cliente.getCPF()));
                 statement.setLong(11, cliente.getRG());
                 statement.setString(12, cliente.getRua());
 
@@ -70,6 +68,7 @@ public class ClienteDao {
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlCliente);
 
+            statement.setString(1, Long.toString(cliente.getCPF()));
 
             statement.execute();
             statement.close();
@@ -86,12 +85,10 @@ public class ClienteDao {
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE cpf = ?";
         
-        this.cpf = Long.toString(cpf);
-        
         try {
             List<Cliente> clientes = new ArrayList<>();
             PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-            statementCliente.setString(1, this.cpf);
+            statementCliente.setString(1, Long.toString(cpf));
             
             ResultSet resultadoCliente = statementCliente.executeQuery();
             
@@ -101,7 +98,7 @@ public class ClienteDao {
                 cliente.setCPF(Long.parseLong(resultadoCliente.getString("cpf")));
                 
                 PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, this.cpf);
+                statementPessoa.setString(1, Long.toString(cliente.getCPF()));
                 
                 ResultSet resultadoPessoa = statementPessoa.executeQuery();
                 while(resultadoPessoa.next()) {
@@ -165,9 +162,8 @@ public class ClienteDao {
                 Calendar data1 = Calendar.getInstance();
                 data1.setTime(resultadoPessoa.getDate("data_nascimento"));
                 cliente.setDtNasc(data1);
-                
                 PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-                statementCliente.setString(1, this.cpf);
+                statementCliente.setString(1, Long.toString(cliente.getCPF()));
                 
                 ResultSet resultadoCliente = statementCliente.executeQuery();
                 while(resultadoCliente.next()) {

@@ -39,10 +39,9 @@ public class FuncionarioDao {
                                 "VALUES (?,?,?,?,?)";
         
         String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
-        
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlChecar);
-            statement.setString(1, funcionario.getCPF());
+            statement.setString(1, Long.toString(funcionario.getCPF()));
             
             ResultSet resultadoChecar = statement.executeQuery();
             
@@ -59,7 +58,7 @@ public class FuncionarioDao {
                 statement.setString(7, funcionario.getCidade());
                 statement.setString(8, funcionario.getEstado());
                 statement.setString(9, funcionario.getComple());
-                statement.setString(10, funcionario.getCPF());
+                statement.setString(10, Long.toString(funcionario.getCPF()));
                 statement.setLong(11, funcionario.getRG());
                 statement.setString(12, funcionario.getRua());
 
@@ -68,7 +67,7 @@ public class FuncionarioDao {
             statement.clearParameters();
             statement = this.connection.prepareStatement(sqlFuncionario);
 
-            statement.setString(1, funcionario.getCPF());
+            statement.setString(1, Long.toString(funcionario.getCPF()));
             statement.setDate(2, new Date(System.currentTimeMillis()));
             statement.setNull(3, java.sql.Types.DATE);
             statement.setString(4, funcionario.getLogin());
@@ -83,23 +82,22 @@ public class FuncionarioDao {
         }
     }
     
-    public List<Funcionario> consultarCPF(String cpf) {
+    public List<Funcionario> consultar(long cpf) {
         String sqlFuncionario = "SELECT * FROM funcionario "+
                                 "WHERE cpf = ?";
         
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE cpf = ?";
-        
         try {
             List<Funcionario> funcionarios = new ArrayList<>();
             PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-            statementFuncionario.setString(1, cpf);
+            statementFuncionario.setString(1, Long.toString(cpf));
             
             ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
             while(resultadoFuncionario.next()) {
                 Funcionario funcionario = new Funcionario();
                 funcionario.setId(resultadoFuncionario.getInt("id_funcionario"));
-                funcionario.setCPF(resultadoFuncionario.getString("cpf"));
+                funcionario.setCPF(Long.parseLong(resultadoFuncionario.getString("cpf")));
                 funcionario.setLogin(resultadoFuncionario.getString("login"));
                 funcionario.setSenha(resultadoFuncionario.getString("senha"));
                 
@@ -112,7 +110,7 @@ public class FuncionarioDao {
                 funcionario.setDemissao(data2);
                 
                 PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, funcionario.getCPF());
+                statementPessoa.setString(1, Long.toString(cpf));
                 
                 ResultSet resultadoPessoa = statementPessoa.executeQuery();
                 while(resultadoPessoa.next()) {
@@ -146,13 +144,12 @@ public class FuncionarioDao {
         }
     }
     
-    public List<Funcionario> consultarNome(String nome) {
+    public List<Funcionario> consultar(String nome) {
         String sqlFuncionario = "SELECT * FROM funcionario "+
                                 "WHERE cpf = ?";
         
         String sqlPessoa = "SELECT * FROM pessoa "+
                            "WHERE nome LIKE ?";
-        
         try {
             List<Funcionario> funcionarios = new ArrayList<>();
             PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
@@ -171,14 +168,12 @@ public class FuncionarioDao {
                 funcionario.setComple(resultadoPessoa.getString("complemento"));
                 funcionario.setRG(resultadoPessoa.getLong("rg"));
                 funcionario.setRua(resultadoPessoa.getString("rua"));
-                funcionario.setCPF(resultadoPessoa.getString("cpf"));
-
+                funcionario.setCPF(Long.parseLong(resultadoPessoa.getString("cpf")));
                 Calendar data1 = Calendar.getInstance();
                 data1.setTime(resultadoPessoa.getDate("data_nascimento"));
                 funcionario.setDtNasc(data1);
-                
                 PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-                statementFuncionario.setString(1, funcionario.getCPF());
+                statementFuncionario.setString(1, Long.toString(funcionario.getCPF()));
                 
                 ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
                 while(resultadoFuncionario.next()) {
