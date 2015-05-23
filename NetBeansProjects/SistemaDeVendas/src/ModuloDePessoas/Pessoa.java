@@ -55,10 +55,14 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     public long getCPF(){
 =======
     public String getCPF(){
 >>>>>>> parent of 004c2a0... Mudando CPF de string para long
+=======
+    public Long getCPF(){
+>>>>>>> parent of f833361... consertando pequeno erro
         return cpf;
     }
     
