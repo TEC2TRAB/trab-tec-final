@@ -27,26 +27,241 @@ public class Cons_Venda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabeID = new javax.swing.JLabel();
+        jTextCPF = new javax.swing.JTextField();
+        jRadioButtonCPF = new javax.swing.JRadioButton();
+        jRadioButtonID = new javax.swing.JRadioButton();
+        jLabelCPF = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabelSelecione = new javax.swing.JLabel();
+        jTextFunc = new javax.swing.JTextField();
+        jButtonConsultar = new javax.swing.JButton();
+        jLabelData = new javax.swing.JLabel();
+        jTextCPF1 = new javax.swing.JTextField();
+        jRadioButtonData = new javax.swing.JRadioButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Vendas");
+
+        jLabeID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabeID.setText("ID - Vendedor:");
+
+        jTextCPF.setName(""); // NOI18N
+        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCPFActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonCPF.setText("CPF");
+        jRadioButtonCPF.setToolTipText("");
+        jRadioButtonCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCPFActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonID.setText("ID");
+        jRadioButtonID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonIDActionPerformed(evt);
+            }
+        });
+
+        jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelCPF.setText("CPF - Cliente:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID - Vendedor", "CPF - Cliente", "Data da Venda", "Ver Mais"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabelSelecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSelecione.setText("Selecione: ");
+
+        jTextFunc.setName(""); // NOI18N
+        jTextFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFuncActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
+            }
+        });
+
+        jLabelData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelData.setText("Data da Venda:");
+
+        jTextCPF1.setName(""); // NOI18N
+        jTextCPF1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCPF1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButtonData.setText("Data");
+        jRadioButtonData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabelCPF)
+                                .addComponent(jLabelSelecione))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jRadioButtonCPF)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jRadioButtonID)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jRadioButtonData))
+                                .addComponent(jTextFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabeID)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButtonConsultar)
+                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabelData)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSelecione)
+                    .addComponent(jRadioButtonCPF)
+                    .addComponent(jRadioButtonID)
+                    .addComponent(jRadioButtonData))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPF)
+                    .addComponent(jTextFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabeID)
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelData)
+                    .addComponent(jTextCPF1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jButtonConsultar)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCPFActionPerformed
+
+    private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonCPFActionPerformed
+
+    private void jRadioButtonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonIDActionPerformed
+
+    private void jTextFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFuncActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFuncActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void jTextCPF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPF1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCPF1ActionPerformed
+
+    private void jRadioButtonDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonDataActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JLabel jLabeID;
+    private javax.swing.JLabel jLabelCPF;
+    private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelSelecione;
+    private javax.swing.JRadioButton jRadioButtonCPF;
+    private javax.swing.JRadioButton jRadioButtonData;
+    private javax.swing.JRadioButton jRadioButtonID;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextCPF;
+    private javax.swing.JTextField jTextCPF1;
+    private javax.swing.JTextField jTextFunc;
     // End of variables declaration//GEN-END:variables
 }
