@@ -203,4 +203,54 @@ public class FuncionarioDao {
             throw new RuntimeException(e);
         }
     }
+    
+    public void atualizar(Funcionario funcionario) {
+        String sqlPessoa = "UPDATE pessoa SET numero = ?,"+
+                           "cep = ?, bairro = ?, cidade = ?," +
+                           "estado = ?, complemento = ?, rua = ?" +
+                           "WHERE cpf = ?";
+        
+        String sqlFuncionario = "UPDATE funcionario SET login = ?," +
+                                "senha = ?, demissao = ? WHERE cpf = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
+            statement.setInt(1, funcionario.getNumero());
+            statement.setString(2, funcionario.getCep());
+            statement.setString(3, funcionario.getBairro());
+            statement.setString(4, funcionario.getCidade());
+            statement.setString(5, funcionario.getEstado());
+            statement.setString(6, funcionario.getComple());
+            statement.setString(7, funcionario.getRua());
+            statement.setString(8, Long.toString(funcionario.getCPF()));
+            
+            statement.execute();
+            statement.clearParameters();
+            
+            statement = this.connection.prepareStatement(sqlFuncionario);
+            statement.setString(1, funcionario.getLogin());
+            statement.setString(2, funcionario.getSenha());
+            statement.setDate(3, new Date(funcionario.getDemissao().getTimeInMillis()));
+            statement.setString(4, Long.toString(funcionario.getCPF()));
+            
+            statement.execute();
+            statement.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void remover(Long cpf) {
+        String sql = "DELETE FROM pessoa WHERE cpf = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, Long.toString(cpf));
+            
+            statement.execute();
+            statement.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

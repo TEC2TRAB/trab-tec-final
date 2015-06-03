@@ -183,5 +183,43 @@ public class ClienteDao {
             throw new RuntimeException(e);
         }
     }
+    
+    public void atualizar(Cliente cliente) {
+        String sql = "UPDATE pessoa SET numero = ?,"+
+                     "cep = ?, bairro = ?, cidade = ?," +
+                     "estado = ?, complemento = ?, rua = ?" +
+                     "WHERE cpf = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setInt(1, cliente.getNumero());
+            statement.setString(2, cliente.getCep());
+            statement.setString(3, cliente.getBairro());
+            statement.setString(4, cliente.getCidade());
+            statement.setString(5, cliente.getEstado());
+            statement.setString(6, cliente.getComple());
+            statement.setString(7, cliente.getRua());
+            statement.setString(8, Long.toString(cliente.getCPF()));
+            
+            statement.execute();
+            statement.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void remover(Long cpf) {
+        String sql = "DELETE FROM pessoa WHERE cpf = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, Long.toString(cpf));
+            
+            statement.execute();
+            statement.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
