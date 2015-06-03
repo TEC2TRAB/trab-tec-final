@@ -42,7 +42,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jRadioButtonData" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFunc" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
+                              <Component id="jTextCPF" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -50,13 +50,13 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonConsultar" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextCPF" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
+                              <Component id="jTextID" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabelData" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextCPF1" min="-2" pref="278" max="-2" attributes="0"/>
+                          <Component id="jTextData" min="-2" pref="278" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -78,17 +78,17 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFunc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabeID" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextCPF" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabeID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextID" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelData" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextCPF1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jTextData" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jButtonConsultar" min="-2" max="-2" attributes="0"/>
@@ -108,13 +108,10 @@
         <Property name="text" type="java.lang.String" value="ID - Vendedor:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextCPF">
+    <Component class="javax.swing.JTextField" name="jTextID">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCPFActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonCPF">
       <Properties>
@@ -170,21 +167,15 @@
         <Property name="text" type="java.lang.String" value="Selecione: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFunc">
+    <Component class="javax.swing.JTextField" name="jTextCPF">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFuncActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonConsultar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelData">
       <Properties>
@@ -194,13 +185,10 @@
         <Property name="text" type="java.lang.String" value="Data da Venda:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextCPF1">
+    <Component class="javax.swing.JTextField" name="jTextData">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCPF1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonData">
       <Properties>

@@ -30,9 +30,9 @@ public class Cons_Clien extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jLabel1NomeCliente = new javax.swing.JLabel();
-        jTextNomeCliente = new javax.swing.JTextField();
-        jLabel1CPF = new javax.swing.JLabel();
         jTextCPF = new javax.swing.JTextField();
+        jLabel1CPF = new javax.swing.JLabel();
+        jTextNome = new javax.swing.JTextField();
         jRadioButtonCPF = new javax.swing.JRadioButton();
         jRadioButtonNome = new javax.swing.JRadioButton();
         jLabel1Selecione = new javax.swing.JLabel();
@@ -58,24 +58,14 @@ public class Cons_Clien extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(620, 500));
 
         jLabel1NomeCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1NomeCliente.setText("Nome:");
-
-        jTextNomeCliente.setName(""); // NOI18N
-        jTextNomeCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextNomeClienteActionPerformed(evt);
-            }
-        });
-
-        jLabel1CPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1CPF.setText("CPF:");
+        jLabel1NomeCliente.setText("CPF:");
 
         jTextCPF.setName(""); // NOI18N
-        jTextCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCPFActionPerformed(evt);
-            }
-        });
+
+        jLabel1CPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1CPF.setText("Nome:");
+
+        jTextNome.setName(""); // NOI18N
 
         jRadioButtonCPF.setText("CPF");
         jRadioButtonCPF.addActionListener(new java.awt.event.ActionListener() {
@@ -95,11 +85,6 @@ public class Cons_Clien extends javax.swing.JFrame {
         jLabel1Selecione.setText("Selecione: ");
 
         jButtonConsultar.setText("Consultar");
-        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConsultarActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,13 +150,13 @@ public class Cons_Clien extends javax.swing.JFrame {
                                     .addComponent(jRadioButtonCPF)
                                     .addGap(18, 18, 18)
                                     .addComponent(jRadioButtonNome))
-                                .addComponent(jTextNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1CPF)
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jButtonConsultar)
-                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
@@ -186,11 +171,11 @@ public class Cons_Clien extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1NomeCliente)
-                    .addComponent(jTextNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1CPF)
-                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jButtonConsultar)
                 .addGap(32, 32, 32)
@@ -202,25 +187,25 @@ public class Cons_Clien extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNomeClienteActionPerformed
-
-    private void jTextCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCPFActionPerformed
-
     private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
-        // TODO add your handling code here:
+        if(jRadioButtonCPF.isSelected()==true){
+            jRadioButtonNome.setSelected(false);
+            jTextCPF.setEnabled(true);
+            jTextNome.setEnabled(false);
+        }else{
+            jTextNome.setEnabled(true);
+        }
     }//GEN-LAST:event_jRadioButtonCPFActionPerformed
 
     private void jRadioButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNomeActionPerformed
-        // TODO add your handling code here:
+        if(jRadioButtonNome.isSelected()==true){
+            jRadioButtonCPF.setSelected(false);
+            jTextNome.setEnabled(true);
+            jTextCPF.setEnabled(false);
+        }else{
+            jTextCPF.setEnabled(true);
+        }
     }//GEN-LAST:event_jRadioButtonNomeActionPerformed
-
-    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +222,6 @@ public class Cons_Clien extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextCPF;
-    private javax.swing.JTextField jTextNomeCliente;
+    private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
 }

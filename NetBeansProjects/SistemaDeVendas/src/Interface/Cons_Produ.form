@@ -30,25 +30,25 @@
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel1NomeFunc" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelNome" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1Selecione" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jRadioButtonCodigo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jRadioButtonNome" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonCodigo" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFunc" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
+                              <Component id="jTextNome" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel1CPF" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCodigo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButtonConsultar" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextCPF" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
+                              <Component id="jTextCodigo" alignment="0" min="-2" pref="278" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -64,18 +64,18 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1Selecione" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButtonCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jRadioButtonNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRadioButtonCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1NomeFunc" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFunc" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jLabelNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextNome" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1CPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextCPF" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jLabelCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextCodigo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="jButtonConsultar" min="-2" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1CPF">
+    <Component class="javax.swing.JLabel" name="jLabelCodigo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
@@ -95,34 +95,31 @@
         <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextCPF">
+    <Component class="javax.swing.JTextField" name="jTextCodigo">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCPFActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButtonCodigo">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="C&#xf3;digo"/>
-      </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="codigo"/>
-      </AccessibilityProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonCodigoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButtonNome">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="codigo"/>
+      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonNomeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1NomeFunc">
+    <Component class="javax.swing.JRadioButton" name="jRadioButtonCodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonCodigoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelNome">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
@@ -158,21 +155,15 @@
         <Property name="text" type="java.lang.String" value="Selecione: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFunc">
+    <Component class="javax.swing.JTextField" name="jTextNome">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFuncActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonConsultar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultarActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
