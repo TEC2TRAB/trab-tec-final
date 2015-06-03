@@ -5,6 +5,13 @@
  */
 package Interface;
 
+import Dao.ClienteDao;
+import javax.swing.JOptionPane;
+import Classes.*;
+import ModuloDePessoas.Cliente;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author cesar.nascimento
@@ -85,6 +92,11 @@ public class Cons_Clien extends javax.swing.JFrame {
         jLabel1Selecione.setText("Selecione: ");
 
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonConsultarMousePressed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,6 +201,8 @@ public class Cons_Clien extends javax.swing.JFrame {
 
     private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
         if(jRadioButtonCPF.isSelected()==true){
+            jTextCPF.setText("");
+            jTextNome.setText("");
             jRadioButtonNome.setSelected(false);
             jTextCPF.setEnabled(true);
             jTextNome.setEnabled(false);
@@ -199,6 +213,8 @@ public class Cons_Clien extends javax.swing.JFrame {
 
     private void jRadioButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNomeActionPerformed
         if(jRadioButtonNome.isSelected()==true){
+            jTextCPF.setText("");
+            jTextNome.setText("");
             jRadioButtonCPF.setSelected(false);
             jTextNome.setEnabled(true);
             jTextCPF.setEnabled(false);
@@ -206,6 +222,40 @@ public class Cons_Clien extends javax.swing.JFrame {
             jTextCPF.setEnabled(true);
         }
     }//GEN-LAST:event_jRadioButtonNomeActionPerformed
+
+    private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
+        ClienteDao c = new ClienteDao();
+        List<Cliente> clientes = new ArrayList<>();
+        int passa = 0;
+        if(jRadioButtonCPF.isSelected()==false && jRadioButtonNome.isSelected()==false){
+            JOptionPane.showMessageDialog(null,"Você precisa selecionar uma forma de pesquisa antes de clicar em \"Consultar\", por CPF ou por Nome.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa = 1;
+        }
+        if(jRadioButtonCPF.isSelected()==true && jTextCPF.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Campo CPF em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            jTextCPF.requestFocus();
+            passa = 1;
+        }else if(jRadioButtonCPF.isSelected()==true){
+            if(ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
+                clientes = c.consultar(Long.parseLong(jTextCPF.getText()));
+                passa = 0;
+            }else{
+               JOptionPane.showMessageDialog(null,"CPF inválido, por favor, digite um CPF válido e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE); 
+               jTextCPF.setText("");
+               jTextCPF.requestFocus();
+               passa = 1;
+            }
+        }
+        
+        if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa = 1;
+        }else if(jRadioButtonNome.isSelected()==true){
+            clientes = c.consultar(jTextNome.getText());
+        }
+        if(passa == 0 && clientes.isEmpty())
+            JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_jButtonConsultarMousePressed
 
     /**
      * @param args the command line arguments
