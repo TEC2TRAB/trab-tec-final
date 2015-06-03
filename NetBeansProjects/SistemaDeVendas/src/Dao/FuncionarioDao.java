@@ -253,4 +253,43 @@ public class FuncionarioDao {
             throw new RuntimeException(e);
         }
     }
+    
+    public String verificarAcesso(String login, String senha) {
+        String sqlLogin = "SELECT login FROM funcionario" +
+                          "WHERE login = ?";
+        
+        String sqlSenha = "SELECT senha FROM funcionario" +
+                          "WHERE login = ? AND senha = ?";
+        
+        try {
+            String acesso;
+            PreparedStatement statement = this.connection.prepareStatement(sqlLogin);
+            statement.setString(1, login);
+            
+            ResultSet resultado = statement.executeQuery();
+            if(!resultado.isBeforeFirst()) {
+                resultado.close();
+                statement.close();
+                return acesso = "Usuário inválido.";
+            } else {
+                statement.clearParameters();
+                statement = this.connection.prepareStatement(sqlSenha);
+                statement.setString(1, login);
+                statement.setString(2, senha);
+                
+                resultado = statement.executeQuery();
+                if(!resultado.isBeforeFirst()) {
+                    resultado.close();
+                    statement.close();
+                    return acesso = "Senha inválida.";
+                }                
+            }
+            resultado.close();
+            statement.close();
+            return acesso = "Dados de acesso corretos";
+            
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
