@@ -7,6 +7,7 @@
 package sysvendas;
 
 import Classes.ConnectionFactory;
+import Interface.Login;
 import Interface.Menu;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class Main {
                 InstantiationException | IllegalAccessException e){
             System.out.println("Não foi possível setar o estilo,contate o administrador");
         }
-        Menu m = new Menu();
-        m.setVisible(true); 
+        Login l = new Login();
+        l.setVisible(true);
     }
 }
