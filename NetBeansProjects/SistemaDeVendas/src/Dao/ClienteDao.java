@@ -209,7 +209,7 @@ public class ClienteDao {
     }
     
     public void remover(Long cpf) {
-        String sql = "DELETE FROM pessoa WHERE cpf = ?";
+        String sql = "DELETE FROM cliente WHERE cpf = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
