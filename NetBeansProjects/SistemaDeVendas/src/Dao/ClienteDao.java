@@ -79,52 +79,41 @@ public class ClienteDao {
     }
     
     public List<Cliente> consultar(long cpf) {
-        String sqlCliente = "SELECT * FROM cliente "+
-                            "WHERE cpf = ?";
-        
-        String sqlPessoa = "SELECT * FROM pessoa "+
-                           "WHERE cpf = ?";
+        String sql = "SELECT * FROM pessoa INNER JOIN cliente " +
+                     "ON pessoa.cpf = cliente.cpf " +
+                     "WHERE pessoa.cpf = ?";
         
         try {
             List<Cliente> clientes = new ArrayList<>();
-            PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-            statementCliente.setString(1, Long.toString(cpf));
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, Long.toString(cpf));
             
-            ResultSet resultadoCliente = statementCliente.executeQuery();
+            ResultSet resultado = statement.executeQuery();
             
-            while(resultadoCliente.next()) {
+            while(resultado.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setId(resultadoCliente.getInt("id_cliente"));
-                cliente.setCPF(Long.parseLong(resultadoCliente.getString("cpf")));
                 
-                PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, Long.toString(cliente.getCPF()));
-                
-                ResultSet resultadoPessoa = statementPessoa.executeQuery();
-                while(resultadoPessoa.next()) {
-                    cliente.setNumero(resultadoPessoa.getInt("numero"));
-                    cliente.setSexo(resultadoPessoa.getString("sexo").charAt(0));
-                    cliente.setNome(resultadoPessoa.getString("nome"));
-                    cliente.setCep(resultadoPessoa.getString("cep"));
-                    cliente.setBairro(resultadoPessoa.getString("bairro"));
-                    cliente.setCidade(resultadoPessoa.getString("cidade"));
-                    cliente.setEstado(resultadoPessoa.getString("estado"));
-                    cliente.setComple(resultadoPessoa.getString("complemento"));
-                    cliente.setRG(resultadoPessoa.getLong("rg"));
-                    cliente.setRua(resultadoPessoa.getString("rua"));
-                    
-                    Calendar data3 = Calendar.getInstance();
-                    data3.setTime(resultadoPessoa.getDate("data_nascimento"));
-                    cliente.setDtNasc(data3);
-                }
+                cliente.setId(resultado.getInt("id_cliente"));
+                cliente.setCPF(Long.parseLong(resultado.getString("cpf")));
+                cliente.setNumero(resultado.getInt("numero"));
+                cliente.setSexo(resultado.getString("sexo").charAt(0));
+                cliente.setNome(resultado.getString("nome"));
+                cliente.setCep(resultado.getString("cep"));
+                cliente.setBairro(resultado.getString("bairro"));
+                cliente.setCidade(resultado.getString("cidade"));
+                cliente.setEstado(resultado.getString("estado"));
+                cliente.setComple(resultado.getString("complemento"));
+                cliente.setRG(resultado.getLong("rg"));
+                cliente.setRua(resultado.getString("rua"));
+
+                Calendar data3 = Calendar.getInstance();
+                data3.setTime(resultado.getDate("data_nascimento"));
+                cliente.setDtNasc(data3);
                 
                 clientes.add(cliente);
-                
-                resultadoPessoa.close();
-                statementPessoa.close();
             }
-            resultadoCliente.close();
-            statementCliente.close();
+            resultado.close();
+            statement.close();
             
             return clientes;
         } catch(SQLException e) {
@@ -133,50 +122,40 @@ public class ClienteDao {
     }
     
     public List<Cliente> consultar(String nome) {
-        String sqlCliente = "SELECT * FROM cliente "+
-                            "WHERE cpf = ?";
-        
-        String sqlPessoa = "SELECT * FROM pessoa "+
-                           "WHERE nome LIKE ?";
+        String sql = "SELECT * FROM pessoa INNER JOIN cliente " +
+                            "ON pessoa.cpf = cliente.cpf " +
+                            "WHERE pessoa.nome LIKE ?";
         
         try {
             List<Cliente> clientes = new ArrayList<>();
-            PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-            statementPessoa.setString(1, nome + "%");
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, nome + "%");
             
-            ResultSet resultadoPessoa = statementPessoa.executeQuery();
-            while(resultadoPessoa.next()) {
+            ResultSet resultado = statement.executeQuery();
+            while(resultado.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setNumero(resultadoPessoa.getInt("numero"));
-                cliente.setSexo(resultadoPessoa.getString("sexo").charAt(0));
-                cliente.setNome(resultadoPessoa.getString("nome"));
-                cliente.setCep(resultadoPessoa.getString("cep"));
-                cliente.setBairro(resultadoPessoa.getString("bairro"));
-                cliente.setCidade(resultadoPessoa.getString("cidade"));
-                cliente.setEstado(resultadoPessoa.getString("estado"));
-                cliente.setComple(resultadoPessoa.getString("complemento"));
-                cliente.setRG(resultadoPessoa.getLong("rg"));
-                cliente.setRua(resultadoPessoa.getString("rua"));
-                cliente.setCPF(Long.parseLong(resultadoPessoa.getString("cpf")));
+                
+                cliente.setId(resultado.getInt("id_cliente"));
+                cliente.setNumero(resultado.getInt("numero"));
+                cliente.setSexo(resultado.getString("sexo").charAt(0));
+                cliente.setNome(resultado.getString("nome"));
+                cliente.setCep(resultado.getString("cep"));
+                cliente.setBairro(resultado.getString("bairro"));
+                cliente.setCidade(resultado.getString("cidade"));
+                cliente.setEstado(resultado.getString("estado"));
+                cliente.setComple(resultado.getString("complemento"));
+                cliente.setRG(resultado.getLong("rg"));
+                cliente.setRua(resultado.getString("rua"));
+                cliente.setCPF(Long.parseLong(resultado.getString("cpf")));
 
                 Calendar data1 = Calendar.getInstance();
-                data1.setTime(resultadoPessoa.getDate("data_nascimento"));
+                data1.setTime(resultado.getDate("data_nascimento"));
                 cliente.setDtNasc(data1);
-                PreparedStatement statementCliente = this.connection.prepareStatement(sqlCliente);
-                statementCliente.setString(1, Long.toString(cliente.getCPF()));
-                
-                ResultSet resultadoCliente = statementCliente.executeQuery();
-                while(resultadoCliente.next()) {
-                    cliente.setId(resultadoCliente.getInt("id_cliente"));
-                }
                 
                 clientes.add(cliente);
-                
-                resultadoCliente.close();
-                statementCliente.close();
             }
-            resultadoPessoa.close();
-            statementPessoa.close();
+            resultado.close();
+            statement.close();
             
             return clientes;
         } catch(SQLException e) {

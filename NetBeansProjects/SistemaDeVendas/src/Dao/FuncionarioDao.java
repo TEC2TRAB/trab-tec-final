@@ -83,60 +83,50 @@ public class FuncionarioDao {
     }
     
     public List<Funcionario> consultar(long cpf) {
-        String sqlFuncionario = "SELECT * FROM funcionario "+
-                                "WHERE cpf = ?";
+        String sql = "SELECT * FROM pessoa INNER JOIN funcionario " +
+                     "ON pessoa.cpf = funcionario.cpf " +
+                     "WHERE pessoa.cpf = ?";
         
-        String sqlPessoa = "SELECT * FROM pessoa "+
-                           "WHERE cpf = ?";
         try {
             List<Funcionario> funcionarios = new ArrayList<>();
-            PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-            statementFuncionario.setString(1, Long.toString(cpf));
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, Long.toString(cpf));
             
-            ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
-            while(resultadoFuncionario.next()) {
+            ResultSet resultado = statement.executeQuery();
+            while(resultado.next()) {
                 Funcionario funcionario = new Funcionario();
-                funcionario.setId(resultadoFuncionario.getInt("id_funcionario"));
-                funcionario.setCPF(Long.parseLong(resultadoFuncionario.getString("cpf")));
-                funcionario.setLogin(resultadoFuncionario.getString("login"));
-                funcionario.setSenha(resultadoFuncionario.getString("senha"));
+                funcionario.setId(resultado.getInt("id_funcionario"));
+                funcionario.setCPF(Long.parseLong(resultado.getString("cpf")));
+                funcionario.setLogin(resultado.getString("login"));
+                funcionario.setSenha(resultado.getString("senha"));
                 
                 Calendar data1 = Calendar.getInstance();
-                data1.setTime(resultadoFuncionario.getDate("admissao"));
+                data1.setTime(resultado.getDate("admissao"));
                 funcionario.setAdmissao(data1);
                 
                 /*Calendar data2 = Calendar.getInstance();
-                data2.setTime(resultadoFuncionario.getDate("demissao"));
+                data2.setTime(resultado.getDate("demissao"));
                 funcionario.setDemissao(data2);*/
                 
-                PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-                statementPessoa.setString(1, Long.toString(cpf));
-                
-                ResultSet resultadoPessoa = statementPessoa.executeQuery();
-                while(resultadoPessoa.next()) {
-                    funcionario.setNumero(resultadoPessoa.getInt("numero"));
-                    funcionario.setSexo(resultadoPessoa.getString("sexo").charAt(0));
-                    funcionario.setNome(resultadoPessoa.getString("nome"));
-                    funcionario.setCep(resultadoPessoa.getString("cep"));
-                    funcionario.setBairro(resultadoPessoa.getString("bairro"));
-                    funcionario.setCidade(resultadoPessoa.getString("cidade"));
-                    funcionario.setEstado(resultadoPessoa.getString("estado"));
-                    funcionario.setComple(resultadoPessoa.getString("complemento"));
-                    funcionario.setRG(resultadoPessoa.getLong("rg"));
-                    funcionario.setRua(resultadoPessoa.getString("rua"));
-                    
-                    Calendar data3 = Calendar.getInstance();
-                    data3.setTime(resultadoPessoa.getDate("data_nascimento"));
-                    funcionario.setDtNasc(data3);
-                }
+                funcionario.setNumero(resultado.getInt("numero"));
+                funcionario.setSexo(resultado.getString("sexo").charAt(0));
+                funcionario.setNome(resultado.getString("nome"));
+                funcionario.setCep(resultado.getString("cep"));
+                funcionario.setBairro(resultado.getString("bairro"));
+                funcionario.setCidade(resultado.getString("cidade"));
+                funcionario.setEstado(resultado.getString("estado"));
+                funcionario.setComple(resultado.getString("complemento"));
+                funcionario.setRG(resultado.getLong("rg"));
+                funcionario.setRua(resultado.getString("rua"));
+
+                Calendar data3 = Calendar.getInstance();
+                data3.setTime(resultado.getDate("data_nascimento"));
+                funcionario.setDtNasc(data3);
                 
                 funcionarios.add(funcionario);
-                
-                resultadoPessoa.close();
-                statementPessoa.close();
             }
-            resultadoFuncionario.close();
-            statementFuncionario.close();
+            resultado.close();
+            statement.close();
             
             return funcionarios;
         } catch(SQLException e) {
@@ -145,58 +135,50 @@ public class FuncionarioDao {
     }
     
     public List<Funcionario> consultar(String nome) {
-        String sqlFuncionario = "SELECT * FROM funcionario "+
-                                "WHERE cpf = ?";
+        String sql = "SELECT * FROM pessoa INNER JOIN funcionario " +
+                     "ON pessoa.cpf = funcionario.cpf " +
+                     "WHERE pessoa.nome LIKE ?";
         
-        String sqlPessoa = "SELECT * FROM pessoa "+
-                           "WHERE nome LIKE ?";
         try {
             List<Funcionario> funcionarios = new ArrayList<>();
-            PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
-            statementPessoa.setString(1, nome + "%");
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, nome + "%");
             
-            ResultSet resultadoPessoa = statementPessoa.executeQuery();
-            while(resultadoPessoa.next()) {
+            ResultSet resultado = statement.executeQuery();
+            while(resultado.next()) {
                 Funcionario funcionario = new Funcionario();
-                funcionario.setNumero(resultadoPessoa.getInt("numero"));
-                funcionario.setSexo(resultadoPessoa.getString("sexo").charAt(0));
-                funcionario.setNome(resultadoPessoa.getString("nome"));
-                funcionario.setCep(resultadoPessoa.getString("cep"));
-                funcionario.setBairro(resultadoPessoa.getString("bairro"));
-                funcionario.setCidade(resultadoPessoa.getString("cidade"));
-                funcionario.setEstado(resultadoPessoa.getString("estado"));
-                funcionario.setComple(resultadoPessoa.getString("complemento"));
-                funcionario.setRG(resultadoPessoa.getLong("rg"));
-                funcionario.setRua(resultadoPessoa.getString("rua"));
-                funcionario.setCPF(Long.parseLong(resultadoPessoa.getString("cpf")));
-                Calendar data1 = Calendar.getInstance();
-                data1.setTime(resultadoPessoa.getDate("data_nascimento"));
-                funcionario.setDtNasc(data1);
-                PreparedStatement statementFuncionario = this.connection.prepareStatement(sqlFuncionario);
-                statementFuncionario.setString(1, Long.toString(funcionario.getCPF()));
+                funcionario.setNumero(resultado.getInt("numero"));
+                funcionario.setSexo(resultado.getString("sexo").charAt(0));
+                funcionario.setNome(resultado.getString("nome"));
+                funcionario.setCep(resultado.getString("cep"));
+                funcionario.setBairro(resultado.getString("bairro"));
+                funcionario.setCidade(resultado.getString("cidade"));
+                funcionario.setEstado(resultado.getString("estado"));
+                funcionario.setComple(resultado.getString("complemento"));
+                funcionario.setRG(resultado.getLong("rg"));
+                funcionario.setRua(resultado.getString("rua"));
+                funcionario.setCPF(Long.parseLong(resultado.getString("cpf")));
                 
-                ResultSet resultadoFuncionario = statementFuncionario.executeQuery();
-                while(resultadoFuncionario.next()) {
-                    funcionario.setId(resultadoFuncionario.getInt("id_funcionario"));
-                    funcionario.setLogin(resultadoFuncionario.getString("login"));
-                    funcionario.setSenha(resultadoFuncionario.getString("senha"));
-                    
-                    Calendar data2 = Calendar.getInstance();
-                    data2.setTime(resultadoFuncionario.getDate("admissao"));
-                    funcionario.setAdmissao(data2);
-                    
-                    Calendar data3 = Calendar.getInstance();
-                    data3.setTime(resultadoFuncionario.getDate("demissao"));
-                    funcionario.setDemissao(data3);
-                }
+                Calendar data1 = Calendar.getInstance();
+                data1.setTime(resultado.getDate("data_nascimento"));
+                funcionario.setDtNasc(data1);
+                
+                funcionario.setId(resultado.getInt("id_funcionario"));
+                funcionario.setLogin(resultado.getString("login"));
+                funcionario.setSenha(resultado.getString("senha"));
+
+                Calendar data2 = Calendar.getInstance();
+                data2.setTime(resultado.getDate("admissao"));
+                funcionario.setAdmissao(data2);
+
+                /*Calendar data3 = Calendar.getInstance();
+                data3.setTime(resultado.getDate("demissao"));
+                funcionario.setDemissao(data3);*/
                 
                 funcionarios.add(funcionario);
-                
-                resultadoFuncionario.close();
-                statementFuncionario.close();
             }
-            resultadoPessoa.close();
-            statementPessoa.close();
+            resultado.close();
+            statement.close();
             
             return funcionarios;
         } catch(SQLException e) {
