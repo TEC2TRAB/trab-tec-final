@@ -256,11 +256,11 @@ public class FuncionarioDao {
     
     public boolean verificarAcesso(String login, String senha) {
         
-        String sqlLogin = "SELECT senha FROM funcionario" +
-                          " WHERE login = ? AND senha = ?";
+        String sql = "SELECT senha FROM funcionario" +
+                     " WHERE login = ? AND senha = ?";
         
         try {
-            PreparedStatement statement = this.connection.prepareStatement(sqlLogin);
+            PreparedStatement statement = this.connection.prepareStatement(sql);
             statement.setString(1, login);
             statement.setString(2, senha);
 
