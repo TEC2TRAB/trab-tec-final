@@ -6,10 +6,7 @@
 //Testando GitHub.
 package sysvendas;
 
-import Classes.ConnectionFactory;
 import Interface.Login;
-import java.sql.Connection;
-import java.sql.SQLException;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;

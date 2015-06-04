@@ -52,7 +52,7 @@ public class FuncionarioDao {
                 statement.setInt(1, funcionario.getNumero());
                 statement.setDate(2, new Date(funcionario.getDtNasc().getTimeInMillis()));
                 statement.setString(3, String.valueOf(funcionario.getSexo()));
-                statement.setString(4, funcionario.getNome());
+                statement.setString(4, funcionario.getNome().toUpperCase());
                 statement.setString(5, funcionario.getCep());
                 statement.setString(6, funcionario.getBairro());
                 statement.setString(7, funcionario.getCidade());
@@ -142,7 +142,7 @@ public class FuncionarioDao {
         try {
             List<Funcionario> funcionarios = new ArrayList<>();
             PreparedStatement statement = this.connection.prepareStatement(sql);
-            statement.setString(1, nome + "%");
+            statement.setString(1, nome.toUpperCase() + "%");
             
             ResultSet resultado = statement.executeQuery();
             while(resultado.next()) {

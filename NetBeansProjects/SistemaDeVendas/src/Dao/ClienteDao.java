@@ -53,7 +53,7 @@ public class ClienteDao {
                 statement.setInt(1, cliente.getNumero());
                 statement.setDate(2, new Date(cliente.getDtNasc().getTimeInMillis()));
                 statement.setString(3, String.valueOf(cliente.getSexo()));
-                statement.setString(4, cliente.getNome());
+                statement.setString(4, cliente.getNome().toUpperCase());
                 statement.setString(5, cliente.getCep());
                 statement.setString(6, cliente.getBairro());
                 statement.setString(7, cliente.getCidade());
@@ -129,7 +129,7 @@ public class ClienteDao {
         try {
             List<Cliente> clientes = new ArrayList<>();
             PreparedStatement statement = this.connection.prepareStatement(sql);
-            statement.setString(1, nome + "%");
+            statement.setString(1, nome.toUpperCase() + "%");
             
             ResultSet resultado = statement.executeQuery();
             while(resultado.next()) {

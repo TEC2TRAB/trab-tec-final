@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
  * @author cesar.nascimento
  */
 public class Cons_Func extends javax.swing.JFrame {
-
     /**
      * Creates new form Cons_Func
      */
@@ -182,6 +181,8 @@ public class Cons_Func extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableFunc.getModel();
+        model.setNumRows(0);
         if(jRadioButtonCPF.isSelected()==true){
             jTextCPF.setText("");
             jTextNome.setText("");
@@ -194,6 +195,8 @@ public class Cons_Func extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonCPFActionPerformed
 
     private void jRadioButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNomeActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableFunc.getModel();
+        model.setNumRows(0);
         if(jRadioButtonNome.isSelected()==true){
             jTextCPF.setText("");
             jTextNome.setText("");
@@ -208,6 +211,8 @@ public class Cons_Func extends javax.swing.JFrame {
     private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
         FuncionarioDao f = new FuncionarioDao();
         List<Funcionario> funcionarios = new ArrayList<>();
+        DefaultTableModel model = (DefaultTableModel) jTableFunc.getModel();
+        model.setNumRows(0);
         int passa = 0;
         if(jRadioButtonCPF.isSelected()==false && jRadioButtonNome.isSelected()==false){
             JOptionPane.showMessageDialog(null,"Você precisa selecionar uma forma de pesquisa antes de clicar em \"Consultar\", por CPF ou por Nome.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -239,8 +244,6 @@ public class Cons_Func extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
             Object vec[] = new Object[2];
-            DefaultTableModel model = (DefaultTableModel) jTableFunc.getModel();
-            model.setNumRows(0);
             String cpf;
             for(Funcionario fi : funcionarios){
                 cpf = Long.toString(fi.getCPF());
