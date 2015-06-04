@@ -38,7 +38,7 @@ public class Main {
         try {  
             //Setar estilo que eu quero,ex: Trocar Nimbus por Windows,ou Metal no if
             for ( LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
-                if ( "Metal".equals( info.getName() ) ) {  
+                if ( "Nimbus".equals( info.getName() ) ) {  
                     UIManager.setLookAndFeel( info.getClassName() );  
                     break;  
                 }  
@@ -52,9 +52,9 @@ public class Main {
             System.out.println("Não foi possível setar o estilo,contate o administrador");
         }
         //esperando LoginDao
-        /*Login l = new Login();
-        l.setVisible(true);*/
-        Menu m = new Menu();
-        m.setVisible(true);
+        Login l = new Login();
+        l.setVisible(true);
+        /*Menu m = new Menu();
+        m.setVisible(true);*/
     }
 }

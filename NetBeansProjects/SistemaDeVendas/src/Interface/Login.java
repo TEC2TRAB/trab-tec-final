@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Classes.MD5;
+import Dao.FuncionarioDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -112,6 +114,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonEntrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMousePressed
         int passa = 0;
+        String senha;
         if(jTextLogin.getText().isEmpty() && jPasswordSenha.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Campos Usuário e Senha não podem ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa=1;
@@ -122,7 +125,10 @@ public class Login extends javax.swing.JFrame {
         if(jPasswordSenha.getText().isEmpty() && passa==0){
             JOptionPane.showMessageDialog(null, "Campo Senha não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
-        
+        FuncionarioDao f = new FuncionarioDao();
+        MD5 m = new MD5();
+        senha = m.geraMD5(jPasswordSenha.getText());
+        f.verificarAcesso(jTextLogin.getText(), senha);
     }//GEN-LAST:event_jButtonEntrarMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
