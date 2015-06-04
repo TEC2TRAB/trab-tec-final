@@ -11,6 +11,7 @@ import Classes.*;
 import ModuloDePessoas.Cliente;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -45,7 +46,7 @@ public class Cons_Clien extends javax.swing.JFrame {
         jLabel1Selecione = new javax.swing.JLabel();
         jButtonConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableCliente = new javax.swing.JTable();
         jButtonCancelar = new javax.swing.JButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,30 +105,9 @@ public class Cons_Clien extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "CPF", "Editar"
@@ -148,7 +128,7 @@ public class Cons_Clien extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableCliente);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -271,8 +251,25 @@ public class Cons_Clien extends javax.swing.JFrame {
         }else if(jRadioButtonNome.isSelected()==true){
             clientes = c.consultar(jTextNome.getText());
         }
-        if(passa == 0 && clientes.isEmpty())
+        if(passa == 0 && clientes.isEmpty()){
             JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Object vec[] = new Object[2];
+            DefaultTableModel model = (DefaultTableModel) jTableCliente.getModel();
+            model.setNumRows(0);
+            String cpf;
+            for(Cliente cl : clientes){
+                cpf = Long.toString(cl.getCPF());
+                if(cpf.length()!=11){
+                    while(cpf.length()!=11){
+                        cpf = "0"+cpf;
+                    }
+                }
+                vec[0] = cl.getNome();
+                vec[1] = cpf;
+                model.addRow(vec);
+            }
+        }
     }//GEN-LAST:event_jButtonConsultarMousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -297,8 +294,8 @@ public class Cons_Clien extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonNome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableCliente;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables

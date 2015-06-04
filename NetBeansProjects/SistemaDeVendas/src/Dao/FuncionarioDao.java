@@ -105,9 +105,9 @@ public class FuncionarioDao {
                 data1.setTime(resultadoFuncionario.getDate("admissao"));
                 funcionario.setAdmissao(data1);
                 
-                Calendar data2 = Calendar.getInstance();
+                /*Calendar data2 = Calendar.getInstance();
                 data2.setTime(resultadoFuncionario.getDate("demissao"));
-                funcionario.setDemissao(data2);
+                funcionario.setDemissao(data2);*/
                 
                 PreparedStatement statementPessoa = this.connection.prepareStatement(sqlPessoa);
                 statementPessoa.setString(1, Long.toString(cpf));

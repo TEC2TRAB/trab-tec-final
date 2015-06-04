@@ -8,7 +8,6 @@ package sysvendas;
 
 import Classes.ConnectionFactory;
 import Interface.Login;
-import Interface.Menu;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.UIManager;
@@ -25,11 +24,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try (Connection con = new ConnectionFactory().getConnection()) {
-            System.out.println("Conexão aberta!");
-        } catch(SQLException e) {
-            System.out.println(e);
-        }
         //exemplos mudança estilo Nimbus
         //Só funciona com java 8
         /*UIManager.put( "nimbusBase", new Color( 81, 81, 81 ) );  
@@ -51,10 +45,7 @@ public class Main {
                 InstantiationException | IllegalAccessException e){
             System.out.println("Não foi possível setar o estilo,contate o administrador");
         }
-        //esperando LoginDao
         Login l = new Login();
         l.setVisible(true);
-        /*Menu m = new Menu();
-        m.setVisible(true);*/
     }
 }

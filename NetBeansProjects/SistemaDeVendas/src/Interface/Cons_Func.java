@@ -11,6 +11,7 @@ import Classes.*;
 import ModuloDePessoas.Funcionario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,7 +41,7 @@ public class Cons_Func extends javax.swing.JFrame {
         jRadioButtonNome = new javax.swing.JRadioButton();
         jLabelCPF = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableFunc = new javax.swing.JTable();
         jLabel1Selecione = new javax.swing.JLabel();
         jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
@@ -76,30 +77,9 @@ public class Cons_Func extends javax.swing.JFrame {
         jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCPF.setText("CPF:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableFunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "CPF", "Editar"
@@ -120,7 +100,7 @@ public class Cons_Func extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableFunc);
 
         jLabel1Selecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1Selecione.setText("Selecione: ");
@@ -255,8 +235,25 @@ public class Cons_Func extends javax.swing.JFrame {
         }else if(jRadioButtonNome.isSelected()==true){
             funcionarios = f.consultar(jTextNome.getText());
         }
-        if(passa == 0 && funcionarios.isEmpty())
+        if(passa == 0 && funcionarios.isEmpty()){
             JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Object vec[] = new Object[2];
+            DefaultTableModel model = (DefaultTableModel) jTableFunc.getModel();
+            model.setNumRows(0);
+            String cpf;
+            for(Funcionario fi : funcionarios){
+                cpf = Long.toString(fi.getCPF());
+                if(cpf.length()!=11){
+                    while(cpf.length()!=11){
+                        cpf = "0"+cpf;
+                    }
+                }
+                vec[0] = fi.getNome();
+                vec[1] = cpf;
+                model.addRow(vec);
+            }
+        }
     }//GEN-LAST:event_jButtonConsultarMousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -281,7 +278,7 @@ public class Cons_Func extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonCPF;
     private javax.swing.JRadioButton jRadioButtonNome;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableFunc;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
