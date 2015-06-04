@@ -37,7 +37,7 @@ public class ProdutoDao {
             statement.setDouble(2, produto.getPreco());
             statement.setInt(3, produto.getQuantidade());
             statement.setString(4, produto.getDescricao());
-            statement.setString(5, produto.getNome());
+            statement.setString(5, produto.getNome().toUpperCase());
             
             statement.execute();
             statement.close();
@@ -81,7 +81,7 @@ public class ProdutoDao {
         try {
             List<Produto> produtos = new ArrayList<>();
             PreparedStatement statement = this.connection.prepareStatement(sql);
-            statement.setString(1, nome + "%");
+            statement.setString(1, nome.toUpperCase() + "%");
             
             ResultSet resultado = statement.executeQuery();
             while(resultado.next()) {
