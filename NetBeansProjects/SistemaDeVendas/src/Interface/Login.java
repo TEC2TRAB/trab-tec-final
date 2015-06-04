@@ -115,6 +115,7 @@ public class Login extends javax.swing.JFrame {
     private void jButtonEntrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMousePressed
         int passa = 0;
         String senha;
+        boolean result;
         if(jTextLogin.getText().isEmpty() && jPasswordSenha.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Campos Usuário e Senha não podem ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa=1;
@@ -128,7 +129,13 @@ public class Login extends javax.swing.JFrame {
         FuncionarioDao f = new FuncionarioDao();
         MD5 m = new MD5();
         senha = m.geraMD5(jPasswordSenha.getText());
-        f.verificarAcesso(jTextLogin.getText(), senha);
+        result = f.verificarAcesso(jTextLogin.getText(), senha);
+        if(result==false){
+            JOptionPane.showMessageDialog(null, "Usuário e/ou Senha incorretos.", senha, passa);
+        }else{
+            Menu me = new Menu();
+            me.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonEntrarMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
