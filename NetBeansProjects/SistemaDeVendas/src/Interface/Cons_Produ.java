@@ -6,6 +6,13 @@
 
 package Interface;
 
+import Dao.ProdutoDao;
+import ModuloDeProdutos.Produto;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author cesar.nascimento
@@ -32,7 +39,7 @@ public class Cons_Produ extends javax.swing.JFrame {
         jRadioButtonCodigo = new javax.swing.JRadioButton();
         jLabelNome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableProd = new javax.swing.JTable();
         jLabel1Selecione = new javax.swing.JLabel();
         jTextNome = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
@@ -68,30 +75,9 @@ public class Cons_Produ extends javax.swing.JFrame {
         jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNome.setText("Nome:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Código", "Editar"
@@ -112,7 +98,7 @@ public class Cons_Produ extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableProd);
 
         jLabel1Selecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1Selecione.setText("Selecione: ");
@@ -120,6 +106,11 @@ public class Cons_Produ extends javax.swing.JFrame {
         jTextNome.setName(""); // NOI18N
 
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonConsultarMousePressed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,9 +182,12 @@ public class Cons_Produ extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNomeActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableProd.getModel();
+        model.setNumRows(0);
         if(jRadioButtonNome.isSelected()==true){
             jRadioButtonCodigo.setSelected(false);
             jTextNome.setEnabled(true);
+            jTextCodigo.setText("");
             jTextCodigo.setEnabled(false);
         }else{
             jTextCodigo.setEnabled(true);
@@ -201,9 +195,12 @@ public class Cons_Produ extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNomeActionPerformed
 
     private void jRadioButtonCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCodigoActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableProd.getModel();
+        model.setNumRows(0);
         if(jRadioButtonCodigo.isSelected()==true){
             jRadioButtonNome.setSelected(false);
             jTextCodigo.setEnabled(true);
+            jTextNome.setText("");
             jTextNome.setEnabled(false);
         }else{
             jTextNome.setEnabled(true);
@@ -219,6 +216,42 @@ public class Cons_Produ extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
+    private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
+        DefaultTableModel model = (DefaultTableModel) jTableProd.getModel();
+        model.setNumRows(0);
+        ProdutoDao p = new ProdutoDao();
+        List<Produto> produtos = new ArrayList<>();
+        if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else if(jRadioButtonNome.isSelected()==true){
+            System.out.println(jTextNome.getText());
+            produtos = p.consultar(jTextNome.getText());
+        }
+        if(jRadioButtonCodigo.isSelected()==true && jTextCodigo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Campo Código em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else if(jRadioButtonCodigo.isSelected()==true){
+            try{
+                Integer.parseInt(jTextCodigo.getText());
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "O campo Código é numérico,por favor, verifique e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+                jTextCodigo.setText("");
+                jTextCodigo.requestFocus();
+            }
+            System.out.println(jTextCodigo.getText());
+            produtos = p.consultar(Integer.parseInt(jTextCodigo.getText()));
+        }
+        if(produtos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Object vec[] = new Object[2];
+            for(Produto pi : produtos){
+                vec[0] = pi.getNome();
+                vec[1] = pi.getId();
+                model.addRow(vec);
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -231,7 +264,7 @@ public class Cons_Produ extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonCodigo;
     private javax.swing.JRadioButton jRadioButtonNome;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableProd;
     private javax.swing.JTextField jTextCodigo;
     private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
