@@ -8,7 +8,7 @@ public class Venda {
     private int id;
     private int idVendedor;
     private int idCliente;
-    private int[][] historico;
+    private double[][] historico;
     private double valorTotal;
     /**
      * @return the id
@@ -55,14 +55,14 @@ public class Venda {
     /**
      * @return the historico
      */
-    public int[][] getHistorico() {
+    public double[][] getHistorico() {
         return historico;
     }
 
     /**
      * @param historico the historico to set
      */
-    public void setHistorico(int[][] historico) {
+    public void setHistorico(double[][] historico) {
         this.historico = historico;
     }
 
