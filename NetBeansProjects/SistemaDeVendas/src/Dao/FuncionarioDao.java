@@ -63,10 +63,9 @@ public class FuncionarioDao {
                 statement.setString(12, funcionario.getRua());
 
                 statement.execute();
+                statement.clearParameters();
             }
-            statement.clearParameters();
             statement = this.connection.prepareStatement(sqlFuncionario);
-
             statement.setString(1, Long.toString(funcionario.getCPF()));
             statement.setDate(2, new Date(System.currentTimeMillis()));
             statement.setNull(3, java.sql.Types.DATE);

@@ -64,10 +64,9 @@ public class ClienteDao {
                 statement.setString(12, cliente.getRua());
 
                 statement.execute();
+                statement.clearParameters();
             }
-            statement.clearParameters();
             statement = this.connection.prepareStatement(sqlCliente);
-
             statement.setString(1, Long.toString(cliente.getCPF()));
 
             statement.execute();

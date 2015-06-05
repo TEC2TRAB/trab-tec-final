@@ -1,4 +1,7 @@
 package ModuloDeVendas;
+
+import java.util.Calendar;
+
 /**
  *
  * @author Sousa, Italo
@@ -10,6 +13,7 @@ public class Venda {
     private int idCliente;
     private double[][] historico;
     private double valorTotal;
+    private Calendar dataVenda;
     /**
      * @return the id
      */
@@ -78,5 +82,13 @@ public class Venda {
      */
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+    
+    public Calendar getDataVenda() {
+        return dataVenda;
+    }
+    
+    public void setDataVenda(Calendar dataVenda) {
+        this.dataVenda = dataVenda;
     }
 }
