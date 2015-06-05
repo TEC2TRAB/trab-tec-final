@@ -28,10 +28,8 @@ public class Cad_Venda extends javax.swing.JFrame {
     private void initComponents() {
 
         TitulojLabel = new javax.swing.JLabel();
-        jLabel1IDvendedor = new javax.swing.JLabel();
         jLabel1Cliente = new javax.swing.JLabel();
         jTextCliente = new javax.swing.JTextField();
-        jTextVendedor = new javax.swing.JTextField();
         jLabelValor = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEstoque = new javax.swing.JTable();
@@ -44,6 +42,8 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTextConsultaProd = new javax.swing.JTextField();
         jLabelIdProd = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Vendas");
@@ -51,33 +51,19 @@ public class Cad_Venda extends javax.swing.JFrame {
         TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TitulojLabel.setText("Cadastrar Venda");
 
-        jLabel1IDvendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1IDvendedor.setText("ID - Vendedor:");
-
         jLabel1Cliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1Cliente.setText("ID - Cliente:");
+        jLabel1Cliente.setText("Cliente:");
 
         jTextCliente.setName(""); // NOI18N
 
-        jTextVendedor.setName(""); // NOI18N
-
-        jLabelValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelValor.setFont(new java.awt.Font("Raleway", 1, 16)); // NOI18N
         jLabelValor.setForeground(new java.awt.Color(255, 0, 0));
-        jLabelValor.setText("VALOR: ");
+        jLabelValor.setText("Total:");
 
         jTableEstoque.setAutoCreateRowSorter(true);
         jTableEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Preço", "Quantidade", "Adicionar"
@@ -109,16 +95,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTableComprados.setAutoCreateRowSorter(true);
         jTableComprados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Quantidade", "Preço", "Excluir"
@@ -158,7 +135,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTextConsultaProd.setName(""); // NOI18N
 
         jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelIdProd.setText("ID - Produto:");
+        jLabelIdProd.setText("Nome:");
 
         jButton1.setText("Pesquisar");
 
@@ -167,33 +144,32 @@ public class Cad_Venda extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelIdProd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrar1)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButtonCancelar1))
-                    .addComponent(TitulojComprado)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEstoque)
-                    .addComponent(jLabelValor)
-                    .addComponent(TitulojLabel)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1IDvendedor)
-                            .addComponent(jLabel1Cliente))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TitulojLabel)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1Cliente)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonCadastrar1)
+                            .addGap(32, 32, 32)
+                            .addComponent(jButtonCancelar1))
+                        .addComponent(jLabelValor)
+                        .addComponent(TitulojComprado)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jLabelEstoque)
+                        .addComponent(jScrollPane1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabelIdProd)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton1))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,32 +178,32 @@ public class Cad_Venda extends javax.swing.JFrame {
                 .addComponent(TitulojLabel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1IDvendedor)
-                    .addComponent(jTextVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1Cliente)
                     .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelValor)
-                .addGap(33, 33, 33)
                 .addComponent(jLabelEstoque)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelIdProd)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TitulojComprado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
+                .addComponent(jLabelValor)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,16 +227,16 @@ public class Cad_Venda extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrar1;
     private javax.swing.JButton jButtonCancelar1;
     private javax.swing.JLabel jLabel1Cliente;
-    private javax.swing.JLabel jLabel1IDvendedor;
     private javax.swing.JLabel jLabelEstoque;
     private javax.swing.JLabel jLabelIdProd;
     private javax.swing.JLabel jLabelValor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTableComprados;
     private javax.swing.JTable jTableEstoque;
     private javax.swing.JTextField jTextCliente;
     private javax.swing.JTextField jTextConsultaProd;
-    private javax.swing.JTextField jTextVendedor;
     // End of variables declaration//GEN-END:variables
 }
