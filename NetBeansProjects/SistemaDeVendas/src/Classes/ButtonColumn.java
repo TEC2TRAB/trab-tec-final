@@ -8,10 +8,16 @@ package Classes;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javax.swing.AbstractCellEditor;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -32,10 +38,13 @@ public class ButtonColumn extends AbstractCellEditor
         {  
             super();  
             this.table = table;  
-            renderButton = new JButton();  
-  
-            editButton = new JButton();  
-            editButton.setFocusPainted( false );  
+            ImageIcon image = new ImageIcon(getClass().getResource("add.png"));
+            renderButton = new JButton(image);  
+            
+            
+            editButton = new JButton(image);
+
+            editButton.setFocusPainted( false ); 
             editButton.addActionListener( this );  
   
             TableColumnModel columnModel = table.getColumnModel();  
@@ -46,6 +55,8 @@ public class ButtonColumn extends AbstractCellEditor
         public Component getTableCellRendererComponent(  
             JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
         {  
+            
+            //Aqui fica as ações de animação do botão
             if (hasFocus)  
             {  
                 renderButton.setForeground(table.getForeground());  
@@ -62,7 +73,7 @@ public class ButtonColumn extends AbstractCellEditor
                 renderButton.setBackground(UIManager.getColor("Button.background"));  
             }  
   
-            renderButton.setText( (value == null) ? "" : value.toString() );  
+            renderButton.setText( (value == null) ? "Editar" : value.toString() );  
             return renderButton;  
         }  
   

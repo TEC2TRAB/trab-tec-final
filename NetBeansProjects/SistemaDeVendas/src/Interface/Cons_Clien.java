@@ -108,7 +108,9 @@ public class Cons_Clien extends javax.swing.JFrame {
 
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Nome", "CPF", "Editar"
@@ -129,6 +131,7 @@ public class Cons_Clien extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableCliente.setRowHeight(24);
         jScrollPane1.setViewportView(jTableCliente);
 
         jButtonCancelar.setText("Cancelar");
