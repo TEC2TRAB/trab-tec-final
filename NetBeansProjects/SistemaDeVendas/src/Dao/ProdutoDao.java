@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,6 +43,7 @@ public class ProdutoDao {
             statement.execute();
             statement.close();
         } catch(SQLException e) {
+            JOptionPane.showMessageDialog(null, "Este ID já foi cadastrado.", "Alerta", JOptionPane.WARNING_MESSAGE);
             throw new RuntimeException(e);
         }
     }
