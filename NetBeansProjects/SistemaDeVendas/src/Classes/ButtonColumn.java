@@ -8,16 +8,11 @@ package Classes;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javax.swing.AbstractCellEditor;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -52,6 +47,7 @@ public class ButtonColumn extends AbstractCellEditor
             columnModel.getColumn(column).setCellEditor( this );  
         }  
   
+        @Override
         public Component getTableCellRendererComponent(  
             JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
         {  
@@ -77,6 +73,7 @@ public class ButtonColumn extends AbstractCellEditor
             return renderButton;  
         }  
   
+        @Override
         public Component getTableCellEditorComponent(  
             JTable table, Object value, boolean isSelected, int row, int column)  
         {  
@@ -85,11 +82,13 @@ public class ButtonColumn extends AbstractCellEditor
             return editButton;  
         }  
   
+        @Override
         public Object getCellEditorValue()  
         {  
             return text;  
         }  
   
+        @Override
         public void actionPerformed(ActionEvent e)  
         {  
             fireEditingStopped();  
