@@ -100,6 +100,7 @@ public class Cons_Produ extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableProd.setRowHeight(24);
         jScrollPane1.setViewportView(jTableProd);
 
         jLabel1Selecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

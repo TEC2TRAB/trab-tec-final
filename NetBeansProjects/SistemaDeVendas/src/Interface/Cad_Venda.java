@@ -84,6 +84,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableEstoque.setRowHeight(24);
         jScrollPane1.setViewportView(jTableEstoque);
 
         jLabelEstoque.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -116,6 +117,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableComprados.setRowHeight(24);
         jScrollPane2.setViewportView(jTableComprados);
 
         jButtonCadastrar.setText("Cadastrar");

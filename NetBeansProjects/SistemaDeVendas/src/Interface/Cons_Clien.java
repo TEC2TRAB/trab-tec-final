@@ -108,9 +108,7 @@ public class Cons_Clien extends javax.swing.JFrame {
 
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "CPF", "Editar"

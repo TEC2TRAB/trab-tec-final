@@ -96,6 +96,7 @@ public class Cons_Venda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableVenda.setRowHeight(24);
         jScrollPane1.setViewportView(jTableVenda);
 
         jLabelSelecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

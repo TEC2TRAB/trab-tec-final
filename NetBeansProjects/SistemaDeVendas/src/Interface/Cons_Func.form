@@ -150,6 +150,7 @@
                 <Column editable="true" title="Editar" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="rowHeight" type="int" value="24"/>
           </Properties>
         </Component>
       </SubComponents>

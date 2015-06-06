@@ -102,6 +102,7 @@ public class Cons_Func extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableFunc.setRowHeight(24);
         jScrollPane1.setViewportView(jTableFunc);
 
         jLabel1Selecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

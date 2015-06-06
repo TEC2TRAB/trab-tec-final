@@ -38,7 +38,7 @@ public class ButtonColumn extends AbstractCellEditor
         {  
             super();  
             this.table = table;  
-            ImageIcon image = new ImageIcon(getClass().getResource("add.png"));
+            ImageIcon image = new ImageIcon(getClass().getResource("images/settings.png"));
             renderButton = new JButton(image);  
             
             
@@ -65,7 +65,7 @@ public class ButtonColumn extends AbstractCellEditor
             else if (isSelected)  
             {  
                 renderButton.setForeground(table.getSelectionForeground());  
-                 renderButton.setBackground(table.getSelectionBackground());  
+                 renderButton.setBackground(table.getSelectionBackground());
             }  
             else  
             {  
@@ -80,7 +80,7 @@ public class ButtonColumn extends AbstractCellEditor
         public Component getTableCellEditorComponent(  
             JTable table, Object value, boolean isSelected, int row, int column)  
         {  
-            text = (value == null) ? "" : value.toString();  
+            text = (value == null) ? "Editar" : value.toString();  
             editButton.setText( text );  
             return editButton;  
         }  
