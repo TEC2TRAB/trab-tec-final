@@ -37,8 +37,8 @@ public class Cad_Venda extends javax.swing.JFrame {
         TitulojComprado = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableComprados = new javax.swing.JTable();
-        jButtonCadastrar1 = new javax.swing.JButton();
-        jButtonCancelar1 = new javax.swing.JButton();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jTextConsultaProd = new javax.swing.JTextField();
         jLabelIdProd = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -118,17 +118,17 @@ public class Cad_Venda extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableComprados);
 
-        jButtonCadastrar1.setText("Cadastrar");
-        jButtonCadastrar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrar1ActionPerformed(evt);
+                jButtonCadastrarActionPerformed(evt);
             }
         });
 
-        jButtonCancelar1.setText("Cancelar");
-        jButtonCancelar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelar1ActionPerformed(evt);
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -154,9 +154,9 @@ public class Cad_Venda extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonCadastrar1)
+                            .addComponent(jButtonCadastrar)
                             .addGap(32, 32, 32)
-                            .addComponent(jButtonCancelar1))
+                            .addComponent(jButtonCancelar))
                         .addComponent(jLabelValor)
                         .addComponent(TitulojComprado)
                         .addComponent(jScrollPane2)
@@ -201,8 +201,8 @@ public class Cad_Venda extends javax.swing.JFrame {
                 .addComponent(jLabelValor)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -210,13 +210,13 @@ public class Cad_Venda extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrar1ActionPerformed
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCadastrar1ActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jButtonCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCancelar1ActionPerformed
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -224,8 +224,8 @@ public class Cad_Venda extends javax.swing.JFrame {
     private javax.swing.JLabel TitulojComprado;
     private javax.swing.JLabel TitulojLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonCadastrar1;
-    private javax.swing.JButton jButtonCancelar1;
+    private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel1Cliente;
     private javax.swing.JLabel jLabelEstoque;
     private javax.swing.JLabel jLabelIdProd;

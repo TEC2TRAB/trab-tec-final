@@ -33,7 +33,7 @@ public class Cons_Venda extends javax.swing.JFrame {
         jRadioButtonID = new javax.swing.JRadioButton();
         jLabelCPF = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableVenda = new javax.swing.JTable();
         jLabelSelecione = new javax.swing.JLabel();
         jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
@@ -73,40 +73,19 @@ public class Cons_Venda extends javax.swing.JFrame {
         jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelCPF.setText("CPF - Cliente:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID - Vendedor", "CPF - Cliente", "Data da Venda", "Ver Mais"
+                "ID - Vendedor", "CPF - Cliente", "Data da Venda", "Total", "Ver Mais"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -117,7 +96,7 @@ public class Cons_Venda extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableVenda);
 
         jLabelSelecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSelecione.setText("Selecione: ");
@@ -278,7 +257,7 @@ public class Cons_Venda extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonData;
     private javax.swing.JRadioButton jRadioButtonID;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableVenda;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextData;
     private javax.swing.JTextField jTextID;

@@ -6,9 +6,9 @@
 
 package Interface;
 
+import Classes.ButtonColumn;
 import Dao.ProdutoDao;
 import ModuloDeProdutos.Produto;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,6 +23,7 @@ public class Cons_Produ extends javax.swing.JFrame {
     /** Creates new form Cons_Produ */
     public Cons_Produ() {
         initComponents();
+        ButtonColumn bc = new ButtonColumn(jTableProd,2);
     }
 
     /** This method is called from within the constructor to

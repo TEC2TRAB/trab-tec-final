@@ -23,6 +23,9 @@ public class Cons_Func extends javax.swing.JFrame {
      */
     public Cons_Func() {
         initComponents();
+        ButtonColumn bc = new ButtonColumn(jTableFunc,2);
+        
+        
     }
 
     /**
