@@ -8,6 +8,7 @@ package Interface;
 
 import Dao.ProdutoDao;
 import ModuloDeProdutos.Produto;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -221,10 +222,10 @@ public class Cons_Produ extends javax.swing.JFrame {
         model.setNumRows(0);
         ProdutoDao p = new ProdutoDao();
         List<Produto> produtos = new ArrayList<>();
+        int passa=0;
         if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else if(jRadioButtonNome.isSelected()==true){
-            System.out.println(jTextNome.getText());
             produtos = p.consultar(jTextNome.getText());
         }
         if(jRadioButtonCodigo.isSelected()==true && jTextCodigo.getText().isEmpty()){
@@ -232,15 +233,15 @@ public class Cons_Produ extends javax.swing.JFrame {
         }else if(jRadioButtonCodigo.isSelected()==true){
             try{
                 Integer.parseInt(jTextCodigo.getText());
+                produtos = p.consultar(Integer.parseInt(jTextCodigo.getText()));
             }catch(NumberFormatException e){
+                passa=1;
                 JOptionPane.showMessageDialog(null, "O campo Código é numérico,por favor, verifique e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
                 jTextCodigo.setText("");
                 jTextCodigo.requestFocus();
             }
-            System.out.println(jTextCodigo.getText());
-            produtos = p.consultar(Integer.parseInt(jTextCodigo.getText()));
         }
-        if(produtos.isEmpty()){
+        if(passa==0 && produtos.isEmpty()){
             JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
             Object vec[] = new Object[2];
