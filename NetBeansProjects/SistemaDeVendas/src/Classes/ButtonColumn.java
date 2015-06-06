@@ -22,15 +22,13 @@ import javax.swing.table.TableColumnModel;
  * @author cesar.nascimento
  */
 public class ButtonColumn extends AbstractCellEditor  
-        implements TableCellRenderer, TableCellEditor, ActionListener  
-    {  
+        implements TableCellRenderer, TableCellEditor, ActionListener{  
         JTable table;  
         JButton renderButton;  
         JButton editButton;  
         String text;  
   
-        public ButtonColumn(JTable table, int column)  
-        {  
+        public ButtonColumn(JTable table, int column){  
             super();  
             this.table = table;  
             ImageIcon image = new ImageIcon(getClass().getResource("images/settings.png"));
@@ -49,22 +47,18 @@ public class ButtonColumn extends AbstractCellEditor
   
         @Override
         public Component getTableCellRendererComponent(  
-            JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)  
-        {  
+            JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){  
             
             //Aqui fica as ações de animação do botão
-            if (hasFocus)  
-            {  
+            if (hasFocus){  
                 renderButton.setForeground(table.getForeground());  
                 renderButton.setBackground(UIManager.getColor("Button.background"));  
             }  
-            else if (isSelected)  
-            {  
+            else if (isSelected){  
                 renderButton.setForeground(table.getSelectionForeground());  
                  renderButton.setBackground(table.getSelectionBackground());
             }  
-            else  
-            {  
+            else{  
                 renderButton.setForeground(table.getForeground());  
                 renderButton.setBackground(UIManager.getColor("Button.background"));  
             }  
@@ -75,23 +69,19 @@ public class ButtonColumn extends AbstractCellEditor
   
         @Override
         public Component getTableCellEditorComponent(  
-            JTable table, Object value, boolean isSelected, int row, int column)  
-        {  
+            JTable table, Object value, boolean isSelected, int row, int column){  
             text = (value == null) ? "Editar" : value.toString();  
             editButton.setText( text );  
             return editButton;  
         }  
   
         @Override
-        public Object getCellEditorValue()  
-        {  
+        public Object getCellEditorValue(){  
             return text;  
         }  
   
         @Override
-        public void actionPerformed(ActionEvent e)  
-        {  
-            fireEditingStopped();  
-            System.out.println( e.getActionCommand() + " : " + table.getSelectedRow());  
+        public void actionPerformed(ActionEvent e){  
+            fireEditingStopped();   
         }  
     }  
