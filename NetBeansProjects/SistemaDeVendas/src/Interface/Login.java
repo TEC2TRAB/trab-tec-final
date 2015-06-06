@@ -20,6 +20,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        getRootPane().setDefaultButton(jButtonEntrar);
     }
 
     /**
@@ -48,9 +49,9 @@ public class Login extends javax.swing.JFrame {
         jLabelSenha.setText("Senha:");
 
         jButtonEntrar.setText("Entrar");
-        jButtonEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonEntrarMousePressed(evt);
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
             }
         });
 
@@ -112,7 +113,7 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
-    private void jButtonEntrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMousePressed
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         int passa = 0;
         String senha;
         boolean result;
@@ -122,22 +123,26 @@ public class Login extends javax.swing.JFrame {
         }
         if(jTextLogin.getText().isEmpty() && passa==0){
             JOptionPane.showMessageDialog(null, "Campo Usuário não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa = 1;
         }
         if(jPasswordSenha.getText().isEmpty() && passa==0){
             JOptionPane.showMessageDialog(null, "Campo Senha não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa = 1;
         }
-        FuncionarioDao f = new FuncionarioDao();
-        MD5 m = new MD5();
-        senha = m.geraMD5(jPasswordSenha.getText());
-        result = f.verificarAcesso(jTextLogin.getText(), senha);
-        if(result==false){
-            JOptionPane.showMessageDialog(null, "Usuário e/ou Senha incorretos.", senha, passa);
-        }else{
-            dispose();
-            Menu me = new Menu();
-            me.setVisible(true);
+        if(passa==0){
+            FuncionarioDao f = new FuncionarioDao();
+            MD5 m = new MD5();
+            senha = m.geraMD5(jPasswordSenha.getText());
+            result = f.verificarAcesso(jTextLogin.getText(), senha);
+            if(result==false){
+                JOptionPane.showMessageDialog(null, "Usuário e/ou Senha incorretos.", "Alerta", JOptionPane.ERROR_MESSAGE);
+            }else{
+                dispose();
+                Menu me = new Menu();
+                me.setVisible(true);
+            }
         }
-    }//GEN-LAST:event_jButtonEntrarMousePressed
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
