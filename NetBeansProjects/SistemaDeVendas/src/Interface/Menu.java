@@ -5,8 +5,6 @@
  */
 package Interface;
 
-import javax.swing.JInternalFrame;
-
 /**
  *
  * @author cesar.nascimento
@@ -182,11 +180,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItemCad_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_VendaMousePressed
         Cad_Venda cv = new Cad_Venda();
+        jPanel.add(cv);
         cv.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_VendaMousePressed
 
     private void jMenuItemCons_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_VendaMousePressed
         Cons_Venda cv = new Cons_Venda();
+        jPanel.add(cv);
         cv.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_VendaMousePressed
 
