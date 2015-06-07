@@ -47,6 +47,7 @@ public class Cons_Func extends javax.swing.JInternalFrame {
         jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
 
+        setTitle("Consultar Funcionário");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }

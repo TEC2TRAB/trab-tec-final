@@ -70,6 +70,8 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
         jButtonLimpar = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
 
+        setTitle("Cadastro de Cliente");
+
         jComboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
 
         try {

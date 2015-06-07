@@ -76,6 +76,8 @@ public class Cad_Func extends javax.swing.JInternalFrame {
         jRadioSexoF = new javax.swing.JRadioButton();
         jTextLogin = new javax.swing.JTextField();
 
+        setTitle("Cadastro de Funcionário");
+
         jRadioSexoM.setText("M");
         jRadioSexoM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
