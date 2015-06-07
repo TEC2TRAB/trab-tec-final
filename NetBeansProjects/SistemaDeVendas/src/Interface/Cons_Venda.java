@@ -43,6 +43,7 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
         jRadioButtonData = new javax.swing.JRadioButton();
         jRadioButtonCPF = new javax.swing.JRadioButton();
 
+        setTitle("Consultar Venda");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
