@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Interface;
-
 import Dao.FuncionarioDao;
 import javax.swing.JOptionPane;
 import Classes.*;
@@ -12,20 +11,19 @@ import ModuloDePessoas.Funcionario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author cesar.nascimento
  */
-public class Cons_Func extends javax.swing.JFrame {
+public class Cons_Func extends javax.swing.JInternalFrame {
+
     /**
-     * Creates new form Cons_Func
+     * Creates new form Cons_Func_Teste
      */
     public Cons_Func() {
         initComponents();
         ButtonColumn bc = new ButtonColumn(jTableFunc,2);
-        
-        
+        setClosable(true);
     }
 
     /**
@@ -37,6 +35,7 @@ public class Cons_Func extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonCancelar = new javax.swing.JButton();
         jLabelNome = new javax.swing.JLabel();
         jTextNome = new javax.swing.JTextField();
         jRadioButtonCPF = new javax.swing.JRadioButton();
@@ -47,13 +46,29 @@ public class Cons_Func extends javax.swing.JFrame {
         jLabel1Selecione = new javax.swing.JLabel();
         jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta de Funcionários");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMousePressed(evt);
             }
         });
 
@@ -117,13 +132,6 @@ public class Cons_Func extends javax.swing.JFrame {
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonCancelarMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,7 +161,7 @@ public class Cons_Func extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +189,11 @@ public class Cons_Func extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarMousePressed
 
     private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableFunc.getModel();
@@ -231,13 +242,13 @@ public class Cons_Func extends javax.swing.JFrame {
                 funcionarios = f.consultar(Long.parseLong(jTextCPF.getText()));
                 passa = 0;
             }else{
-               JOptionPane.showMessageDialog(null,"CPF inválido, por favor, digite um CPF válido e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE); 
-               jTextCPF.setText("");
-               jTextCPF.requestFocus();
-               passa = 1;
+                JOptionPane.showMessageDialog(null,"CPF inválido, por favor, digite um CPF válido e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+                jTextCPF.setText("");
+                jTextCPF.requestFocus();
+                passa = 1;
             }
         }
-        
+
         if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
@@ -263,18 +274,11 @@ public class Cons_Func extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonConsultarMousePressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         jRadioButtonCPF.setSelected(true);
         jTextNome.setEnabled(false);
-    }//GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formInternalFrameOpened
 
-    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
-        this.dispose();
-    }//GEN-LAST:event_jButtonCancelarMousePressed
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;

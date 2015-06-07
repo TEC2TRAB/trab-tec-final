@@ -4,24 +4,25 @@
  * and open the template in the editor.
  */
 package Interface;
+
 import Dao.ProdutoDao;
 import ModuloDeProdutos.Produto;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 /**
  *
  * @author cesar.nascimento
  */
-public class Cad_Produ extends javax.swing.JInternalFrame {
+public class Edit_Produ extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cad_Produ_Teste
+     * Creates new form Cad_Produ
      */
-    public Cad_Produ() {
+    public Edit_Produ() {
         initComponents();
-        setClosable(true);
     }
 
     /**
@@ -33,57 +34,36 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCancelar = new javax.swing.JButton();
         TitulojLabel = new javax.swing.JLabel();
-        jButtonLimpar = new javax.swing.JButton();
         jLabelNome = new javax.swing.JLabel();
-        jButtonCadastrar = new javax.swing.JButton();
         jTextNome = new javax.swing.JTextField();
-        jTextID = new javax.swing.JTextField();
         jTextQuantidade = new javax.swing.JTextField();
-        jLabelID = new javax.swing.JLabel();
         jLabelQuantidade = new javax.swing.JLabel();
         jLabelPreco = new javax.swing.JLabel();
         jTextPreco = new javax.swing.JTextField();
         jLabelDescricao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextDescricao = new javax.swing.JTextArea();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
+        jTextID = new javax.swing.JTextField();
+        jLabelID = new javax.swing.JLabel();
 
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonCancelarMousePressed(evt);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Editar Produto");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
         TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TitulojLabel.setText("Cadastro de Produtos");
 
-        jButtonLimpar.setText("Limpar Campos");
-        jButtonLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonLimparMousePressed(evt);
-            }
-        });
-
         jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNome.setText("Nome:");
 
-        jButtonCadastrar.setText("Cadastrar");
-        jButtonCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonCadastrarMousePressed(evt);
-            }
-        });
-
         jTextNome.setName(""); // NOI18N
-
-        jTextID.setName(""); // NOI18N
-        jTextID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextIDFocusLost(evt);
-            }
-        });
 
         jTextQuantidade.setName(""); // NOI18N
         jTextQuantidade.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -91,9 +71,6 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
                 jTextQuantidadeFocusLost(evt);
             }
         });
-
-        jLabelID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelID.setText("ID - Produto:");
 
         jLabelQuantidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelQuantidade.setText("Quantidade: ");
@@ -115,6 +92,25 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
         jTextDescricao.setRows(5);
         jScrollPane1.setViewportView(jTextDescricao);
 
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMousePressed(evt);
+            }
+        });
+
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonSalvarMousePressed(evt);
+            }
+        });
+
+        jTextID.setName(""); // NOI18N
+
+        jLabelID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelID.setText("ID - Produto:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,30 +122,30 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
                         .addComponent(jLabelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TitulojLabel)
-                            .addComponent(jLabelNome)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelPreco)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelQuantidade)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TitulojLabel)
+                        .addComponent(jLabelNome)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelDescricao)
-                            .addGap(28, 28, 28)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jButtonCadastrar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonCancelar))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                            .addComponent(jLabelPreco)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabelQuantidade)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelDescricao)
+                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButtonCancelar))))))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,74 +174,18 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
-
-    private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
-        jTextNome.setText("");
-        jTextPreco.setText("");
-        jTextQuantidade.setText("");
-        jTextDescricao.setText("");
-    }//GEN-LAST:event_jButtonLimparMousePressed
-
-    private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
-        int erro = 0;
-        Component components[] = getContentPane().getComponents();
-        for (Component component : components) {
-            //É campo de texto?
-            if (component instanceof JTextField) {
-                //Está preenchido?
-                if (((JTextField) component).getText().isEmpty() ){
-                    erro=1;
-                    break;
-                }
-
-                if (jTextDescricao.getText().isEmpty() ){
-                    erro=1;
-                    break;
-                }
-            }
-        }
-        if(erro==1){
-            erro=0;
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else{
-            Produto p = new Produto();
-            p.setNome(jTextNome.getText());
-            p.setId(Integer.parseInt(jTextID.getText()));
-            p.setPreco(Double.parseDouble(jTextPreco.getText()));
-            p.setDescricao(jTextDescricao.getText());
-            p.setQuantidade(Integer.parseInt(jTextQuantidade.getText()));
-            ProdutoDao pd = new ProdutoDao();
-            pd.cadastrar(p);
-            JOptionPane.showMessageDialog(null,"Produto cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jButtonCadastrarMousePressed
-
-    private void jTextIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextIDFocusLost
-        try{
-            if(!jTextID.getText().equals("")){
-                Integer.parseInt(jTextID.getText());
-                jLabelID.setForeground(Color.black);
-            }
-        }catch(NumberFormatException e){
-            jLabelID.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo ID - Produto é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
-            jTextID.setText("");
-            jTextID.requestFocus();
-        }
-    }//GEN-LAST:event_jTextIDFocusLost
 
     private void jTextQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextQuantidadeFocusLost
         try{
@@ -275,12 +215,55 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextPrecoFocusLost
 
+    private void jButtonSalvarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMousePressed
+        int erro = 0;
+        Component components[] = getContentPane().getComponents();
+        for (Component component : components) {
+            //É campo de texto?
+            if (component instanceof JTextField) {
+                //Está preenchido?
+                if (((JTextField) component).getText().isEmpty() ){
+                    erro=1;
+                    break;
+                }
 
+                if (jTextDescricao.getText().isEmpty() ){
+                    erro=1;
+                    break;
+                }
+            }
+        }
+        if(erro==1){
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else{
+            Produto p = new Produto();
+            p.setNome(jTextNome.getText());
+            p.setId(Integer.parseInt(jTextID.getText()));
+            p.setPreco(Double.parseDouble(jTextPreco.getText()));
+            p.setDescricao(jTextDescricao.getText());
+            p.setQuantidade(Integer.parseInt(jTextQuantidade.getText()));
+            ProdutoDao pd = new ProdutoDao();
+            pd.cadastrar(p);
+            JOptionPane.showMessageDialog(null,"Produto cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButtonSalvarMousePressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jTextID.setEnabled(false);
+    }//GEN-LAST:event_formWindowOpened
+    public static void main(String args[]) {
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Edit_Produ().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojLabel;
-    private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelNome;
