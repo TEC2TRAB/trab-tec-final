@@ -5,8 +5,6 @@
  */
 package Interface;
 
-import javax.swing.JInternalFrame;
-
 /**
  *
  * @author cesar.nascimento
@@ -30,7 +28,6 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCad_Venda = new javax.swing.JMenuItem();
@@ -47,17 +44,6 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
-
-        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
-        jPanel.setLayout(jPanelLayout);
-        jPanelLayout.setHorizontalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-        jPanelLayout.setVerticalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
-        );
 
         jMenu1.setText("Vendas");
 
@@ -145,11 +131,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 379, Short.MAX_VALUE)
         );
 
         pack();
@@ -157,26 +143,22 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCad_ProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_ProdMousePressed
-        Cad_Produ cp = new Cad_Produ();
-        jPanel.add(cp);
-        cp.setVisible(true);
+        Cad_Produ cf = new Cad_Produ();
+        cf.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_ProdMousePressed
 
     private void jMenuItemCad_FuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_FuncMousePressed
         Cad_Func cf = new Cad_Func();
-        jPanel.add(cf);
         cf.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_FuncMousePressed
 
     private void jMenuItemCons_FuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_FuncMousePressed
         Cons_Func cf = new Cons_Func();
-        jPanel.add(cf);
         cf.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_FuncMousePressed
 
     private void jMenuItemCad_ClienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_ClienMousePressed
         Cad_Clien cc = new Cad_Clien();
-        jPanel.add(cc);
         cc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_ClienMousePressed
 
@@ -192,13 +174,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItemCons_ProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_ProdMousePressed
         Cons_Produ cp = new Cons_Produ();
-        jPanel.add(cp);
         cp.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_ProdMousePressed
 
     private void jMenuItemCons_ClientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_ClientMousePressed
         Cons_Clien cc = new Cons_Clien();
-        jPanel.add(cc);
         cc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_ClientMousePressed
 
@@ -220,6 +200,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCons_Func;
     private javax.swing.JMenuItem jMenuItemCons_Prod;
     private javax.swing.JMenuItem jMenuItemCons_Venda;
-    private javax.swing.JPanel jPanel;
     // End of variables declaration//GEN-END:variables
 }

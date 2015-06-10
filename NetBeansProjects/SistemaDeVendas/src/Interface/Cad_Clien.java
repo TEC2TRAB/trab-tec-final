@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
+
 import Classes.ValidadorCPF;
 import Dao.ClienteDao;
 import ModuloDePessoas.Cliente;
@@ -15,18 +16,18 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
 /**
  *
  * @author cesar.nascimento
  */
-public class Cad_Clien extends javax.swing.JInternalFrame {
+public class Cad_Clien extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cad_Clien_Teste
+     * Creates new form Cad_Clien
      */
     public Cad_Clien() {
         initComponents();
-        setClosable(true);
     }
 
     /**
@@ -38,92 +39,46 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextComple = new javax.swing.JTextField();
-        jComboEstado = new javax.swing.JComboBox();
-        jFormattedDtNasc = new javax.swing.JFormattedTextField();
-        Endereço = new javax.swing.JLabel();
-        jLabelCPF = new javax.swing.JLabel();
-        jLabelCidade = new javax.swing.JLabel();
-        jLabelDados = new javax.swing.JLabel();
-        jLabelNome = new javax.swing.JLabel();
-        jLabelRG = new javax.swing.JLabel();
-        jTextCidade = new javax.swing.JTextField();
-        jLabelEstado = new javax.swing.JLabel();
-        jLabelBairro = new javax.swing.JLabel();
-        jTextNome = new javax.swing.JTextField();
-        jTextBairro = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jRadioSexoF = new javax.swing.JRadioButton();
-        jLabelRua = new javax.swing.JLabel();
-        jTextRua = new javax.swing.JTextField();
-        jRadioSexoM = new javax.swing.JRadioButton();
-        jTextNumero = new javax.swing.JTextField();
-        jLabelComple = new javax.swing.JLabel();
-        jLabelSexo = new javax.swing.JLabel();
         jLabelNumero = new javax.swing.JLabel();
-        jTextRG = new javax.swing.JTextField();
-        jLabelDtNasc = new javax.swing.JLabel();
-        jLabelCEP = new javax.swing.JLabel();
-        jTextCPF = new javax.swing.JTextField();
+        jTextRua = new javax.swing.JTextField();
+        jTextNumero = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabelRua = new javax.swing.JLabel();
+        jLabelRG = new javax.swing.JLabel();
+        jLabelEstado = new javax.swing.JLabel();
+        jLabelCPF = new javax.swing.JLabel();
         jFormattedCEP = new javax.swing.JFormattedTextField();
+        jLabelCEP = new javax.swing.JLabel();
+        jComboEstado = new javax.swing.JComboBox();
+        Endereço = new javax.swing.JLabel();
+        jLabelCidade = new javax.swing.JLabel();
+        jTextCidade = new javax.swing.JTextField();
+        jLabelBairro = new javax.swing.JLabel();
+        jTextBairro = new javax.swing.JTextField();
+        jLabelComple = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
+        jLabelDados = new javax.swing.JLabel();
+        jFormattedDtNasc = new javax.swing.JFormattedTextField();
+        jLabelSexo = new javax.swing.JLabel();
+        jRadioSexoM = new javax.swing.JRadioButton();
+        jTextComple = new javax.swing.JTextField();
+        jRadioSexoF = new javax.swing.JRadioButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jTextNome = new javax.swing.JTextField();
+        jTextCPF = new javax.swing.JTextField();
+        jLabelNascimento = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
+        jTextRG = new javax.swing.JTextField();
 
-        jComboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Clientes");
 
-        try {
-            jFormattedDtNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        Endereço.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Endereço.setText("Endereço");
-
-        jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelCPF.setText("CPF:");
-
-        jLabelCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelCidade.setText("Cidade:");
-
-        jLabelDados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelDados.setText("Dados Pessoais");
-
-        jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNome.setText("Nome:");
-
-        jLabelRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelRG.setText("RG:");
-
-        jTextCidade.setName(""); // NOI18N
-
-        jLabelEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelEstado.setText("Estado");
-
-        jLabelBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelBairro.setText("Bairro:");
-
-        jTextNome.setName(""); // NOI18N
-
-        jRadioSexoF.setText("F");
-        jRadioSexoF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioSexoFActionPerformed(evt);
-            }
-        });
-
-        jLabelRua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelRua.setText("Rua:");
+        jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelNumero.setText("Numero:");
 
         jTextRua.setName(""); // NOI18N
-
-        jRadioSexoM.setText("M");
-        jRadioSexoM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioSexoMActionPerformed(evt);
-            }
-        });
 
         jTextNumero.setName(""); // NOI18N
         jTextNumero.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -132,34 +87,78 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabelComple.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelComple.setText("Complemento:");
+        jLabelRua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelRua.setText("Rua:");
 
-        jLabelSexo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelSexo.setText("Sexo:");
+        jLabelRG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelRG.setText("RG:");
 
-        jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Numero:");
+        jLabelEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelEstado.setText("Estado");
 
-        jTextRG.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextRGFocusLost(evt);
-            }
-        });
-
-        jLabelDtNasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelDtNasc.setText("Nascimento: ");
-
-        jLabelCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelCEP.setText("CEP:");
-
-        jTextCPF.setName(""); // NOI18N
+        jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelCPF.setText("CPF:");
 
         try {
             jFormattedCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jLabelCEP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelCEP.setText("CEP:");
+
+        jComboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+
+        Endereço.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Endereço.setText("Endereço");
+
+        jLabelCidade.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelCidade.setText("Cidade:");
+
+        jTextCidade.setName(""); // NOI18N
+
+        jLabelBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelBairro.setText("Bairro:");
+
+        jLabelComple.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelComple.setText("Complemento:");
+
+        jLabelNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelNome.setText("Nome:");
+
+        jLabelDados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelDados.setText("Dados Pessoais");
+
+        try {
+            jFormattedDtNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabelSexo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSexo.setText("Sexo:");
+
+        jRadioSexoM.setText("M");
+        jRadioSexoM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioSexoMActionPerformed(evt);
+            }
+        });
+
+        jRadioSexoF.setText("F");
+        jRadioSexoF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioSexoFActionPerformed(evt);
+            }
+        });
+
+        jTextNome.setName(""); // NOI18N
+
+        jTextCPF.setName(""); // NOI18N
+
+        jLabelNascimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelNascimento.setText("Nascimento: ");
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,18 +181,16 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
             }
         });
 
+        jTextRG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextRGFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jButtonCadastrar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonLimpar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +206,7 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextNome))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabelDtNasc)
+                                        .addComponent(jLabelNascimento)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jFormattedDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -228,8 +225,14 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabelRG)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(Endereço)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonCadastrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonLimpar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCancelar))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabelBairro)
@@ -260,12 +263,14 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                                         .addComponent(jLabelNumero)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabelDados)
                 .addGap(8, 8, 8)
@@ -277,7 +282,7 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                     .addComponent(jLabelSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDtNasc)
+                    .addComponent(jLabelNascimento)
                     .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCPF)
@@ -307,24 +312,50 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                     .addComponent(jTextBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelComple)
                     .addComponent(jTextComple, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(302, 302, 302)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(61, Short.MAX_VALUE)))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioSexoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioSexoMActionPerformed
+        jRadioSexoF.setSelected(false);
+    }//GEN-LAST:event_jRadioSexoMActionPerformed
 
     private void jRadioSexoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioSexoFActionPerformed
         jRadioSexoM.setSelected(false);
     }//GEN-LAST:event_jRadioSexoFActionPerformed
 
-    private void jRadioSexoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioSexoMActionPerformed
+    private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
+        jTextNome.setText("");
         jRadioSexoF.setSelected(false);
-    }//GEN-LAST:event_jRadioSexoMActionPerformed
+        jRadioSexoM.setSelected(false);
+        jFormattedDtNasc.setText("");
+        jTextCPF.setText("");
+        jTextRG.setText("");
+        jTextRua.setText("");
+        jTextNumero.setText("");
+        jFormattedCEP.setText("");
+        jComboEstado.setSelectedItem("SELECIONE");
+        jTextCidade.setText("");
+        jTextBairro.setText("");
+        jTextComple.setText("");
+    }//GEN-LAST:event_jButtonLimparMousePressed
+
+    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarMousePressed
 
     private void jTextNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNumeroFocusLost
         try{
@@ -354,30 +385,10 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextRGFocusLost
 
-    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
-        this.dispose();
-    }//GEN-LAST:event_jButtonCancelarMousePressed
-
-    private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
-        jTextNome.setText("");
-        jRadioSexoF.setSelected(false);
-        jRadioSexoM.setSelected(false);
-        jFormattedDtNasc.setText("");
-        jTextCPF.setText("");
-        jTextRG.setText("");
-        jTextRua.setText("");
-        jTextNumero.setText("");
-        jFormattedCEP.setText("");
-        jComboEstado.setSelectedItem("SELECIONE");
-        jTextCidade.setText("");
-        jTextBairro.setText("");
-        jTextComple.setText("");
-    }//GEN-LAST:event_jButtonLimparMousePressed
-
     private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
         Cliente c = new Cliente();
         int erro=0,cpferro=0;
-        Component components[] = getContentPane().getComponents();
+        Component components[] = getContentPane().getComponents();  
         //Para cada componente
         for (Component component : components) {
             //É campo de texto?
@@ -387,7 +398,7 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                     erro=1;
                     break;
                 }
-            }
+            } 
             //Verifica se é ComboBox
             if (component instanceof JComboBox) {
                 //Se não está selecionado gera msg
@@ -401,7 +412,7 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
                 if (jRadioSexoF.isSelected()==false && jRadioSexoM.isSelected()==false) {
                     erro=1;
                     break;
-                }
+                } 
             }
         }
         if(erro==0 && ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
@@ -442,8 +453,9 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
-
-
+    /**
+     * @param args the command line arguments
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCadastrar;
@@ -458,8 +470,8 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComple;
     private javax.swing.JLabel jLabelDados;
-    private javax.swing.JLabel jLabelDtNasc;
     private javax.swing.JLabel jLabelEstado;
+    private javax.swing.JLabel jLabelNascimento;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRG;
@@ -468,6 +480,7 @@ public class Cad_Clien extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioSexoF;
     private javax.swing.JRadioButton jRadioSexoM;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextBairro;
     private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextCidade;
