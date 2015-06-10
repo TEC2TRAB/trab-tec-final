@@ -5,24 +5,12 @@
  */
 package Interface;
 
-import java.awt.Event;
-import java.awt.event.MouseEvent;
-import javax.swing.JInternalFrame;
-
 /**
  *
  * @author cesar.nascimento
  */
 public class Menu extends javax.swing.JFrame {
-    
-    Cad_Venda cav = new Cad_Venda();
-    Cons_Venda cov = new Cons_Venda();
-    Cad_Produ cap = new Cad_Produ();
-    Cons_Produ cop = new Cons_Produ();
-    Cad_Func caf = new Cad_Func();
-    Cons_Func cof = new Cons_Func();
-    Cad_Clien cac = new Cad_Clien();
-    Cons_Clien coc = new Cons_Clien();
+
     /**
      * Creates new form Menu
      */
@@ -167,206 +155,53 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCad_ProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_ProdMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(cap);
-        cap.setVisible(true);
+        Cad_Produ cp = new Cad_Produ();
+        jPanel.add(cp);
+        cp.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_ProdMousePressed
 
     private void jMenuItemCad_FuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_FuncMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(caf);
-        caf.setVisible(true);
+        Cad_Func cf = new Cad_Func();
+        jPanel.add(cf);
+        cf.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_FuncMousePressed
 
     private void jMenuItemCons_FuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_FuncMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(cof);
-        cof.setVisible(true);
+        Cons_Func cf = new Cons_Func();
+        jPanel.add(cf);
+        cf.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_FuncMousePressed
 
     private void jMenuItemCad_ClienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_ClienMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(cac);
-        cac.setVisible(true);
+        Cad_Clien cc = new Cad_Clien();
+        jPanel.add(cc);
+        cc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_ClienMousePressed
 
     private void jMenuItemCad_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_VendaMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(cav);
-        cav.setVisible(true);
+        Cad_Venda cv = new Cad_Venda();
+        jPanel.add(cv);
+        cv.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_VendaMousePressed
 
     private void jMenuItemCons_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_VendaMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(cov);
-        cov.setVisible(true);
+        Cons_Venda cv = new Cons_Venda();
+        jPanel.add(cv);
+        cv.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_VendaMousePressed
 
     private void jMenuItemCons_ProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_ProdMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(cop);
-        cop.setVisible(true);
+        Cons_Produ cp = new Cons_Produ();
+        jPanel.add(cp);
+        cp.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_ProdMousePressed
 
     private void jMenuItemCons_ClientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCons_ClientMousePressed
-        VerificaTelaVisivel(evt);
-        jPanel.add(coc);
-        coc.setVisible(true);
+        Cons_Clien cc = new Cons_Clien();
+        jPanel.add(cc);
+        cc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_ClientMousePressed
-    void VerificaTelaVisivel(MouseEvent evt){
-        if(evt.getSource()==jMenuItemCad_Venda){
-            if(cav.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCons_Venda){
-            if(cov.isVisible()){
-                //não faz nada
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCad_Prod){
-            if(cap.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCons_Prod){
-            if(cop.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCad_Func){
-            if(caf.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCons_Func){
-            if(cof.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCad_Clien){
-            if(cac.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }else if(coc.isVisible()){
-                coc.dispose();
-            }     
-        }
-        if(evt.getSource()==jMenuItemCons_Client){
-            if(coc.isVisible()){
-                //não faz nada
-            }else if(cov.isVisible()){
-                cov.dispose();
-            }else if(cap.isVisible()){
-                cap.dispose();
-            }else if(cop.isVisible()){
-                cop.dispose();
-            }else if(caf.isVisible()){
-                caf.dispose();
-            }else if(cof.isVisible()){
-                cof.dispose();
-            }else if(cac.isVisible()){
-                cac.dispose();
-            }else if(cav.isVisible()){
-                cav.dispose();
-            }     
-        }
-    }
+
     /**
      * @param args the command line arguments
      */
