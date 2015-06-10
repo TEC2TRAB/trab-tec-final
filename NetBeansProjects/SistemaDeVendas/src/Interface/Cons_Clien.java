@@ -48,7 +48,6 @@ public class Cons_Clien extends javax.swing.JInternalFrame {
         jRadioButtonNome = new javax.swing.JRadioButton();
         jLabel1Selecione = new javax.swing.JLabel();
 
-        setTitle("Consultar Cliente");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }

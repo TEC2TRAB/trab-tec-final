@@ -47,7 +47,6 @@ public class Cons_Produ extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProd = new javax.swing.JTable();
 
-        setTitle("Consultar Produto");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }

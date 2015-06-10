@@ -34,6 +34,7 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jButtonCancelar = new javax.swing.JButton();
+        TitulojLabel = new javax.swing.JLabel();
         jButtonLimpar = new javax.swing.JButton();
         jLabelNome = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
@@ -48,14 +49,15 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextDescricao = new javax.swing.JTextArea();
 
-        setTitle("Cadastro de Produto");
-
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonCancelarMousePressed(evt);
             }
         });
+
+        TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TitulojLabel.setText("Cadastro de Produtos");
 
         jButtonLimpar.setText("Limpar Campos");
         jButtonLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,7 +120,7 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelID)
@@ -127,6 +129,7 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TitulojLabel)
                             .addComponent(jLabelNome)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelPreco)
@@ -146,12 +149,14 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
                             .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jButtonCancelar))))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
+                .addComponent(TitulojLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelID))
@@ -176,7 +181,7 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -272,6 +277,7 @@ public class Cad_Produ extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TitulojLabel;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLimpar;
