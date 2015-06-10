@@ -9,14 +9,13 @@ package Interface;
  *
  * @author cesar.nascimento
  */
-public class Cad_Venda extends javax.swing.JInternalFrame {
+public class Cad_Venda extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cad_Venda_Teste
+     * Creates new form Cad_Venda
      */
     public Cad_Venda() {
         initComponents();
-        setClosable(true);
     }
 
     /**
@@ -38,13 +37,16 @@ public class Cad_Venda extends javax.swing.JInternalFrame {
         TitulojComprado = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableComprados = new javax.swing.JTable();
+        jButtonCadastrar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jTextConsultaProd = new javax.swing.JTextField();
         jLabelIdProd = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jButtonCadastrar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Vendas");
 
         TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TitulojLabel.setText("Cadastrar Venda");
@@ -118,13 +120,6 @@ public class Cad_Venda extends javax.swing.JInternalFrame {
         jTableComprados.setRowHeight(24);
         jScrollPane2.setViewportView(jTableComprados);
 
-        jTextConsultaProd.setName(""); // NOI18N
-
-        jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelIdProd.setText("Nome:");
-
-        jButton1.setText("Pesquisar");
-
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +133,13 @@ public class Cad_Venda extends javax.swing.JInternalFrame {
                 jButtonCancelarActionPerformed(evt);
             }
         });
+
+        jTextConsultaProd.setName(""); // NOI18N
+
+        jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelIdProd.setText("Nome:");
+
+        jButton1.setText("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,7 +171,7 @@ public class Cad_Venda extends javax.swing.JInternalFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jButton1))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,16 +199,17 @@ public class Cad_Venda extends javax.swing.JInternalFrame {
                 .addComponent(TitulojComprado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jLabelValor)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
@@ -216,8 +219,9 @@ public class Cad_Venda extends javax.swing.JInternalFrame {
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
-
-
+    /**
+     * @param args the command line arguments
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojComprado;
     private javax.swing.JLabel TitulojLabel;

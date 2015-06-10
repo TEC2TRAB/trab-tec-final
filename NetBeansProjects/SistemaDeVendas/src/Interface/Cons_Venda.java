@@ -9,14 +9,13 @@ package Interface;
  *
  * @author cesar.nascimento
  */
-public class Cons_Venda extends javax.swing.JInternalFrame {
+public class Cons_Venda extends javax.swing.JFrame {
 
     /**
-     * Creates new form Cons_Clien_Teste
+     * Creates new form Cons_Venda
      */
     public Cons_Venda() {
         initComponents();
-        setClosable(true);
     }
 
     /**
@@ -28,7 +27,9 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCancelar = new javax.swing.JButton();
+        jLabeID = new javax.swing.JLabel();
+        jTextID = new javax.swing.JTextField();
+        jRadioButtonCPF = new javax.swing.JRadioButton();
         jRadioButtonID = new javax.swing.JRadioButton();
         jLabelCPF = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -37,34 +38,28 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
         jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
         jLabelData = new javax.swing.JLabel();
-        jLabeID = new javax.swing.JLabel();
         jTextData = new javax.swing.JTextField();
-        jTextID = new javax.swing.JTextField();
         jRadioButtonData = new javax.swing.JRadioButton();
-        jRadioButtonCPF = new javax.swing.JRadioButton();
+        jButtonCancelar = new javax.swing.JButton();
 
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de Vendas");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonCancelarMousePressed(evt);
+        jLabeID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabeID.setText("ID - Vendedor:");
+
+        jTextID.setName(""); // NOI18N
+
+        jRadioButtonCPF.setText("CPF");
+        jRadioButtonCPF.setToolTipText("");
+        jRadioButtonCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCPFActionPerformed(evt);
             }
         });
 
@@ -114,12 +109,7 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
         jLabelData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelData.setText("Data da Venda:");
 
-        jLabeID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabeID.setText("ID - Vendedor:");
-
         jTextData.setName(""); // NOI18N
-
-        jTextID.setName(""); // NOI18N
 
         jRadioButtonData.setText("Data");
         jRadioButtonData.addActionListener(new java.awt.event.ActionListener() {
@@ -128,11 +118,10 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
             }
         });
 
-        jRadioButtonCPF.setText("CPF");
-        jRadioButtonCPF.setToolTipText("");
-        jRadioButtonCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonCPFActionPerformed(evt);
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonCancelarMousePressed(evt);
             }
         });
 
@@ -170,7 +159,7 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jTextData, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,15 +188,25 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
                     .addComponent(jButtonCancelar))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
-        this.dispose();
-    }//GEN-LAST:event_jButtonCancelarMousePressed
+    private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
+        if(jRadioButtonCPF.isSelected()==true){
+            jRadioButtonID.setSelected(false);
+            jRadioButtonData.setSelected(false);
+            jTextCPF.setEnabled(true);
+            jTextID.setEnabled(false);
+            jTextData.setEnabled(false);
+        }else{
+            jTextID.setEnabled(true);
+            jTextData.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRadioButtonCPFActionPerformed
 
     private void jRadioButtonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIDActionPerformed
         if(jRadioButtonID.isSelected()==true){
@@ -235,26 +234,19 @@ public class Cons_Venda extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jRadioButtonDataActionPerformed
 
-    private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
-        if(jRadioButtonCPF.isSelected()==true){
-            jRadioButtonID.setSelected(false);
-            jRadioButtonData.setSelected(false);
-            jTextCPF.setEnabled(true);
-            jTextID.setEnabled(false);
-            jTextData.setEnabled(false);
-        }else{
-            jTextID.setEnabled(true);
-            jTextData.setEnabled(true);
-        }
-    }//GEN-LAST:event_jRadioButtonCPFActionPerformed
-
-    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         jRadioButtonCPF.setSelected(true);
         jTextID.setEnabled(false);
         jTextData.setEnabled(false);
-    }//GEN-LAST:event_formInternalFrameOpened
+    }//GEN-LAST:event_formWindowOpened
 
+    private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarMousePressed
 
+    /**
+     * @param args the command line arguments
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonConsultar;
