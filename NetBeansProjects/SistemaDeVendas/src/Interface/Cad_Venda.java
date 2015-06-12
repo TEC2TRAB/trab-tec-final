@@ -63,7 +63,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTableEstoque.setAutoCreateRowSorter(true);
         jTableEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Preço", "Quantidade", "Adicionar"
@@ -120,6 +120,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTableComprados.setRowHeight(24);
         jScrollPane2.setViewportView(jTableComprados);
 
+        jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/accept.png"))); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +128,7 @@ public class Cad_Venda extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +141,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelIdProd.setText("Nome:");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButton1.setText("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

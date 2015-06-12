@@ -104,6 +104,7 @@ public class Cons_Venda extends javax.swing.JFrame {
 
         jTextCPF.setName(""); // NOI18N
 
+        jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
 
         jLabelData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -118,6 +119,7 @@ public class Cons_Venda extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -188,7 +190,7 @@ public class Cons_Venda extends javax.swing.JFrame {
                     .addComponent(jButtonCancelar))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();

@@ -99,6 +99,7 @@ public class Cons_Clien extends javax.swing.JFrame {
         jLabel1Selecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1Selecione.setText("Selecione: ");
 
+        jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
         jButtonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -132,6 +133,7 @@ public class Cons_Clien extends javax.swing.JFrame {
         jTableCliente.setRowHeight(24);
         jScrollPane1.setViewportView(jTableCliente);
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
