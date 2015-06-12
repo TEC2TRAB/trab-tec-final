@@ -127,8 +127,10 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTableComprados.setRowHeight(24);
         jScrollPane2.setViewportView(jTableComprados);
 
+        jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/accept.png"))); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,12 +143,17 @@ public class Cad_Venda extends javax.swing.JFrame {
         jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelIdProd.setText("Nome:");
 
+<<<<<<< HEAD
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonPesquisarMousePressed(evt);
             }
         });
+=======
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
+        jButton1.setText("Pesquisar");
+>>>>>>> origin/master
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -110,6 +110,7 @@ public class Cons_Func extends javax.swing.JFrame {
 
         jTextCPF.setName(""); // NOI18N
 
+        jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
         jButtonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -117,6 +118,7 @@ public class Cons_Func extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {

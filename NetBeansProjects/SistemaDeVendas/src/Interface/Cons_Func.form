@@ -170,6 +170,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonConsultar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/find.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
       <Events>
@@ -178,6 +181,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCancelar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/cancel.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>

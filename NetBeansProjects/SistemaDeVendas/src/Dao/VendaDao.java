@@ -121,4 +121,100 @@ public class VendaDao {
             throw new RuntimeException(e);
         }
     }
+    
+    public List<Venda> consultar(int id) {
+        String sqlVenda = "SELECT * FROM venda " +
+                          "WHERE id_cliente = ?";
+        
+        String sqlHistorico = "SELECT * FROM historico_venda " +
+                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE id_cliente = ?)";
+        
+        try {
+            List<Venda> vendas = new ArrayList<>();
+            PreparedStatement statementVenda = this.connection.prepareStatement(sqlVenda);
+            statementVenda.setInt(1, id);
+            
+            ResultSet resultadoVenda = statementVenda.executeQuery();
+            while(resultadoVenda.next()) {
+                Venda venda = new Venda();
+                venda.setId(resultadoVenda.getInt("id_venda"));
+                venda.setIdCliente(resultadoVenda.getInt("id_cliente"));
+                venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
+                venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
+                
+                Calendar data = Calendar.getInstance();
+                data.setTime(resultadoVenda.getDate("data_venda"));
+                venda.setDataVenda(data);
+                
+                PreparedStatement statementHistorico = this.connection.prepareStatement(sqlHistorico);
+                statementHistorico.setInt(1, id);
+                
+                ResultSet resultadoHistorico = statementHistorico.executeQuery();
+                double[][] historico = null;
+                while(resultadoHistorico.next()) {
+                    historico[resultadoHistorico.getRow() - 1][0] = resultadoHistorico.getInt("id_produto");
+                    historico[resultadoHistorico.getRow() - 1][1] = resultadoHistorico.getDouble("quantidade");
+                }
+                venda.setHistorico(historico);
+                
+                vendas.add(venda);
+                resultadoHistorico.close();
+                statementHistorico.close();
+            }
+            resultadoVenda.close();
+            statementVenda.close();
+            
+            return vendas;            
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Venda> consultar(Date data) {
+        String sqlVenda = "SELECT * FROM venda " +
+                          "WHERE data_venda = ?";
+        
+        String sqlHistorico = "SELECT * FROM historico_venda " +
+                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE data_venda = ?)";
+        
+        try {
+            List<Venda> vendas = new ArrayList<>();
+            PreparedStatement statementVenda = this.connection.prepareStatement(sqlVenda);
+            statementVenda.setDate(1, data);
+            
+            ResultSet resultadoVenda = statementVenda.executeQuery();
+            while(resultadoVenda.next()) {
+                Venda venda = new Venda();
+                venda.setId(resultadoVenda.getInt("id_venda"));
+                venda.setIdCliente(resultadoVenda.getInt("id_cliente"));
+                venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
+                venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
+                
+                Calendar dataResult = Calendar.getInstance();
+                dataResult.setTime(resultadoVenda.getDate("data_venda"));
+                venda.setDataVenda(dataResult);
+                
+                PreparedStatement statementHistorico = this.connection.prepareStatement(sqlHistorico);
+                statementHistorico.setDate(1, data);
+                
+                ResultSet resultadoHistorico = statementHistorico.executeQuery();
+                double[][] historico = null;
+                while(resultadoHistorico.next()) {
+                    historico[resultadoHistorico.getRow() - 1][0] = resultadoHistorico.getInt("id_produto");
+                    historico[resultadoHistorico.getRow() - 1][1] = resultadoHistorico.getDouble("quantidade");
+                }
+                venda.setHistorico(historico);
+                
+                vendas.add(venda);
+                resultadoHistorico.close();
+                statementHistorico.close();
+            }
+            resultadoVenda.close();
+            statementVenda.close();
+            
+            return vendas;            
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
