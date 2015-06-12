@@ -5,6 +5,13 @@
  */
 package Interface;
 
+import ModuloDeProdutos.Produto;
+import Dao.ProdutoDao;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author cesar.nascimento
@@ -41,7 +48,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jTextConsultaProd = new javax.swing.JTextField();
         jLabelIdProd = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonPesquisar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
 
@@ -73,7 +80,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -99,7 +106,7 @@ public class Cad_Venda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Quantidade", "Preço", "Excluir"
+                "ID", "Nome", "Preço", "Quantidade", "Excluir"
             }
         ) {
             Class[] types = new Class [] {
@@ -121,11 +128,6 @@ public class Cad_Venda extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTableComprados);
 
         jButtonCadastrar.setText("Cadastrar");
-        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
-            }
-        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +141,12 @@ public class Cad_Venda extends javax.swing.JFrame {
         jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelIdProd.setText("Nome:");
 
-        jButton1.setText("Pesquisar");
+        jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonPesquisarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,7 +176,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jTextConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1))
+                            .addComponent(jButtonPesquisar))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
@@ -190,7 +197,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelIdProd)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonPesquisar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -212,22 +219,37 @@ public class Cad_Venda extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
-
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonPesquisarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPesquisarMousePressed
+        List<Produto> produtos = new ArrayList<>();
+        ProdutoDao p = new ProdutoDao();
+        DefaultTableModel model = (DefaultTableModel) jTableEstoque.getModel();
+        if(jTextConsultaProd.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Campo Nome do produto em branco, para adicionar produtos na venda, você precisa pesquisá-los antes.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            produtos = p.consultar(jTextConsultaProd.getText());
+            Object vec[] = new Object[4];
+            for(Produto pi : produtos){
+                vec[0] = pi.getId();
+                vec[1] = pi.getNome();
+                vec[2] = pi.getPreco();
+                vec[3] = 0;
+                model.addRow(vec);
+            }
+        }
+    }//GEN-LAST:event_jButtonPesquisarMousePressed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojComprado;
     private javax.swing.JLabel TitulojLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JLabel jLabel1Cliente;
     private javax.swing.JLabel jLabelEstoque;
     private javax.swing.JLabel jLabelIdProd;
