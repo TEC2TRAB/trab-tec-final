@@ -187,7 +187,7 @@
                 <Column editable="false" title="ID" type="java.lang.Integer"/>
                 <Column editable="false" title="Nome" type="java.lang.String"/>
                 <Column editable="false" title="Pre&#xe7;o" type="java.lang.Double"/>
-                <Column editable="false" title="Quantidade" type="java.lang.Double"/>
+                <Column editable="true" title="Quantidade" type="java.lang.Double"/>
                 <Column editable="true" title="Excluir" type="java.lang.Object"/>
               </Table>
             </Property>

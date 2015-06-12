@@ -35,9 +35,9 @@ public class Main {
                 }  
             }
         //ver os estilos que eu tenho instalado no projeto
-        for ( UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
+        /*for ( UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels() ) {  
             System.out.println( info.getName() );  
-        } 
+        }*/ 
         } catch(UnsupportedLookAndFeelException | ClassNotFoundException | 
                 InstantiationException | IllegalAccessException e){
             System.out.println("Não foi possível setar o estilo,contate o administrador");

@@ -24,7 +24,7 @@ public class Cons_Clien extends javax.swing.JFrame {
      */
     public Cons_Clien() {
         initComponents();
-        ButtonColumn bc = new ButtonColumn(jTableCliente,2);
+        ButtonColumnEdit bc = new ButtonColumnEdit(jTableCliente,2);
     }
 
     /**

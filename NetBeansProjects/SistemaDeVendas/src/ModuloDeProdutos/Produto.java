@@ -7,7 +7,7 @@ public class Produto {
     private int id;
     private String nome;
     private String descricao;
-    private int quantidade;
+    private double quantidade;
     private double preco;
     /**
      * @return the id
@@ -54,14 +54,14 @@ public class Produto {
     /**
      * @return the quantidade
      */
-    public int getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
     /**
      * @param quantidade the quantidade to set
      */
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 

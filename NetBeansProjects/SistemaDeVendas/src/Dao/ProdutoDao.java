@@ -36,7 +36,7 @@ public class ProdutoDao {
             
             statement.setInt(1, produto.getId());
             statement.setDouble(2, produto.getPreco());
-            statement.setInt(3, produto.getQuantidade());
+            statement.setDouble(3, produto.getQuantidade());
             statement.setString(4, produto.getDescricao());
             statement.setString(5, produto.getNome().toUpperCase());
             
@@ -62,7 +62,7 @@ public class ProdutoDao {
                 Produto produto = new Produto();
                 produto.setId(resultado.getInt("id_produto"));
                 produto.setPreco(resultado.getDouble("preco"));
-                produto.setQuantidade(resultado.getInt("quantidade"));
+                produto.setQuantidade(resultado.getDouble("quantidade"));
                 produto.setDescricao(resultado.getString("descricao"));
                 produto.setNome(resultado.getString("nome"));
                 produtos.add(produto);
@@ -90,7 +90,7 @@ public class ProdutoDao {
                 Produto produto = new Produto();
                 produto.setId(resultado.getInt("id_produto"));
                 produto.setPreco(resultado.getDouble("preco"));
-                produto.setQuantidade(resultado.getInt("quantidade"));
+                produto.setQuantidade(resultado.getDouble("quantidade"));
                 produto.setDescricao(resultado.getString("descricao"));
                 produto.setNome(resultado.getString("nome"));
                 produtos.add(produto);
@@ -112,7 +112,7 @@ public class ProdutoDao {
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
             statement.setDouble(1, produto.getPreco());
-            statement.setInt(2, produto.getQuantidade());
+            statement.setDouble(2, produto.getQuantidade());
             statement.setString(3, produto.getDescricao());
             statement.setInt(4, produto.getId());
             

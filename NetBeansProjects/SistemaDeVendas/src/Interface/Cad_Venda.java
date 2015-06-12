@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Classes.ButtonColumnAdd;
+import Classes.ButtonColumnRemove;
 import ModuloDeProdutos.Produto;
 import Dao.ProdutoDao;
 import java.util.ArrayList;
@@ -17,12 +19,14 @@ import javax.swing.table.DefaultTableModel;
  * @author cesar.nascimento
  */
 public class Cad_Venda extends javax.swing.JFrame {
-
+    List<Produto> produtos = new ArrayList<>();
     /**
      * Creates new form Cad_Venda
      */
     public Cad_Venda() {
         initComponents();
+        ButtonColumnRemove b1 = new ButtonColumnRemove(jTableComprados, 4);
+        ButtonColumnAdd b = new ButtonColumnAdd(jTableEstoque,4,produtos,jTableComprados);
     }
 
     /**
@@ -113,7 +117,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -143,14 +147,13 @@ public class Cad_Venda extends javax.swing.JFrame {
         jLabelIdProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelIdProd.setText("Nome:");
 
+        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonPesquisarMousePressed(evt);
             }
         });
-        jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
-        jButtonPesquisar.setText("Pesquisar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,7 +231,6 @@ public class Cad_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonPesquisarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPesquisarMousePressed
-        List<Produto> produtos = new ArrayList<>();
         ProdutoDao p = new ProdutoDao();
         DefaultTableModel model = (DefaultTableModel) jTableEstoque.getModel();
         if(jTextConsultaProd.getText().isEmpty()){
@@ -240,7 +242,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 vec[0] = pi.getId();
                 vec[1] = pi.getNome();
                 vec[2] = pi.getPreco();
-                vec[3] = 0;
+                vec[3] = 0.0;
                 model.addRow(vec);
             }
         }
