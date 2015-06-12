@@ -63,7 +63,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         jTableEstoque.setAutoCreateRowSorter(true);
         jTableEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null}
             },
             new String [] {
                 "ID", "Nome", "Preço", "Quantidade", "Adicionar"
