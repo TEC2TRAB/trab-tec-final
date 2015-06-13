@@ -107,7 +107,7 @@ public class ProdutoDao {
     public void atualizar(Produto produto) {
         String sql = "UPDATE produto SET preco = ?," +
                      "quantidade = ?, descricao = ?" +
-                     "WHERE id = ?";
+                     "WHERE id_produto = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
@@ -124,11 +124,26 @@ public class ProdutoDao {
     }
     
     public void remover(int id) {
-        String sql = "DELETE FROM produto WHERE id = ?";
+        String sql = "DELETE FROM produto WHERE id_produto = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
             statement.setInt(1, id);
+            
+            statement.execute();
+            statement.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void retirar(int id, int quantidade) {
+        String sql = "UPDATE produto SET quantidade = quantidade - ? WHERE id_produto = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setInt(1, quantidade);
+            statement.setInt(2, id);
             
             statement.execute();
             statement.close();
