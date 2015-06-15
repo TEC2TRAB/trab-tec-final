@@ -5,7 +5,6 @@
  */
 package Interface;
 
-import Classes.ValidadorCPF;
 import Dao.ClienteDao;
 import ModuloDePessoas.Cliente;
 import java.awt.Color;

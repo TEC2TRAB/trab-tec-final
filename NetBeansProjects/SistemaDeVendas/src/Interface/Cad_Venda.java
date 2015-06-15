@@ -19,14 +19,13 @@ import javax.swing.table.DefaultTableModel;
  * @author cesar.nascimento
  */
 public class Cad_Venda extends javax.swing.JFrame {
-    List<Produto> produtos = new ArrayList<>();
     /**
      * Creates new form Cad_Venda
      */
     public Cad_Venda() {
         initComponents();
         ButtonColumnRemove b1 = new ButtonColumnRemove(jTableComprados, 4);
-        ButtonColumnAdd b = new ButtonColumnAdd(jTableEstoque,4,produtos,jTableComprados);
+        ButtonColumnAdd b = new ButtonColumnAdd(jTableEstoque,4,jTableComprados);
     }
 
     /**
@@ -232,6 +231,7 @@ public class Cad_Venda extends javax.swing.JFrame {
 
     private void jButtonPesquisarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPesquisarMousePressed
         ProdutoDao p = new ProdutoDao();
+        List<Produto> produtos = new ArrayList<>();
         DefaultTableModel model = (DefaultTableModel) jTableEstoque.getModel();
         if(jTextConsultaProd.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Campo Nome do produto em branco, para adicionar produtos na venda, você precisa pesquisá-los antes.", "Alerta", JOptionPane.WARNING_MESSAGE);

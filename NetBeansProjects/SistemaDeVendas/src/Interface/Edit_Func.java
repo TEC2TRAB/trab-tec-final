@@ -59,20 +59,12 @@ public class Edit_Func extends javax.swing.JFrame {
         jTextCidade = new javax.swing.JTextField();
         jLabelBairro = new javax.swing.JLabel();
         jTextBairro = new javax.swing.JTextField();
-        jTextLogin = new javax.swing.JTextField();
         jLabelComple = new javax.swing.JLabel();
-        jLabelAcesso = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jTextComple = new javax.swing.JTextField();
-        jLabelLogin = new javax.swing.JLabel();
-        jLabelSenha = new javax.swing.JLabel();
-        jLabelConfSenha = new javax.swing.JLabel();
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jPasswordConfSenha = new javax.swing.JPasswordField();
         jTextRG = new javax.swing.JTextField();
-        jPasswordSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Funcionário");
@@ -157,18 +149,6 @@ public class Edit_Func extends javax.swing.JFrame {
         jLabelComple.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelComple.setText("Complemento:");
 
-        jLabelAcesso.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelAcesso.setText("Dados de Acesso");
-
-        jLabelLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelLogin.setText("Login:");
-
-        jLabelSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelSenha.setText("Senha:");
-
-        jLabelConfSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelConfSenha.setText("Confirme a senha:");
-
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -189,23 +169,9 @@ public class Edit_Func extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addComponent(jSeparator2)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelConfSenha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSenha)
-                            .addComponent(jLabelLogin))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(jPasswordSenha)))
-                    .addComponent(jLabelAcesso)
                     .addComponent(jLabelDados)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -319,22 +285,6 @@ public class Edit_Func extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAcesso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelLogin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSenha)
-                    .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelConfSenha)
-                    .addComponent(jPasswordConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -376,25 +326,9 @@ public class Edit_Func extends javax.swing.JFrame {
                 } 
             }
         }
-        if(erro==0){
-            if(!m.geraMD5(jPasswordSenha.getText()).equals(m.geraMD5(jPasswordConfSenha.getText()))){
-                senha=1;
-            }else{
-                senha=0;
-            }
-        }
         if(erro==1){
             JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else if(erro==0 && senha==1){
-            jLabelSenha.setForeground(Color.red);
-            jLabelConfSenha.setForeground(Color.red);
-            jPasswordSenha.setText("");
-            jPasswordConfSenha.setText("");
-            jPasswordSenha.requestFocus();
-            JOptionPane.showMessageDialog(null,"As senhas não conferem, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(senha==0 && erro==0){
-            jLabelSenha.setForeground(Color.black);
-            jLabelConfSenha.setForeground(Color.black);
             f.setNome(jTextNome.getText());
             f.setSexo(jRadioSexoM.getText().charAt(0));
             try {
@@ -413,8 +347,6 @@ public class Edit_Func extends javax.swing.JFrame {
             f.setCidade(jTextCidade.getText());
             f.setBairro(jTextBairro.getText());
             f.setComple(jTextComple.getText());
-            f.setLogin(jTextLogin.getText());
-            f.setSenha(m.geraMD5(jPasswordSenha.getText()));
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             FuncionarioDao fd = new FuncionarioDao();
             fd.cadastrar(f);
@@ -461,41 +393,33 @@ public class Edit_Func extends javax.swing.JFrame {
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox jComboEstado;
-    private javax.swing.JFormattedTextField jFormattedCEP;
-    private javax.swing.JFormattedTextField jFormattedDtNasc;
-    private javax.swing.JLabel jLabelAcesso;
+    public javax.swing.JComboBox jComboEstado;
+    public javax.swing.JFormattedTextField jFormattedCEP;
+    public javax.swing.JFormattedTextField jFormattedDtNasc;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComple;
-    private javax.swing.JLabel jLabelConfSenha;
     private javax.swing.JLabel jLabelDados;
     private javax.swing.JLabel jLabelDtNasc;
     private javax.swing.JLabel jLabelEstado;
-    private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRG;
     private javax.swing.JLabel jLabelRua;
-    private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelSexo;
-    private javax.swing.JPasswordField jPasswordConfSenha;
-    private javax.swing.JPasswordField jPasswordSenha;
-    private javax.swing.JRadioButton jRadioSexoF;
-    private javax.swing.JRadioButton jRadioSexoM;
+    public javax.swing.JRadioButton jRadioSexoF;
+    public javax.swing.JRadioButton jRadioSexoM;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextBairro;
-    private javax.swing.JTextField jTextCPF;
-    private javax.swing.JTextField jTextCidade;
-    private javax.swing.JTextField jTextComple;
-    private javax.swing.JTextField jTextLogin;
-    private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextNumero;
-    private javax.swing.JTextField jTextRG;
-    private javax.swing.JTextField jTextRua;
+    public javax.swing.JTextField jTextBairro;
+    public javax.swing.JTextField jTextCPF;
+    public javax.swing.JTextField jTextCidade;
+    public javax.swing.JTextField jTextComple;
+    public javax.swing.JTextField jTextNome;
+    public javax.swing.JTextField jTextNumero;
+    public javax.swing.JTextField jTextRG;
+    public javax.swing.JTextField jTextRua;
     // End of variables declaration//GEN-END:variables
 }

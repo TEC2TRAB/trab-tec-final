@@ -23,7 +23,7 @@ public class Cons_Func extends javax.swing.JFrame {
      */
     public Cons_Func() {
         initComponents();
-        ButtonColumnEdit bc = new ButtonColumnEdit(jTableFunc,2);
+        ButtonColumnEditFunc bc = new ButtonColumnEditFunc(jTableFunc,2);
         
         
     }
@@ -273,11 +273,6 @@ public class Cons_Func extends javax.swing.JFrame {
     private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
-
-    /**
-     * @param args the command line arguments
-     */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonConsultar;

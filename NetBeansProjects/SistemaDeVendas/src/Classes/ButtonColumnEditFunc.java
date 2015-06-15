@@ -11,32 +11,38 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+import Interface.Edit_Func;
+import ModuloDePessoas.Funcionario;
+import java.util.ArrayList;
+import java.util.List;
+import Dao.FuncionarioDao;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+;
 
 /**
  *
  * @author cesar.nascimento
  */
-public class ButtonColumnAdd extends AbstractCellEditor  
+public class ButtonColumnEditFunc extends AbstractCellEditor  
         implements TableCellRenderer, TableCellEditor, ActionListener{  
-        JTable table; 
-        JTable tableBuy; 
+        JTable table;  
         JButton renderButton;  
         JButton editButton;  
-        String text; 
+        String text;  
   
-        public ButtonColumnAdd(JTable table, int column, JTable tableBuy){  
+        public ButtonColumnEditFunc(JTable table, int column){  
             super();  
             this.table = table;  
-            this.tableBuy = tableBuy;
-            ImageIcon image = new ImageIcon(getClass().getResource("/images/add.png"));
+            ImageIcon image = new ImageIcon(getClass().getResource("images/settings.png"));
             renderButton = new JButton(image);  
+            
             
             editButton = new JButton(image);
 
@@ -66,14 +72,14 @@ public class ButtonColumnAdd extends AbstractCellEditor
                 renderButton.setBackground(UIManager.getColor("Button.background"));  
             }  
   
-            renderButton.setText( (value == null) ? "Adicionar" : value.toString() );  
+            renderButton.setText( (value == null) ? "Editar" : value.toString() );  
             return renderButton;  
         }  
   
         @Override
         public Component getTableCellEditorComponent(  
             JTable table, Object value, boolean isSelected, int row, int column){  
-            text = (value == null) ? "Adicionar" : value.toString();  
+            text = (value == null) ? "Editar" : value.toString();  
             editButton.setText( text );  
             return editButton;  
         }  
@@ -85,20 +91,34 @@ public class ButtonColumnAdd extends AbstractCellEditor
   
         @Override
         public void actionPerformed(ActionEvent e){  
-            fireEditingStopped();
-            DefaultTableModel model = (DefaultTableModel) tableBuy.getModel();
-            int row;
+            fireEditingStopped();   
+            List<Funcionario> funcionarios = new ArrayList<>();
+            Edit_Func ef = new Edit_Func();
+            FuncionarioDao f = new FuncionarioDao();
+            int row;char sexo;
             row = table.getSelectedRow();
-            double quantidade = (double) table.getValueAt(row, 3);
-            Object vec[] = new Object[4];
-            vec[0] = table.getValueAt(row, 0);
-            vec[1] = table.getValueAt(row, 1);
-            vec[2] = table.getValueAt(row, 2);
-            vec[3] = table.getValueAt(row, 3);
-            if(quantidade==0){
-                JOptionPane.showMessageDialog(null, "Você não pode adicionar itens com quantidade 0.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            long cpf = Long.parseLong(String.valueOf(table.getValueAt(row, 1)));
+            funcionarios = f.consultar(cpf);
+            ef.jTextNome.setText(funcionarios.get(0).getNome());
+            sexo = funcionarios.get(0).getSexo();
+            if(sexo=='M'){
+                ef.jRadioSexoM.setSelected(true);
             }else{
-                model.addRow(vec);
+                ef.jRadioSexoF.setSelected(true);
             }
-        } 
+            Calendar data1 = Calendar.getInstance();
+            data1.setTime(funcionarios.get(0).getDtNasc().getTime());
+            SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+            ef.jFormattedDtNasc.setText(s.format(data1.getTime()));
+            ef.jTextCPF.setText(String.valueOf(table.getValueAt(row, 1)));
+            ef.jTextRG.setText(String.valueOf(funcionarios.get(0).getRG()));
+            ef.jTextRua.setText(funcionarios.get(0).getRua());
+            ef.jTextNumero.setText(String.valueOf(funcionarios.get(0).getNumero()));
+            ef.jFormattedCEP.setText(funcionarios.get(0).getCep());
+            ef.jComboEstado.setSelectedItem(funcionarios.get(0).getEstado());
+            ef.jTextCidade.setText(funcionarios.get(0).getCidade());
+            ef.jTextBairro.setText(funcionarios.get(0).getBairro());
+            ef.jTextComple.setText(funcionarios.get(0).getComple());
+            ef.setVisible(true);
+        }  
     }  
