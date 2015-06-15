@@ -381,14 +381,6 @@ public class Edit_Func extends javax.swing.JFrame {
         jFormattedDtNasc.setEnabled(false);
         jTextRG.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
-    public static void main(String args[]) {
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Edit_Func().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCancelar;

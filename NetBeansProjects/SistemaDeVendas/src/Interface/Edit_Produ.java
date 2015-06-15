@@ -252,14 +252,6 @@ public class Edit_Produ extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         jTextID.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
-    public static void main(String args[]) {
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Edit_Produ().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojLabel;
     private javax.swing.JButton jButtonCancelar;
@@ -270,10 +262,10 @@ public class Edit_Produ extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPreco;
     private javax.swing.JLabel jLabelQuantidade;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextDescricao;
-    private javax.swing.JTextField jTextID;
-    private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextPreco;
-    private javax.swing.JTextField jTextQuantidade;
+    public javax.swing.JTextArea jTextDescricao;
+    public javax.swing.JTextField jTextID;
+    public javax.swing.JTextField jTextNome;
+    public javax.swing.JTextField jTextPreco;
+    public javax.swing.JTextField jTextQuantidade;
     // End of variables declaration//GEN-END:variables
 }
