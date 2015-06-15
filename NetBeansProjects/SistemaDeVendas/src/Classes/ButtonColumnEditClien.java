@@ -16,11 +16,11 @@ import javax.swing.UIManager;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import Interface.Edit_Func;
-import ModuloDePessoas.Funcionario;
+import Interface.Edit_Clien;
+import ModuloDePessoas.Cliente;
 import java.util.ArrayList;
 import java.util.List;
-import Dao.FuncionarioDao;
+import Dao.ClienteDao;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -28,14 +28,14 @@ import java.util.Calendar;
  *
  * @author cesar.nascimento
  */
-public class ButtonColumnEditFunc extends AbstractCellEditor  
+public class ButtonColumnEditClien extends AbstractCellEditor  
         implements TableCellRenderer, TableCellEditor, ActionListener{  
         JTable table;  
         JButton renderButton;  
         JButton editButton;  
         String text;  
   
-        public ButtonColumnEditFunc(JTable table, int column){  
+        public ButtonColumnEditClien(JTable table, int column){  
             super();  
             this.table = table;  
             ImageIcon image = new ImageIcon(getClass().getResource("images/settings.png"));
@@ -90,33 +90,33 @@ public class ButtonColumnEditFunc extends AbstractCellEditor
         @Override
         public void actionPerformed(ActionEvent e){  
             fireEditingStopped();   
-            List<Funcionario> funcionarios = new ArrayList<>();
-            Edit_Func ef = new Edit_Func();
-            FuncionarioDao f = new FuncionarioDao();
+            List<Cliente> clientes = new ArrayList<>();
+            Edit_Clien ec = new Edit_Clien();
+            ClienteDao c = new ClienteDao();
             int row;char sexo;
             row = table.getSelectedRow();
             long cpf = Long.parseLong(String.valueOf(table.getValueAt(row, 1)));
-            funcionarios = f.consultar(cpf);
-            ef.jTextNome.setText(funcionarios.get(0).getNome());
-            sexo = funcionarios.get(0).getSexo();
+            clientes = c.consultar(cpf);
+            ec.jTextNome.setText(clientes.get(0).getNome());
+            sexo = clientes.get(0).getSexo();
             if(sexo=='M'){
-                ef.jRadioSexoM.setSelected(true);
+                ec.jRadioSexoM.setSelected(true);
             }else{
-                ef.jRadioSexoF.setSelected(true);
+                ec.jRadioSexoF.setSelected(true);
             }
             Calendar data1 = Calendar.getInstance();
-            data1.setTime(funcionarios.get(0).getDtNasc().getTime());
+            data1.setTime(clientes.get(0).getDtNasc().getTime());
             SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-            ef.jFormattedDtNasc.setText(s.format(data1.getTime()));
-            ef.jTextCPF.setText(String.valueOf(table.getValueAt(row, 1)));
-            ef.jTextRG.setText(String.valueOf(funcionarios.get(0).getRG()));
-            ef.jTextRua.setText(funcionarios.get(0).getRua());
-            ef.jTextNumero.setText(String.valueOf(funcionarios.get(0).getNumero()));
-            ef.jFormattedCEP.setText(funcionarios.get(0).getCep());
-            ef.jComboEstado.setSelectedItem(funcionarios.get(0).getEstado());
-            ef.jTextCidade.setText(funcionarios.get(0).getCidade());
-            ef.jTextBairro.setText(funcionarios.get(0).getBairro());
-            ef.jTextComple.setText(funcionarios.get(0).getComple());
-            ef.setVisible(true);
+            ec.jFormattedDtNasc.setText(s.format(data1.getTime()));
+            ec.jTextCPF.setText(String.valueOf(table.getValueAt(row, 1)));
+            ec.jTextRG.setText(String.valueOf(clientes.get(0).getRG()));
+            ec.jTextRua.setText(clientes.get(0).getRua());
+            ec.jTextNumero.setText(String.valueOf(clientes.get(0).getNumero()));
+            ec.jFormattedCEP.setText(clientes.get(0).getCep());
+            ec.jComboEstado.setSelectedItem(clientes.get(0).getEstado());
+            ec.jTextCidade.setText(clientes.get(0).getCidade());
+            ec.jTextBairro.setText(clientes.get(0).getBairro());
+            ec.jTextComple.setText(clientes.get(0).getComple());
+            ec.setVisible(true);
         }  
     }  

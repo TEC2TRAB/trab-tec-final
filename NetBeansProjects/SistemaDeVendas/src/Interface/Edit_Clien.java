@@ -406,9 +406,9 @@ public class Edit_Clien extends javax.swing.JFrame {
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox jComboEstado;
-    private javax.swing.JFormattedTextField jFormattedCEP;
-    private javax.swing.JFormattedTextField jFormattedDtNasc;
+    public javax.swing.JComboBox jComboEstado;
+    public javax.swing.JFormattedTextField jFormattedCEP;
+    public javax.swing.JFormattedTextField jFormattedDtNasc;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCPF;
@@ -422,17 +422,17 @@ public class Edit_Clien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelRG;
     private javax.swing.JLabel jLabelRua;
     private javax.swing.JLabel jLabelSexo;
-    private javax.swing.JRadioButton jRadioSexoF;
-    private javax.swing.JRadioButton jRadioSexoM;
+    public javax.swing.JRadioButton jRadioSexoF;
+    public javax.swing.JRadioButton jRadioSexoM;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextBairro;
-    private javax.swing.JTextField jTextCPF;
-    private javax.swing.JTextField jTextCidade;
-    private javax.swing.JTextField jTextComple;
-    private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextNumero;
-    private javax.swing.JTextField jTextRG;
-    private javax.swing.JTextField jTextRua;
+    public javax.swing.JTextField jTextBairro;
+    public javax.swing.JTextField jTextCPF;
+    public javax.swing.JTextField jTextCidade;
+    public javax.swing.JTextField jTextComple;
+    public javax.swing.JTextField jTextNome;
+    public javax.swing.JTextField jTextNumero;
+    public javax.swing.JTextField jTextRG;
+    public javax.swing.JTextField jTextRua;
     // End of variables declaration//GEN-END:variables
 }
