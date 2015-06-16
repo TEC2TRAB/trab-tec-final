@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import Interface.Cad_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +30,8 @@ public class ButtonColumnAdd extends AbstractCellEditor
         JTable tableBuy; 
         JButton renderButton;  
         JButton editButton;  
-        String text; 
+        String text;
+        Cad_Venda cd = JanelaUtil.JANELAS.get("Venda");
   
         public ButtonColumnAdd(JTable table, int column, JTable tableBuy){  
             super();  
@@ -89,16 +91,19 @@ public class ButtonColumnAdd extends AbstractCellEditor
             DefaultTableModel model = (DefaultTableModel) tableBuy.getModel();
             int row;
             row = table.getSelectedRow();
+            double total = Double.parseDouble(cd.jLabelTotal.getText());
+            double preco = (double) table.getValueAt(row, 2);
             double quantidade = (double) table.getValueAt(row, 3);
             Object vec[] = new Object[4];
             vec[0] = table.getValueAt(row, 0);
             vec[1] = table.getValueAt(row, 1);
-            vec[2] = table.getValueAt(row, 2);
-            vec[3] = table.getValueAt(row, 3);
+            vec[2] = preco;
+            vec[3] = quantidade;
             if(quantidade==0){
                 JOptionPane.showMessageDialog(null, "Você não pode adicionar itens com quantidade 0.", "Alerta", JOptionPane.WARNING_MESSAGE);
             }else{
                 model.addRow(vec);
+                cd.jLabelTotal.setText(Double.toString(total+(preco*quantidade)));
             }
         } 
     }  

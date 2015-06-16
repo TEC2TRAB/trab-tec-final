@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import Interface.Cad_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +29,7 @@ public class ButtonColumnRemove extends AbstractCellEditor
         JButton renderButton;  
         JButton editButton;  
         String text;  
+        Cad_Venda cd = JanelaUtil.JANELAS.get("Venda");
   
         public ButtonColumnRemove(JTable table, int column){  
             super();  
@@ -85,6 +87,11 @@ public class ButtonColumnRemove extends AbstractCellEditor
         public void actionPerformed(ActionEvent e){  
             fireEditingStopped();
             DefaultTableModel model = (DefaultTableModel) table.getModel();
-            model.removeRow(table.getSelectedRow());
+            int row = table.getSelectedRow();
+            double total = Double.parseDouble(cd.jLabelTotal.getText());
+            double preco = (double) table.getValueAt(row, 2);
+            double quantidade = (double) table.getValueAt(row, 3);
+            model.removeRow(row);
+            cd.jLabelTotal.setText(Double.toString(total-(preco*quantidade)));
         }  
     }  

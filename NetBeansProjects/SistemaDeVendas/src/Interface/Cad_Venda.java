@@ -7,6 +7,7 @@ package Interface;
 
 import Classes.ButtonColumnAdd;
 import Classes.ButtonColumnRemove;
+import Classes.JanelaUtil;
 import ModuloDeProdutos.Produto;
 import Dao.ProdutoDao;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Cad_Venda extends javax.swing.JFrame {
      */
     public Cad_Venda() {
         initComponents();
+        JanelaUtil.JANELAS.put("Venda", this);
         ButtonColumnRemove b1 = new ButtonColumnRemove(jTableComprados, 4);
         ButtonColumnAdd b = new ButtonColumnAdd(jTableEstoque,4,jTableComprados);
     }
@@ -54,9 +56,16 @@ public class Cad_Venda extends javax.swing.JFrame {
         jButtonPesquisar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabelTotal = new javax.swing.JLabel();
+        jLabelRS = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Vendas");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TitulojLabel.setText("Cadastrar Venda");
@@ -154,6 +163,12 @@ public class Cad_Venda extends javax.swing.JFrame {
             }
         });
 
+        jLabelTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelTotal.setText("0.0");
+
+        jLabelRS.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelRS.setText("R$");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,7 +187,12 @@ public class Cad_Venda extends javax.swing.JFrame {
                             .addComponent(jButtonCadastrar)
                             .addGap(32, 32, 32)
                             .addComponent(jButtonCancelar))
-                        .addComponent(jLabelValor)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabelValor)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabelRS)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(TitulojComprado)
                         .addComponent(jScrollPane2)
                         .addComponent(jLabelEstoque)
@@ -213,7 +233,11 @@ public class Cad_Venda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jLabelValor)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelValor)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelRS, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,6 +271,10 @@ public class Cad_Venda extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonPesquisarMousePressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    
+    }//GEN-LAST:event_formWindowOpened
     /**
      * @param args the command line arguments
      */
@@ -259,6 +287,8 @@ public class Cad_Venda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1Cliente;
     private javax.swing.JLabel jLabelEstoque;
     private javax.swing.JLabel jLabelIdProd;
+    private javax.swing.JLabel jLabelRS;
+    public javax.swing.JLabel jLabelTotal;
     private javax.swing.JLabel jLabelValor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
