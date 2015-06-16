@@ -29,13 +29,10 @@ public class Cons_Venda extends javax.swing.JFrame {
 
         jLabeID = new javax.swing.JLabel();
         jTextID = new javax.swing.JTextField();
-        jRadioButtonCPF = new javax.swing.JRadioButton();
         jRadioButtonID = new javax.swing.JRadioButton();
-        jLabelCPF = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableVenda = new javax.swing.JTable();
         jLabelSelecione = new javax.swing.JLabel();
-        jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
         jLabelData = new javax.swing.JLabel();
         jTextData = new javax.swing.JTextField();
@@ -55,23 +52,12 @@ public class Cons_Venda extends javax.swing.JFrame {
 
         jTextID.setName(""); // NOI18N
 
-        jRadioButtonCPF.setText("CPF");
-        jRadioButtonCPF.setToolTipText("");
-        jRadioButtonCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonCPFActionPerformed(evt);
-            }
-        });
-
         jRadioButtonID.setText("ID");
         jRadioButtonID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonIDActionPerformed(evt);
             }
         });
-
-        jLabelCPF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelCPF.setText("CPF - Cliente:");
 
         jTableVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,8 +88,6 @@ public class Cons_Venda extends javax.swing.JFrame {
         jLabelSelecione.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSelecione.setText("Selecione: ");
 
-        jTextCPF.setName(""); // NOI18N
-
         jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
 
@@ -132,36 +116,32 @@ public class Cons_Venda extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonConsultar)
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabelSelecione)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonCancelar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButtonID)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButtonData))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(60, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonConsultar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCancelar))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabelCPF)
-                                .addComponent(jLabelSelecione))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jRadioButtonCPF)
+                                    .addComponent(jLabeID)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jRadioButtonID)
+                                    .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelData)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jRadioButtonData))
-                                .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabeID)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextID, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelData)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextData, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                                    .addComponent(jTextData, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,13 +149,8 @@ public class Cons_Venda extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSelecione)
-                    .addComponent(jRadioButtonCPF)
                     .addComponent(jRadioButtonID)
                     .addComponent(jRadioButtonData))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPF)
-                    .addComponent(jTextCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabeID)
@@ -190,55 +165,36 @@ public class Cons_Venda extends javax.swing.JFrame {
                     .addComponent(jButtonCancelar))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
-        if(jRadioButtonCPF.isSelected()==true){
-            jRadioButtonID.setSelected(false);
-            jRadioButtonData.setSelected(false);
-            jTextCPF.setEnabled(true);
-            jTextID.setEnabled(false);
-            jTextData.setEnabled(false);
-        }else{
-            jTextID.setEnabled(true);
-            jTextData.setEnabled(true);
-        }
-    }//GEN-LAST:event_jRadioButtonCPFActionPerformed
-
     private void jRadioButtonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIDActionPerformed
         if(jRadioButtonID.isSelected()==true){
-            jRadioButtonCPF.setSelected(false);
             jRadioButtonData.setSelected(false);
             jTextID.setEnabled(true);
-            jTextCPF.setEnabled(false);
             jTextData.setEnabled(false);
         }else{
-            jTextCPF.setEnabled(true);
             jTextData.setEnabled(true);
         }
     }//GEN-LAST:event_jRadioButtonIDActionPerformed
 
     private void jRadioButtonDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDataActionPerformed
         if(jRadioButtonData.isSelected()==true){
-            jRadioButtonCPF.setSelected(false);
             jRadioButtonID.setSelected(false);
             jTextData.setEnabled(true);
-            jTextCPF.setEnabled(false);
             jTextID.setEnabled(false);
         }else{
-            jTextCPF.setEnabled(true);
             jTextID.setEnabled(true);
         }
     }//GEN-LAST:event_jRadioButtonDataActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        jRadioButtonCPF.setSelected(true);
-        jTextID.setEnabled(false);
+        jRadioButtonID.setSelected(true);
+        jTextID.setEnabled(true);
         jTextData.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
@@ -253,15 +209,12 @@ public class Cons_Venda extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JLabel jLabeID;
-    private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelSelecione;
-    private javax.swing.JRadioButton jRadioButtonCPF;
     private javax.swing.JRadioButton jRadioButtonData;
     private javax.swing.JRadioButton jRadioButtonID;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableVenda;
-    private javax.swing.JTextField jTextCPF;
     private javax.swing.JTextField jTextData;
     private javax.swing.JTextField jTextID;
     // End of variables declaration//GEN-END:variables
