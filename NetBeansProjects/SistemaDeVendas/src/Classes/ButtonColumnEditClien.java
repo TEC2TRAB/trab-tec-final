@@ -88,8 +88,7 @@ public class ButtonColumnEditClien extends AbstractCellEditor
         }  
   
         @Override
-        public void actionPerformed(ActionEvent e){  
-            fireEditingStopped();   
+        public void actionPerformed(ActionEvent e){   
             List<Cliente> clientes = new ArrayList<>();
             Edit_Clien ec = new Edit_Clien();
             ClienteDao c = new ClienteDao();
@@ -118,5 +117,6 @@ public class ButtonColumnEditClien extends AbstractCellEditor
             ec.jTextBairro.setText(clientes.get(0).getBairro());
             ec.jTextComple.setText(clientes.get(0).getComple());
             ec.setVisible(true);
+            ec.setAlwaysOnTop(true);
         }  
     }  

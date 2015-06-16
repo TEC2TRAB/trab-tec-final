@@ -88,8 +88,7 @@ public class ButtonColumnEditFunc extends AbstractCellEditor
         }  
   
         @Override
-        public void actionPerformed(ActionEvent e){  
-            fireEditingStopped();   
+        public void actionPerformed(ActionEvent e){     
             List<Funcionario> funcionarios = new ArrayList<>();
             Edit_Func ef = new Edit_Func();
             FuncionarioDao f = new FuncionarioDao();
@@ -118,5 +117,6 @@ public class ButtonColumnEditFunc extends AbstractCellEditor
             ef.jTextBairro.setText(funcionarios.get(0).getBairro());
             ef.jTextComple.setText(funcionarios.get(0).getComple());
             ef.setVisible(true);
+            ef.setAlwaysOnTop(true);
         }  
     }  

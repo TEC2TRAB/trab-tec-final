@@ -195,7 +195,7 @@ public class Edit_Produ extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelQuantidade.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Quantidade é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Quantidade é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextQuantidade.setText("");
             jTextQuantidade.requestFocus();
         }
@@ -209,7 +209,7 @@ public class Edit_Produ extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelPreco.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Preço é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Preço é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextPreco.setText("");
             jTextPreco.requestFocus();
         }
@@ -234,24 +234,23 @@ public class Edit_Produ extends javax.swing.JFrame {
             }
         }
         if(erro==1){
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else{
             Produto p = new Produto();
+            ProdutoDao pd = new ProdutoDao();
             p.setNome(jTextNome.getText());
             p.setId(Integer.parseInt(jTextID.getText()));
             p.setPreco(Double.parseDouble(jTextPreco.getText()));
             p.setDescricao(jTextDescricao.getText());
             p.setQuantidade(Double.parseDouble(jTextQuantidade.getText()));
-            ProdutoDao pd = new ProdutoDao();
             pd.atualizar(p);
-            JOptionPane.showMessageDialog(null,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonSalvarMousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         jTextID.setEnabled(false);
-        setAlwaysOnTop(true);
     }//GEN-LAST:event_formWindowOpened
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojLabel;

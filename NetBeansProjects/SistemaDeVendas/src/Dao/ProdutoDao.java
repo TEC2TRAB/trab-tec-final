@@ -105,16 +105,17 @@ public class ProdutoDao {
     }
     
     public void atualizar(Produto produto) {
-        String sql = "UPDATE produto SET preco = ?," +
+        String sql = "UPDATE produto SET nome = ?,preco = ?," +
                      "quantidade = ?, descricao = ?" +
                      "WHERE id_produto = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
-            statement.setDouble(1, produto.getPreco());
-            statement.setDouble(2, produto.getQuantidade());
-            statement.setString(3, produto.getDescricao());
-            statement.setInt(4, produto.getId());
+            statement.setString(1, produto.getNome().toUpperCase());
+            statement.setDouble(2, produto.getPreco());
+            statement.setDouble(3, produto.getQuantidade());
+            statement.setString(4, produto.getDescricao());
+            statement.setInt(5, produto.getId());
             
             statement.execute();
             statement.close();

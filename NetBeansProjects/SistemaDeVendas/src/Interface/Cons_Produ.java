@@ -229,11 +229,13 @@ public class Cons_Produ extends javax.swing.JFrame {
         int passa=0;
         if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa = 1;
         }else if(jRadioButtonNome.isSelected()==true){
             produtos = p.consultar(jTextNome.getText());
         }
         if(jRadioButtonCodigo.isSelected()==true && jTextCodigo.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Campo Código em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa = 1;
         }else if(jRadioButtonCodigo.isSelected()==true){
             try{
                 Integer.parseInt(jTextCodigo.getText());

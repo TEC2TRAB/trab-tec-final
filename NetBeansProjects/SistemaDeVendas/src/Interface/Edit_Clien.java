@@ -318,14 +318,13 @@ public class Edit_Clien extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelNumero.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextNumero.setText("");
             jTextNumero.requestFocus();
         }
     }//GEN-LAST:event_jTextNumeroFocusLost
 
     private void jButtonSalvarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMousePressed
-        Cliente c = new Cliente();
         int erro=0;
         Component components[] = getContentPane().getComponents();  
         //Para cada componente
@@ -355,8 +354,10 @@ public class Edit_Clien extends javax.swing.JFrame {
             }
         }
         if(erro==1){
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else{
+            Cliente c = new Cliente();
+            ClienteDao cd = new ClienteDao();
             c.setNome(jTextNome.getText());
             c.setSexo(jRadioSexoM.getText().charAt(0));
             try {
@@ -376,9 +377,8 @@ public class Edit_Clien extends javax.swing.JFrame {
             c.setBairro(jTextBairro.getText());
             c.setComple(jTextComple.getText());
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
-            ClienteDao cd = new ClienteDao();
             cd.atualizar(c);
-            JOptionPane.showMessageDialog(null,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonSalvarMousePressed
@@ -390,7 +390,6 @@ public class Edit_Clien extends javax.swing.JFrame {
         jRadioSexoM.setEnabled(false);
         jFormattedDtNasc.setEnabled(false);
         jTextRG.setEnabled(false);
-        setAlwaysOnTop(true);
     }//GEN-LAST:event_formWindowOpened
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;

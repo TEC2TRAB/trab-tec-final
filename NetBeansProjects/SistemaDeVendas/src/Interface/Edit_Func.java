@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package Interface;
-import ModuloDePessoas.Funcionario;
-import Classes.*;
+import ModuloDePessoas.Funcionario;;
 import Dao.FuncionarioDao;
 import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 /**
  *
  * @author Silent
@@ -297,8 +299,7 @@ public class Edit_Func extends javax.swing.JFrame {
 
     private void jButtonSalvarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMousePressed
         Funcionario f = new Funcionario();
-        MD5 m = new MD5();
-        int erro=0,senha=0;
+        int erro=0;
         Component components[] = getContentPane().getComponents();  
         //Para cada componente
         for (Component component : components) {
@@ -327,7 +328,7 @@ public class Edit_Func extends javax.swing.JFrame {
             }
         }
         if(erro==1){
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(erro==0){
             f.setNome(jTextNome.getText());
             f.setSexo(jRadioSexoM.getText().charAt(0));
@@ -350,7 +351,7 @@ public class Edit_Func extends javax.swing.JFrame {
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             FuncionarioDao fd = new FuncionarioDao();
             fd.atualizar(f);
-            JOptionPane.showMessageDialog(null,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonSalvarMousePressed
@@ -363,7 +364,7 @@ public class Edit_Func extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelNumero.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextNumero.setText("");
             jTextNumero.requestFocus();
         }
@@ -380,7 +381,6 @@ public class Edit_Func extends javax.swing.JFrame {
         jRadioSexoM.setEnabled(false);
         jFormattedDtNasc.setEnabled(false);
         jTextRG.setEnabled(false);
-        setAlwaysOnTop(true);
     }//GEN-LAST:event_formWindowOpened
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
