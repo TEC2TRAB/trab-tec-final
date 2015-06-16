@@ -209,13 +209,13 @@ public class FuncionarioDao {
             statement.execute();
             statement.clearParameters();
             
-            statement = this.connection.prepareStatement(sqlFuncionario);
+            /*statement = this.connection.prepareStatement(sqlFuncionario);
             statement.setString(1, funcionario.getLogin());
             statement.setString(2, funcionario.getSenha());
             statement.setDate(3, new Date(funcionario.getDemissao().getTimeInMillis()));
             statement.setString(4, Long.toString(funcionario.getCPF()));
             
-            statement.execute();
+            statement.execute();*/
             statement.close();
         } catch(SQLException e) {
             throw new RuntimeException(e);

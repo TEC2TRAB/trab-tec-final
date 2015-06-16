@@ -251,6 +251,7 @@ public class Edit_Produ extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         jTextID.setEnabled(false);
+        setAlwaysOnTop(true);
     }//GEN-LAST:event_formWindowOpened
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojLabel;

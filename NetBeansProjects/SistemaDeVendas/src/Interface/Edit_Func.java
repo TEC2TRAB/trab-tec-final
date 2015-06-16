@@ -328,7 +328,7 @@ public class Edit_Func extends javax.swing.JFrame {
         }
         if(erro==1){
             JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else if(senha==0 && erro==0){
+        }else if(erro==0){
             f.setNome(jTextNome.getText());
             f.setSexo(jRadioSexoM.getText().charAt(0));
             try {
@@ -349,8 +349,8 @@ public class Edit_Func extends javax.swing.JFrame {
             f.setComple(jTextComple.getText());
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             FuncionarioDao fd = new FuncionarioDao();
-            fd.cadastrar(f);
-            JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            fd.atualizar(f);
+            JOptionPane.showMessageDialog(null,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonSalvarMousePressed
@@ -380,6 +380,7 @@ public class Edit_Func extends javax.swing.JFrame {
         jRadioSexoM.setEnabled(false);
         jFormattedDtNasc.setEnabled(false);
         jTextRG.setEnabled(false);
+        setAlwaysOnTop(true);
     }//GEN-LAST:event_formWindowOpened
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
