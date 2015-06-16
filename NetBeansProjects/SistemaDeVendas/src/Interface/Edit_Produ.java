@@ -241,10 +241,10 @@ public class Edit_Produ extends javax.swing.JFrame {
             p.setId(Integer.parseInt(jTextID.getText()));
             p.setPreco(Double.parseDouble(jTextPreco.getText()));
             p.setDescricao(jTextDescricao.getText());
-            p.setQuantidade(Integer.parseInt(jTextQuantidade.getText()));
+            p.setQuantidade(Double.parseDouble(jTextQuantidade.getText()));
             ProdutoDao pd = new ProdutoDao();
-            pd.cadastrar(p);
-            JOptionPane.showMessageDialog(null,"Produto cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            pd.atualizar(p);
+            JOptionPane.showMessageDialog(null,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonSalvarMousePressed
