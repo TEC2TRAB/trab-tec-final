@@ -35,8 +35,8 @@ public class VendaDao {
         String sqlId = "SELECT MAX(id_venda) AS id_venda FROM venda";
         
         String sqlHistorico = "INSERT INTO historico_venda " +
-                              "(id_venda, id_produto, quantidade) " +
-                              "VALUES (?,?,?)";
+                              "(id_venda, id_produto, quantidade, preco) " +
+                              "VALUES (?,?,?,?)";
         
         try {
             //Inserindo na tabela venda.
@@ -63,6 +63,7 @@ public class VendaDao {
                  statement.setInt(1, venda.getId());
                  statement.setInt(2, (int)historico[i][0]);
                  statement.setDouble(3, historico[i][1]);
+                 statement.setDouble(4, historico[i][2]);
                  
                  statement.execute();
             }
