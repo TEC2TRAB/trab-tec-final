@@ -228,13 +228,13 @@ public class Cons_Produ extends javax.swing.JFrame {
         List<Produto> produtos = new ArrayList<>();
         int passa=0;
         if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }else if(jRadioButtonNome.isSelected()==true){
             produtos = p.consultar(jTextNome.getText());
         }
         if(jRadioButtonCodigo.isSelected()==true && jTextCodigo.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Campo Código em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Campo Código em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }else if(jRadioButtonCodigo.isSelected()==true){
             try{
@@ -242,13 +242,13 @@ public class Cons_Produ extends javax.swing.JFrame {
                 produtos = p.consultar(Integer.parseInt(jTextCodigo.getText()));
             }catch(NumberFormatException e){
                 passa=1;
-                JOptionPane.showMessageDialog(null, "O campo Código é numérico,por favor, verifique e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "O campo Código é numérico,por favor, verifique e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
                 jTextCodigo.setText("");
                 jTextCodigo.requestFocus();
             }
         }
         if(passa==0 && produtos.isEmpty()){
-            JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
             Object vec[] = new Object[2];
             for(Produto pi : produtos){

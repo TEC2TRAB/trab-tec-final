@@ -367,7 +367,7 @@ public class Cad_Clien extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelNumero.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextNumero.setText("");
             jTextNumero.requestFocus();
         }
@@ -381,7 +381,7 @@ public class Cad_Clien extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelRG.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextRG.setText("");
             jTextRG.requestFocus();
         }
@@ -424,11 +424,11 @@ public class Cad_Clien extends javax.swing.JFrame {
         }
         if(erro==1){
             erro=0;
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(erro==0 && cpferro==1){
             jTextCPF.setText("");
             jTextCPF.requestFocus();
-            JOptionPane.showMessageDialog(null,"CPF inválido, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"CPF inválido, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(cpferro==0 && erro==0){
             c.setNome(jTextNome.getText());
             c.setSexo(jRadioSexoM.getText().charAt(0));
@@ -451,7 +451,7 @@ public class Cad_Clien extends javax.swing.JFrame {
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             ClienteDao cd = new ClienteDao();
             cd.cadastrar(c);
-            JOptionPane.showMessageDialog(null,"Cliente cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Cliente cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed

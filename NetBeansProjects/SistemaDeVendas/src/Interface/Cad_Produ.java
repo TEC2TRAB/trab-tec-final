@@ -225,7 +225,7 @@ public class Cad_Produ extends javax.swing.JFrame {
         }
         if(erro==1){
             erro=0;
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else{
             Produto p = new Produto();
             p.setNome(jTextNome.getText());
@@ -235,7 +235,7 @@ public class Cad_Produ extends javax.swing.JFrame {
             p.setQuantidade(Double.parseDouble(jTextQuantidade.getText()));
             ProdutoDao pd = new ProdutoDao();
             pd.cadastrar(p);
-            JOptionPane.showMessageDialog(null,"Produto cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Produto cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
@@ -248,7 +248,7 @@ public class Cad_Produ extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelID.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo ID - Produto é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo ID - Produto é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextID.setText("");
             jTextID.requestFocus();
         }
@@ -262,7 +262,7 @@ public class Cad_Produ extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelQuantidade.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Quantidade é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Quantidade é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextQuantidade.setText("");
             jTextQuantidade.requestFocus();
         }
@@ -276,7 +276,7 @@ public class Cad_Produ extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelPreco.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Preço é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Preço é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextPreco.setText("");
             jTextPreco.requestFocus();
         }

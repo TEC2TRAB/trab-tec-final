@@ -191,11 +191,6 @@ public class Cad_Func extends javax.swing.JFrame {
                 jButtonLimparMousePressed(evt);
             }
         });
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
@@ -363,10 +358,11 @@ public class Cad_Func extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -419,18 +415,18 @@ public class Cad_Func extends javax.swing.JFrame {
         }
         if(erro==1){
             erro=0;
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(erro==0 && cpferro==1){
             jTextCPF.setText("");
             jTextCPF.requestFocus();
-            JOptionPane.showMessageDialog(null,"CPF inválido, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"CPF inválido, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(erro==0 && senha==1){
             jLabelSenha.setForeground(Color.red);
             jLabelConfSenha.setForeground(Color.red);
             jPasswordSenha.setText("");
             jPasswordConfSenha.setText("");
             jPasswordSenha.requestFocus();
-            JOptionPane.showMessageDialog(null,"As senhas não conferem, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"As senhas não conferem, por favor, verifique e digite novamente.","Alerta",JOptionPane.WARNING_MESSAGE);
         }else if(senha==0 && cpferro==0 && erro==0){
             jLabelSenha.setForeground(Color.black);
             jLabelConfSenha.setForeground(Color.black);
@@ -457,7 +453,7 @@ public class Cad_Func extends javax.swing.JFrame {
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             FuncionarioDao fd = new FuncionarioDao();
             fd.cadastrar(f);
-            JOptionPane.showMessageDialog(null,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
@@ -489,7 +485,7 @@ public class Cad_Func extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelNumero.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo Número é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextNumero.setText("");
             jTextNumero.requestFocus();
         }
@@ -511,7 +507,7 @@ public class Cad_Func extends javax.swing.JFrame {
             }
         }catch(NumberFormatException e){
             jLabelRG.setForeground(Color.red);
-            JOptionPane.showMessageDialog(null,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"O campo RG é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
             jTextRG.setText("");
             jTextRG.requestFocus();
         }
@@ -520,10 +516,6 @@ public class Cad_Func extends javax.swing.JFrame {
     private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
-
-    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;

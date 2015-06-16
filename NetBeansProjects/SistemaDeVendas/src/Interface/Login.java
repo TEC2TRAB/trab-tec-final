@@ -118,15 +118,15 @@ public class Login extends javax.swing.JFrame {
         String senha;
         boolean result;
         if(jTextLogin.getText().isEmpty() && jPasswordSenha.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Campos Usuário e Senha não podem ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Campos Usuário e Senha não podem ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa=1;
         }
         if(jTextLogin.getText().isEmpty() && passa==0){
-            JOptionPane.showMessageDialog(null, "Campo Usuário não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Campo Usuário não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }
         if(jPasswordSenha.getText().isEmpty() && passa==0){
-            JOptionPane.showMessageDialog(null, "Campo Senha não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Campo Senha não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }
         if(passa==0){
@@ -135,7 +135,7 @@ public class Login extends javax.swing.JFrame {
             senha = m.geraMD5(jPasswordSenha.getText());
             result = f.verificarAcesso(jTextLogin.getText(), senha);
             if(result==false){
-                JOptionPane.showMessageDialog(null, "Usuário e/ou Senha incorretos.", "Alerta", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Usuário e/ou Senha incorretos.", "Alerta", JOptionPane.ERROR_MESSAGE);
             }else{
                 dispose();
                 Menu me = new Menu();

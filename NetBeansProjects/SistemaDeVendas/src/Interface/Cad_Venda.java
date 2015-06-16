@@ -258,7 +258,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         List<Produto> produtos = new ArrayList<>();
         DefaultTableModel model = (DefaultTableModel) jTableEstoque.getModel();
         if(jTextConsultaProd.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Campo Nome do produto em branco, para adicionar produtos na venda, você precisa pesquisá-los antes.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Campo Nome do produto em branco, para adicionar produtos na venda, você precisa pesquisá-los antes.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
             produtos = p.consultar(jTextConsultaProd.getText());
             Object vec[] = new Object[4];

@@ -221,11 +221,11 @@ public class Cons_Func extends javax.swing.JFrame {
         model.setNumRows(0);
         int passa = 0;
         if(jRadioButtonCPF.isSelected()==false && jRadioButtonNome.isSelected()==false){
-            JOptionPane.showMessageDialog(null,"Você precisa selecionar uma forma de pesquisa antes de clicar em \"Consultar\", por CPF ou por Nome.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Você precisa selecionar uma forma de pesquisa antes de clicar em \"Consultar\", por CPF ou por Nome.", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }
         if(jRadioButtonCPF.isSelected()==true && jTextCPF.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Campo CPF em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Campo CPF em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
             jTextCPF.requestFocus();
             passa = 1;
         }else if(jRadioButtonCPF.isSelected()==true){
@@ -233,7 +233,7 @@ public class Cons_Func extends javax.swing.JFrame {
                 funcionarios = f.consultar(Long.parseLong(jTextCPF.getText()));
                 passa = 0;
             }else{
-               JOptionPane.showMessageDialog(null,"CPF inválido, por favor, digite um CPF válido e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE); 
+               JOptionPane.showMessageDialog(this,"CPF inválido, por favor, digite um CPF válido e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE); 
                jTextCPF.setText("");
                jTextCPF.requestFocus();
                passa = 1;
@@ -241,13 +241,13 @@ public class Cons_Func extends javax.swing.JFrame {
         }
         
         if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }else if(jRadioButtonNome.isSelected()==true){
             funcionarios = f.consultar(jTextNome.getText());
         }
         if(passa == 0 && funcionarios.isEmpty()){
-            JOptionPane.showMessageDialog(null, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
             Object vec[] = new Object[2];
             String cpf;
