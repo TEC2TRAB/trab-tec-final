@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author cesar.nascimento
@@ -17,9 +19,13 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        int panelX = (getWidth() - jPanel2.getWidth() - getInsets().left - getInsets().right) / 2;
-        int panelY = ((getHeight() - jPanel2.getHeight() - getInsets().top - getInsets().bottom) / 2);
-        jPanel2.setLocation(panelX, panelY);
+        getContentPane().setLayout(new BorderLayout());
+        setVisible(true);
+        add(jPanel2, BorderLayout.CENTER);
+        //centralizado
+        //int panelX = (getWidth() - jPanel2.getWidth() - getInsets().left - getInsets().right) / 2;
+        //int panelY = (getHeight() - jPanel2.getHeight() - getInsets().top - getInsets().bottom) / 2;
+        //jPanel2.setLocation(panelX, panelY);
     }
 
     /**
