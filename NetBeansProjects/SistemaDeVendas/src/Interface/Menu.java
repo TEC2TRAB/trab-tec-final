@@ -6,17 +6,19 @@
 package Interface;
 
 import java.awt.BorderLayout;
+import Classes.Sessao;
 
 /**
  *
  * @author cesar.nascimento
  */
 public class Menu extends javax.swing.JFrame {
-
+    Sessao s = new Sessao();
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu(Sessao s) {
+        this.s = s;
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         getContentPane().setLayout(new BorderLayout());
@@ -65,7 +67,7 @@ public class Menu extends javax.swing.JFrame {
         vendasText = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableHorarioVenda = new javax.swing.JTable();
-        nameCliente = new javax.swing.JLabel();
+        nameFunc = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         logoBox = new javax.swing.JLabel();
@@ -88,6 +90,11 @@ public class Menu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(null);
         setPreferredSize(new java.awt.Dimension(1200, 745));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(252, 252, 252));
         jPanel2.setMinimumSize(new java.awt.Dimension(1217, 600));
@@ -97,7 +104,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(320, 200));
         jPanel4.setVerifyInputWhenFocusTarget(false);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Classes/vendas.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vendas.png"))); // NOI18N
 
         cadVenda.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadVenda.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,7 +152,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(45, 198, 110));
         jPanel1.setPreferredSize(new java.awt.Dimension(320, 200));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Classes/produtos.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/produtos.png"))); // NOI18N
 
         cadProd.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadProd.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,19 +186,20 @@ public class Menu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(cadProd)
                 .addGap(44, 44, 44)
-                .addComponent(consProd))
+                .addComponent(consProd)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(46, 204, 113));
         jPanel5.setPreferredSize(new java.awt.Dimension(320, 200));
         jPanel5.setVerifyInputWhenFocusTarget(false);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Classes/cliente.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cliente.png"))); // NOI18N
 
         cadCliente.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,20 +233,18 @@ public class Menu extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(cadCliente)
                 .addGap(41, 41, 41)
                 .addComponent(consCliente)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(45, 198, 110));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Classes/funcionario.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/funcionario.png"))); // NOI18N
         jLabel5.setText(" ");
 
         cadFunc.setFont(new java.awt.Font("Lato Medium", 0, 17)); // NOI18N
@@ -273,15 +279,13 @@ public class Menu extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(cadFunc)
                 .addGap(36, 36, 36)
                 .addComponent(consFunc)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -365,8 +369,7 @@ public class Menu extends javax.swing.JFrame {
         tableHorarioVenda.setRowHeight(22);
         jScrollPane1.setViewportView(tableHorarioVenda);
 
-        nameCliente.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
-        nameCliente.setText("Nome do Cliente!");
+        nameFunc.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Lato Semibold", 0, 18)); // NOI18N
         jLabel7.setText("Aqui estão as suas informações:");
@@ -398,7 +401,7 @@ public class Menu extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(textOla)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nameCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nameFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addComponent(vendasText)
                                 .addGap(219, 219, 219)))))
@@ -409,9 +412,9 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textOla)
-                    .addComponent(nameCliente))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textOla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addGap(9, 9, 9)
@@ -614,7 +617,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCad_ClienMousePressed
 
     private void jMenuItemCad_VendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemCad_VendaMousePressed
-        Cad_Venda cv = new Cad_Venda();
+        Cad_Venda cv = new Cad_Venda(s.getId());
         cv.setVisible(true);
     }//GEN-LAST:event_jMenuItemCad_VendaMousePressed
 
@@ -634,7 +637,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCons_ClientMousePressed
 
     private void cadVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadVendaMousePressed
-        Cad_Venda cv = new Cad_Venda();
+        Cad_Venda cv = new Cad_Venda(s.getId());
         cv.setVisible(true);
     }//GEN-LAST:event_cadVendaMousePressed
 
@@ -672,6 +675,10 @@ public class Menu extends javax.swing.JFrame {
         Cons_Func cf = new Cons_Func();
         cf.setVisible(true);
     }//GEN-LAST:event_consFuncMousePressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        nameFunc.setText(s.getNome());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -714,7 +721,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoBox;
-    private javax.swing.JLabel nameCliente;
+    private javax.swing.JLabel nameFunc;
     private javax.swing.JTable tableHorarioVenda;
     private javax.swing.JLabel texMes;
     private javax.swing.JLabel textDia;
