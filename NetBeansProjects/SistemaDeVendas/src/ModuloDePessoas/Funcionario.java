@@ -9,7 +9,7 @@ import java.util.Calendar;
 public class Funcionario extends Pessoa{
     private int id;
     private Calendar admissao;
-    private Calendar demissao;
+    private Calendar demissao = null;
     private String login;
     private String senha;
     private String permissao;

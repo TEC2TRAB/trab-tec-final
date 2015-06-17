@@ -17,6 +17,7 @@ import java.sql.SQLException;
 public class Sessao {
     private String nome;
     private int id;
+    private String login;
     private long cpf;
     private String permissao;
     private Connection connection;
@@ -44,6 +45,7 @@ public class Sessao {
             while(resultado.next()) {
                 setNome(resultado.getString("nome"));
                 setId(resultado.getInt("id_funcionario"));
+                setLogin(login);
                 setCPF(Long.parseLong(resultado.getString("cpf")));
                 setPermissao(resultado.getString("permissao"));
             }                
@@ -59,7 +61,6 @@ public class Sessao {
     public String getNome() {
         return nome;
     }
-    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -67,15 +68,20 @@ public class Sessao {
     public int getId() {
         return id;
     }
-    
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public String getLogin() {
+        return login;
+    }
+    public void setLogin(String login) {
+        this.login = login;
     }
     
     public long getCPF() {
         return cpf;
     }
-    
     public void setCPF(long cpf) {
         this.cpf = cpf;
     }
@@ -83,7 +89,6 @@ public class Sessao {
     public String getPermissao() {
         return permissao;
     }
-    
     public void setPermissao(String permissao) {
         this.permissao = permissao;
     }

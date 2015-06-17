@@ -195,8 +195,8 @@ public class FuncionarioDao {
                            "estado = ?, complemento = ?, rua = ?" +
                            "WHERE cpf = ?";
         
-        String sqlFuncionario = "UPDATE funcionario SET login = ?," +
-                                "senha = ?, demissao = ?, permissao = ? WHERE cpf = ?";
+        String sqlFuncionario = "UPDATE funcionario SET demissao = ?," +
+                                "permissao = ? WHERE cpf = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
@@ -212,14 +212,17 @@ public class FuncionarioDao {
             statement.execute();
             statement.clearParameters();
             
-            /*statement = this.connection.prepareStatement(sqlFuncionario);
-            statement.setString(1, funcionario.getLogin());
-            statement.setString(2, funcionario.getSenha());
-            statement.setDate(3, new Date(funcionario.getDemissao().getTimeInMillis()));
-            statement.setString(4, funcionario.getPermissao());
-            statement.setString(5, Long.toString(funcionario.getCPF()));
+            statement = this.connection.prepareStatement(sqlFuncionario);
+            statement.setDate(1, new Date(funcionario.getDemissao().getTimeInMillis()));
             
-            statement.execute();*/
+            if(funcionario.getPermissao() == null)
+                statement.setNull(2, java.sql.Types.NULL);
+            else
+                statement.setString(2, funcionario.getPermissao());
+            
+            statement.setString(3, Long.toString(funcionario.getCPF()));
+            
+            statement.execute();
             statement.close();
         } catch(SQLException e) {
             throw new RuntimeException(e);
@@ -232,6 +235,46 @@ public class FuncionarioDao {
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
             statement.setString(1, Long.toString(cpf));
+            
+            statement.execute();
+            statement.close();
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public boolean verificarSenha(String login, String senha) {
+        String sql = "SELECT senha FROM funcionario " +
+                     "WHERE login = ? AND senha = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, login);
+            statement.setString(2, senha);
+            
+            ResultSet resultado = statement.executeQuery();
+            if(!resultado.isBeforeFirst()) {
+                resultado.close();
+                statement.close();
+                return false;
+            }
+            resultado.close();
+            statement.close();
+            return true;
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void atualizar(String login, String senha, long cpf) {
+        String sql = "UPDATE funcionario SET login = ?," +
+                     "senha = ? WHERE cpf = ?";
+        
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            statement.setString(1, login);
+            statement.setString(2, senha);
+            statement.setString(3, Long.toString(cpf));
             
             statement.execute();
             statement.close();
