@@ -6,7 +6,7 @@
 package Interface;
 
 import Classes.MD5;
-import Dao.FuncionarioDao;
+import Classes.Sessao;
 import javax.swing.JOptionPane;
 
 /**
@@ -130,10 +130,10 @@ public class Login extends javax.swing.JFrame {
             passa = 1;
         }
         if(passa==0){
-            FuncionarioDao f = new FuncionarioDao();
+            Sessao sessao = new Sessao();
             MD5 m = new MD5();
             senha = m.geraMD5(jPasswordSenha.getText());
-            result = f.verificarAcesso(jTextLogin.getText(), senha);
+            result = sessao.login(jTextLogin.getText(), senha);
             if(result==false){
                 JOptionPane.showMessageDialog(this, "Usuário e/ou Senha incorretos.", "Alerta", JOptionPane.ERROR_MESSAGE);
             }else{

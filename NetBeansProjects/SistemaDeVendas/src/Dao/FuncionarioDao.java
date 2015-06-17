@@ -235,29 +235,4 @@ public class FuncionarioDao {
             throw new RuntimeException(e);
         }
     }
-    
-    public boolean verificarAcesso(String login, String senha) {
-        
-        String sql = "SELECT senha FROM funcionario" +
-                     " WHERE login = ? AND senha = ?";
-        
-        try {
-            PreparedStatement statement = this.connection.prepareStatement(sql);
-            statement.setString(1, login);
-            statement.setString(2, senha);
-
-            ResultSet resultado = statement.executeQuery();
-            if(!resultado.isBeforeFirst()) {
-                resultado.close();
-                statement.close();
-                return false;
-            }                
-            resultado.close();
-            statement.close();
-            return true;
-            
-        } catch(SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

@@ -12,6 +12,7 @@ public class Funcionario extends Pessoa{
     private Calendar demissao;
     private String login;
     private String senha;
+    private int permissao;
     
     public void setId(int id){
         this.id = id;
@@ -46,6 +47,13 @@ public class Funcionario extends Pessoa{
     }
     public String getSenha(){
         return senha;
+    }
+    
+    public void setPermissao(int permissao){
+        this.permissao = permissao;
+    }
+    public int getPermissao(){
+        return permissao;
     }
     
 }
