@@ -72,7 +72,7 @@ public class FuncionarioDao {
             statement.setNull(3, java.sql.Types.DATE);
             statement.setString(4, funcionario.getLogin());
             statement.setString(5, funcionario.getSenha());
-            statement.setString(5, funcionario.getPermissao());
+            statement.setString(6, funcionario.getPermissao());
 
             statement.execute();
             statement.close();
@@ -213,13 +213,11 @@ public class FuncionarioDao {
             statement.clearParameters();
             
             statement = this.connection.prepareStatement(sqlFuncionario);
-            statement.setDate(1, new Date(funcionario.getDemissao().getTimeInMillis()));
-            
-            if(funcionario.getPermissao() == null)
-                statement.setNull(2, java.sql.Types.NULL);
+            if(funcionario.getAdmissao()==null)
+                statement.setNull(1, java.sql.Types.NULL);
             else
-                statement.setString(2, funcionario.getPermissao());
-            
+                statement.setDate(1, new Date(funcionario.getDemissao().getTimeInMillis()));
+            statement.setString(2, funcionario.getPermissao());
             statement.setString(3, Long.toString(funcionario.getCPF()));
             
             statement.execute();

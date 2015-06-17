@@ -116,6 +116,10 @@ public class ButtonColumnEditFunc extends AbstractCellEditor
             ef.jTextCidade.setText(funcionarios.get(0).getCidade());
             ef.jTextBairro.setText(funcionarios.get(0).getBairro());
             ef.jTextComple.setText(funcionarios.get(0).getComple());
+            if(funcionarios.get(0).getPermissao().equals("Administrador"))
+                ef.jCheckAdmin.setSelected(true);
+            else
+                ef.jCheckFunc.setSelected(true);
             ef.setVisible(true);
             ef.setAlwaysOnTop(true);
         }  

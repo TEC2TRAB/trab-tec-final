@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -67,6 +68,9 @@ public class Edit_Func extends javax.swing.JFrame {
         jButtonSalvar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jTextRG = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jCheckAdmin = new javax.swing.JCheckBox();
+        jCheckFunc = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Editar Funcionário");
@@ -165,6 +169,25 @@ public class Edit_Func extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Permissões");
+
+        jCheckAdmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckAdmin.setText("Administrador");
+        jCheckAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckAdminActionPerformed(evt);
+            }
+        });
+
+        jCheckFunc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckFunc.setText("Vendedor");
+        jCheckFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckFuncActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,6 +197,11 @@ public class Edit_Func extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jCheckAdmin)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckFunc))
+                    .addComponent(jLabel1)
                     .addComponent(jLabelDados)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -203,11 +231,6 @@ public class Edit_Func extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(Endereço)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCancelar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabelBairro)
@@ -237,7 +260,11 @@ public class Edit_Func extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCancelar)))
                 .addContainerGap(199, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -287,6 +314,12 @@ public class Edit_Func extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckAdmin)
+                    .addComponent(jCheckFunc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -326,6 +359,13 @@ public class Edit_Func extends javax.swing.JFrame {
                     break;
                 } 
             }
+            if (component instanceof JCheckBox) {
+                //Algum está selecionado?
+                if (jCheckAdmin.isSelected()==false && jCheckFunc.isSelected()==false) {
+                    erro=1;
+                    break;
+                } 
+            }
         }
         if(erro==1){
             JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
@@ -348,6 +388,10 @@ public class Edit_Func extends javax.swing.JFrame {
             f.setCidade(jTextCidade.getText());
             f.setBairro(jTextBairro.getText());
             f.setComple(jTextComple.getText());
+            if(jCheckAdmin.isSelected())
+                f.setPermissao("Administrador");
+            else
+                f.setPermissao("Vendedor");
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             FuncionarioDao fd = new FuncionarioDao();
             fd.atualizar(f);
@@ -382,13 +426,25 @@ public class Edit_Func extends javax.swing.JFrame {
         jFormattedDtNasc.setEnabled(false);
         jTextRG.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jCheckAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckAdminActionPerformed
+        jCheckFunc.setSelected(false);
+    }//GEN-LAST:event_jCheckAdminActionPerformed
+
+    private void jCheckFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckFuncActionPerformed
+        jCheckAdmin.setSelected(false);
+    }//GEN-LAST:event_jCheckFuncActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
+    public javax.swing.JCheckBox jCheckAdmin;
+    public javax.swing.JCheckBox jCheckFunc;
     public javax.swing.JComboBox jComboEstado;
     public javax.swing.JFormattedTextField jFormattedCEP;
     public javax.swing.JFormattedTextField jFormattedDtNasc;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
     private javax.swing.JLabel jLabelCPF;
