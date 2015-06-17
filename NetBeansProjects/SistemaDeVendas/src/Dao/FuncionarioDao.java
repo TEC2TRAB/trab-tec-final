@@ -35,8 +35,8 @@ public class FuncionarioDao {
                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
         String sqlFuncionario = "INSERT INTO funcionario " +
-                                "(cpf,admissao,demissao,login,senha)" +
-                                "VALUES (?,?,?,?,?)";
+                                "(cpf,admissao,demissao,login,senha,permissao)" +
+                                "VALUES (?,?,?,?,?,?)";
         
         String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
         try {
@@ -72,6 +72,7 @@ public class FuncionarioDao {
             statement.setNull(3, java.sql.Types.DATE);
             statement.setString(4, funcionario.getLogin());
             statement.setString(5, funcionario.getSenha());
+            statement.setString(5, funcionario.getPermissao());
 
             statement.execute();
             statement.close();
@@ -99,6 +100,7 @@ public class FuncionarioDao {
                 funcionario.setCPF(Long.parseLong(resultado.getString("cpf")));
                 funcionario.setLogin(resultado.getString("login"));
                 funcionario.setSenha(resultado.getString("senha"));
+                funcionario.setPermissao(resultado.getString("permissao"));
                 
                 Calendar data1 = Calendar.getInstance();
                 data1.setTime(resultado.getDate("admissao"));
@@ -166,6 +168,7 @@ public class FuncionarioDao {
                 funcionario.setId(resultado.getInt("id_funcionario"));
                 funcionario.setLogin(resultado.getString("login"));
                 funcionario.setSenha(resultado.getString("senha"));
+                funcionario.setPermissao(resultado.getString("permissao"));
 
                 Calendar data2 = Calendar.getInstance();
                 data2.setTime(resultado.getDate("admissao"));
@@ -193,7 +196,7 @@ public class FuncionarioDao {
                            "WHERE cpf = ?";
         
         String sqlFuncionario = "UPDATE funcionario SET login = ?," +
-                                "senha = ?, demissao = ? WHERE cpf = ?";
+                                "senha = ?, demissao = ?, permissao = ? WHERE cpf = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sqlPessoa);
@@ -213,7 +216,8 @@ public class FuncionarioDao {
             statement.setString(1, funcionario.getLogin());
             statement.setString(2, funcionario.getSenha());
             statement.setDate(3, new Date(funcionario.getDemissao().getTimeInMillis()));
-            statement.setString(4, Long.toString(funcionario.getCPF()));
+            statement.setString(4, funcionario.getPermissao());
+            statement.setString(5, Long.toString(funcionario.getCPF()));
             
             statement.execute();*/
             statement.close();

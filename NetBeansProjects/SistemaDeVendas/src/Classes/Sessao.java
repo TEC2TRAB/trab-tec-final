@@ -18,7 +18,7 @@ public class Sessao {
     private String nome;
     private int id;
     private long cpf;
-    private int permissao;
+    private String permissao;
     private Connection connection;
     
     public Sessao() {
@@ -45,7 +45,7 @@ public class Sessao {
                 setNome(resultado.getString("nome"));
                 setId(resultado.getInt("id_funcionario"));
                 setCPF(Long.parseLong(resultado.getString("cpf")));
-                setPermissao(resultado.getInt("permissao"));
+                setPermissao(resultado.getString("permissao"));
             }                
             resultado.close();
             statement.close();
@@ -80,11 +80,11 @@ public class Sessao {
         this.cpf = cpf;
     }
     
-    public int getPermissao() {
+    public String getPermissao() {
         return permissao;
     }
     
-    public void setPermissao(int permissao) {
+    public void setPermissao(String permissao) {
         this.permissao = permissao;
     }
     
