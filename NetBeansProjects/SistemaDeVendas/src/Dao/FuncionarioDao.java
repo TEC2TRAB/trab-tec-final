@@ -106,9 +106,13 @@ public class FuncionarioDao {
                 data1.setTime(resultado.getDate("admissao"));
                 funcionario.setAdmissao(data1);
                 
-                /*Calendar data2 = Calendar.getInstance();
+                try{
+                Calendar data2 = Calendar.getInstance();
                 data2.setTime(resultado.getDate("demissao"));
-                funcionario.setDemissao(data2);*/
+                funcionario.setDemissao(data2);
+                }catch(NullPointerException e){
+                    funcionario.setDemissao(null);
+                }
                 
                 funcionario.setNumero(resultado.getInt("numero"));
                 funcionario.setSexo(resultado.getString("sexo").charAt(0));
@@ -174,9 +178,13 @@ public class FuncionarioDao {
                 data2.setTime(resultado.getDate("admissao"));
                 funcionario.setAdmissao(data2);
 
-                /*Calendar data3 = Calendar.getInstance();
+                Calendar data3 = Calendar.getInstance();
+                try{
                 data3.setTime(resultado.getDate("demissao"));
-                funcionario.setDemissao(data3);*/
+                funcionario.setDemissao(data3);
+                }catch(NullPointerException e){
+                    funcionario.setDemissao(null);
+                }
                 
                 funcionarios.add(funcionario);
             }
@@ -213,7 +221,7 @@ public class FuncionarioDao {
             statement.clearParameters();
             
             statement = this.connection.prepareStatement(sqlFuncionario);
-            if(funcionario.getAdmissao()==null)
+            if(funcionario.getDemissao()==null)
                 statement.setNull(1, java.sql.Types.NULL);
             else
                 statement.setDate(1, new Date(funcionario.getDemissao().getTimeInMillis()));
