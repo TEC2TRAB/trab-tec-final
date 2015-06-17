@@ -271,6 +271,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Cadastrar Venda"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadVendaMousePressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="consVenda">
               <Properties>
@@ -282,6 +285,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Consultar Venda"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="consVendaMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -339,6 +345,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Cadastrar Produto"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadProdMousePressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="consProd">
               <Properties>
@@ -350,6 +359,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Consultar Produto"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="consProdMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -412,6 +424,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Cadastrar Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadClienteMousePressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="consCliente">
               <Properties>
@@ -423,6 +438,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Consultar Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="consClienteMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -482,6 +500,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Cadastrar Funcion&#xe1;rio"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadFuncMousePressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="consFunc">
               <Properties>
@@ -493,6 +514,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="+ Consultar Funcion&#xe1;rio"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="consFuncMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

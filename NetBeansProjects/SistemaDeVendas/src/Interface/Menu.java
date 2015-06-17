@@ -102,10 +102,20 @@ public class Menu extends javax.swing.JFrame {
         cadVenda.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadVenda.setForeground(new java.awt.Color(255, 255, 255));
         cadVenda.setText("+ Cadastrar Venda");
+        cadVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cadVendaMousePressed(evt);
+            }
+        });
 
         consVenda.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consVenda.setForeground(new java.awt.Color(255, 255, 255));
         consVenda.setText("+ Consultar Venda");
+        consVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                consVendaMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -140,10 +150,20 @@ public class Menu extends javax.swing.JFrame {
         cadProd.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadProd.setForeground(new java.awt.Color(255, 255, 255));
         cadProd.setText("+ Cadastrar Produto");
+        cadProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cadProdMousePressed(evt);
+            }
+        });
 
         consProd.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consProd.setForeground(new java.awt.Color(255, 255, 255));
         consProd.setText("+ Consultar Produto");
+        consProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                consProdMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,10 +196,20 @@ public class Menu extends javax.swing.JFrame {
         cadCliente.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadCliente.setForeground(new java.awt.Color(255, 255, 255));
         cadCliente.setText("+ Cadastrar Cliente");
+        cadCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cadClienteMousePressed(evt);
+            }
+        });
 
         consCliente.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consCliente.setForeground(new java.awt.Color(255, 255, 255));
         consCliente.setText("+ Consultar Cliente");
+        consCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                consClienteMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -214,10 +244,20 @@ public class Menu extends javax.swing.JFrame {
         cadFunc.setFont(new java.awt.Font("Lato Medium", 0, 17)); // NOI18N
         cadFunc.setForeground(new java.awt.Color(255, 255, 255));
         cadFunc.setText("+ Cadastrar Funcionário");
+        cadFunc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cadFuncMousePressed(evt);
+            }
+        });
 
         consFunc.setFont(new java.awt.Font("Lato Medium", 0, 17)); // NOI18N
         consFunc.setForeground(new java.awt.Color(255, 255, 255));
         consFunc.setText("+ Consultar Funcionário");
+        consFunc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                consFuncMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -592,6 +632,46 @@ public class Menu extends javax.swing.JFrame {
         Cons_Clien cc = new Cons_Clien();
         cc.setVisible(true);
     }//GEN-LAST:event_jMenuItemCons_ClientMousePressed
+
+    private void cadVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadVendaMousePressed
+        Cad_Venda cv = new Cad_Venda();
+        cv.setVisible(true);
+    }//GEN-LAST:event_cadVendaMousePressed
+
+    private void consVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consVendaMousePressed
+        Cons_Venda cv = new Cons_Venda();
+        cv.setVisible(true);
+    }//GEN-LAST:event_consVendaMousePressed
+
+    private void cadProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadProdMousePressed
+        Cad_Produ cp = new Cad_Produ();
+        cp.setVisible(true);
+    }//GEN-LAST:event_cadProdMousePressed
+
+    private void consProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consProdMousePressed
+        Cons_Produ cp = new Cons_Produ();
+        cp.setVisible(true);
+    }//GEN-LAST:event_consProdMousePressed
+
+    private void cadClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadClienteMousePressed
+        Cad_Clien cc = new Cad_Clien();
+        cc.setVisible(true);
+    }//GEN-LAST:event_cadClienteMousePressed
+
+    private void consClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consClienteMousePressed
+        Cons_Clien cc = new Cons_Clien();
+        cc.setVisible(true);
+    }//GEN-LAST:event_consClienteMousePressed
+
+    private void cadFuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadFuncMousePressed
+        Cad_Func cf = new Cad_Func();
+        cf.setVisible(true);
+    }//GEN-LAST:event_cadFuncMousePressed
+
+    private void consFuncMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consFuncMousePressed
+        Cons_Func cf = new Cons_Func();
+        cf.setVisible(true);
+    }//GEN-LAST:event_consFuncMousePressed
 
     /**
      * @param args the command line arguments
