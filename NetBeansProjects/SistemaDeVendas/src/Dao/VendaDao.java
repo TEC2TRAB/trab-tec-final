@@ -78,7 +78,7 @@ public class VendaDao {
         }
     }
     
-    public List<Venda> consultar(Long cpf) {
+    public List<Venda> consultar(long cpf) {
         String sqlVenda = "SELECT * FROM venda " +
                           "WHERE id_cliente = (SELECT id_cliente FROM cliente WHERE cpf = ?)";
         

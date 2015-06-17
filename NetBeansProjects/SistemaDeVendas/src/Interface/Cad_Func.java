@@ -183,6 +183,7 @@ public class Cad_Func extends javax.swing.JFrame {
             }
         });
 
+        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eraser.png"))); // NOI18N
         jButtonLimpar.setText("Limpar Campos");
         jButtonLimpar.setMaximumSize(new java.awt.Dimension(105, 25));
         jButtonLimpar.setMinimumSize(new java.awt.Dimension(105, 25));

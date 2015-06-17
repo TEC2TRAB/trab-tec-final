@@ -411,6 +411,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonLimpar">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/eraser.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Limpar Campos"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[105, 26]"/>
