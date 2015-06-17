@@ -42,12 +42,8 @@ public class VendaDao {
             //Inserindo na tabela venda.
             PreparedStatement statement = this.connection.prepareStatement(sqlVenda);
             statement.setInt(1, venda.getIdVendedor());
-<<<<<<< HEAD
-            
-            if(venda.getId() == -1)
-=======
-            if(venda.getIdCliente()==-1){
->>>>>>> origin/master
+
+            if(venda.getIdCliente() == -1)     
                 statement.setNull(2, java.sql.Types.NULL);
             else
                 statement.setInt(2, venda.getIdCliente());
