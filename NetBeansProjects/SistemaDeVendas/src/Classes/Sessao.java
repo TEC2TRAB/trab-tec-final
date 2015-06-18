@@ -44,9 +44,8 @@ public class Sessao {
                 return false;
             }
             while(resultado.next()) {
-                if(resultado.getDate("demissao") != null) {
+                if(resultado.getDate("demissao") != null)
                     throw new IllegalArgumentException("O usuário desta conta é um funcionário demitido.");
-                }
                 setNome(resultado.getString("nome"));
                 setId(resultado.getInt("id_funcionario"));
                 setLogin(login);
