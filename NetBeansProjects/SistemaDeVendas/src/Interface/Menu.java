@@ -7,6 +7,8 @@ package Interface;
 
 import java.awt.BorderLayout;
 import Classes.Sessao;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  *
@@ -59,7 +61,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         tiBox = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelData = new javax.swing.JLabel();
         textOla = new javax.swing.JLabel();
         textDia = new javax.swing.JLabel();
         valDia = new javax.swing.JLabel();
@@ -230,7 +232,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(consCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cadCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 42, Short.MAX_VALUE))
+                .addGap(0, 41, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,9 +303,9 @@ public class Menu extends javax.swing.JFrame {
         tiBox.setForeground(new java.awt.Color(255, 255, 255));
         tiBox.setText("Informações Gerais - ");
 
-        jLabel2.setFont(new java.awt.Font("Lato Medium", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText(" ");
+        jLabelData.setFont(new java.awt.Font("Lato Medium", 0, 16)); // NOI18N
+        jLabelData.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelData.setText(" ");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -313,16 +315,16 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addComponent(tiBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelData, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tiBox, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -481,7 +483,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE))
                 .addGap(357, 357, 357))
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -500,7 +502,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(6, Short.MAX_VALUE))
         );
 
         jPanel4.getAccessibleContext().setAccessibleDescription("");
@@ -690,6 +692,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         nameFunc.setText(s.getNome());
+        Calendar c = Calendar.getInstance();
+        c.setTime(c.getTime());
+        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
+        jLabelData.setText(s.format(c.getTime()));
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -706,11 +712,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel consProd;
     private javax.swing.JLabel consVenda;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelData;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;

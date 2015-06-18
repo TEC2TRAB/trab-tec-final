@@ -180,7 +180,7 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <Component id="jPanel1" pref="376" max="32767" attributes="0"/>
+                      <Component id="jPanel1" pref="378" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
               </Group>
@@ -206,7 +206,7 @@
                       </Group>
                       <Component id="jPanel6" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace pref="6" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -390,7 +390,7 @@
                           <Component id="consCliente" max="32767" attributes="0"/>
                           <Component id="cadCliente" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -623,18 +623,18 @@
                           <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                           <Component id="tiBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="134" max="-2" attributes="0"/>
+                          <Component id="jLabelData" min="-2" pref="134" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tiBox" alignment="3" pref="43" max="32767" attributes="0"/>
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tiBox" pref="43" max="32767" attributes="0"/>
+                              <Component id="jLabelData" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -653,7 +653,7 @@
                     <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es Gerais - "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="jLabelData">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lato Medium" size="16" style="0"/>
