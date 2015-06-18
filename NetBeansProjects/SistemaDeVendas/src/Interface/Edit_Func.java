@@ -19,7 +19,14 @@ import javax.swing.JTextField;
  * @author Silent
  */
 public class Edit_Func extends javax.swing.JFrame {
-
+    int alterou = 0;
+    String rua;
+    int numero;
+    String cep;
+    String estado;
+    String cidade;
+    String bairro;
+    String comple;
     /**
      * Creates new form Cad_Func
      */
@@ -115,9 +122,20 @@ public class Edit_Func extends javax.swing.JFrame {
         jLabelRua.setText("Rua:");
 
         jTextRua.setName(""); // NOI18N
+        jTextRua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextRuaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextRuaFocusLost(evt);
+            }
+        });
 
         jTextNumero.setName(""); // NOI18N
         jTextNumero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextNumeroFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextNumeroFocusLost(evt);
             }
@@ -134,8 +152,24 @@ public class Edit_Func extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedCEP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jFormattedCEPFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jFormattedCEPFocusLost(evt);
+            }
+        });
 
         jComboEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SELECIONE", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        jComboEstado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboEstadoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboEstadoFocusLost(evt);
+            }
+        });
 
         Endereço.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Endereço.setText("Endereço");
@@ -144,12 +178,38 @@ public class Edit_Func extends javax.swing.JFrame {
         jLabelCidade.setText("Cidade:");
 
         jTextCidade.setName(""); // NOI18N
+        jTextCidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextCidadeFocusLost(evt);
+            }
+        });
 
         jLabelBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelBairro.setText("Bairro:");
 
+        jTextBairro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextBairroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextBairroFocusLost(evt);
+            }
+        });
+
         jLabelComple.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelComple.setText("Complemento:");
+
+        jTextComple.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextCompleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextCompleFocusLost(evt);
+            }
+        });
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,7 +389,14 @@ public class Edit_Func extends javax.swing.JFrame {
         }
         if(erro==1){
             JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else if(erro==0){
+        }else if(erro==0 && alterou==0){
+            if(JOptionPane.showConfirmDialog(this, "Você não alterou nenhum dado,confirma essa operação?",
+                    "Alerta",JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE)==0){
+                dispose();
+            }else{
+                alterou=0;
+            }
+        }else if(erro==0 && alterou==1){
             f.setNome(jTextNome.getText());
             f.setSexo(jRadioSexoM.getText().charAt(0));
             try {
@@ -357,6 +424,8 @@ public class Edit_Func extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarMousePressed
 
     private void jTextNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNumeroFocusLost
+        if(Integer.parseInt(jTextNumero.getText())==numero)
+            alterou=0;
         try{
             if(!jTextNumero.getText().equals("")){
                 Integer.parseInt(jTextNumero.getText());
@@ -382,6 +451,72 @@ public class Edit_Func extends javax.swing.JFrame {
         jFormattedDtNasc.setEnabled(false);
         jTextRG.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jTextRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRuaFocusGained
+        alterou = 1;
+        rua = jTextRG.getText();
+    }//GEN-LAST:event_jTextRuaFocusGained
+
+    private void jTextRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextRuaFocusLost
+        if(jTextRua.getText().equals(rua))
+            alterou = 0;
+    }//GEN-LAST:event_jTextRuaFocusLost
+
+    private void jTextNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextNumeroFocusGained
+        alterou = 1;
+        numero = Integer.parseInt(jTextNumero.getText());
+    }//GEN-LAST:event_jTextNumeroFocusGained
+
+    private void jFormattedCEPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedCEPFocusGained
+        alterou=1;
+        cep = jFormattedCEP.getText();
+    }//GEN-LAST:event_jFormattedCEPFocusGained
+
+    private void jFormattedCEPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedCEPFocusLost
+        if(jFormattedCEP.getText().endsWith(cep))
+            alterou=0;
+    }//GEN-LAST:event_jFormattedCEPFocusLost
+
+    private void jComboEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboEstadoFocusGained
+        alterou=1;
+        estado = jComboEstado.getSelectedItem().toString();
+    }//GEN-LAST:event_jComboEstadoFocusGained
+
+    private void jComboEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboEstadoFocusLost
+        if(jComboEstado.getSelectedItem().toString().equals(estado))
+            alterou=0;
+    }//GEN-LAST:event_jComboEstadoFocusLost
+
+    private void jTextCidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCidadeFocusGained
+        alterou=1;
+        cidade = jTextCidade.getText();
+    }//GEN-LAST:event_jTextCidadeFocusGained
+
+    private void jTextCidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCidadeFocusLost
+        if(jTextCidade.getText().equals(cidade))
+            alterou=0;
+    }//GEN-LAST:event_jTextCidadeFocusLost
+
+    private void jTextBairroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBairroFocusGained
+        alterou=1;
+        bairro = jTextBairro.getText();
+    }//GEN-LAST:event_jTextBairroFocusGained
+
+    private void jTextBairroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextBairroFocusLost
+        if(jTextBairro.getText().equals(bairro))
+            alterou=0;
+    }//GEN-LAST:event_jTextBairroFocusLost
+
+    private void jTextCompleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCompleFocusGained
+        alterou=1;
+        comple = jTextComple.getText();
+    }//GEN-LAST:event_jTextCompleFocusGained
+
+    private void jTextCompleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextCompleFocusLost
+        if(jTextComple.getText().equals(comple))
+            alterou=0;
+    }//GEN-LAST:event_jTextCompleFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCancelar;
