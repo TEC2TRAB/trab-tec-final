@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import Classes.Sessao;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,6 +75,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         logoBox = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCad_Venda = new javax.swing.JMenuItem();
@@ -87,6 +89,9 @@ public class Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItemCad_Clien = new javax.swing.JMenuItem();
         jMenuItemCons_Client = new javax.swing.JMenuItem();
+        jMenuAjuda = new javax.swing.JMenu();
+        jMenuItemSobre = new javax.swing.JMenuItem();
+        jMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -452,6 +457,13 @@ public class Menu extends javax.swing.JFrame {
         logoBox.setForeground(new java.awt.Color(255, 255, 255));
         logoBox.setText("Bem-Vindo ao ZMS  -  Sistema de Vendas");
 
+        jButton1.setText("Sair");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -459,13 +471,17 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(logoBox)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(391, 391, 391))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(logoBox)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logoBox)
+                    .addComponent(jButton1))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -502,7 +518,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(6, Short.MAX_VALUE))
+                .addContainerGap(5, Short.MAX_VALUE))
         );
 
         jPanel4.getAccessibleContext().setAccessibleDescription("");
@@ -586,6 +602,21 @@ public class Menu extends javax.swing.JFrame {
         jMenu5.add(jMenuItemCons_Client);
 
         jMenuBar1.add(jMenu5);
+
+        jMenuAjuda.setText("Ajuda");
+
+        jMenuItemSobre.setText("Sobre");
+        jMenuAjuda.add(jMenuItemSobre);
+
+        jMenuSair.setText("Sair");
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuSairMousePressed(evt);
+            }
+        });
+        jMenuAjuda.add(jMenuSair);
+
+        jMenuBar1.add(jMenuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -698,6 +729,22 @@ public class Menu extends javax.swing.JFrame {
         jLabelData.setText(s.format(c.getTime()));
     }//GEN-LAST:event_formWindowOpened
 
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
+            dispose();
+            Login l = new Login();
+            l.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jMenuSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMousePressed
+        if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
+            dispose();
+            Login l = new Login();
+            l.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuSairMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -711,6 +758,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel consFunc;
     private javax.swing.JLabel consProd;
     private javax.swing.JLabel consVenda;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -721,6 +769,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCad_Clien;
     private javax.swing.JMenuItem jMenuItemCad_Func;
@@ -730,6 +779,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCons_Func;
     private javax.swing.JMenuItem jMenuItemCons_Prod;
     private javax.swing.JMenuItem jMenuItemCons_Venda;
+    private javax.swing.JMenuItem jMenuItemSobre;
+    private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
