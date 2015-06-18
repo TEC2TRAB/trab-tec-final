@@ -133,14 +133,20 @@ public class Login extends javax.swing.JFrame {
             Sessao sessao = new Sessao();
             MD5 m = new MD5();
             senha = m.geraMD5(jPasswordSenha.getText());
-            result = sessao.login(jTextLogin.getText(), senha);
-            if(result==false){
-                JOptionPane.showMessageDialog(this, "Usuário e/ou Senha incorretos.", "Alerta", JOptionPane.ERROR_MESSAGE);
-            }else{
-                dispose();
-                Menu me = new Menu(sessao);
-                me.setVisible(true);
+            try {
+                result = sessao.login(jTextLogin.getText(), senha);
+                if(result==false){
+                    JOptionPane.showMessageDialog(this, "Usuário e/ou Senha incorretos.", "Alerta", JOptionPane.ERROR_MESSAGE);
+                }else{
+                 dispose();
+                    Menu me = new Menu(sessao);
+                    me.setVisible(true);
+                }
+            } catch(IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Alerta", JOptionPane.ERROR_MESSAGE);
             }
+                
+            
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 

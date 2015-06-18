@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,9 +28,9 @@ public class Sessao {
     }
     
     public boolean login(String login, String senha) {
-        String sql = "SELECT nome, id_funcionario, funcionario.cpf, permissao FROM pessoa INNER JOIN funcionario " +
+        String sql = "SELECT nome, id_funcionario, funcionario.cpf, demissao, permissao FROM pessoa INNER JOIN funcionario " +
                      "ON pessoa.cpf = funcionario.cpf " +
-                     " WHERE login = ? AND senha = ?";
+                     "WHERE login = ? AND senha = ?";
         
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
@@ -43,6 +44,9 @@ public class Sessao {
                 return false;
             }
             while(resultado.next()) {
+                if(resultado.getDate("demissao") != null) {
+                    throw new IllegalArgumentException("O usuário desta conta é um funcionário demitido.");
+                }
                 setNome(resultado.getString("nome"));
                 setId(resultado.getInt("id_funcionario"));
                 setLogin(login);
