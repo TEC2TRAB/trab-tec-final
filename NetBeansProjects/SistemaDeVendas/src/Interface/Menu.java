@@ -59,6 +59,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         tiBox = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         textOla = new javax.swing.JLabel();
         textDia = new javax.swing.JLabel();
         valDia = new javax.swing.JLabel();
@@ -298,7 +299,11 @@ public class Menu extends javax.swing.JFrame {
 
         tiBox.setFont(new java.awt.Font("Lato Medium", 0, 16)); // NOI18N
         tiBox.setForeground(new java.awt.Color(255, 255, 255));
-        tiBox.setText("Informações Gerais - 08/06/2015");
+        tiBox.setText("Informações Gerais - ");
+
+        jLabel2.setFont(new java.awt.Font("Lato Medium", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText(" ");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -307,13 +312,17 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(tiBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tiBox, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tiBox, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
 
@@ -697,6 +706,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel consProd;
     private javax.swing.JLabel consVenda;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
