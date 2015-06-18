@@ -75,7 +75,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         logoBox = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCad_Venda = new javax.swing.JMenuItem();
@@ -457,10 +457,10 @@ public class Menu extends javax.swing.JFrame {
         logoBox.setForeground(new java.awt.Color(255, 255, 255));
         logoBox.setText("Bem-Vindo ao ZMS  -  Sistema de Vendas");
 
-        jButton1.setText("Sair");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonSair.setText("Sair");
+        jButtonSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+                jButtonSairMousePressed(evt);
             }
         });
 
@@ -472,7 +472,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(logoBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButtonSair)
                 .addGap(391, 391, 391))
         );
         jPanel9Layout.setVerticalGroup(
@@ -481,7 +481,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logoBox)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonSair))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -729,13 +729,13 @@ public class Menu extends javax.swing.JFrame {
         jLabelData.setText(s.format(c.getTime()));
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void jButtonSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSairMousePressed
         if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
             dispose();
             Login l = new Login();
             l.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1MousePressed
+    }//GEN-LAST:event_jButtonSairMousePressed
 
     private void jMenuSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMousePressed
         if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
@@ -758,7 +758,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel consFunc;
     private javax.swing.JLabel consProd;
     private javax.swing.JLabel consVenda;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
