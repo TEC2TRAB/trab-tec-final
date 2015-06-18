@@ -9,9 +9,10 @@ import java.util.Calendar;
 public class Funcionario extends Pessoa{
     private int id;
     private Calendar admissao;
-    private Calendar demissao;
+    private Calendar demissao = null;
     private String login;
     private String senha;
+    private String permissao;
     
     public void setId(int id){
         this.id = id;
@@ -46,6 +47,13 @@ public class Funcionario extends Pessoa{
     }
     public String getSenha(){
         return senha;
+    }
+    
+    public void setPermissao(String permissao){
+        this.permissao = permissao;
+    }
+    public String getPermissao(){
+        return permissao;
     }
     
 }

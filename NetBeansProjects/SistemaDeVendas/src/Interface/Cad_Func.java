@@ -74,6 +74,9 @@ public class Cad_Func extends javax.swing.JFrame {
         jPasswordConfSenha = new javax.swing.JPasswordField();
         jTextRG = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jCheckAdmin = new javax.swing.JCheckBox();
+        jCheckFunc = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Funcionários");
@@ -207,6 +210,25 @@ public class Cad_Func extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Permissões");
+
+        jCheckAdmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckAdmin.setText("Administrador");
+        jCheckAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckAdminActionPerformed(evt);
+            }
+        });
+
+        jCheckFunc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckFunc.setText("Vendedor");
+        jCheckFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckFuncActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -221,15 +243,6 @@ public class Cad_Func extends javax.swing.JFrame {
                         .addComponent(jLabelConfSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPasswordConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSenha)
-                            .addComponent(jLabelLogin))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(jPasswordSenha)))
-                    .addComponent(jLabelAcesso)
                     .addComponent(jLabelDados)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -293,7 +306,24 @@ public class Cad_Func extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jLabelNumero)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAcesso)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelSenha)
+                                    .addComponent(jLabelLogin))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                    .addComponent(jPasswordSenha))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckAdmin)
+                            .addComponent(jLabel1)
+                            .addComponent(jCheckFunc))
+                        .addGap(138, 138, 138)))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -343,15 +373,19 @@ public class Cad_Func extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAcesso)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAcesso)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelLogin))
+                    .addComponent(jLabelLogin)
+                    .addComponent(jCheckAdmin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSenha)
-                    .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckFunc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelConfSenha)
@@ -397,6 +431,13 @@ public class Cad_Func extends javax.swing.JFrame {
             if (component instanceof JRadioButton) {
                 //Algum está selecionado?
                 if (jRadioSexoF.isSelected()==false && jRadioSexoM.isSelected()==false) {
+                    erro=1;
+                    break;
+                } 
+            }
+            if (component instanceof JCheckBox) {
+                //Algum está selecionado?
+                if (jCheckAdmin.isSelected()==false && jCheckFunc.isSelected()==false) {
                     erro=1;
                     break;
                 } 
@@ -451,6 +492,10 @@ public class Cad_Func extends javax.swing.JFrame {
             f.setComple(jTextComple.getText());
             f.setLogin(jTextLogin.getText());
             f.setSenha(m.geraMD5(jPasswordSenha.getText()));
+            if(jCheckAdmin.isSelected())
+                f.setPermissao("Administrador");
+            else
+                f.setPermissao("Vendedor");
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
             FuncionarioDao fd = new FuncionarioDao();
             fd.cadastrar(f);
@@ -518,14 +563,25 @@ public class Cad_Func extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
+    private void jCheckAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckAdminActionPerformed
+        jCheckFunc.setSelected(false);
+    }//GEN-LAST:event_jCheckAdminActionPerformed
+
+    private void jCheckFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckFuncActionPerformed
+        jCheckAdmin.setSelected(false);
+    }//GEN-LAST:event_jCheckFuncActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Endereço;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JCheckBox jCheckAdmin;
+    private javax.swing.JCheckBox jCheckFunc;
     private javax.swing.JComboBox jComboEstado;
     private javax.swing.JFormattedTextField jFormattedCEP;
     private javax.swing.JFormattedTextField jFormattedDtNasc;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAcesso;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCEP;
