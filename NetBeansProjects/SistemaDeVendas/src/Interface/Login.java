@@ -117,7 +117,7 @@ public class Login extends javax.swing.JFrame {
         int passa = 0;
         String senha;
         boolean result;
-        if(jTextLogin.getText().isEmpty() && jPasswordSenha.getText().isEmpty()){
+        if(jTextLogin.getText().isEmpty() && String.valueOf(jPasswordSenha.getPassword()).isEmpty()){
             JOptionPane.showMessageDialog(this, "Campos Usuário e Senha não podem ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa=1;
         }
@@ -125,14 +125,14 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Campo Usuário não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }
-        if(jPasswordSenha.getText().isEmpty() && passa==0){
+        if(String.valueOf(jPasswordSenha.getPassword()).isEmpty() && passa==0){
             JOptionPane.showMessageDialog(this, "Campo Senha não pode ficar em branco", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }
         if(passa==0){
             Sessao sessao = new Sessao();
             MD5 m = new MD5();
-            senha = m.geraMD5(jPasswordSenha.getText());
+            senha = m.geraMD5(String.valueOf(jPasswordSenha.getPassword()));
             try {
                 result = sessao.login(jTextLogin.getText(), senha);
                 if(result==false){

@@ -449,7 +449,7 @@ public class Cad_Func extends javax.swing.JFrame {
             cpferro=1;
         }
         if(cpferro==0){
-            if(!m.geraMD5(jPasswordSenha.getText()).equals(m.geraMD5(jPasswordConfSenha.getText()))){
+            if(!String.valueOf(jPasswordSenha.getPassword()).equals(String.valueOf(jPasswordConfSenha.getPassword()))){
                 senha=1;
             }else{
                 senha=0;
@@ -491,7 +491,7 @@ public class Cad_Func extends javax.swing.JFrame {
             f.setBairro(jTextBairro.getText());
             f.setComple(jTextComple.getText());
             f.setLogin(jTextLogin.getText());
-            f.setSenha(m.geraMD5(jPasswordSenha.getText()));
+            f.setSenha(m.geraMD5(String.copyValueOf(jPasswordSenha.getPassword())));
             if(jCheckAdmin.isSelected())
                 f.setPermissao("Administrador");
             else
