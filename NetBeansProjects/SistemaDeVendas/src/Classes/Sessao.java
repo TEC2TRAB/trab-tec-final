@@ -6,10 +6,12 @@
 package Classes;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  *
@@ -56,6 +58,72 @@ public class Sessao {
             statement.close();
             return true;
             
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public double vendasDia() {
+        String sqlVendedor = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
+                             "WHERE data_venda = ? AND id_vendedor = ?";
+        
+        String sqlAdm = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
+                        "WHERE data_venda = ?";
+        
+        try {
+            PreparedStatement statement = null;
+            if("Vendedor".equals(getPermissao())) {
+                statement = this.connection.prepareStatement(sqlVendedor);
+                statement.setDate(1, new Date(System.currentTimeMillis()));
+                statement.setInt(2, getId());
+            } else if("Administrador".equals(getPermissao())) {
+                statement = this.connection.prepareStatement(sqlAdm);
+                statement.setDate(1, new Date(System.currentTimeMillis()));
+            }
+            ResultSet resultado = statement.executeQuery();
+            resultado.next();
+            double valorTotal = resultado.getDouble("valor_total");
+            
+            resultado.close();
+            statement.close();
+            
+            return valorTotal;
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public double vendasMes() {
+        String sqlVendedor = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
+                             "WHERE EXTRACT(YEAR FROM data_venda) = ? AND " +
+                             "EXTRACT(MONTH FROM data_venda) = ? AND id_vendedor = ?";
+        
+        String sqlAdm = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
+                        "WHERE EXTRACT(YEAR FROM data_venda) = ? AND " +
+                        "EXTRACT(MONTH FROM data_venda) = ?";
+        
+        try {
+            PreparedStatement statement = null;
+            java.util.Date ano = Calendar.getInstance().getTime();
+            java.util.Date mes = Calendar.getInstance().getTime();
+            if("Vendedor".equals(getPermissao())) {
+                statement = this.connection.prepareStatement(sqlVendedor);
+                statement.setString(1, new SimpleDateFormat("YYYY").format(ano));
+                statement.setString(2, new SimpleDateFormat("MM").format(mes));
+                statement.setInt(3, getId());
+            } else if("Administrador".equals(getPermissao())) {
+                statement = this.connection.prepareStatement(sqlAdm);
+                statement.setString(1, new SimpleDateFormat("YYYY").format(ano));
+                statement.setString(2, new SimpleDateFormat("MM").format(mes));
+            }
+            ResultSet resultado = statement.executeQuery();
+            resultado.next();
+            double valorTotal = resultado.getDouble("valor_total");
+            
+            resultado.close();
+            statement.close();
+            
+            return valorTotal;
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }

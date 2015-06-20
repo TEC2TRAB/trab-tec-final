@@ -14,6 +14,7 @@ public class Venda {
     private double[][] historico;
     private double valorTotal;
     private Calendar dataVenda;
+    private String hora;
     /**
      * @return the id
      */
@@ -90,5 +91,13 @@ public class Venda {
     
     public void setDataVenda(Calendar dataVenda) {
         this.dataVenda = dataVenda;
+    }
+    
+    public String getHora() {
+        return hora;
+    }
+    
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }

@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -29,8 +30,8 @@ public class VendaDao {
     
     public void cadastrar(Venda venda) {
         String sqlVenda = "INSERT INTO venda " +
-                          "(id_vendedor, id_cliente, valor_total, data_venda) " +
-                          "VALUES (?,?,?,?)";
+                          "(id_vendedor, id_cliente, valor_total, data_venda, hora) " +
+                          "VALUES (?,?,?,?,?)";
         
         String sqlId = "SELECT MAX(id_venda) AS id_venda FROM venda";
         
@@ -50,6 +51,9 @@ public class VendaDao {
             
             statement.setDouble(3, venda.getValorTotal());
             statement.setDate(4, new Date(System.currentTimeMillis()));
+            
+            java.util.Date hora = Calendar.getInstance().getTime();
+            statement.setString(5, new SimpleDateFormat("HH:mm").format(hora));
             
             statement.execute();
             statement.clearParameters();
@@ -99,6 +103,7 @@ public class VendaDao {
                 venda.setIdCliente(resultadoVenda.getInt("id_cliente"));
                 venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
                 venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
+                venda.setHora(resultadoVenda.getString("hora"));
                 
                 Calendar data = Calendar.getInstance();
                 data.setTime(resultadoVenda.getDate("data_venda"));

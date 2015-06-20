@@ -106,9 +106,9 @@ public class FuncionarioDao {
                 funcionario.setAdmissao(data1);
                 
                 try{
-                Calendar data2 = Calendar.getInstance();
-                data2.setTime(resultado.getDate("demissao"));
-                funcionario.setDemissao(data2);
+                    Calendar data2 = Calendar.getInstance();
+                    data2.setTime(resultado.getDate("demissao"));
+                    funcionario.setDemissao(data2);
                 }catch(NullPointerException e){
                     funcionario.setDemissao(null);
                 }
@@ -179,8 +179,8 @@ public class FuncionarioDao {
 
                 Calendar data3 = Calendar.getInstance();
                 try{
-                data3.setTime(resultado.getDate("demissao"));
-                funcionario.setDemissao(data3);
+                    data3.setTime(resultado.getDate("demissao"));
+                    funcionario.setDemissao(data3);
                 }catch(NullPointerException e){
                     funcionario.setDemissao(null);
                 }
@@ -220,10 +220,12 @@ public class FuncionarioDao {
             statement.clearParameters();
             
             statement = this.connection.prepareStatement(sqlFuncionario);
+            
             if(funcionario.getDemissao()==null)
                 statement.setNull(1, java.sql.Types.NULL);
             else
                 statement.setDate(1, new Date(funcionario.getDemissao().getTimeInMillis()));
+            
             statement.setString(2, funcionario.getPermissao());
             statement.setString(3, Long.toString(funcionario.getCPF()));
             
