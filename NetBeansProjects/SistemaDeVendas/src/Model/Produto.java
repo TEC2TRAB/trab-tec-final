@@ -1,4 +1,4 @@
-package ModuloDeProdutos;
+package Model;
 /**
  *
  * @author Sousa, Italo

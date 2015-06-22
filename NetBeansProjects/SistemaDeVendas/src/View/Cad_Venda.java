@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package View;
 
 import Classes.ButtonColumnAdd;
 import Classes.ButtonColumnRemove;
 import Classes.JanelaUtil;
-import ModuloDeProdutos.Produto;
-import Dao.ProdutoDao;
-import Dao.VendaDao;
-import ModuloDeVendas.Venda;
+import Controller.ControlProduto;
+import Controller.ControlVenda;
+import Model.Produto;
+import Model.Venda;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -274,19 +275,23 @@ public class Cad_Venda extends javax.swing.JFrame {
     private void jButtonPesquisarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPesquisarMousePressed
         DefaultTableModel model = (DefaultTableModel) jTableEstoque.getModel();
         model.setNumRows(0);
-        ProdutoDao p = new ProdutoDao();
         List<Produto> produtos = new ArrayList<>();
         if(jTextConsultaProd.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Campo Nome do produto em branco, para adicionar produtos na venda, você precisa pesquisá-los antes.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
-            produtos = p.consultar(jTextConsultaProd.getText());
-            Object vec[] = new Object[4];
-            for(Produto pi : produtos){
-                vec[0] = pi.getId();
-                vec[1] = pi.getNome();
-                vec[2] = pi.getPreco();
-                vec[3] = 0.0;
-                model.addRow(vec);
+            try {
+                ControlProduto cp = new ControlProduto();
+                produtos = cp.consultarProduto(jTextConsultaProd.getText());
+                Object vec[] = new Object[4];
+                for(Produto pi : produtos){
+                    vec[0] = pi.getId();
+                    vec[1] = pi.getNome();
+                    vec[2] = pi.getPreco();
+                    vec[3] = 0.0;
+                    model.addRow(vec);
+                }
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButtonPesquisarMousePressed
@@ -301,7 +306,6 @@ public class Cad_Venda extends javax.swing.JFrame {
         }else{
             DefaultTableModel model = (DefaultTableModel) jTableComprados.getModel();
             Venda v = new Venda();
-            VendaDao vd = new VendaDao();
             int id=0,preco=2,qtd=3;
             int qtdRows = model.getRowCount();
             double historico[][] = new double[qtdRows][3];
@@ -324,9 +328,14 @@ public class Cad_Venda extends javax.swing.JFrame {
                 } 
             }
             v.setHistorico(historico);
-            vd.cadastrar(v);
-            JOptionPane.showMessageDialog(this, "Venda cadastrada com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
+            try {
+                ControlVenda cv = new ControlVenda();
+                cv.cadastrarVenda(v);
+                JOptionPane.showMessageDialog(this, "Venda cadastrada com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 

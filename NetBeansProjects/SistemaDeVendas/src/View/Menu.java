@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package View;
 
 import java.awt.BorderLayout;
 import Classes.Sessao;
@@ -96,8 +96,6 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(null);
-        setPreferredSize(new java.awt.Dimension(1200, 745));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);

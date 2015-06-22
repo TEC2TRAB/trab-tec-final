@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import Controller.ControlFuncionario;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +17,14 @@ import javax.swing.UIManager;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import Interface.Edit_Func;
-import ModuloDePessoas.Funcionario;
+import View.Edit_Func;
+import Model.Funcionario;
 import java.util.ArrayList;
 import java.util.List;
-import Dao.FuncionarioDao;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,11 +93,15 @@ public class ButtonColumnEditFunc extends AbstractCellEditor
         public void actionPerformed(ActionEvent e){     
             List<Funcionario> funcionarios = new ArrayList<>();
             Edit_Func ef = new Edit_Func();
-            FuncionarioDao f = new FuncionarioDao();
             int row;char sexo;
             row = table.getSelectedRow();
             long cpf = Long.parseLong(String.valueOf(table.getValueAt(row, 1)));
-            funcionarios = f.consultar(cpf);
+            try {
+                ControlFuncionario cf = new ControlFuncionario();
+                funcionarios = cf.consultarFuncionario(cpf);
+            } catch(SQLException er) {
+                JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
             ef.jTextNome.setText(funcionarios.get(0).getNome());
             sexo = funcionarios.get(0).getSexo();
             if(sexo=='M'){

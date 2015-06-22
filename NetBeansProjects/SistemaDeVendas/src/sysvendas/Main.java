@@ -6,7 +6,7 @@
 //Testando GitHub.
 package sysvendas;
 
-import Interface.Login;
+import View.Login;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;

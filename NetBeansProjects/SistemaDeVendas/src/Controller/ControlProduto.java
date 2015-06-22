@@ -5,8 +5,9 @@
  */
 package Controller;
 
-import Dao.ProdutoDao;
-import ModuloDeProdutos.Produto;
+import Model.Dao.ProdutoDao;
+import Model.Produto;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -16,23 +17,23 @@ import java.util.List;
 public class ControlProduto {
     private ProdutoDao dao = new ProdutoDao();
     
-    public void cadastrarProduto(Produto produto) {
+    public void cadastrarProduto(Produto produto) throws SQLException{
         this.dao.cadastrar(produto);
     }
     
-    public List<Produto> consultarProduto(int id) {
+    public List<Produto> consultarProduto(int id) throws SQLException{
         return this.dao.consultar(id);
     }
     
-    public List<Produto> consultarProduto(String nome) {
+    public List<Produto> consultarProduto(String nome) throws SQLException{
         return this.dao.consultar(nome);
     }
     
-    public void atualizarProduto(Produto produto) {
+    public void atualizarProduto(Produto produto) throws SQLException{
         this.dao.atualizar(produto);
     }
     
-    public void retirarProduto(int id, int quantidade) {
+    public void retirarProduto(int id, int quantidade) throws SQLException{
         this.dao.retirar(id, quantidade);
     }
 }

@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 
-package Interface;
+package View;
 
 import Classes.ButtonColumnEditProdu;
-import Dao.ProdutoDao;
-import ModuloDeProdutos.Produto;
+import Controller.ControlProduto;
+import Model.Produto;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -224,14 +225,18 @@ public class Cons_Produ extends javax.swing.JFrame {
     private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
         DefaultTableModel model = (DefaultTableModel) jTableProd.getModel();
         model.setNumRows(0);
-        ProdutoDao p = new ProdutoDao();
+        ControlProduto cp = new ControlProduto();
         List<Produto> produtos = new ArrayList<>();
         int passa=0;
         if(jRadioButtonNome.isSelected()==true && jTextNome.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Campo Nome em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
             passa = 1;
         }else if(jRadioButtonNome.isSelected()==true){
-            produtos = p.consultar(jTextNome.getText());
+            try {
+                produtos = cp.consultarProduto(jTextNome.getText());
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
         if(jRadioButtonCodigo.isSelected()==true && jTextCodigo.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Campo Código em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -239,12 +244,14 @@ public class Cons_Produ extends javax.swing.JFrame {
         }else if(jRadioButtonCodigo.isSelected()==true){
             try{
                 Integer.parseInt(jTextCodigo.getText());
-                produtos = p.consultar(Integer.parseInt(jTextCodigo.getText()));
+                produtos = cp.consultarProduto(Integer.parseInt(jTextCodigo.getText()));
             }catch(NumberFormatException e){
                 passa=1;
                 JOptionPane.showMessageDialog(this, "O campo Código é numérico,por favor, verifique e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
                 jTextCodigo.setText("");
                 jTextCodigo.requestFocus();
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
         if(passa==0 && produtos.isEmpty()){

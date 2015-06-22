@@ -5,8 +5,9 @@
  */
 package Controller;
 
-import Dao.ClienteDao;
-import ModuloDePessoas.Cliente;
+import Model.Dao.ClienteDao;
+import Model.Cliente;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -16,19 +17,19 @@ import java.util.List;
 public class ControlCliente {
     private ClienteDao dao = new ClienteDao();
     
-    public void cadastrarCliente(Cliente cliente) {
+    public void cadastrarCliente(Cliente cliente) throws SQLException {
         this.dao.cadastrar(cliente);
     }
     
-    public List<Cliente> consultarCliente(long cpf) {
+    public List<Cliente> consultarCliente(long cpf) throws SQLException{
         return this.dao.consultar(cpf);
     }
     
-    public List<Cliente> consultarCliente(String nome) {
+    public List<Cliente> consultarCliente(String nome) throws SQLException{
         return this.dao.consultar(nome);
     }
     
-    public void atualizarCliente(Cliente cliente) {
+    public void atualizarCliente(Cliente cliente) throws SQLException{
         this.dao.atualizar(cliente);
     }
 }

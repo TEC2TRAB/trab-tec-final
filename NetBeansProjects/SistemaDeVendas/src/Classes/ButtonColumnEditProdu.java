@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import Controller.ControlProduto;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,11 +17,12 @@ import javax.swing.UIManager;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import Interface.Edit_Produ;
-import ModuloDeProdutos.Produto;
+import View.Edit_Produ;
+import Model.Produto;
 import java.util.ArrayList;
 import java.util.List;
-import Dao.ProdutoDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -89,11 +91,15 @@ public class ButtonColumnEditProdu extends AbstractCellEditor
     public void actionPerformed(ActionEvent e){    
         List<Produto> produtos = new ArrayList<>();
         Edit_Produ ep = new Edit_Produ();
-        ProdutoDao p = new ProdutoDao();
         int row;
         row = table.getSelectedRow();
         int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 1)));
-        produtos = p.consultar(id);
+        try {
+            ControlProduto cp = new ControlProduto();
+            produtos = cp.consultarProduto(id);
+        } catch(SQLException er) {
+            JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }    
         ep.jTextID.setText(String.valueOf(produtos.get(0).getId()));
         ep.jTextNome.setText(produtos.get(0).getNome());
         ep.jTextQuantidade.setText(String.valueOf(produtos.get(0).getQuantidade()));

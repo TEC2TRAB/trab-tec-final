@@ -1,4 +1,4 @@
-package ModuloDePessoas;
+package Model;
 
 import java.util.Calendar;
 

@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
-import ModuloDePessoas.Funcionario;;
-import Dao.FuncionarioDao;
+package View;
+import Controller.ControlFuncionario;
+import Model.Funcionario;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -502,10 +503,14 @@ public class Edit_Func extends javax.swing.JFrame {
                 }
             }
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
-            FuncionarioDao fd = new FuncionarioDao();
-            fd.atualizar(f);
-            JOptionPane.showMessageDialog(this,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
+            try {
+                ControlFuncionario cf = new ControlFuncionario();
+                cf.atualizarFuncionario(f);
+                JOptionPane.showMessageDialog(this,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButtonSalvarMousePressed
 

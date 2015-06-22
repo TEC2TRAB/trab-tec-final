@@ -5,7 +5,7 @@
  */
 package Classes;
 
-import Interface.Cad_Venda;
+import View.Cad_Venda;
 import java.util.HashMap;
 import java.util.Map;
 

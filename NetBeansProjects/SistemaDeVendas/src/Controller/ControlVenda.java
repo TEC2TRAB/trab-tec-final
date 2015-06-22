@@ -5,9 +5,10 @@
  */
 package Controller;
 
-import Dao.VendaDao;
-import ModuloDeVendas.Venda;
+import Model.Dao.VendaDao;
+import Model.Venda;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -17,19 +18,19 @@ import java.util.List;
 public class ControlVenda {
     private VendaDao dao = new VendaDao();
     
-    public void cadastrarVenda(Venda venda) {
+    public void cadastrarVenda(Venda venda) throws SQLException{
         this.dao.cadastrar(venda);
     }
     
-    public List<Venda> consultarVenda(long cpf) {
+    public List<Venda> consultarVenda(long cpf) throws SQLException{
         return this.dao.consultar(cpf);
     }
     
-    public List<Venda> consultarVenda(int id) {
+    public List<Venda> consultarVenda(int id) throws SQLException{
         return this.dao.consultar(id);
     }
     
-    public List<Venda> consultarVenda(Date data) {
+    public List<Venda> consultarVenda(Date data) throws SQLException{
         return this.dao.consultar(data);
     }
     

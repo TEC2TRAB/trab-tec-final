@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package View;
 
-import Dao.ProdutoDao;
-import ModuloDeProdutos.Produto;
+import Controller.ControlProduto;
+import Model.Produto;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -16,12 +17,12 @@ import javax.swing.JTextField;
  *
  * @author cesar.nascimento
  */
-public class Cad_Produ extends javax.swing.JFrame {
+public class Edit_Produ extends javax.swing.JFrame {
 
     /**
      * Creates new form Cad_Produ
      */
-    public Cad_Produ() {
+    public Edit_Produ() {
         initComponents();
     }
 
@@ -45,13 +46,17 @@ public class Cad_Produ extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextDescricao = new javax.swing.JTextArea();
         jButtonCancelar = new javax.swing.JButton();
-        jButtonLimpar = new javax.swing.JButton();
-        jButtonCadastrar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
         jTextID = new javax.swing.JTextField();
         jLabelID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Produtos");
+        setTitle("Editar Produto");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         TitulojLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TitulojLabel.setText("Cadastro de Produtos");
@@ -88,7 +93,6 @@ public class Cad_Produ extends javax.swing.JFrame {
         jTextDescricao.setRows(5);
         jScrollPane1.setViewportView(jTextDescricao);
 
-        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -96,28 +100,14 @@ public class Cad_Produ extends javax.swing.JFrame {
             }
         });
 
-        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eraser.png"))); // NOI18N
-        jButtonLimpar.setText("Limpar Campos");
-        jButtonLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonLimparMousePressed(evt);
-            }
-        });
-
-        jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/accept.png"))); // NOI18N
-        jButtonCadastrar.setText("Cadastrar");
-        jButtonCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButtonCadastrarMousePressed(evt);
+                jButtonSalvarMousePressed(evt);
             }
         });
 
         jTextID.setName(""); // NOI18N
-        jTextID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextIDFocusLost(evt);
-            }
-        });
 
         jLabelID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelID.setText("ID - Produto:");
@@ -144,18 +134,18 @@ public class Cad_Produ extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabelQuantidade)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelDescricao)
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jButtonCadastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelar)
-                        .addGap(10, 10, 10)))
+                            .addComponent(jTextQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelDescricao)
+                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButtonCancelar))))))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -185,8 +175,7 @@ public class Cad_Produ extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -198,62 +187,6 @@ public class Cad_Produ extends javax.swing.JFrame {
     private void jButtonCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelarMousePressed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
-
-    private void jButtonLimparMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLimparMousePressed
-        jTextNome.setText("");
-        jTextPreco.setText("");
-        jTextQuantidade.setText("");
-        jTextDescricao.setText("");
-    }//GEN-LAST:event_jButtonLimparMousePressed
-
-    private void jButtonCadastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastrarMousePressed
-        int erro = 0;
-        Component components[] = getContentPane().getComponents(); 
-        for (Component component : components) {
-            //É campo de texto?
-            if (component instanceof JTextField) {
-                //Está preenchido?
-                if (((JTextField) component).getText().isEmpty() ){
-                    erro=1;
-                    break;
-                }
-                
-                if (jTextDescricao.getText().isEmpty() ){
-                    erro=1;
-                    break;
-                }
-            }
-        }
-        if(erro==1){
-            erro=0;
-            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
-        }else{
-            Produto p = new Produto();
-            p.setNome(jTextNome.getText());
-            p.setId(Integer.parseInt(jTextID.getText()));
-            p.setPreco(Double.parseDouble(jTextPreco.getText()));
-            p.setDescricao(jTextDescricao.getText());
-            p.setQuantidade(Double.parseDouble(jTextQuantidade.getText()));
-            ProdutoDao pd = new ProdutoDao();
-            pd.cadastrar(p);
-            JOptionPane.showMessageDialog(this,"Produto cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jButtonCadastrarMousePressed
-
-    private void jTextIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextIDFocusLost
-        try{
-            if(!jTextID.getText().equals("")){
-                Integer.parseInt(jTextID.getText());
-                jLabelID.setForeground(Color.black);
-            }
-        }catch(NumberFormatException e){
-            jLabelID.setForeground(Color.red);
-            JOptionPane.showMessageDialog(this,"O campo ID - Produto é numérico,digite corretamente" ,"Alerta", JOptionPane.WARNING_MESSAGE);
-            jTextID.setText("");
-            jTextID.requestFocus();
-        }
-    }//GEN-LAST:event_jTextIDFocusLost
 
     private void jTextQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextQuantidadeFocusLost
         try{
@@ -282,24 +215,62 @@ public class Cad_Produ extends javax.swing.JFrame {
             jTextPreco.requestFocus();
         }
     }//GEN-LAST:event_jTextPrecoFocusLost
-    /**
-     * @param args the command line arguments
-     */
+
+    private void jButtonSalvarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalvarMousePressed
+        int erro = 0;
+        Component components[] = getContentPane().getComponents();
+        for (Component component : components) {
+            //É campo de texto?
+            if (component instanceof JTextField) {
+                //Está preenchido?
+                if (((JTextField) component).getText().isEmpty() ){
+                    erro=1;
+                    break;
+                }
+
+                if (jTextDescricao.getText().isEmpty() ){
+                    erro=1;
+                    break;
+                }
+            }
+        }
+        if(erro==1){
+            JOptionPane.showMessageDialog(this,"Preencha todos os campos.","Alerta",JOptionPane.WARNING_MESSAGE);
+        }else{
+            Produto p = new Produto();
+            p.setNome(jTextNome.getText());
+            p.setId(Integer.parseInt(jTextID.getText()));
+            p.setPreco(Double.parseDouble(jTextPreco.getText()));
+            p.setDescricao(jTextDescricao.getText());
+            p.setQuantidade(Double.parseDouble(jTextQuantidade.getText()));
+            try {
+                ControlProduto cp = new ControlProduto();
+                cp.atualizarProduto(p);
+                JOptionPane.showMessageDialog(this,"Dados alterados com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonSalvarMousePressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        jTextID.setEnabled(false);
+    }//GEN-LAST:event_formWindowOpened
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitulojLabel;
-    private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelPreco;
     private javax.swing.JLabel jLabelQuantidade;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextDescricao;
-    private javax.swing.JTextField jTextID;
-    private javax.swing.JTextField jTextNome;
-    private javax.swing.JTextField jTextPreco;
-    private javax.swing.JTextField jTextQuantidade;
+    public javax.swing.JTextArea jTextDescricao;
+    public javax.swing.JTextField jTextID;
+    public javax.swing.JTextField jTextNome;
+    public javax.swing.JTextField jTextPreco;
+    public javax.swing.JTextField jTextQuantidade;
     // End of variables declaration//GEN-END:variables
 }

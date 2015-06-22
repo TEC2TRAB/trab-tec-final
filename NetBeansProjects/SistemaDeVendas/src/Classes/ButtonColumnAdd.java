@@ -5,7 +5,7 @@
  */
 package Classes;
 
-import Interface.Cad_Venda;
+import View.Cad_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

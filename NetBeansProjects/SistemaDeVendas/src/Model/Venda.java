@@ -1,4 +1,4 @@
-package ModuloDeVendas;
+package Model;
 
 import java.util.Calendar;
 

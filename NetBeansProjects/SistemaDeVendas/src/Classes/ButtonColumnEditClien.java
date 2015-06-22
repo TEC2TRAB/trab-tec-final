@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import Controller.ControlCliente;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +17,14 @@ import javax.swing.UIManager;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-import Interface.Edit_Clien;
-import ModuloDePessoas.Cliente;
+import View.Edit_Clien;
+import Model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
-import Dao.ClienteDao;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,11 +93,15 @@ public class ButtonColumnEditClien extends AbstractCellEditor
         public void actionPerformed(ActionEvent e){   
             List<Cliente> clientes = new ArrayList<>();
             Edit_Clien ec = new Edit_Clien();
-            ClienteDao c = new ClienteDao();
             int row;char sexo;
             row = table.getSelectedRow();
             long cpf = Long.parseLong(String.valueOf(table.getValueAt(row, 1)));
-            clientes = c.consultar(cpf);
+            try {
+                ControlCliente cc = new ControlCliente();
+                clientes = cc.consultarCliente(cpf);
+            } catch(SQLException er) {
+                JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }    
             ec.jTextNome.setText(clientes.get(0).getNome());
             sexo = clientes.get(0).getSexo();
             if(sexo=='M'){

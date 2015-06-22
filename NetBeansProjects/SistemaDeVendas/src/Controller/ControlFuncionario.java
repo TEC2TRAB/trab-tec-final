@@ -5,8 +5,9 @@
  */
 package Controller;
 
-import Dao.FuncionarioDao;
-import ModuloDePessoas.Funcionario;
+import Model.Dao.FuncionarioDao;
+import Model.Funcionario;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -16,27 +17,27 @@ import java.util.List;
 public class ControlFuncionario {
     private FuncionarioDao dao = new FuncionarioDao();
     
-    public void cadastrarFuncionario(Funcionario funcionario) {
+    public void cadastrarFuncionario(Funcionario funcionario) throws SQLException{
         this.dao.cadastrar(funcionario);
     }
     
-    public List<Funcionario> consultarFuncionario(long cpf) {
+    public List<Funcionario> consultarFuncionario(long cpf) throws SQLException{
         return this.dao.consultar(cpf);
     }
     
-    public List<Funcionario> consultarFuncionario(String nome) {
+    public List<Funcionario> consultarFuncionario(String nome) throws SQLException{
         return this.dao.consultar(nome);
     }
     
-    public void atualizarFuncionario(Funcionario funcionario) {
+    public void atualizarFuncionario(Funcionario funcionario) throws SQLException{
         this.dao.atualizar(funcionario);
     }
     
-    public void atualizarFuncionario(String login, String senha, long cpf) {
+    public void atualizarFuncionario(String login, String senha, long cpf) throws SQLException{
         this.dao.atualizar(login, senha, cpf);
     }
     
-    public boolean verificarSenhaFuncionario(String login, String senha) {
+    public boolean verificarSenhaFuncionario(String login, String senha) throws SQLException{
         return this.dao.verificarSenha(login, senha);
     }
 }

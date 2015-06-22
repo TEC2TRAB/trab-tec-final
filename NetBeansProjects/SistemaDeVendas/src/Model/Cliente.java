@@ -1,4 +1,5 @@
-package ModuloDePessoas;
+package Model;
+
 /**
  *
  * @author Sousa, Italo.

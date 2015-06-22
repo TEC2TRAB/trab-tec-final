@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
-import ModuloDePessoas.Funcionario;
+package View;
+import Model.Funcionario;
 import Classes.*;
-import Dao.FuncionarioDao;
+import Controller.ControlFuncionario;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.*;
@@ -497,10 +498,14 @@ public class Cad_Func extends javax.swing.JFrame {
             else
                 f.setPermissao("Vendedor");
             //inserir no banco de dados e depois lançar msg de sucesso na operação de inserting.
-            FuncionarioDao fd = new FuncionarioDao();
-            fd.cadastrar(f);
-            JOptionPane.showMessageDialog(this,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
+            try {
+                ControlFuncionario cf = new ControlFuncionario();
+                cf.cadastrarFuncionario(f);
+                JOptionPane.showMessageDialog(this,"Funcionário cadastrado com sucesso.","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
