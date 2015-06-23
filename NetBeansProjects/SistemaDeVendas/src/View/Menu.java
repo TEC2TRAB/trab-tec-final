@@ -723,8 +723,16 @@ public class Menu extends javax.swing.JFrame {
         nameFunc.setText(s.getNome());
         Calendar c = Calendar.getInstance();
         c.setTime(c.getTime());
-        SimpleDateFormat s = new SimpleDateFormat("dd/MM/yyyy");
-        jLabelData.setText(s.format(c.getTime()));
+        SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
+        jLabelData.setText(si.format(c.getTime()));
+        if(s.getPermissao().equals("Vendedor")){
+            jMenu4.setVisible(false);
+            jMenu5.setVisible(false);
+            jPanel3.setVisible(false);
+            jPanel5.setVisible(false);
+        }
+        valDia.setText(Double.toString(s.vendasDia()));
+        valMes.setText(Double.toString(s.vendasMes()));
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSairMousePressed
