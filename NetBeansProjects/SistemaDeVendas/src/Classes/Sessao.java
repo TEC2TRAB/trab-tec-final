@@ -65,10 +65,10 @@ public class Sessao {
     }
     
     public double vendasDia() {
-        String sqlVendedor = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
+        String sqlVendedor = "SELECT SUM(valor_total) AS valor_total FROM venda " +
                              "WHERE data_venda = ? AND id_vendedor = ?";
         
-        String sqlAdm = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
+        String sqlAdm = "SELECT SUM(valor_total) AS valor_total FROM venda " +
                         "WHERE data_venda = ?";
         
         try {
@@ -95,13 +95,13 @@ public class Sessao {
     }
     
     public double vendasMes() {
-        String sqlVendedor = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
-                             "WHERE EXTRACT(YEAR FROM data_venda) = ? AND " +
-                             "EXTRACT(MONTH FROM data_venda) = ? AND id_vendedor = ?";
+        String sqlVendedor = "SELECT SUM(valor_total) AS valor_total FROM venda " +
+                             "WHERE EXTRACT(YEAR FROM data_venda) = cast(? as double precision) AND " +
+                             "EXTRACT(MONTH FROM data_venda) = cast(? as double precision) AND id_vendedor = ?";
         
-        String sqlAdm = "SELECT SUM(valor_total) AS valor_total FROM vendas " +
-                        "WHERE EXTRACT(YEAR FROM data_venda) = ? AND " +
-                        "EXTRACT(MONTH FROM data_venda) = ?";
+        String sqlAdm = "SELECT SUM(valor_total) AS valor_total FROM venda " +
+                        "WHERE EXTRACT(YEAR FROM data_venda) = cast(? as double precision) AND " +
+                        "EXTRACT(MONTH FROM data_venda) = cast(? as double precision)";
         
         try {
             PreparedStatement statement = null;
