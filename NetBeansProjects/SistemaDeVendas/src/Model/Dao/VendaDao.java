@@ -129,10 +129,10 @@ public class VendaDao {
     
     public List<Venda> consultar(int id) throws SQLException{
         String sqlVenda = "SELECT * FROM venda " +
-                          "WHERE id_cliente = ?";
+                          "WHERE id_vendedor = ?";
         
         String sqlHistorico = "SELECT * FROM historico_venda " +
-                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE id_cliente = ?)";
+                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE id_vendedor = ?)";
         
         
         List<Venda> vendas = new ArrayList<>();
