@@ -154,6 +154,7 @@ public class Edit_Clien extends javax.swing.JFrame {
         jLabelNascimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelNascimento.setText("Nascimento: ");
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -161,6 +162,7 @@ public class Edit_Clien extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/script_edit.png"))); // NOI18N
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -209,7 +211,7 @@ public class Edit_Clien extends javax.swing.JFrame {
                                         .addComponent(jTextRG, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(Endereço)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonSalvar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonCancelar))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)

@@ -222,6 +222,7 @@ public class Edit_Func extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/script_edit.png"))); // NOI18N
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -229,6 +230,7 @@ public class Edit_Func extends javax.swing.JFrame {
             }
         });
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -255,6 +257,7 @@ public class Edit_Func extends javax.swing.JFrame {
             }
         });
 
+        jButtonDemitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group_delete.png"))); // NOI18N
         jButtonDemitir.setText("Demitir");
         jButtonDemitir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -336,8 +339,8 @@ public class Edit_Func extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addComponent(jButtonSalvar)
+                        .addGap(15, 15, 15)
                         .addComponent(jButtonDemitir)
                         .addGap(26, 26, 26)
                         .addComponent(jButtonCancelar))
