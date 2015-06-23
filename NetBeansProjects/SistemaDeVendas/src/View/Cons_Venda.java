@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 package View;
+import Classes.ValidadorCPF;
+import Controller.ControlVenda;
+import Model.Venda;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,9 +51,9 @@ public class Cons_Venda extends javax.swing.JFrame {
         jTextCPF = new javax.swing.JTextField();
         jButtonConsultar = new javax.swing.JButton();
         jLabelData = new javax.swing.JLabel();
-        jTextData = new javax.swing.JTextField();
         jRadioButtonData = new javax.swing.JRadioButton();
         jButtonCancelar = new javax.swing.JButton();
+        jTextData = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Vendas");
@@ -78,7 +91,7 @@ public class Cons_Venda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID - Vendedor", "CPF - Cliente", "Data da Venda", "Total", "Ver Mais"
+                "ID - Vendedor", "ID - Cliente", "Data da Venda", "Total", "Ver Mais"
             }
         ) {
             Class[] types = new Class [] {
@@ -106,11 +119,14 @@ public class Cons_Venda extends javax.swing.JFrame {
 
         jButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonConsultarMousePressed(evt);
+            }
+        });
 
         jLabelData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelData.setText("Data da Venda:");
-
-        jTextData.setName(""); // NOI18N
 
         jRadioButtonData.setText("Data");
         jRadioButtonData.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +142,12 @@ public class Cons_Venda extends javax.swing.JFrame {
                 jButtonCancelarMousePressed(evt);
             }
         });
+
+        try {
+            jTextData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,13 +206,13 @@ public class Cons_Venda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelData)
                     .addComponent(jTextData, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConsultar)
                     .addComponent(jButtonCancelar))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,6 +220,7 @@ public class Cons_Venda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
+        jTextID.setText("");
         if(jRadioButtonCPF.isSelected()==true){
             jRadioButtonID.setSelected(false);
             jRadioButtonData.setSelected(false);
@@ -211,6 +234,7 @@ public class Cons_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonCPFActionPerformed
 
     private void jRadioButtonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIDActionPerformed
+        jTextCPF.setText("");
         if(jRadioButtonID.isSelected()==true){
             jRadioButtonCPF.setSelected(false);
             jRadioButtonData.setSelected(false);
@@ -224,6 +248,8 @@ public class Cons_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonIDActionPerformed
 
     private void jRadioButtonDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDataActionPerformed
+        jTextCPF.setText("");
+        jTextID.setText("");
         if(jRadioButtonData.isSelected()==true){
             jRadioButtonCPF.setSelected(false);
             jRadioButtonID.setSelected(false);
@@ -246,6 +272,87 @@ public class Cons_Venda extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
+    private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
+        List<Venda> vendas = new ArrayList<>();
+        ControlVenda cv = new ControlVenda();
+        DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
+        int passa = 0;
+        if(jRadioButtonCPF.isSelected()==true && jTextCPF.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Campo CPF em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            jTextCPF.requestFocus();
+            passa=1;
+        }else if(passa==0 && jRadioButtonCPF.isSelected()==true){
+            if(ValidadorCPF.TestaCPF(jTextCPF.getText())==true){
+                try{
+                    vendas = cv.consultarVenda(Long.parseLong(jTextCPF.getText()));
+                }catch(SQLException e){
+                    passa=1;
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+               JOptionPane.showMessageDialog(this,"CPF inválido, por favor, digite um CPF válido e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE); 
+               passa=1;
+               jTextCPF.setText("");
+               jTextCPF.requestFocus();
+            }
+        }
+        
+        if(jRadioButtonID.isSelected()==true && jTextID.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Campo ID-Vendedor em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+            passa=1;
+        }else if(passa==0 && jRadioButtonID.isSelected()==true){
+            try {
+                vendas = cv.consultarVenda(Integer.parseInt(jTextID.getText()));
+            } catch(SQLException e) {
+                passa=1;
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch(NumberFormatException e){
+                passa=1;
+                JOptionPane.showMessageDialog(this, "Campo ID-Vendedor é numérico, por favor, verifique e pesquise novamente", "Alerta", JOptionPane.WARNING_MESSAGE);
+                jTextID.setText("");
+                jTextID.requestFocus();
+            }
+        }
+        
+        if(jRadioButtonData.isSelected()==true && jTextData.getText().equals("  /  /    ")){
+            passa=1;
+            JOptionPane.showMessageDialog(this,"Campo Data em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else if(jRadioButtonData.isSelected()==true && jTextData.getText().contains(" ")){
+            passa=1;
+            JOptionPane.showMessageDialog(this,"Digite uma data válida e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else if(passa==0 && jRadioButtonData.isSelected()==true){
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  
+                java.sql.Date data = new java.sql.Date(format.parse(jTextData.getText()).getTime());  
+                vendas = cv.consultarVenda(data);
+            } catch(SQLException e) {
+                passa=1;
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch (ParseException ex) {
+                passa=1;
+                Logger.getLogger(Cons_Venda.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if(passa==0 && vendas.isEmpty()){
+            JOptionPane.showMessageDialog(this, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Object vec[] = new Object[2];
+            String cpf;
+            for(Venda vi : vendas){
+                cpf = Long.toString(vi.getIdCliente());
+                if(cpf.length()!=11){
+                    while(cpf.length()!=11){
+                        cpf = "0"+cpf;
+                    }
+                }
+                vec[0] = vi.getHora();
+                vec[1] = cpf;
+                model.addRow(vec);
+            }
+        }
+    }//GEN-LAST:event_jButtonConsultarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -262,7 +369,7 @@ public class Cons_Venda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableVenda;
     private javax.swing.JTextField jTextCPF;
-    private javax.swing.JTextField jTextData;
+    private javax.swing.JFormattedTextField jTextData;
     private javax.swing.JTextField jTextID;
     // End of variables declaration//GEN-END:variables
 }
