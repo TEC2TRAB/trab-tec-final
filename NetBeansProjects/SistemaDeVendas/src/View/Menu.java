@@ -115,6 +115,7 @@ public class Menu extends javax.swing.JFrame {
         cadVenda.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadVenda.setForeground(new java.awt.Color(255, 255, 255));
         cadVenda.setText("+ Cadastrar Venda");
+        cadVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadVenda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cadVendaMousePressed(evt);
@@ -124,6 +125,7 @@ public class Menu extends javax.swing.JFrame {
         consVenda.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consVenda.setForeground(new java.awt.Color(255, 255, 255));
         consVenda.setText("+ Consultar Venda");
+        consVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consVenda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 consVendaMousePressed(evt);
@@ -163,6 +165,7 @@ public class Menu extends javax.swing.JFrame {
         cadProd.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadProd.setForeground(new java.awt.Color(255, 255, 255));
         cadProd.setText("+ Cadastrar Produto");
+        cadProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cadProdMousePressed(evt);
@@ -172,6 +175,7 @@ public class Menu extends javax.swing.JFrame {
         consProd.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consProd.setForeground(new java.awt.Color(255, 255, 255));
         consProd.setText("+ Consultar Produto");
+        consProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 consProdMousePressed(evt);
@@ -210,6 +214,7 @@ public class Menu extends javax.swing.JFrame {
         cadCliente.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadCliente.setForeground(new java.awt.Color(255, 255, 255));
         cadCliente.setText("+ Cadastrar Cliente");
+        cadCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cadClienteMousePressed(evt);
@@ -219,6 +224,7 @@ public class Menu extends javax.swing.JFrame {
         consCliente.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consCliente.setForeground(new java.awt.Color(255, 255, 255));
         consCliente.setText("+ Consultar Cliente");
+        consCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 consClienteMousePressed(evt);
@@ -256,6 +262,7 @@ public class Menu extends javax.swing.JFrame {
         cadFunc.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         cadFunc.setForeground(new java.awt.Color(255, 255, 255));
         cadFunc.setText("+ Cadastrar Funcionário");
+        cadFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cadFunc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cadFuncMousePressed(evt);
@@ -265,6 +272,7 @@ public class Menu extends javax.swing.JFrame {
         consFunc.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
         consFunc.setForeground(new java.awt.Color(255, 255, 255));
         consFunc.setText("+ Consultar Funcionário");
+        consFunc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consFunc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 consFuncMousePressed(evt);
@@ -388,7 +396,7 @@ public class Menu extends javax.swing.JFrame {
 
         nameFunc.setFont(new java.awt.Font("Lato Medium", 0, 18)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Lato Semibold", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Lato Semibold", 0, 14)); // NOI18N
         jLabel7.setText("Aqui estão as suas informações:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -490,7 +498,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -632,7 +640,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(444, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -735,14 +743,6 @@ public class Menu extends javax.swing.JFrame {
         valMes.setText(Double.toString(s.vendasMes()));
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButtonSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSairMousePressed
-        if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
-            dispose();
-            Login l = new Login();
-            l.setVisible(true);
-        }
-    }//GEN-LAST:event_jButtonSairMousePressed
-
     private void jMenuSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMousePressed
         if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
             dispose();
@@ -750,6 +750,14 @@ public class Menu extends javax.swing.JFrame {
             l.setVisible(true);
         }
     }//GEN-LAST:event_jMenuSairMousePressed
+
+    private void jButtonSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSairMousePressed
+        if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
+            dispose();
+            Login l = new Login();
+            l.setVisible(true);
+        }
+    }//GEN-LAST:event_jButtonSairMousePressed
 
     /**
      * @param args the command line arguments
