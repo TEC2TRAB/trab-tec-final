@@ -5,6 +5,7 @@
  */
 package View;
 
+import Classes.ButtonColumnSeeMore;
 import java.awt.BorderLayout;
 import Classes.Sessao;
 import java.text.SimpleDateFormat;
@@ -376,7 +377,7 @@ public class Menu extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Horário", "Valor"
+                "Horário", "Valor - R$"
             }
         ) {
             Class[] types = new Class [] {
@@ -527,7 +528,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jPanel4.getAccessibleContext().setAccessibleDescription("");
