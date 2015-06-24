@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+import Classes.ButtonColumnSeeMore;
 import Classes.ValidadorCPF;
 import Controller.ControlVenda;
 import Model.Venda;
@@ -31,6 +32,7 @@ public class Cons_Venda extends javax.swing.JFrame {
         initComponents();
         TableColumnModel t = jTableVenda.getColumnModel();
         t.getColumn(2).setCellRenderer(Classes.FormatRenderer.getDateTimeRenderer());
+        ButtonColumnSeeMore bc = new ButtonColumnSeeMore(jTableVenda, 4);
     }
     /**
      * This method is called from within the constructor to initialize the form.
