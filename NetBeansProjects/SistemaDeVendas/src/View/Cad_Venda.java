@@ -16,6 +16,8 @@ import Model.Venda;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -307,6 +309,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         }else{
             DefaultTableModel model = (DefaultTableModel) jTableComprados.getModel();
             Venda v = new Venda();
+            ControlProduto cp = new ControlProduto();
             int id=0,preco=2,qtd=3;
             int qtdRows = model.getRowCount();
             v.setIdVendedor(id_func);
@@ -322,6 +325,11 @@ public class Cad_Venda extends javax.swing.JFrame {
                 it.setIdProduto((int)model.getValueAt(i, id));
                 it.setQuantidade((double)model.getValueAt(i, qtd));
                 it.setPreco((double)model.getValueAt(i, preco));
+                try {
+                    cp.retirarProduto(it.getIdProduto(), it.getQuantidade());
+                } catch (SQLException ex) {
+                    Logger.getLogger(Cad_Venda.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 itens.add(it);
             }
             v.setItens(itens);

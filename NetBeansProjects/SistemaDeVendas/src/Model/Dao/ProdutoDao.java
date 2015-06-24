@@ -121,12 +121,12 @@ public class ProdutoDao {
         statement.close();
     }
     
-    public void retirar(int id, int quantidade) throws SQLException{
+    public void retirar(int id, double quantidade) throws SQLException{
         String sql = "UPDATE produto SET quantidade = quantidade - ? WHERE id_produto = ?";
         
         
         PreparedStatement statement = this.connection.prepareStatement(sql);
-        statement.setInt(1, quantidade);
+        statement.setDouble(1, quantidade);
         statement.setInt(2, id);
 
         statement.execute();

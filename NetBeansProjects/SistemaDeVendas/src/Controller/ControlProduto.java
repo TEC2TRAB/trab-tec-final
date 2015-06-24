@@ -33,7 +33,7 @@ public class ControlProduto {
         this.dao.atualizar(produto);
     }
     
-    public void retirarProduto(int id, int quantidade) throws SQLException{
+    public void retirarProduto(int id, double quantidade) throws SQLException{
         this.dao.retirar(id, quantidade);
     }
 }
