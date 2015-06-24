@@ -14,7 +14,6 @@ public abstract class Pessoa {
     private long cpf;
     private long rg;
     private String cep;
-    private String telefone;
     private String rua;
     private int numero;
     private String estado;
@@ -62,13 +61,6 @@ public abstract class Pessoa {
     }
     public String getCep(){
         return cep;
-    }
-    
-    public void setTelefone(String telefone){
-        this.telefone = telefone;
-    }
-    public String getTelefone(){
-        return telefone;
     }
     
     public void setRua(String rua){
