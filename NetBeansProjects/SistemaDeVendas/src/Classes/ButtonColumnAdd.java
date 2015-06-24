@@ -107,6 +107,7 @@ public class ButtonColumnAdd extends AbstractCellEditor
                     if(quantidade==0){
                         JOptionPane.showMessageDialog(null, "Você não pode adicionar itens com quantidade 0.", "Alerta", JOptionPane.WARNING_MESSAGE);
                     }else{
+                        cp.retirarProduto((int)table.getValueAt(row, 0), quantidade);
                         model.addRow(vec);
                         cd.jLabelTotal.setText(Double.toString(total+(preco*quantidade)));
                     }

@@ -5,13 +5,16 @@
  */
 package Classes;
 
+import Controller.ControlProduto;
 import View.Cad_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.AbstractCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -91,6 +94,12 @@ public class ButtonColumnRemove extends AbstractCellEditor
             double total = Double.parseDouble(cd.jLabelTotal.getText());
             double preco = (double) table.getValueAt(row, 2);
             double quantidade = (double) table.getValueAt(row, 3);
+            ControlProduto cp = new ControlProduto();
+            try {
+                cp.adicionarProduto((int)table.getValueAt(row, 0), quantidade);
+            } catch(SQLException er) {
+                JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
             model.removeRow(row);
             cd.jLabelTotal.setText(Double.toString(total-(preco*quantidade)));
         }  

@@ -133,6 +133,18 @@ public class ProdutoDao {
         statement.close();
     }
     
+    public void adicionar(int id, double quantidade) throws SQLException{
+        String sql = "UPDATE produto SET quantidade = quantidade + ? WHERE id_produto = ?";
+        
+        
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setDouble(1, quantidade);
+        statement.setInt(2, id);
+
+        statement.execute();
+        statement.close();
+    }
+    
     public boolean verificarEstoque(int id, double quantidadeCompra) throws SQLException{
         String sql = "SELECT quantidade FROM produto WHERE id_produto = ?";
         

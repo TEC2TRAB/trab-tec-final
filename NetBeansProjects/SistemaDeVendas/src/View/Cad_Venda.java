@@ -272,6 +272,16 @@ public class Cad_Venda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableComprados.getModel();
+        int qtdRows = model.getRowCount();
+        ControlProduto cp = new ControlProduto();
+        for(int i=0;i<qtdRows;i++){
+            try {
+                cp.adicionarProduto((int)model.getValueAt(i, 0), (double)model.getValueAt(i, 3));
+            } catch(SQLException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
@@ -325,11 +335,6 @@ public class Cad_Venda extends javax.swing.JFrame {
                 it.setIdProduto((int)model.getValueAt(i, id));
                 it.setQuantidade((double)model.getValueAt(i, qtd));
                 it.setPreco((double)model.getValueAt(i, preco));
-                try {
-                    cp.retirarProduto(it.getIdProduto(), it.getQuantidade());
-                } catch (SQLException ex) {
-                    Logger.getLogger(Cad_Venda.class.getName()).log(Level.SEVERE, null, ex);
-                }
                 itens.add(it);
             }
             v.setItens(itens);
