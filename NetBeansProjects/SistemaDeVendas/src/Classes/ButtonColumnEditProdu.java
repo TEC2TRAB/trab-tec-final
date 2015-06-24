@@ -38,7 +38,7 @@ public class ButtonColumnEditProdu extends AbstractCellEditor
     public ButtonColumnEditProdu(JTable table, int column){  
         super();  
         this.table = table;  
-        ImageIcon image = new ImageIcon(getClass().getResource("images/settings.png"));
+        ImageIcon image = new ImageIcon(getClass().getResource("/images/settings.png"));
         renderButton = new JButton(image);  
 
 

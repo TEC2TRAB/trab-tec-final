@@ -40,7 +40,7 @@ public class ButtonColumnEditFunc extends AbstractCellEditor
         public ButtonColumnEditFunc(JTable table, int column){  
             super();  
             this.table = table;  
-            ImageIcon image = new ImageIcon(getClass().getResource("images/settings.png"));
+            ImageIcon image = new ImageIcon(getClass().getResource("/images/settings.png"));
             renderButton = new JButton(image);  
             
             
