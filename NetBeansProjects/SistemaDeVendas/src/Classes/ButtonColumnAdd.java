@@ -5,10 +5,12 @@
  */
 package Classes;
 
+import Controller.ControlProduto;
 import View.Cad_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.AbstractCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -99,11 +101,20 @@ public class ButtonColumnAdd extends AbstractCellEditor
             vec[1] = table.getValueAt(row, 1);
             vec[2] = preco;
             vec[3] = quantidade;
-            if(quantidade==0){
-                JOptionPane.showMessageDialog(null, "Você não pode adicionar itens com quantidade 0.", "Alerta", JOptionPane.WARNING_MESSAGE);
-            }else{
-                model.addRow(vec);
-                cd.jLabelTotal.setText(Double.toString(total+(preco*quantidade)));
+            ControlProduto cp = new ControlProduto();
+            try {
+                if(cp.verificarProdutoEstoque((int)table.getValueAt(row, 0), quantidade)) {
+                    if(quantidade==0){
+                        JOptionPane.showMessageDialog(null, "Você não pode adicionar itens com quantidade 0.", "Alerta", JOptionPane.WARNING_MESSAGE);
+                    }else{
+                        model.addRow(vec);
+                        cd.jLabelTotal.setText(Double.toString(total+(preco*quantidade)));
+                    }
+                } else
+                    JOptionPane.showMessageDialog(null, "A quantidade excede o estoque.", "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch(SQLException er) {
+                JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            
         } 
     }  

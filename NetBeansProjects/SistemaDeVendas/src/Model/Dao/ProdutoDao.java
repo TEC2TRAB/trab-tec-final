@@ -132,4 +132,15 @@ public class ProdutoDao {
         statement.execute();
         statement.close();
     }
+    
+    public boolean verificarEstoque(int id, double quantidadeCompra) throws SQLException{
+        String sql = "SELECT quantidade FROM produto WHERE id_produto = ?";
+        
+        PreparedStatement statement = this.connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        
+        ResultSet resultado = statement.executeQuery();
+        resultado.next();
+        return resultado.getDouble("quantidade") >= quantidadeCompra;
+    }
 }
