@@ -9,7 +9,10 @@ import java.awt.BorderLayout;
 import Classes.Sessao;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -728,6 +731,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_consFuncMousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DefaultTableModel model = (DefaultTableModel) tableHorarioVenda.getModel();
+        model.setNumRows(0);
         nameFunc.setText(s.getNome());
         Calendar c = Calendar.getInstance();
         c.setTime(c.getTime());
@@ -739,6 +744,13 @@ public class Menu extends javax.swing.JFrame {
         }
         valDia.setText("R$ "+Double.toString(s.vendasDia()));
         valMes.setText("R$ "+Double.toString(s.vendasMes()));
+        Object vec[] = new Object[2];
+        HashMap<String, Double> vendas = s.ultimasVendas();
+        for(Map.Entry<String,Double> entry : vendas.entrySet()){
+            vec[0] = entry.getKey();
+            vec[1] = entry.getValue();
+            model.addRow(vec);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMousePressed
