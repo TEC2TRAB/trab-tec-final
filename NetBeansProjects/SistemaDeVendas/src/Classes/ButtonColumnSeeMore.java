@@ -113,13 +113,13 @@ public class ButtonColumnSeeMore extends AbstractCellEditor
                ver.jLabelCliente.setText(String.valueOf(venda.get(0).getCpfCliente())); 
             }
             SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
-            ver.jLabelData.setText(si.format(venda.get(0).getDataVenda().getTime()));
-            ver.jLabeltotal.setText("R$ " + String.valueOf(venda.get(0).getValorTotal()));
+            ver.jLabelData.setText(si.format(venda.get(table.getSelectedRow()).getDataVenda().getTime()));
+            ver.jLabeltotal.setText("R$ " + String.valueOf(venda.get(table.getSelectedRow()).getValorTotal()));
             Object vec[] = new Object[3];
-            for(Itens i : venda.get(0).getItens()){
-                vec[0] = i.getIdProduto();
-                vec[1] = i.getQuantidade();
-                vec[2] = i.getPreco();
+            for(int j = 0; j < venda.get(table.getSelectedRow()).getItens().size(); j++) {
+                vec[0] = venda.get(table.getSelectedRow()).getItens().get(j).getIdProduto();
+                vec[1] = venda.get(table.getSelectedRow()).getItens().get(j).getQuantidade();
+                vec[2] = venda.get(table.getSelectedRow()).getItens().get(j).getPreco();
                 model.addRow(vec);
             }
             ver.setVisible(true);
