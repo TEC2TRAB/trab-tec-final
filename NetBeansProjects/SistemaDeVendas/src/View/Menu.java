@@ -735,12 +735,10 @@ public class Menu extends javax.swing.JFrame {
         jLabelData.setText(si.format(c.getTime()));
         if(s.getPermissao().equals("Vendedor")){
             jMenu4.setVisible(false);
-            jMenu5.setVisible(false);
             jPanel3.setVisible(false);
-            jPanel5.setVisible(false);
         }
-        valDia.setText(Double.toString(s.vendasDia()));
-        valMes.setText(Double.toString(s.vendasMes()));
+        valDia.setText("R$ "+Double.toString(s.vendasDia()));
+        valMes.setText("R$ "+Double.toString(s.vendasMes()));
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMousePressed
