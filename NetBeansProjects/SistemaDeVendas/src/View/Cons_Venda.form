@@ -160,7 +160,7 @@
                 <Column editable="false" title="ID - Vendedor" type="java.lang.String"/>
                 <Column editable="false" title="ID - Cliente" type="java.lang.String"/>
                 <Column editable="false" title="Data da Venda" type="java.lang.String"/>
-                <Column editable="false" title="Total" type="java.lang.Double"/>
+                <Column editable="false" title="Total - R$" type="java.lang.Double"/>
                 <Column editable="true" title="Ver Mais" type="java.lang.Object"/>
               </Table>
             </Property>

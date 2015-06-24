@@ -16,20 +16,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
  * @author cesar.nascimento
+ * 
  */
 public class Cons_Venda extends javax.swing.JFrame {
-
     /**
      * Creates new form Cons_Venda
      */
     public Cons_Venda() {
         initComponents();
+        TableColumnModel t = jTableVenda.getColumnModel();
+        t.getColumn(2).setCellRenderer(Classes.FormatRenderer.getDateTimeRenderer());
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,7 +92,7 @@ public class Cons_Venda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID - Vendedor", "ID - Cliente", "Data da Venda", "Total", "Ver Mais"
+                "ID - Vendedor", "ID - Cliente", "Data da Venda", "Total - R$", "Ver Mais"
             }
         ) {
             Class[] types = new Class [] {
@@ -219,7 +221,10 @@ public class Cons_Venda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCPFActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
+        model.setNumRows(0);
         jTextID.setText("");
+        jTextData.setText(null);
         if(jRadioButtonCPF.isSelected()==true){
             jRadioButtonID.setSelected(false);
             jRadioButtonData.setSelected(false);
@@ -233,7 +238,10 @@ public class Cons_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonCPFActionPerformed
 
     private void jRadioButtonIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonIDActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
+        model.setNumRows(0);
         jTextCPF.setText("");
+        jTextData.setText(null);
         if(jRadioButtonID.isSelected()==true){
             jRadioButtonCPF.setSelected(false);
             jRadioButtonData.setSelected(false);
@@ -247,6 +255,8 @@ public class Cons_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonIDActionPerformed
 
     private void jRadioButtonDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDataActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
+        model.setNumRows(0);
         jTextCPF.setText("");
         jTextID.setText("");
         if(jRadioButtonData.isSelected()==true){
@@ -272,9 +282,9 @@ public class Cons_Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarMousePressed
 
     private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
+        DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
         List<Venda> vendas = new ArrayList<>();
         ControlVenda cv = new ControlVenda();
-        DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
         int passa = 0;
         if(jRadioButtonCPF.isSelected()==true && jTextCPF.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Campo CPF em branco, por favor, preencha e pesquise novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -305,7 +315,7 @@ public class Cons_Venda extends javax.swing.JFrame {
             } catch(SQLException e) {
                 passa=1;
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            } catch(NumberFormatException e){
+            }catch(NumberFormatException e){
                 passa=1;
                 JOptionPane.showMessageDialog(this, "Campo ID-Vendedor é numérico, por favor, verifique e pesquise novamente", "Alerta", JOptionPane.WARNING_MESSAGE);
                 jTextID.setText("");
@@ -336,17 +346,22 @@ public class Cons_Venda extends javax.swing.JFrame {
         if(passa==0 && vendas.isEmpty()){
             JOptionPane.showMessageDialog(this, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
-            Object vec[] = new Object[2];
+            Object vec[] = new Object[4];
             String cpf;
             for(Venda vi : vendas){
                 cpf = Long.toString(vi.getCpfCliente());
-                if(cpf.length()!=11){
+                if(cpf.length()!=11 && !cpf.equals("0")){
                     while(cpf.length()!=11){
                         cpf = "0"+cpf;
                     }
+                }else{
+                    cpf="";
                 }
-                vec[0] = vi.getHora();
+                vec[0] = vi.getIdVendedor();
                 vec[1] = cpf;
+                SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
+                vec[2] = si.format(vi.getDataVenda().getTime());
+                vec[3] = vi.getValorTotal();
                 model.addRow(vec);
             }
         }

@@ -98,7 +98,11 @@ public class VendaDao {
         while(resultadoVenda.next()) {
             Venda venda = new Venda();
             venda.setId(resultadoVenda.getInt("id_venda"));
+            try{
             venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
+            }catch(NumberFormatException e){
+                venda.setCpfCliente(0);
+            }
             venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
             venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
             venda.setHora(resultadoVenda.getString("hora"));
@@ -147,7 +151,11 @@ public class VendaDao {
         while(resultadoVenda.next()) {
             Venda venda = new Venda();
             venda.setId(resultadoVenda.getInt("id_venda"));
+            try{
             venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
+            }catch(NumberFormatException e){
+                venda.setCpfCliente(0);
+            }
             venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
             venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
 
@@ -195,7 +203,11 @@ public class VendaDao {
         while(resultadoVenda.next()) {
             Venda venda = new Venda();
             venda.setId(resultadoVenda.getInt("id_venda"));
+            try{
             venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
+            }catch(NumberFormatException e){
+                venda.setCpfCliente(0);
+            }
             venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
             venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
 
