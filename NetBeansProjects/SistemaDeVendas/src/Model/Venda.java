@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -11,7 +12,7 @@ public class Venda {
     private int id;
     private int idVendedor;
     private int idCliente;
-    private double[][] historico;
+    private ArrayList<Itens> itens;
     private double valorTotal;
     private Calendar dataVenda;
     private String hora;
@@ -58,17 +59,17 @@ public class Venda {
     }
 
     /**
-     * @return the historico
+     * @return the itens
      */
-    public double[][] getHistorico() {
-        return historico;
+    public ArrayList<Itens> getItens() {
+        return itens;
     }
 
     /**
-     * @param historico the historico to set
+     * @param itens the historico to set
      */
-    public void setHistorico(double[][] historico) {
-        this.historico = historico;
+    public void setItens(ArrayList<Itens> itens) {
+        this.itens = itens;
     }
 
     /**

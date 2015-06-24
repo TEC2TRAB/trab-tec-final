@@ -10,6 +10,7 @@ import Classes.ButtonColumnRemove;
 import Classes.JanelaUtil;
 import Controller.ControlProduto;
 import Controller.ControlVenda;
+import Model.Itens;
 import Model.Produto;
 import Model.Venda;
 import java.sql.SQLException;
@@ -316,18 +317,15 @@ public class Cad_Venda extends javax.swing.JFrame {
                 v.setIdCliente(Integer.parseInt(jTextCliente.getText()));
             }
             v.setValorTotal(Double.parseDouble(jLabelTotal.getText()));
+            ArrayList<Itens> itens = new ArrayList<>();
             for(int i=0;i<qtdRows;i++){
-                for(int j=0;j<3;j++){
-                    if(j==0){
-                        historico[i][j] = (int)model.getValueAt(i, id);
-                    }else if(j==1){
-                        historico[i][j] = (double)model.getValueAt(i, qtd);
-                    }else if(j==2){
-                        historico[i][j] = (double)model.getValueAt(i, preco);
-                    }
-                } 
+                Itens it = new Itens();
+                it.setIdProduto((int)model.getValueAt(i, id));
+                it.setQuantidade((double)model.getValueAt(i, qtd));
+                it.setPreco((double)model.getValueAt(i, preco));
+                itens.add(it);
             }
-            v.setHistorico(historico);
+            v.setItens(itens);
             try {
                 ControlVenda cv = new ControlVenda();
                 cv.cadastrarVenda(v);

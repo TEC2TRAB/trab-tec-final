@@ -36,8 +36,8 @@ public class ClienteDao {
                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
         String sqlCliente = "INSERT INTO cliente " +
-                            "(cpf)" +
-                            "VALUES (?)";
+                            "(cpf, data_cadastro)" +
+                            "VALUES (?,?)";
         
         String sqlChecar = "SELECT * FROM pessoa WHERE cpf = ?";
         
@@ -69,6 +69,7 @@ public class ClienteDao {
         statement = this.connection.prepareStatement(sqlCliente);
 
         statement.setString(1, Long.toString(cliente.getCPF()));
+        statement.setDate(2, new Date(System.currentTimeMillis()));
 
         statement.execute();
         statement.close();
@@ -102,9 +103,13 @@ public class ClienteDao {
             cliente.setRG(resultado.getLong("rg"));
             cliente.setRua(resultado.getString("rua"));
 
-            Calendar data3 = Calendar.getInstance();
-            data3.setTime(resultado.getDate("data_nascimento"));
-            cliente.setDtNasc(data3);
+            Calendar data1 = Calendar.getInstance();
+            data1.setTime(resultado.getDate("data_nascimento"));
+            cliente.setDtNasc(data1);
+            
+            Calendar data2 = Calendar.getInstance();
+            data2.setTime(resultado.getDate("data_cadastro"));
+            cliente.setDataDeCadastro(data2);
 
             clientes.add(cliente);
         }
@@ -144,6 +149,10 @@ public class ClienteDao {
             Calendar data1 = Calendar.getInstance();
             data1.setTime(resultado.getDate("data_nascimento"));
             cliente.setDtNasc(data1);
+            
+            Calendar data2 = Calendar.getInstance();
+            data2.setTime(resultado.getDate("data_cadastro"));
+            cliente.setDataDeCadastro(data2);
 
             clientes.add(cliente);
         }

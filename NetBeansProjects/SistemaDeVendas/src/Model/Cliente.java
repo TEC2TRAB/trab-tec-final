@@ -1,12 +1,14 @@
 package Model;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Sousa, Italo.
  */
 public class Cliente extends Pessoa{
     private int id;
-    private String dataDeCadastro;
+    private Calendar dataDeCadastro;
     /**
      * @return the id
      */
@@ -23,14 +25,14 @@ public class Cliente extends Pessoa{
     /**
      * @return the dataDeCadastro
      */
-    public String getDataDeCadastro() {
+    public Calendar getDataDeCadastro() {
         return dataDeCadastro;
     }
 
     /**
      * @param dataDeCadastro the dataDeCadastro to set
      */
-    public void setDataDeCadastro(String dataDeCadastro) {
+    public void setDataDeCadastro(Calendar dataDeCadastro) {
         this.dataDeCadastro = dataDeCadastro;
     }
     

@@ -6,6 +6,7 @@
 package Model.Dao;
 
 import Classes.ConnectionFactory;
+import Model.Itens;
 import Model.Venda;
 import java.sql.Connection;
 import java.sql.Date;
@@ -35,7 +36,7 @@ public class VendaDao {
         
         String sqlId = "SELECT MAX(id_venda) AS id_venda FROM venda";
         
-        String sqlHistorico = "INSERT INTO historico_venda " +
+        String sqlHistorico = "INSERT INTO itens " +
                               "(id_venda, id_produto, quantidade, preco) " +
                               "VALUES (?,?,?,?)";
         
@@ -53,7 +54,7 @@ public class VendaDao {
         statement.setDate(4, new Date(System.currentTimeMillis()));
 
         java.util.Date hora = Calendar.getInstance().getTime();
-        statement.setString(5, new SimpleDateFormat("HH:mm").format(hora));
+        statement.setString(5, new SimpleDateFormat("HH:mm:ss").format(hora));
 
         statement.execute();
         statement.clearParameters();
@@ -67,12 +68,12 @@ public class VendaDao {
 
         //Inserindo os elementos da matriz historico no banco de dados.
         statement = this.connection.prepareStatement(sqlHistorico);
-        double[][] historico = venda.getHistorico();
-        for(int i = 0; i < historico.length; i++) {
+        ArrayList<Itens> itens = venda.getItens();
+        for(Itens i: itens) {
              statement.setInt(1, venda.getId());
-             statement.setInt(2, (int)historico[i][0]);
-             statement.setDouble(3, historico[i][1]);
-             statement.setDouble(4, historico[i][2]);
+             statement.setInt(2, i.getIdProduto());
+             statement.setDouble(3, i.getQuantidade());
+             statement.setDouble(4, i.getPreco());
 
              statement.execute();
         }
@@ -84,7 +85,7 @@ public class VendaDao {
         String sqlVenda = "SELECT * FROM venda " +
                           "WHERE id_cliente = (SELECT id_cliente FROM cliente WHERE cpf = ?)";
         
-        String sqlHistorico = "SELECT * FROM historico_venda " +
+        String sqlHistorico = "SELECT * FROM itens " +
                               "WHERE id_venda = (SELECT id_venda FROM venda WHERE id_cliente = " +
                               "(SELECT id_cliente FROM cliente WHERE cpf = ?))";
         
@@ -110,12 +111,15 @@ public class VendaDao {
             statementHistorico.setString(1, Long.toString(cpf));
 
             ResultSet resultadoHistorico = statementHistorico.executeQuery();
-            double[][] historico = null;
+            ArrayList<Itens> itens = new ArrayList<>();
             while(resultadoHistorico.next()) {
-                historico[resultadoHistorico.getRow() - 1][0] = resultadoHistorico.getInt("id_produto");
-                historico[resultadoHistorico.getRow() - 1][1] = resultadoHistorico.getDouble("quantidade");
+                Itens i = new Itens();
+                i.setIdProduto(resultadoHistorico.getInt("id_produto"));
+                i.setQuantidade(resultadoHistorico.getDouble("quantidade"));
+                i.setPreco(resultadoHistorico.getDouble("preco"));
+                itens.add(i);
             }
-            venda.setHistorico(historico);
+            venda.setItens(itens);
 
             vendas.add(venda);
             resultadoHistorico.close();
@@ -131,8 +135,8 @@ public class VendaDao {
         String sqlVenda = "SELECT * FROM venda " +
                           "WHERE id_vendedor = ?";
         
-        String sqlHistorico = "SELECT * FROM historico_venda " +
-                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE id_vendedor = ?)";
+        String sqlHistorico = "SELECT * FROM itens " +
+                              "WHERE id_venda = ?";
         
         
         List<Venda> vendas = new ArrayList<>();
@@ -152,15 +156,18 @@ public class VendaDao {
             venda.setDataVenda(data);
 
             PreparedStatement statementHistorico = this.connection.prepareStatement(sqlHistorico);
-            statementHistorico.setInt(1, id);
+            statementHistorico.setInt(1, venda.getId());
 
             ResultSet resultadoHistorico = statementHistorico.executeQuery();
-            double[][] historico = null;
+            ArrayList<Itens> itens = new ArrayList<>();
             while(resultadoHistorico.next()) {
-                historico[resultadoHistorico.getRow() - 1][0] = resultadoHistorico.getInt("id_produto");
-                historico[resultadoHistorico.getRow() - 1][1] = resultadoHistorico.getDouble("quantidade");
+                Itens i = new Itens();
+                i.setIdProduto(resultadoHistorico.getInt("id_produto"));
+                i.setQuantidade(resultadoHistorico.getDouble("quantidade"));
+                i.setPreco(resultadoHistorico.getDouble("preco"));
+                itens.add(i);
             }
-            venda.setHistorico(historico);
+            venda.setItens(itens);
 
             vendas.add(venda);
             resultadoHistorico.close();
@@ -176,8 +183,8 @@ public class VendaDao {
         String sqlVenda = "SELECT * FROM venda " +
                           "WHERE data_venda = ?";
         
-        String sqlHistorico = "SELECT * FROM historico_venda " +
-                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE data_venda = ?)";
+        String sqlHistorico = "SELECT * FROM itens " +
+                              "WHERE id_venda = ?";
         
         
         List<Venda> vendas = new ArrayList<>();
@@ -197,15 +204,18 @@ public class VendaDao {
             venda.setDataVenda(dataResult);
 
             PreparedStatement statementHistorico = this.connection.prepareStatement(sqlHistorico);
-            statementHistorico.setDate(1, data);
+            statementHistorico.setInt(1, venda.getId());
 
             ResultSet resultadoHistorico = statementHistorico.executeQuery();
-            double[][] historico = null;
+            ArrayList<Itens> itens = new ArrayList<>();
             while(resultadoHistorico.next()) {
-                historico[resultadoHistorico.getRow() - 1][0] = resultadoHistorico.getInt("id_produto");
-                historico[resultadoHistorico.getRow() - 1][1] = resultadoHistorico.getDouble("quantidade");
+                Itens i = new Itens();
+                i.setIdProduto(resultadoHistorico.getInt("id_produto"));
+                i.setQuantidade(resultadoHistorico.getDouble("quantidade"));
+                i.setPreco(resultadoHistorico.getDouble("preco"));
+                itens.add(i);
             }
-            venda.setHistorico(historico);
+            venda.setItens(itens);
 
             vendas.add(venda);
             resultadoHistorico.close();

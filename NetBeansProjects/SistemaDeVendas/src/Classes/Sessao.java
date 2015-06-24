@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 
 /**
  *
@@ -130,7 +129,7 @@ public class Sessao {
         }
     }
     
-    public HashMap<String, Double> ultimasVendas() {
+    public String[][] ultimasVendas() {
         String sqlVendedor = "SELECT hora, valor_total FROM venda " +
                              "WHERE id_vendedor = ? ORDER BY id_venda DESC LIMIT 10";
         
@@ -138,7 +137,7 @@ public class Sessao {
                         "ORDER BY id_venda DESC LIMIT 10";
         
         try {
-            HashMap<String, Double> ultimasVendas = new HashMap<>();
+            String[][] ultimasVendas = new String[10][2];
             PreparedStatement statement = null;
             if("Vendedor".equals(getPermissao())) {
                 statement = this.connection.prepareStatement(sqlVendedor);
@@ -147,8 +146,10 @@ public class Sessao {
                 statement = this.connection.prepareStatement(sqlAdm);
             
             ResultSet resultado = statement.executeQuery();
-            while(resultado.next())
-                ultimasVendas.put(resultado.getString("hora"), resultado.getDouble("valor_total"));
+            while(resultado.next()) {
+                ultimasVendas[resultado.getRow() - 1][0] = resultado.getString("hora");
+                ultimasVendas[resultado.getRow() - 1][1] = Double.toString(resultado.getDouble("valor_total"));
+            }
             
             resultado.close();
             statement.close();
