@@ -309,12 +309,11 @@ public class Cad_Venda extends javax.swing.JFrame {
             Venda v = new Venda();
             int id=0,preco=2,qtd=3;
             int qtdRows = model.getRowCount();
-            double historico[][] = new double[qtdRows][3];
             v.setIdVendedor(id_func);
             if(jTextCliente.getText().isEmpty()){
-                v.setIdCliente(-1);
+                v.setCpfCliente(-1);
             }else{
-                v.setIdCliente(Integer.parseInt(jTextCliente.getText()));
+                v.setCpfCliente(Long.parseLong(jTextCliente.getText()));
             }
             v.setValorTotal(Double.parseDouble(jLabelTotal.getText()));
             ArrayList<Itens> itens = new ArrayList<>();

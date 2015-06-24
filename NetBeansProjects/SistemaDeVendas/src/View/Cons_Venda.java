@@ -339,7 +339,7 @@ public class Cons_Venda extends javax.swing.JFrame {
             Object vec[] = new Object[2];
             String cpf;
             for(Venda vi : vendas){
-                cpf = Long.toString(vi.getIdCliente());
+                cpf = Long.toString(vi.getCpfCliente());
                 if(cpf.length()!=11){
                     while(cpf.length()!=11){
                         cpf = "0"+cpf;

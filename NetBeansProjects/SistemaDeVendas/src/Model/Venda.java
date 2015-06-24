@@ -11,7 +11,7 @@ public class Venda {
     
     private int id;
     private int idVendedor;
-    private int idCliente;
+    private long cpfCliente;
     private ArrayList<Itens> itens;
     private double valorTotal;
     private Calendar dataVenda;
@@ -45,17 +45,17 @@ public class Venda {
     }
 
     /**
-     * @return the idCliente
+     * @return the cpfCliente
      */
-    public int getIdCliente() {
-        return idCliente;
+    public long getCpfCliente() {
+        return cpfCliente;
     }
 
     /**
-     * @param idCliente the idCliente to set
+     * @param cpfCliente the idCliente to set
      */
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCpfCliente(long cpfCliente) {
+        this.cpfCliente = cpfCliente;
     }
 
     /**

@@ -31,7 +31,7 @@ public class VendaDao {
     
     public void cadastrar(Venda venda) throws SQLException{
         String sqlVenda = "INSERT INTO venda " +
-                          "(id_vendedor, id_cliente, valor_total, data_venda, hora) " +
+                          "(id_vendedor, cpf_cliente, valor_total, data_venda, hora) " +
                           "VALUES (?,?,?,?,?)";
         
         String sqlId = "SELECT MAX(id_venda) AS id_venda FROM venda";
@@ -45,10 +45,10 @@ public class VendaDao {
         PreparedStatement statement = this.connection.prepareStatement(sqlVenda);
         statement.setInt(1, venda.getIdVendedor());
 
-        if(venda.getIdCliente() == -1)     
+        if(venda.getCpfCliente() == -1)     
             statement.setNull(2, java.sql.Types.NULL);
         else
-            statement.setInt(2, venda.getIdCliente());
+            statement.setString(2, Long.toString(venda.getCpfCliente()));
 
         statement.setDouble(3, venda.getValorTotal());
         statement.setDate(4, new Date(System.currentTimeMillis()));
@@ -83,11 +83,11 @@ public class VendaDao {
     
     public List<Venda> consultar(long cpf) throws SQLException{
         String sqlVenda = "SELECT * FROM venda " +
-                          "WHERE id_cliente = (SELECT id_cliente FROM cliente WHERE cpf = ?)";
+                          "WHERE cpf_cliente = (SELECT cpf FROM cliente WHERE cpf = ?)";
         
         String sqlHistorico = "SELECT * FROM itens " +
-                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE id_cliente = " +
-                              "(SELECT id_cliente FROM cliente WHERE cpf = ?))";
+                              "WHERE id_venda = (SELECT id_venda FROM venda WHERE cpf_cliente = " +
+                              "(SELECT cpf FROM cliente WHERE cpf = ?))";
         
         
         List<Venda> vendas = new ArrayList<>();
@@ -98,7 +98,7 @@ public class VendaDao {
         while(resultadoVenda.next()) {
             Venda venda = new Venda();
             venda.setId(resultadoVenda.getInt("id_venda"));
-            venda.setIdCliente(resultadoVenda.getInt("id_cliente"));
+            venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
             venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
             venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
             venda.setHora(resultadoVenda.getString("hora"));
@@ -147,7 +147,7 @@ public class VendaDao {
         while(resultadoVenda.next()) {
             Venda venda = new Venda();
             venda.setId(resultadoVenda.getInt("id_venda"));
-            venda.setIdCliente(resultadoVenda.getInt("id_cliente"));
+            venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
             venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
             venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
 
@@ -195,7 +195,7 @@ public class VendaDao {
         while(resultadoVenda.next()) {
             Venda venda = new Venda();
             venda.setId(resultadoVenda.getInt("id_venda"));
-            venda.setIdCliente(resultadoVenda.getInt("id_cliente"));
+            venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
             venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
             venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
 
