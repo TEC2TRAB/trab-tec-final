@@ -54,7 +54,7 @@ public class VendaDao {
         statement.setDate(4, new Date(System.currentTimeMillis()));
 
         java.util.Date hora = Calendar.getInstance().getTime();
-        statement.setString(5, new SimpleDateFormat("HH:mm:ss").format(hora));
+        statement.setString(5, new SimpleDateFormat("HH:mm").format(hora));
 
         statement.execute();
         statement.clearParameters();
