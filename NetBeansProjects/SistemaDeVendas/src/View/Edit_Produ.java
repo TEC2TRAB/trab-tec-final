@@ -193,7 +193,7 @@ public class Edit_Produ extends javax.swing.JFrame {
     private void jTextQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextQuantidadeFocusLost
         try{
             if(!jTextQuantidade.getText().equals("")){
-                Integer.parseInt(jTextQuantidade.getText());
+                Double.parseDouble(jTextQuantidade.getText());
                 jLabelQuantidade.setForeground(Color.black);
             }
         }catch(NumberFormatException e){
