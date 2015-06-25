@@ -1,7 +1,4 @@
 package Model;
-
-import java.text.DecimalFormat;
-
 /**
  *
  * @author Sousa, Italo
@@ -79,7 +76,6 @@ public class Produto {
      * @param preco the preco to set
      */
     public void setPreco(double preco) {
-        DecimalFormat formato = new DecimalFormat("#.##");
-        this.preco = Double.valueOf(formato.format(preco));
+        this.preco = preco;
     }
 }
