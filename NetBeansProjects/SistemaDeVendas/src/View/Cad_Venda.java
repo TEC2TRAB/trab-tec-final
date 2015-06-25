@@ -8,16 +8,16 @@ package View;
 import Classes.ButtonColumnAdd;
 import Classes.ButtonColumnRemove;
 import Classes.JanelaUtil;
+import Classes.MenuUtil;
 import Controller.ControlProduto;
 import Controller.ControlVenda;
 import Model.Itens;
 import Model.Produto;
 import Model.Venda;
+import View.Menu;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,8 +27,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Cad_Venda extends javax.swing.JFrame {
     int id_func;
+    Menu m = MenuUtil.MENU.get("Menu");
     /**
      * Creates new form Cad_Venda
+     * @param id_func
      */
     public Cad_Venda(int id_func) {
         this.id_func = id_func;
@@ -347,6 +349,7 @@ public class Cad_Venda extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
+        m.atualizaMenu();
     }//GEN-LAST:event_jButtonCadastrarMousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

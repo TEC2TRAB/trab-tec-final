@@ -6,6 +6,7 @@
 package View;
 
 import Classes.ButtonColumnSeeMore;
+import Classes.MenuUtil;
 import java.awt.BorderLayout;
 import Classes.Sessao;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(new BorderLayout());
         setVisible(true);
         add(jPanel2, BorderLayout.CENTER);
+        MenuUtil.MENU.put("Menu", this);
         //centralizado
         //int panelX = (getWidth() - jPanel2.getWidth() - getInsets().left - getInsets().right) / 2;
         //int panelY = (getHeight() - jPanel2.getHeight() - getInsets().top - getInsets().bottom) / 2;
@@ -769,7 +771,19 @@ public class Menu extends javax.swing.JFrame {
             l.setVisible(true);
         }
     }//GEN-LAST:event_jButtonSairMousePressed
-
+    public void atualizaMenu(){
+        valDia.setText("R$ "+Double.toString(s.vendasDia()));
+        valMes.setText("R$ "+Double.toString(s.vendasMes()));
+        DefaultTableModel model = (DefaultTableModel) tableHorarioVenda.getModel();
+        model.setNumRows(0);
+        Object vec[] = new Object[2];
+        HashMap<String, Double> vendas = s.ultimasVendas();
+        for(Map.Entry<String,Double> entry : vendas.entrySet()){
+            vec[0] = entry.getKey();
+            vec[1] = entry.getValue();
+            model.addRow(vec);
+        }
+    }
     /**
      * @param args the command line arguments
      */
