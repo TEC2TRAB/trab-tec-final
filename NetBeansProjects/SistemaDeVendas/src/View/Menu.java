@@ -95,9 +95,6 @@ public class Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItemCad_Clien = new javax.swing.JMenuItem();
         jMenuItemCons_Client = new javax.swing.JMenuItem();
-        jMenuAjuda = new javax.swing.JMenu();
-        jMenuItemSobre = new javax.swing.JMenuItem();
-        jMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -615,21 +612,6 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenuAjuda.setText("Ajuda");
-
-        jMenuItemSobre.setText("Sobre");
-        jMenuAjuda.add(jMenuItemSobre);
-
-        jMenuSair.setText("Sair");
-        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jMenuSairMousePressed(evt);
-            }
-        });
-        jMenuAjuda.add(jMenuSair);
-
-        jMenuBar1.add(jMenuAjuda);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -756,14 +738,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void jMenuSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMousePressed
-        if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
-            dispose();
-            Login l = new Login();
-            l.setVisible(true);
-        }
-    }//GEN-LAST:event_jMenuSairMousePressed
-
     private void jButtonSairMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSairMousePressed
         if(JOptionPane.showConfirmDialog(this, "Tem certeza que deseja deslogar do sistema?", "Confirme", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==0){
             dispose();
@@ -808,7 +782,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCad_Clien;
     private javax.swing.JMenuItem jMenuItemCad_Func;
@@ -818,8 +791,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCons_Func;
     private javax.swing.JMenuItem jMenuItemCons_Prod;
     private javax.swing.JMenuItem jMenuItemCons_Venda;
-    private javax.swing.JMenuItem jMenuItemSobre;
-    private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
