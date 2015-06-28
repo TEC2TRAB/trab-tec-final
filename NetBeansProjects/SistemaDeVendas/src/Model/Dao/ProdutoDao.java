@@ -34,8 +34,8 @@ public class ProdutoDao {
         PreparedStatement statement = this.connection.prepareStatement(sql);
 
         statement.setInt(1, produto.getId());
-        statement.setDouble(2, produto.getPreco());
-        statement.setDouble(3, produto.getQuantidade());
+        statement.setFloat(2, produto.getPreco());
+        statement.setFloat(3, produto.getQuantidade());
         statement.setString(4, produto.getDescricao());
         statement.setString(5, produto.getNome().toUpperCase());
 
@@ -56,8 +56,8 @@ public class ProdutoDao {
         while(resultado.next()) {
             Produto produto = new Produto();
             produto.setId(resultado.getInt("id_produto"));
-            produto.setPreco(resultado.getDouble("preco"));
-            produto.setQuantidade(resultado.getDouble("quantidade"));
+            produto.setPreco(resultado.getFloat("preco"));
+            produto.setQuantidade(resultado.getFloat("quantidade"));
             produto.setDescricao(resultado.getString("descricao"));
             produto.setNome(resultado.getString("nome"));
             produtos.add(produto);
@@ -81,8 +81,8 @@ public class ProdutoDao {
         while(resultado.next()) {
             Produto produto = new Produto();
             produto.setId(resultado.getInt("id_produto"));
-            produto.setPreco(resultado.getDouble("preco"));
-            produto.setQuantidade(resultado.getDouble("quantidade"));
+            produto.setPreco(resultado.getFloat("preco"));
+            produto.setQuantidade(resultado.getFloat("quantidade"));
             produto.setDescricao(resultado.getString("descricao"));
             produto.setNome(resultado.getString("nome"));
             produtos.add(produto);
@@ -101,8 +101,8 @@ public class ProdutoDao {
         
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, produto.getNome().toUpperCase());
-        statement.setDouble(2, produto.getPreco());
-        statement.setDouble(3, produto.getQuantidade());
+        statement.setFloat(2, produto.getPreco());
+        statement.setFloat(3, produto.getQuantidade());
         statement.setString(4, produto.getDescricao());
         statement.setInt(5, produto.getId());
 
@@ -121,31 +121,31 @@ public class ProdutoDao {
         statement.close();
     }
     
-    public void retirar(int id, double quantidade) throws SQLException{
+    public void retirar(int id, float quantidade) throws SQLException{
         String sql = "UPDATE produto SET quantidade = quantidade - ? WHERE id_produto = ?";
         
         
         PreparedStatement statement = this.connection.prepareStatement(sql);
-        statement.setDouble(1, quantidade);
+        statement.setFloat(1, quantidade);
         statement.setInt(2, id);
 
         statement.execute();
         statement.close();
     }
     
-    public void adicionar(int id, double quantidade) throws SQLException{
+    public void adicionar(int id, float quantidade) throws SQLException{
         String sql = "UPDATE produto SET quantidade = quantidade + ? WHERE id_produto = ?";
         
         
         PreparedStatement statement = this.connection.prepareStatement(sql);
-        statement.setDouble(1, quantidade);
+        statement.setFloat(1, quantidade);
         statement.setInt(2, id);
 
         statement.execute();
         statement.close();
     }
     
-    public boolean verificarEstoque(int id, double quantidadeCompra) throws SQLException{
+    public boolean verificarEstoque(int id, float quantidadeCompra) throws SQLException{
         String sql = "SELECT quantidade FROM produto WHERE id_produto = ?";
         
         PreparedStatement statement = this.connection.prepareStatement(sql);
@@ -153,6 +153,6 @@ public class ProdutoDao {
         
         ResultSet resultado = statement.executeQuery();
         resultado.next();
-        return resultado.getDouble("quantidade") >= quantidadeCompra;
+        return resultado.getFloat("quantidade") >= quantidadeCompra;
     }
 }

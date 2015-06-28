@@ -162,8 +162,8 @@
               <Table columnCount="5" rowCount="0">
                 <Column editable="false" title="ID" type="java.lang.Integer"/>
                 <Column editable="false" title="Nome" type="java.lang.String"/>
-                <Column editable="false" title="Pre&#xe7;o" type="java.lang.Double"/>
-                <Column editable="true" title="Quantidade" type="java.lang.Double"/>
+                <Column editable="false" title="Pre&#xe7;o" type="java.lang.Float"/>
+                <Column editable="true" title="Quantidade" type="java.lang.Float"/>
                 <Column editable="true" title="Adicionar" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -202,8 +202,8 @@
               <Table columnCount="5" rowCount="0">
                 <Column editable="false" title="ID" type="java.lang.Integer"/>
                 <Column editable="false" title="Nome" type="java.lang.String"/>
-                <Column editable="false" title="Pre&#xe7;o" type="java.lang.Double"/>
-                <Column editable="true" title="Quantidade" type="java.lang.Double"/>
+                <Column editable="false" title="Pre&#xe7;o" type="java.lang.Float"/>
+                <Column editable="true" title="Quantidade" type="java.lang.Float"/>
                 <Column editable="true" title="Excluir" type="java.lang.Object"/>
               </Table>
             </Property>

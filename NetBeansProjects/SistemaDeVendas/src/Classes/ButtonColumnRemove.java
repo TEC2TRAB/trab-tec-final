@@ -91,9 +91,9 @@ public class ButtonColumnRemove extends AbstractCellEditor
             fireEditingStopped();
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             int row = table.getSelectedRow();
-            double total = Double.parseDouble(cd.jLabelTotal.getText());
-            double preco = (double) table.getValueAt(row, 2);
-            double quantidade = (double) table.getValueAt(row, 3);
+            float total = Float.parseFloat(cd.jLabelTotal.getText());
+            float preco = (float) table.getValueAt(row, 2);
+            float quantidade = (float) table.getValueAt(row, 3);
             ControlProduto cp = new ControlProduto();
             try {
                 cp.adicionarProduto((int)table.getValueAt(row, 0), quantidade);

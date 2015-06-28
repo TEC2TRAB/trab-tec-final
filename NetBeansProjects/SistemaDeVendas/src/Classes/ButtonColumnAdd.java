@@ -93,9 +93,9 @@ public class ButtonColumnAdd extends AbstractCellEditor
             DefaultTableModel model = (DefaultTableModel) tableBuy.getModel();
             int row;
             row = table.getSelectedRow();
-            double total = Double.parseDouble(cd.jLabelTotal.getText());
-            double preco = (double) table.getValueAt(row, 2);
-            double quantidade = (double) table.getValueAt(row, 3);
+            float total = Float.parseFloat(cd.jLabelTotal.getText());
+            float preco = (float) table.getValueAt(row, 2);
+            float quantidade = (float) table.getValueAt(row, 3);
             Object vec[] = new Object[4];
             vec[0] = table.getValueAt(row, 0);
             vec[1] = table.getValueAt(row, 1);
@@ -109,7 +109,7 @@ public class ButtonColumnAdd extends AbstractCellEditor
                     }else{
                         cp.retirarProduto((int)table.getValueAt(row, 0), quantidade);
                         model.addRow(vec);
-                        cd.jLabelTotal.setText(Double.toString(total+(preco*quantidade)));
+                        cd.jLabelTotal.setText(Float.toString(total+(preco*quantidade)));
                     }
                 } else
                     JOptionPane.showMessageDialog(null, "A quantidade excede o estoque.", "Erro", JOptionPane.ERROR_MESSAGE);
