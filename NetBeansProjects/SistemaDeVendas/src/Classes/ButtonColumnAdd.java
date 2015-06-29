@@ -10,6 +10,8 @@ import View.Cad_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
 import javax.swing.AbstractCellEditor;
 import javax.swing.ImageIcon;
@@ -109,7 +111,9 @@ public class ButtonColumnAdd extends AbstractCellEditor
                     }else{
                         cp.retirarProduto((int)table.getValueAt(row, 0), quantidade);
                         model.addRow(vec);
-                        cd.jLabelTotal.setText(Double.toString(total+(preco*quantidade)));
+                        double valor_total = total+(preco*quantidade);
+                        BigDecimal bd = new BigDecimal(valor_total).setScale(2, RoundingMode.HALF_EVEN);
+                        cd.jLabelTotal.setText(Double.toString(bd.doubleValue()));
                     }
                 } else
                     JOptionPane.showMessageDialog(null, "A quantidade excede o estoque.", "Erro", JOptionPane.ERROR_MESSAGE);
