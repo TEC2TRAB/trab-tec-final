@@ -242,9 +242,9 @@ public class Edit_Produ extends javax.swing.JFrame {
             Produto p = new Produto();
             p.setNome(jTextNome.getText());
             p.setId(Integer.parseInt(jTextID.getText()));
-            p.setPreco(Float.parseFloat(jTextPreco.getText()));
+            p.setPreco(Double.parseDouble(jTextPreco.getText()));
             p.setDescricao(jTextDescricao.getText());
-            p.setQuantidade(Float.parseFloat(jTextQuantidade.getText()));
+            p.setQuantidade(Double.parseDouble(jTextQuantidade.getText()));
             try {
                 ControlProduto cp = new ControlProduto();
                 cp.atualizarProduto(p);

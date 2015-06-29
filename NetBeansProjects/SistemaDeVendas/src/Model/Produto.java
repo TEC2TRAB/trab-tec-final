@@ -7,8 +7,8 @@ public class Produto {
     private int id;
     private String nome;
     private String descricao;
-    private float quantidade;
-    private float preco;
+    private double quantidade;
+    private double preco;
     /**
      * @return the id
      */
@@ -54,28 +54,28 @@ public class Produto {
     /**
      * @return the quantidade
      */
-    public float getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
     /**
      * @param quantidade the quantidade to set
      */
-    public void setQuantidade(float quantidade) {
+    public void setQuantidade(double quantidade) {
         this.quantidade = quantidade;
     }
 
     /**
      * @return the preco
      */
-    public float getPreco() {
+    public double getPreco() {
         return preco;
     }
 
     /**
      * @param preco the preco to set
      */
-    public void setPreco(float preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 }

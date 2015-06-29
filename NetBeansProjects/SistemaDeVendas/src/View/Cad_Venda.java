@@ -97,7 +97,7 @@ public class Cad_Venda extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, true, true
@@ -130,7 +130,7 @@ public class Cad_Venda extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, true, true
@@ -279,7 +279,7 @@ public class Cad_Venda extends javax.swing.JFrame {
         ControlProduto cp = new ControlProduto();
         for(int i=0;i<qtdRows;i++){
             try {
-                cp.adicionarProduto((int)model.getValueAt(i, 0), (float)model.getValueAt(i, 3));
+                cp.adicionarProduto((int)model.getValueAt(i, 0), (double)model.getValueAt(i, 3));
             } catch(SQLException e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -335,8 +335,8 @@ public class Cad_Venda extends javax.swing.JFrame {
             for(int i=0;i<qtdRows;i++){
                 Itens it = new Itens();
                 it.setIdProduto((int)model.getValueAt(i, id));
-                it.setQuantidade((float)model.getValueAt(i, qtd));
-                it.setPreco((float)model.getValueAt(i, preco));
+                it.setQuantidade((double)model.getValueAt(i, qtd));
+                it.setPreco((double)model.getValueAt(i, preco));
                 itens.add(it);
             }
             v.setItens(itens);

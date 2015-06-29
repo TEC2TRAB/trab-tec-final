@@ -33,15 +33,15 @@ public class ControlProduto {
         this.dao.atualizar(produto);
     }
     
-    public void retirarProduto(int id, float quantidade) throws SQLException{
+    public void retirarProduto(int id, double quantidade) throws SQLException{
         this.dao.retirar(id, quantidade);
     }
     
-    public void adicionarProduto(int id, float quantidade) throws SQLException{
+    public void adicionarProduto(int id, double quantidade) throws SQLException{
         this.dao.adicionar(id, quantidade);
     }
     
-    public boolean verificarProdutoEstoque(int id, float quantidadeCompra) throws SQLException{
+    public boolean verificarProdutoEstoque(int id, double quantidadeCompra) throws SQLException{
         return this.dao.verificarEstoque(id, quantidadeCompra);
     }
 }
