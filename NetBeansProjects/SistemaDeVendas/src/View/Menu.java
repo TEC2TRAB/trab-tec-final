@@ -618,6 +618,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuAjuda.setText("Ajuda");
 
         jMenuItemSobre.setText("Sobre");
+        jMenuItemSobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItemSobreMousePressed(evt);
+            }
+        });
         jMenuAjuda.add(jMenuItemSobre);
 
         jMenuSair.setText("Sair");
@@ -771,6 +776,11 @@ public class Menu extends javax.swing.JFrame {
             l.setVisible(true);
         }
     }//GEN-LAST:event_jButtonSairMousePressed
+
+    private void jMenuItemSobreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemSobreMousePressed
+        Sobre s = new Sobre();
+        s.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSobreMousePressed
     public void atualizaMenu(){
         valDia.setText("R$ "+Double.toString(s.vendasDia()));
         valMes.setText("R$ "+Double.toString(s.vendasMes()));

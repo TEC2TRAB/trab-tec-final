@@ -19,6 +19,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import View.Edit_Produ;
 import Model.Produto;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.SQLException;
@@ -99,11 +101,15 @@ public class ButtonColumnEditProdu extends AbstractCellEditor
             produtos = cp.consultarProduto(id);
         } catch(SQLException er) {
             JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }    
+        } 
+        double preco = produtos.get(0).getPreco();
+        double quantidade = produtos.get(0).getQuantidade();
+        BigDecimal bd_preco = new BigDecimal(preco).setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal bd_quantidade = new BigDecimal(quantidade).setScale(2, RoundingMode.HALF_EVEN);
         ep.jTextID.setText(String.valueOf(produtos.get(0).getId()));
         ep.jTextNome.setText(produtos.get(0).getNome());
-        ep.jTextQuantidade.setText(String.valueOf(produtos.get(0).getQuantidade()));
-        ep.jTextPreco.setText(String.valueOf(produtos.get(0).getPreco()));
+        ep.jTextQuantidade.setText(String.valueOf(bd_quantidade.doubleValue()));
+        ep.jTextPreco.setText(String.valueOf(bd_preco.doubleValue()));
         ep.jTextDescricao.setText(produtos.get(0).getDescricao().trim());
         ep.setVisible(true);
         ep.setAlwaysOnTop(true);
