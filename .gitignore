@@ -1,3 +1,7 @@
+# java project
+/bin
+*.jar
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -13,6 +17,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
 
 # Windows shortcuts
 *.lnk
@@ -41,7 +46,4 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-/NetBeansProjects/SistemaDeVendas/nbproject/private/
-/NetBeansProjects/SistemaDeVendas/build/
-NetBeansProjects/SistemaDeVendas/src/sysvendas/Main.java
-/NetBeansProjects/SistemaDeVendas/dist/
+
