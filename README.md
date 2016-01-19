@@ -1,4 +1,4 @@
-# Trabalho final de Técnicas de programação - 2.
+# Trabalho final de Técnicas de programação II.
 
 O trabalho consiste em refatorar, eliminar Bad Smells, criar classes de teste e colocar sob integração continua um sistema escolhido pela
 equipe e aprovado pelo professor.
