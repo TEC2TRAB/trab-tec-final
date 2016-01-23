@@ -1,0 +1,18 @@
+# target programming lamguage
+language: java
+
+# JDK versios support
+jdk:
+  - oraclejdk7
+  - oraclejdk8
+  
+env:
+  - DB=pgsql
+
+# run tests, findbugs, pmd and friends using Ant, Maven or Gradle
+script: ant test
+
+before_script:
+  - if [[ "$DB" == "pgsql" ]]; then psql -c "DROP DATABASE IF EXISTS BDVendas;" -U postgres; fi
+  - if [[ "$DB" == "pgsql" ]]; then psql -c "create database BDVendas;" -U postgres; fi
+
