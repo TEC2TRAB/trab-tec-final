@@ -9,6 +9,12 @@ jdk:
 env:
   - DB=pgsql
 
+addons:
+  postgresql: "9.3"
+
+services:
+  - postgresql
+
 # run tests, findbugs, pmd and friends using Ant, Maven or Gradle
 script: ant test
 
@@ -16,3 +22,4 @@ before_script:
   - if [[ "$DB" == "pgsql" ]]; then psql -c "DROP DATABASE IF EXISTS BDVendas;" -U postgres; fi
   - if [[ "$DB" == "pgsql" ]]; then psql -c "create database BDVendas;" -U postgres; fi
   - if [[ "$DB" == "pgsql" ]]; then psql -c "CREATE SCHEMA trabalho" -U postgres; fi
+  - if [[ "$DB" == "pgsql" ]]; then psql -c "ALTER USER postgres WITH PASSWORD 'admin'" -U postgres; fi
