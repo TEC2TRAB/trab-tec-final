@@ -17,7 +17,7 @@ public class ConnectionFactory {
     public Connection getConnection() {
         String url = "jdbc:postgresql://localhost:5432/BDVendas?currentSchema=trabalho";
         String usuario = "postgres";
-        String senha = "";
+        String senha = "admin";
         
         try {
             return DriverManager.getConnection(url, usuario, senha);
