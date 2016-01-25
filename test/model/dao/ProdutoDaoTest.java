@@ -15,12 +15,13 @@ import model.Produto;
 
 public class ProdutoDaoTest {
 
+	Connection connection;
 	ProdutoDao dao;
 	Produto produto;
 	
 	@Before
 	public void setUp() throws Exception {
-		Connection connection = new ConnectionFactory().getConnection();
+		connection = new ConnectionFactory().getConnection();
 		connection.setAutoCommit(false);
 		
 		dao = new ProdutoDao(connection);
@@ -34,6 +35,8 @@ public class ProdutoDaoTest {
 	
 	@After
 	public void tearDown() throws Exception {
+		connection.rollback();
+		connection.close();
 	}
 
 	@Test
@@ -48,6 +51,7 @@ public class ProdutoDaoTest {
 	@Test
 	public void testConsultarPorNome() throws SQLException {
 		String consulta = "ARROZ";
+		
 		List<Produto> produtos = dao.consultar(consulta);
 		for(Produto p : produtos) {
 			assertTrue(p.getNome().contains(consulta));
@@ -60,7 +64,6 @@ public class ProdutoDaoTest {
 		List<Produto> produtos = dao.consultar(produto.getId());
 		if(produtos.size() == 1) {
 			assertEquals(produto.getId(), produtos.get(0).getId(), 0);
-			dao.remover(produto.getId());
 		} else {
 			fail("O método retornou mais de 1 resultado.");
 		}
@@ -73,5 +76,47 @@ public class ProdutoDaoTest {
 		List<Produto> produtos = dao.consultar(produto.getId());
 		if(produtos.size() != 0)
 			fail("O método retornou algum resultado.");
+	}
+	
+	@Test
+	public void testAtualizar() throws SQLException {
+		String novoNome = "TESTUPDATE";
+		
+		dao.cadastrar(produto);
+		produto.setNome(novoNome);
+		dao.atualizar(produto);
+		
+		List<Produto> produtos = dao.consultar(produto.getId());
+		assertTrue(produtos.get(0).getNome().equals(novoNome));
+	}
+	
+	@Test
+	public void testAdicionar() throws SQLException {
+		int qtd = 5;
+		
+		dao.cadastrar(produto);
+		dao.adicionar(produto.getId(), qtd);
+		
+		List<Produto> produtos = dao.consultar(produto.getId());
+		assertEquals(produto.getQuantidade() + qtd, produtos.get(0).getQuantidade(), 0);
+	}
+	
+	@Test
+	public void testRetirar() throws SQLException {
+		int qtd = 5;
+		
+		dao.cadastrar(produto);
+		dao.retirar(produto.getId(), qtd);
+		
+		List<Produto> produtos = dao.consultar(produto.getId());
+		assertEquals(produto.getQuantidade() - qtd, produtos.get(0).getQuantidade(), 0);
+	}
+	
+	@Test
+	public void testVerificarEstoque() throws SQLException {
+		int qtd = 5;
+		
+		dao.cadastrar(produto);
+		assertTrue(dao.verificarEstoque(produto.getId(), qtd));
 	}
 }
