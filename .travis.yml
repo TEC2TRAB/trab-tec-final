@@ -17,5 +17,5 @@ script: ant test
 before_script:
   - psql -c "create database bdvendas;" -U postgres
   - psql -c "alter user postgres with password 'admin'" -U postgres
-  - pg_restore -U postgres -d teste2 BancoVendas.backup
+  - pg_restore -U postgres -d bdvendas BancoVendas.backup
 
