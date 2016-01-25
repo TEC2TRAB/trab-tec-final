@@ -69,6 +69,12 @@ public class ProdutoDaoTest {
 		}
 	}
 	
+	@Test(expected = SQLException.class)
+	public void testCadastrarDuplicado() throws SQLException {
+		dao.cadastrar(produto);
+		dao.cadastrar(produto);
+	}
+	
 	@Test
 	public void testRemover() throws SQLException {
 		dao.cadastrar(produto);
