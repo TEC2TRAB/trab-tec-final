@@ -1,5 +1,5 @@
 # Trabalho final de Técnicas de programação II.
-https://travis-ci.org/TEC2TRAB/trab-tec-final.svg?branch=master
+[![Build Status](https://travis-ci.org/TEC2TRAB/trab-tec-final.svg?branch=master)](https://travis-ci.org/TEC2TRAB/trab-tec-final)
 
 O trabalho consiste em refatorar, eliminar Bad Smells, criar classes de teste e colocar sob integração continua um sistema escolhido pela
 equipe e aprovado pelo professor.
