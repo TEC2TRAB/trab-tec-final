@@ -23,41 +23,51 @@ public class ControlProduto {
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
         dao.cadastrar(produto);
+        connection.close();
     }
     
     public List<Produto> consultarProduto(int id) throws SQLException{
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
-        return dao.consultar(id);
+    	List<Produto> produtos = dao.consultar(id);
+    	connection.close();
+        return produtos;
     }
     
     public List<Produto> consultarProduto(String nome) throws SQLException{
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
-    	return dao.consultar(nome);
+    	List<Produto> produtos = dao.consultar(nome);
+    	connection.close();
+    	return produtos;
     }
     
     public void atualizarProduto(Produto produto) throws SQLException{
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
         dao.atualizar(produto);
+    	connection.close();
     }
     
     public void retirarProduto(int id, double quantidade) throws SQLException{
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
         dao.retirar(id, quantidade);
+        connection.close();
     }
     
     public void adicionarProduto(int id, double quantidade) throws SQLException{
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
     	dao.adicionar(id, quantidade);
+    	connection.close();
     }
     
     public boolean verificarProdutoEstoque(int id, double quantidadeCompra) throws SQLException{
     	Connection connection = new ConnectionFactory().getConnection();
     	ProdutoDao dao = new ProdutoDao(connection);
-    	return dao.verificarEstoque(id, quantidadeCompra);
+    	boolean estoque = dao.verificarEstoque(id, quantidadeCompra);
+    	connection.close();
+    	return estoque;
     }
 }

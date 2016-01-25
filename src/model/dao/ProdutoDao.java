@@ -41,7 +41,6 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
-        connection.close();
     }
     
     public List<Produto> consultar(int id) throws SQLException{
@@ -65,7 +64,6 @@ public class ProdutoDao {
         }
         resultado.close();
         statement.close();
-        connection.close();
 
         return produtos;
     }
@@ -91,7 +89,6 @@ public class ProdutoDao {
         }
         resultado.close();
         statement.close();
-        connection.close();
 
         return produtos;
     }
@@ -111,7 +108,6 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
-        connection.close();
     }
     
     public void remover(int id) throws SQLException{
@@ -123,7 +119,6 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
-        connection.close();
     }
     
     public void retirar(int id, double quantidade) throws SQLException{
@@ -136,7 +131,6 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
-        connection.close();
     }
     
     public void adicionar(int id, double quantidade) throws SQLException{
@@ -149,7 +143,6 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
-        connection.close();
     }
     
     public boolean verificarEstoque(int id, double quantidadeCompra) throws SQLException{
@@ -165,7 +158,6 @@ public class ProdutoDao {
         
         statement.close();
         resultado.close();
-        connection.close();
         
         return estoque;
     }
