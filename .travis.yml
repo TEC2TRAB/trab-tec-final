@@ -17,5 +17,5 @@ script: ant test
 before_script:
   - psql -c "create database bdvendas;" -U postgres
   - psql -c "alter user postgres with password 'admin'" -U postgres
-  - psql -c "create table produto (id_produto integer not null,nome character varying(30),preco real not null,quantidade real not null,descricao character(100));" -U postgres
-  - psql -c "alter table produto owner to postgres;" -U postgres
+  - psql -c "postgres -d bdvendas -1 -f BancoVendas.sql" -U postgres
+
