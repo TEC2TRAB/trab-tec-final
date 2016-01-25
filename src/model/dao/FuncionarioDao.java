@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import classes.ConnectionFactory;
-
 /**
  *
  * @author Esdras
@@ -25,8 +23,8 @@ import classes.ConnectionFactory;
 public class FuncionarioDao {
     private Connection connection;
     
-    public FuncionarioDao() {
-        this.connection = new ConnectionFactory().getConnection(); 
+    public FuncionarioDao(Connection connection) {
+        this.connection = connection; 
     }
     
     public void cadastrar(Funcionario funcionario) throws SQLException{
@@ -76,6 +74,8 @@ public class FuncionarioDao {
         statement.setString(6, funcionario.getPermissao());
 
         statement.execute();
+        
+        resultadoChecar.close();
         statement.close();
     }
     

@@ -5,9 +5,11 @@
  */
 package controller;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import classes.ConnectionFactory;
 import model.Cliente;
 import model.dao.ClienteDao;
 
@@ -16,21 +18,34 @@ import model.dao.ClienteDao;
  * @author Esdras
  */
 public class ControlCliente {
-    private ClienteDao dao = new ClienteDao();
     
     public void cadastrarCliente(Cliente cliente) throws SQLException {
-        this.dao.cadastrar(cliente);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ClienteDao dao = new ClienteDao(connection);
+        dao.cadastrar(cliente);
+        connection.close();
     }
     
     public List<Cliente> consultarCliente(long cpf) throws SQLException{
-        return this.dao.consultar(cpf);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ClienteDao dao = new ClienteDao(connection);
+    	List<Cliente> clientes = dao.consultar(cpf);
+        connection.close();
+    	return clientes;
     }
     
     public List<Cliente> consultarCliente(String nome) throws SQLException{
-        return this.dao.consultar(nome);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ClienteDao dao = new ClienteDao(connection);
+    	List<Cliente> clientes = dao.consultar(nome);
+        connection.close();
+    	return clientes;
     }
     
     public void atualizarCliente(Cliente cliente) throws SQLException{
-        this.dao.atualizar(cliente);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ClienteDao dao = new ClienteDao(connection);
+        dao.atualizar(cliente);
+        connection.close();
     }
 }

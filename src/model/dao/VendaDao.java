@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import classes.ConnectionFactory;
-
 /**
  *
  * @author Esdras
@@ -27,8 +25,8 @@ import classes.ConnectionFactory;
 public class VendaDao {
     private Connection connection;
     
-    public VendaDao() {
-        this.connection = new ConnectionFactory().getConnection();
+    public VendaDao(Connection connection) {
+        this.connection = connection;
     }
     
     public void cadastrar(Venda venda) throws SQLException{

@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import classes.ConnectionFactory;
-
 /**
  *
  * @author Esdras
@@ -26,8 +24,8 @@ import classes.ConnectionFactory;
 public class ClienteDao {
     private Connection connection;
     
-    public ClienteDao() {
-        this.connection = new ConnectionFactory().getConnection(); 
+    public ClienteDao(Connection connection) {
+        this.connection = connection; 
     }
     
     public void cadastrar(Cliente cliente) throws SQLException{
@@ -73,6 +71,8 @@ public class ClienteDao {
         statement.setDate(2, new Date(System.currentTimeMillis()));
 
         statement.execute();
+        
+        resultadoChecar.close();
         statement.close();
     }
     
@@ -186,7 +186,6 @@ public class ClienteDao {
     
     public void remover(Long cpf) throws SQLException{
         String sql = "DELETE FROM cliente WHERE cpf = ?";
-        
         
         PreparedStatement statement = this.connection.prepareStatement(sql);
         statement.setString(1, Long.toString(cpf));
