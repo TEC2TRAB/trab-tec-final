@@ -5,9 +5,11 @@
  */
 package controller;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import classes.ConnectionFactory;
 import model.Produto;
 import model.dao.ProdutoDao;
 
@@ -16,33 +18,46 @@ import model.dao.ProdutoDao;
  * @author Esdras
  */
 public class ControlProduto {
-    private ProdutoDao dao = new ProdutoDao();
     
     public void cadastrarProduto(Produto produto) throws SQLException{
-        this.dao.cadastrar(produto);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+        dao.cadastrar(produto);
     }
     
     public List<Produto> consultarProduto(int id) throws SQLException{
-        return this.dao.consultar(id);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+        return dao.consultar(id);
     }
     
     public List<Produto> consultarProduto(String nome) throws SQLException{
-        return this.dao.consultar(nome);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+    	return dao.consultar(nome);
     }
     
     public void atualizarProduto(Produto produto) throws SQLException{
-        this.dao.atualizar(produto);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+        dao.atualizar(produto);
     }
     
     public void retirarProduto(int id, double quantidade) throws SQLException{
-        this.dao.retirar(id, quantidade);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+        dao.retirar(id, quantidade);
     }
     
     public void adicionarProduto(int id, double quantidade) throws SQLException{
-        this.dao.adicionar(id, quantidade);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+    	dao.adicionar(id, quantidade);
     }
     
     public boolean verificarProdutoEstoque(int id, double quantidadeCompra) throws SQLException{
-        return this.dao.verificarEstoque(id, quantidadeCompra);
+    	Connection connection = new ConnectionFactory().getConnection();
+    	ProdutoDao dao = new ProdutoDao(connection);
+    	return dao.verificarEstoque(id, quantidadeCompra);
     }
 }

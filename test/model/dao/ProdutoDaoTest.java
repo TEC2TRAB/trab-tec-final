@@ -2,6 +2,7 @@ package model.dao;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import classes.ConnectionFactory;
 import model.Produto;
 
 public class ProdutoDaoTest {
@@ -18,7 +20,10 @@ public class ProdutoDaoTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		dao = new ProdutoDao();
+		Connection connection = new ConnectionFactory().getConnection();
+		connection.setAutoCommit(false);
+		
+		dao = new ProdutoDao(connection);
 		produto = new Produto();
 		produto.setId(99);
 		produto.setNome("TEST");

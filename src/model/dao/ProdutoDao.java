@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import classes.ConnectionFactory;
-
 /**
  *
  * @author Esdras
@@ -23,8 +21,8 @@ import classes.ConnectionFactory;
 public class ProdutoDao {
     private Connection connection;
     
-    public ProdutoDao() {
-        this.connection = new ConnectionFactory().getConnection();
+    public ProdutoDao(Connection connection) {
+        this.connection = connection;
     }
     
     public void cadastrar(Produto produto) throws SQLException{
@@ -43,6 +41,7 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
+        connection.close();
     }
     
     public List<Produto> consultar(int id) throws SQLException{
@@ -66,6 +65,7 @@ public class ProdutoDao {
         }
         resultado.close();
         statement.close();
+        connection.close();
 
         return produtos;
     }
@@ -91,6 +91,7 @@ public class ProdutoDao {
         }
         resultado.close();
         statement.close();
+        connection.close();
 
         return produtos;
     }
@@ -110,6 +111,7 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
+        connection.close();
     }
     
     public void remover(int id) throws SQLException{
@@ -121,6 +123,7 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
+        connection.close();
     }
     
     public void retirar(int id, double quantidade) throws SQLException{
@@ -133,6 +136,7 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
+        connection.close();
     }
     
     public void adicionar(int id, double quantidade) throws SQLException{
@@ -145,6 +149,7 @@ public class ProdutoDao {
 
         statement.execute();
         statement.close();
+        connection.close();
     }
     
     public boolean verificarEstoque(int id, double quantidadeCompra) throws SQLException{
@@ -155,6 +160,13 @@ public class ProdutoDao {
         
         ResultSet resultado = statement.executeQuery();
         resultado.next();
-        return resultado.getDouble("quantidade") >= quantidadeCompra;
+        
+        boolean estoque = resultado.getDouble("quantidade") >= quantidadeCompra;
+        
+        statement.close();
+        resultado.close();
+        connection.close();
+        
+        return estoque;
     }
 }
