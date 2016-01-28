@@ -13,6 +13,8 @@ import view.Ver_Venda;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -115,12 +117,15 @@ public class ButtonColumnSeeMore extends AbstractCellEditor
             }
             SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
             ver.jLabelData.setText(si.format(venda.get(table.getSelectedRow()).getDataVenda().getTime()));
-            ver.jLabeltotal.setText("R$ " + String.valueOf(venda.get(table.getSelectedRow()).getValorTotal()));
+            BigDecimal valorTotal = new BigDecimal(venda.get(table.getSelectedRow()).getValorTotal()).setScale(2, RoundingMode.HALF_EVEN);
+            System.out.println(valorTotal.doubleValue());
+            ver.jLabeltotal.setText("R$ " + String.valueOf(valorTotal.doubleValue()));
             Object vec[] = new Object[3];
             for(int j = 0; j < venda.get(table.getSelectedRow()).getItens().size(); j++) {
                 vec[0] = venda.get(table.getSelectedRow()).getItens().get(j).getIdProduto();
                 vec[1] = venda.get(table.getSelectedRow()).getItens().get(j).getQuantidade();
-                vec[2] = venda.get(table.getSelectedRow()).getItens().get(j).getPreco();
+                BigDecimal precoItem = new BigDecimal(venda.get(table.getSelectedRow()).getItens().get(j).getPreco()).setScale(2, RoundingMode.HALF_EVEN);
+                vec[2] = precoItem.doubleValue();
                 model.addRow(vec);
             }
             ver.setVisible(true);

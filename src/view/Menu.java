@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -751,13 +753,17 @@ public class Menu extends javax.swing.JFrame {
             jMenu4.setVisible(false);
             jPanel3.setVisible(false);
         }
-        valDia.setText("R$ "+Double.toString(s.vendasDia()));
-        valMes.setText("R$ "+Double.toString(s.vendasMes()));
+        
+        BigDecimal valorDia = new BigDecimal(s.vendasDia()).setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal valorMes = new BigDecimal(s.vendasMes()).setScale(2, RoundingMode.HALF_EVEN);
+        valDia.setText("R$ "+Double.toString(valorDia.doubleValue()));
+        valMes.setText("R$ "+Double.toString(valorMes.doubleValue()));
         Object vec[] = new Object[2];
         HashMap<String, Double> vendas = s.ultimasVendas();
         for(Map.Entry<String,Double> entry : vendas.entrySet()){
             vec[0] = entry.getKey();
-            vec[1] = entry.getValue();
+            BigDecimal valorUltimas = new BigDecimal(entry.getValue()).setScale(2, RoundingMode.HALF_EVEN);
+            vec[1] = valorUltimas.doubleValue();
             model.addRow(vec);
         }
     }//GEN-LAST:event_formWindowOpened
@@ -783,15 +789,18 @@ public class Menu extends javax.swing.JFrame {
         s.setVisible(true);
     }//GEN-LAST:event_jMenuItemSobreMousePressed
     public void atualizaMenu(){
-        valDia.setText("R$ "+Double.toString(s.vendasDia()));
-        valMes.setText("R$ "+Double.toString(s.vendasMes()));
+    	BigDecimal valorDia = new BigDecimal(s.vendasDia()).setScale(2, RoundingMode.HALF_EVEN);
+        BigDecimal valorMes = new BigDecimal(s.vendasMes()).setScale(2, RoundingMode.HALF_EVEN);
+        valDia.setText("R$ "+Double.toString(valorDia.doubleValue()));
+        valMes.setText("R$ "+Double.toString(valorMes.doubleValue()));
         DefaultTableModel model = (DefaultTableModel) tableHorarioVenda.getModel();
         model.setNumRows(0);
         Object vec[] = new Object[2];
         HashMap<String, Double> vendas = s.ultimasVendas();
         for(Map.Entry<String,Double> entry : vendas.entrySet()){
             vec[0] = entry.getKey();
-            vec[1] = entry.getValue();
+            BigDecimal valorUltimas = new BigDecimal(entry.getValue()).setScale(2, RoundingMode.HALF_EVEN);
+            vec[1] = valorUltimas.doubleValue();
             model.addRow(vec);
         }
     }
