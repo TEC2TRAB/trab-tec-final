@@ -118,7 +118,6 @@ public class ButtonColumnSeeMore extends AbstractCellEditor
             SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
             ver.jLabelData.setText(si.format(venda.get(table.getSelectedRow()).getDataVenda().getTime()));
             BigDecimal valorTotal = new BigDecimal(venda.get(table.getSelectedRow()).getValorTotal()).setScale(2, RoundingMode.HALF_EVEN);
-            System.out.println(valorTotal.doubleValue());
             ver.jLabeltotal.setText("R$ " + String.valueOf(valorTotal.doubleValue()));
             Object vec[] = new Object[3];
             for(int j = 0; j < venda.get(table.getSelectedRow()).getItens().size(); j++) {
