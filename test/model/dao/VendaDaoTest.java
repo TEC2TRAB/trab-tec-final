@@ -95,5 +95,94 @@ public class VendaDaoTest {
         if(!found)
         	fail("A venda não foi encontrada.");
 	}
+	
+	@Test(expected = SQLException.class)
+	public void testVendaClienteErrado() throws SQLException {
+		
+		boolean found = false;
+		
+		Venda venda = new Venda();
+		venda.setCpfCliente(5107362878L);
+		venda.setIdVendedor(3);
+		venda.setValorTotal(20);
+		
+		Itens item = new Itens();
+		item.setIdProduto(1);
+		item.setPreco(3.21);
+		item.setQuantidade(1);
+		ArrayList<Itens> itens = new ArrayList<>(); 
+        itens.add(item);
+        venda.setItens(itens);
+        
+        dao.cadastrar(venda);
+        List<Venda> vendas = dao.consultar(venda.getCpfCliente());
+        for(Venda v: vendas) {
+        	if(v.getCpfCliente() == venda.getCpfCliente() &&
+        			v.getIdVendedor() == venda.getIdVendedor() &&
+        				v.getValorTotal() == venda.getValorTotal())
+        		found = true;
+        }
+        
+        if(!found)
+        	fail("A venda não foi encontrada.");
+		
+	}
+	
+	
+	@Test(expected = SQLException.class)
+	public void testVendaVendedorErrado() throws SQLException {
+		
+		boolean found = false;
+		
+		Venda venda = new Venda();
+		venda.setCpfCliente(51073628779L);
+		venda.setIdVendedor(666);
+		venda.setValorTotal(20);
+		
+		Itens item = new Itens();
+		item.setIdProduto(1);
+		item.setPreco(3.21);
+		item.setQuantidade(1);
+		ArrayList<Itens> itens = new ArrayList<>(); 
+        itens.add(item);
+        venda.setItens(itens);
+        
+        dao.cadastrar(venda);
+        List<Venda> vendas = dao.consultar(venda.getCpfCliente());
+        for(Venda v: vendas) {
+        	if(v.getCpfCliente() == venda.getCpfCliente() &&
+        			v.getIdVendedor() == venda.getIdVendedor() &&
+        				v.getValorTotal() == venda.getValorTotal())
+        		found = true;
+        }
+        
+        if(!found)
+        	fail("A venda não foi encontrada.");
+	}
+	
+	
+	
+	@Test
+	public void testVendaDadosNull() throws SQLException {
+		
+		boolean found = false;
+		
+		Venda venda = new Venda();
+		venda.setCpfCliente(51073628779L);
+		venda.setIdVendedor(3);
+		
+		
+		Itens item = new Itens();
+		item.setIdProduto(1);
+		item.setPreco(3.21);
+		item.setQuantidade(1);
+		venda.setValorTotal(item.getPreco());
+		ArrayList<Itens> itens = new ArrayList<>(); 
+        itens.add(item);
+        venda.setItens(itens);
+        
+        assertEquals(3.21, venda.getValorTotal(),0); 
+		
+	}
 
 }
