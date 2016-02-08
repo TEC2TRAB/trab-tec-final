@@ -62,6 +62,16 @@ public class FuncionarioDaoTest {
 			fail("A busca por um indentificador unico retornou mais de um resultado");
 		}
 	}
-
+	
+	@Test 
+	public void testAtualizar() throws SQLException{
+		dao.cadastrar(funcionario);
+		funcionario.setBairro("TesteAtualizar");
+		dao.atualizar(funcionario);
+		
+		List<Funcionario> f = dao.consultar(funcionario.getCPF());
+		
+		assertEquals(funcionario.getBairro(), f.get(0).getBairro());
+	}
 
 }
