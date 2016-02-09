@@ -91,4 +91,10 @@ public class FuncionarioDaoTest {
 		}
 	}
 	
+	@Test(expected = SQLException.class)
+	public void testCadastrarDoisFuncionariosComMesmoCPF() throws SQLException{
+		dao.cadastrar(funcionario);
+		funcionario.setNome("TesteDeCpfIgual");
+		dao.cadastrar(funcionario);
+	}
 }
