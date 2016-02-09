@@ -34,7 +34,11 @@ import javax.swing.JOptionPane;
  */
 public class ButtonColumnEditClien extends AbstractCellEditor  
         implements TableCellRenderer, TableCellEditor, ActionListener{  
-        JTable table;  
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		JTable table;  
         JButton renderButton;  
         JButton editButton;  
         String text;  

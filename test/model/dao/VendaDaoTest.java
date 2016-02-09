@@ -165,8 +165,6 @@ public class VendaDaoTest {
 	@Test
 	public void testVendaDadosNull() throws SQLException {
 		
-		boolean found = false;
-		
 		Venda venda = new Venda();
 		venda.setCpfCliente(51073628779L);
 		venda.setIdVendedor(3);

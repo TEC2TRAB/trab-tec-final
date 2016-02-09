@@ -6,7 +6,6 @@
 package classes;
 
 import controller.ControlVenda;
-import model.Itens;
 import model.Venda;
 import view.Ver_Venda;
 
@@ -36,7 +35,11 @@ import javax.swing.table.TableColumnModel;
  */
 public class ButtonColumnSeeMore extends AbstractCellEditor  
         implements TableCellRenderer, TableCellEditor, ActionListener{  
-        JTable table; 
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		JTable table; 
         JTable tableBuy; 
         JButton renderButton;  
         JButton editButton;  
@@ -45,7 +48,6 @@ public class ButtonColumnSeeMore extends AbstractCellEditor
         public ButtonColumnSeeMore(JTable table, int column){  
             super();  
             this.table = table;  
-            this.tableBuy = tableBuy;
             ImageIcon image = new ImageIcon(getClass().getResource("/images/find.png"));
             renderButton = new JButton(image);  
             

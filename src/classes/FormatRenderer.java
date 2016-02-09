@@ -8,6 +8,10 @@ import javax.swing.table.DefaultTableCellRenderer;
  *	Use a formatter to format the cell Object
  */
 public class FormatRenderer extends DefaultTableCellRenderer{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Format formatter;
 
 	/*
