@@ -73,5 +73,14 @@ public class FuncionarioDaoTest {
 		
 		assertEquals(funcionario.getBairro(), f.get(0).getBairro());
 	}
-
+	@Test 
+	public void testConsultarPorNome() throws SQLException{
+		String nome = "ROBERTO";
+		List<Funcionario> funcionarios = dao.consultar(nome);
+		for (Funcionario f : funcionarios){
+			assertTrue(f.getNome().contains(nome));
+		}
+		
+	}
+	
 }
