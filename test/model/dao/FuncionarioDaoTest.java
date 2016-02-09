@@ -79,8 +79,16 @@ public class FuncionarioDaoTest {
 		List<Funcionario> funcionarios = dao.consultar(nome);
 		for (Funcionario f : funcionarios){
 			assertTrue(f.getNome().contains(nome));
+		}	
+	}
+	@Test
+	public void testRemover() throws SQLException{
+		dao.cadastrar(funcionario);
+		dao.remover(funcionario.getCPF());
+		List<Funcionario> f = dao.consultar(funcionario.getCPF());
+		if(f.size() != 0){
+			fail("O Funcionario nao foi removido");
 		}
-		
 	}
 	
 }
