@@ -161,26 +161,6 @@ public class VendaDaoTest {
 	}
 	
 	
-	
-	@Test
-	public void testVendaDadosNull() throws SQLException {
-		
-		Venda venda = new Venda();
-		venda.setCpfCliente(51073628779L);
-		venda.setIdVendedor(3);
-		
-		
-		Itens item = new Itens();
-		item.setIdProduto(1);
-		item.setPreco(3.21);
-		item.setQuantidade(1);
-		venda.setValorTotal(item.getPreco());
-		ArrayList<Itens> itens = new ArrayList<>(); 
-        itens.add(item);
-        venda.setItens(itens);
-        
-        assertEquals(3.21, venda.getValorTotal(),0); 
-		
-	}
+
 
 }
