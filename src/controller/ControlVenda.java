@@ -50,4 +50,12 @@ public class ControlVenda {
     	connection.close();
         return vendas;
     }
+    
+    public Venda consultarVendaPorId(int id) throws SQLException{
+    	Connection connection = new ConnectionFactory().getConnection();
+    	VendaDao dao = new VendaDao(connection);
+    	Venda venda = dao.consultarPorId(id);
+    	connection.close();
+    	return venda;
+    }
 }

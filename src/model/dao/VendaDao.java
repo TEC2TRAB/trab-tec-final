@@ -238,4 +238,53 @@ public class VendaDao {
 
         return vendas;    
     }
+    
+    public Venda consultarPorId(int id) throws SQLException {
+        String sqlVenda = "SELECT * FROM venda " +
+                          "WHERE id_venda = ?";
+        
+        String sqlHistorico = "SELECT * FROM itens " +
+                              "WHERE id_venda = ?";
+        
+        PreparedStatement statementVenda = this.connection.prepareStatement(sqlVenda);
+        statementVenda.setInt(1, id);
+
+        Venda venda = new Venda();
+        ResultSet resultadoVenda = statementVenda.executeQuery();
+        while(resultadoVenda.next()) {
+            venda.setId(resultadoVenda.getInt("id_venda"));
+            try{
+            venda.setCpfCliente(Long.parseLong(resultadoVenda.getString("cpf_cliente")));
+            }catch(NumberFormatException e){
+                venda.setCpfCliente(0);
+            }
+            venda.setIdVendedor(resultadoVenda.getInt("id_vendedor"));
+            venda.setValorTotal(resultadoVenda.getDouble("valor_total"));
+
+            Calendar data = Calendar.getInstance();
+            data.setTime(resultadoVenda.getDate("data_venda"));
+            venda.setDataVenda(data);
+
+            PreparedStatement statementHistorico = this.connection.prepareStatement(sqlHistorico);
+            statementHistorico.setInt(1, venda.getId());
+
+            ResultSet resultadoHistorico = statementHistorico.executeQuery();
+            ArrayList<Itens> itens = new ArrayList<>();
+            while(resultadoHistorico.next()) {
+                Itens i = new Itens();
+                i.setIdProduto(resultadoHistorico.getInt("id_produto"));
+                i.setQuantidade(resultadoHistorico.getDouble("quantidade"));
+                i.setPreco(resultadoHistorico.getDouble("preco"));
+                itens.add(i);
+            }
+            venda.setItens(itens);
+
+            resultadoHistorico.close();
+            statementHistorico.close();
+        }
+        resultadoVenda.close();
+        statementVenda.close();
+
+        return venda;
+    }
 }
