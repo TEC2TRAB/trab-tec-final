@@ -294,6 +294,7 @@ public class Cons_Venda extends javax.swing.JFrame {
 
     private void jButtonConsultarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultarMousePressed
         DefaultTableModel model = (DefaultTableModel) jTableVenda.getModel();
+        model.setNumRows(0);
         List<Venda> vendas = new ArrayList<>();
         ControlVenda cv = new ControlVenda();
         int passa = 0;
