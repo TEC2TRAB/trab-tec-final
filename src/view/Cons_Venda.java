@@ -358,7 +358,7 @@ public class Cons_Venda extends javax.swing.JFrame {
         if(passa==0 && vendas.isEmpty()){
             JOptionPane.showMessageDialog(this, "A pesquisa não retornou dados, tente novamente.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
-            Object vec[] = new Object[4];
+            Object vec[] = new Object[5];
             String cpf;
             for(Venda vi : vendas){
                 cpf = Long.toString(vi.getCpfCliente());
@@ -374,6 +374,7 @@ public class Cons_Venda extends javax.swing.JFrame {
                 SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
                 vec[2] = si.format(vi.getDataVenda().getTime());
                 vec[3] = vi.getValorTotal();
+                vec[4] = vi.getId();
                 model.addRow(vec);
             }
         }

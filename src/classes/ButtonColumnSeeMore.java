@@ -98,34 +98,35 @@ public class ButtonColumnSeeMore extends AbstractCellEditor
   
         @Override
         public void actionPerformed(ActionEvent e){  
-            List<Venda> venda = new ArrayList<>();
+            Venda venda = new Venda();
             Ver_Venda ver = new Ver_Venda();
             DefaultTableModel model = (DefaultTableModel) ver.jTableItens.getModel();
             model.setNumRows(0);
             int row;
             row = table.getSelectedRow();
-            int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
+            int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 4)));
+            System.out.println(id);
             try {
                 ControlVenda cv = new ControlVenda();
-                venda = cv.consultarVenda(id);
+                venda = cv.consultarVendaPorId(id);
             } catch(SQLException er) {
                 JOptionPane.showMessageDialog(null, er.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }    
-            ver.jLabelVendedor.setText(String.valueOf(venda.get(0).getIdVendedor()));
-            if(venda.get(0).getCpfCliente()==0){
+            ver.jLabelVendedor.setText(String.valueOf(venda.getIdVendedor()));
+            if(venda.getCpfCliente()==0){
                ver.jLabelCliente.setText("");
             }else{
-               ver.jLabelCliente.setText(String.valueOf(venda.get(0).getCpfCliente())); 
+               ver.jLabelCliente.setText(String.valueOf(venda.getCpfCliente())); 
             }
             SimpleDateFormat si = new SimpleDateFormat("dd/MM/yyyy");
-            ver.jLabelData.setText(si.format(venda.get(table.getSelectedRow()).getDataVenda().getTime()));
-            BigDecimal valorTotal = new BigDecimal(venda.get(table.getSelectedRow()).getValorTotal()).setScale(2, RoundingMode.HALF_EVEN);
+            ver.jLabelData.setText(si.format(venda.getDataVenda().getTime()));
+            BigDecimal valorTotal = new BigDecimal(venda.getValorTotal()).setScale(2, RoundingMode.HALF_EVEN);
             ver.jLabeltotal.setText("R$ " + String.valueOf(valorTotal.doubleValue()));
             Object vec[] = new Object[3];
-            for(int j = 0; j < venda.get(table.getSelectedRow()).getItens().size(); j++) {
-                vec[0] = venda.get(table.getSelectedRow()).getItens().get(j).getIdProduto();
-                vec[1] = venda.get(table.getSelectedRow()).getItens().get(j).getQuantidade();
-                BigDecimal precoItem = new BigDecimal(venda.get(table.getSelectedRow()).getItens().get(j).getPreco()).setScale(2, RoundingMode.HALF_EVEN);
+            for(int j = 0; j < venda.getItens().size(); j++) {
+                vec[0] = venda.getItens().get(j).getIdProduto();
+                vec[1] = venda.getItens().get(j).getQuantidade();
+                BigDecimal precoItem = new BigDecimal(venda.getItens().get(j).getPreco()).setScale(2, RoundingMode.HALF_EVEN);
                 vec[2] = precoItem.doubleValue();
                 model.addRow(vec);
             }
