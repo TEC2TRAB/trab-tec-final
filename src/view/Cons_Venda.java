@@ -37,7 +37,7 @@ public class Cons_Venda extends javax.swing.JFrame {
         initComponents();
         TableColumnModel t = jTableVenda.getColumnModel();
         t.getColumn(2).setCellRenderer(classes.FormatRenderer.getDateTimeRenderer());
-        new ButtonColumnSeeMore(jTableVenda, 4);
+        new ButtonColumnSeeMore(jTableVenda, 5);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,7 +99,7 @@ public class Cons_Venda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID - Vendedor", "ID - Cliente", "Data da Venda", "Total - R$", "Ver Mais"
+               "ID - Vendedor", "ID - Cliente", "Data da Venda", "Total - R$","ID - Venda" ,"Ver Mais"
             }
         ) {
             /**
@@ -107,10 +107,10 @@ public class Cons_Venda extends javax.swing.JFrame {
 			 */
 			private static final long serialVersionUID = 1L;
 			Class<?>[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class ,java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public Class<?> getColumnClass(int columnIndex) {
