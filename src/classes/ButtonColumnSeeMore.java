@@ -16,8 +16,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.AbstractCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -105,7 +103,6 @@ public class ButtonColumnSeeMore extends AbstractCellEditor
             int row;
             row = table.getSelectedRow();
             int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 4)));
-            System.out.println(id);
             try {
                 ControlVenda cv = new ControlVenda();
                 venda = cv.consultarVendaPorId(id);
