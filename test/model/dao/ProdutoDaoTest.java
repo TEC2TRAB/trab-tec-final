@@ -104,7 +104,7 @@ public class ProdutoDaoTest {
 		dao.adicionar(produto.getId(), qtd);
 		
 		List<Produto> produtos = dao.consultar(produto.getId());
-		assertEquals(produto.getQuantidade() + qtd, produtos.get(0).getQuantidade(), 0);
+		assertEquals(produto.getQuantidade() - qtd, produtos.get(0).getQuantidade(), 0);
 	}
 	
 	@Test
